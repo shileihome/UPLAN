@@ -1,0 +1,296 @@
+<resources>
+    <string name="app_name">密钥</string>
+
+    <string name="order_query">工单查询</string>
+
+    <string name="error_network">呀～网络正在开小差</string>
+    <string name="please_check_refresh">请检查后刷新</string>
+    <string name="click_refresh">点击刷新</string>
+    <string name="video_player">视频播放</string>
+    <string name="video_record">视频录制</string>
+    <!--首页-->
+    <string name="home_query_method">请输入姓名/手机号/身份证号</string>
+    <string name="home_task">我的任务</string>
+    <string name="home_see_all">查看全部</string>
+    <string name="home_pendind_enter">待进件</string>
+    <string name="home_contract">合同资料</string>
+    <string name="home_loan">放款资料</string>
+    <string name="home_car">放车资料</string>
+    <string name="home_data_send">资料邮寄</string>
+    <string name="home_bigdata_search">大数据查询</string>
+    <string name="home_big_data_return">大数据退回</string>
+
+    <!--登录-->
+    <string name="login">登录</string>
+    <string name="login_title">欢迎使用中融信</string>
+    <string name="login_account">账号</string>
+    <string name="phone_or_email">请输入手机号/邮箱</string>
+    <string name="login_password">密码</string>
+    <string name="login_input_password">请输入登录密码</string>
+    <string name="login_login_fail_pwd_error">账号或密码错误，请联系管理员</string>
+    <string name="login_pwd_illegal">密码格式不正确</string>
+    <string name="login_account_illegal">账号格式不正确</string>
+    <string name="login_pwd_account_empty">账号或密码不能为空</string>
+    <string name="error_can_not_be_empty">不能为空</string>
+
+
+    <!--设置-->
+    <string name="setting">设置</string>
+    <string name="email">邮箱</string>
+    <string name="name">用户名</string>
+    <string name="change_password">修改密码</string>
+    <string name="change">修改</string>
+    <string name="clear_cache">清理缓存</string>
+    <string name="exit_login">退出登录</string>
+
+    <!--修改密码-->
+    <string name="update_login_pwd">修改登录密码</string>
+    <string name="old_password">原始密码&#160;&#160;&#160;&#160;</string>
+    <string name="input_old_password">请输入原始登录密码</string>
+    <string name="input_new_password">设置新密码</string>
+    <string name="reset_new_password">重复新密码</string>
+    <string name="number_and_word">6–20位字母和数字组合</string>
+    <string name="commit_change">确认</string>
+    <string name="update_pwd_success">密码修改成功</string>
+    <string name="update_pwd_fail">密码修改失败</string>
+    <string name="confirm_pwd">确认密码与新密码不一直</string>
+    <string name="common_dialog_cancel">取消</string>
+    <string name="old_password_null">原始登录密码错误</string>
+    <string name="new_password_null">新密码须为6~20位字母和数字组合</string>
+    <string name="reset_password_null">重复的密码与首次不一致</string>
+    <string name="phone">手机号</string>
+
+
+    <!--工单查询-->
+    <string name="work_search_title">工单查询</string>
+    <string name="work_search_info">工单信息</string>
+    <string name="work_search_order_number">订单号码</string>
+    <string name="work_search_name">客户姓名</string>
+    <string name="work_search_phone">手机号码</string>
+    <string name="work_search_id">身份证号</string>
+    <string name="work_search_comment">退单原因</string>
+    <string name="work_search_input_info">录入资料</string>
+    <string name="error_request_fail">请求失败</string>
+    <string name="work_search_hint">请输入姓名/手机号/身份证号</string>
+    <string name="no_data">暂无数据</string>
+    <string name="work_search_query">查询</string>
+
+    <!--大数据提交-->
+    <string name="bigdata_submit_name">姓名&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <!--大数据查询-->
+    <string name="bigdata_query_review">审核中</string>
+    <string name="bigdata_query_through">已通过</string>
+    <string name="bigdata_query_refuse">已拒绝</string>
+    <string name="bigdata_query_title">查询历史</string>
+    <string name="work_search_search">搜索</string>
+    <string name="bigdata_resubmit">重新录入</string>
+
+    <!--工单列表-->
+    <string name="order_group_all">全部工单</string>
+    <string name="order_group_underway">进行中</string>
+    <string name="order_group_archive">已归档</string>
+    <string name="order_group_msg">工单信息</string>
+    <string name="order_group_number">工单号码</string>
+    <string name="order_group_name">客户姓名</string>
+    <string name="order_group_chargeback_reason">退单原因</string>
+
+
+    <!--工单详情-->
+    <string name="order_title">工单详情页</string>
+    <string name="order_big_data_pass">大数据审核通过</string>
+    <string name="order_into_data_examing">进件资料审核中</string>
+    <string name="order_into_data_pass">进件资料审核通过</string>
+    <string name="order_into_data_faie">进件资料审核退回</string>
+    <string name="order_borrowing">借款额度</string>
+    <string name="order_proportion">首付比例</string>
+    <string name="order_amount">首付金额</string>
+    <string name="order_time_limit">借款期限</string>
+    <string name="order_interestrate">利率&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="order_reimbursement">月还款&#160;&#160;&#160;&#160;</string>
+    <string name="order_name">客户姓名</string>
+    <string name="order_phone">手机号码</string>
+    <string name="order_id_num">身份证号</string>
+    <string name="order_bank">银行卡号</string>
+    <string name="order_num">工单号码&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="order_contract">合同编号&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="order_submit_time">最近提交时间</string>
+    <string name="order_state_time">状态变更时间</string>
+    <string name="order_blank_space">&#160;&#160;&#160;&#160;</string>
+
+    <string name="permission_request_denied_sdcard">需要sdcard读写权限</string>
+    <string name="permission_request_denied">需要权限</string>
+
+    <!--录入进件-->
+    <string name="enter_blank_space">&#160;&#160;&#160;&#160;</string>
+    <string name="enter_pending_title">录入进件资料</string>
+    <string name="enter_vehicle_prices">车辆价格(元)&#160;</string>
+    <string name="enter_loan_amount">借款总额(元)&#160;</string>
+    <string name="enter_payment_proportion">首付比例</string>
+    <string name="enter_payment_amount">首付金额(元)&#160;</string>
+    <string name="enter_lending_rate">借款利率</string>
+    <string name="enter_payment_card_number">还款卡号</string>
+    <string name="enter_pending_bank_open">开户行</string>
+    <string name="guarantee_contract_credit">担保人征信</string>
+    <string name="guarantee_family_visit">家访照片</string>
+
+    <!--借款人信息录入-->
+    <string name="borrower_info_enter_client_name">客户姓名</string>
+    <string name="borrower_info_enter_bank_number">银行卡号</string>
+    <string name="borrower_info_enter_id_card">身份证号</string>
+    <string name="borrower_info_enter_phone_number">手机号码</string>
+    <string name="borrower_info_enter_marry_state">婚姻状况</string>
+    <string name="borrower_info_enter_hint_marry_state">请选择婚姻状况</string>
+    <string name="borrower_info_enter_education">学历</string>
+    <string name="borrower_info_enter_hint_optional">选填</string>
+    <string name="borrower_info_enter_living_address">现居住地</string>
+    <string name="borrower_info_enter_hint_living_address">请选择现居住省市</string>
+    <string name="borrower_info_enter_detail_address">详细地址</string>
+    <string name="borrower_info_enter_hint_detail_living_address">现居住地详细地址，精确到门牌号</string>
+    <string name="borrower_info_enter_live_time">现居住地\r\n居住年限&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="borrower_info_enter_hint_live_time">请输入年限</string>
+    <string name="borrower_info_enter_census_address">户籍所在地</string>
+    <string name="borrower_info_enter_hint_census_address">请选择户籍所在省市</string>
+    <string name="borrower_info_enter_hint_detail_census_address">户籍所在地详细地址，精确到门牌号</string>
+    <string name="borrower_info_enter_work_info">工作信息</string>
+    <string name="borrower_info_enter_hint_profession">请输入职业信息</string>
+    <string name="borrower_info_enter_profession">职业</string>
+    <string name="borrower_info_enter_department_name">单位名称</string>
+    <string name="borrower_info_enter_hint_department_name">请输入单位名称</string>
+    <string name="borrower_info_enter_department_phone">单位电话</string>
+    <string name="borrower_info_enter_hint_department_phone">请输入单位固定电话</string>
+    <string name="borrower_info_enter_department_city">单位所在城市</string>
+    <string name="borrower_info_enter_hint_department_city">请选择城市</string>
+    <string name="borrower_info_enter_department_detail_address">单位详细地址</string>
+    <string name="borrower_info_enter_input_department_detail_address">请输入单位详细地址</string>
+    <string name="borrower_info_enter_department_time">单位在职年限</string>
+    <string name="borrower_info_enter_input_department_time">请输入单位在职年限</string>
+    <string name="borrower_info_enter_month_input">月收入(元)&#160;</string>
+    <string name="borrower_info_enter_hint_month_input">请输入月收入</string>
+    <string name="borrower_info_enter_emergency_contact">紧急联系人(直系亲属,选填)</string>
+    <string name="borrower_info_enter_name">姓名</string>
+    <string name="borrower_info_enter_hint_emergency_contact_name">请输入直系亲属联系人姓名</string>
+    <string name="borrower_info_enter_hint_emergency_contact_name2">请输入非直系亲属联系人姓名</string>
+    <string name="borrower_info_enter_hint_phone_number">请输入手机号码</string>
+    <string name="borrower_info_enter_relation">与借款人关系</string>
+    <string name="borrower_info_enter_hint_relation">请选择与借款人关系</string>
+    <string name="borrower_info_enter_emergency_contact_2">紧急联系人(非直系亲属,选填)</string>
+    <string name="borrower_info_enter_mate_info">配偶基本信息(选填)</string>
+    <string name="borrower_info_enter_hint_mate_name">请输入配偶姓名</string>
+    <string name="borrower_info_enter_hint_id_number">请输入身份证号</string>
+    <string name="borrower_info_enter_next">下一步</string>
+    <string name="borrower_info_enter_title">借款人信息(1/2)</string>
+    <string name="borrower_info_enter_title_2">借款人信息(2/2)</string>
+    <string name="borrower_info_enter_photo">借款人资料照片</string>
+    <string name="borrower_info_enter_photo_id_card">身份证正反面</string>
+    <string name="borrower_info_enter_photo_bank_card">银行卡正反面</string>
+    <string name="borrower_info_enter_photo_bank_accounts">银行流水</string>
+    <string name="borrower_info_enter_photo_account_book">户口本</string>
+    <string name="borrower_info_enter_photo_marry_book">结婚证</string>
+    <string name="borrower_info_enter_photo_house_book">房产证</string>
+    <string name="borrower_info_enter_photo_driver_card">驾照</string>
+    <string name="borrower_info_enter_photo_mate">配偶资料照片(选填)</string>
+    <string name="borrower_info_enter_pending">待上传</string>
+    <string name="borrower_info_enter_signed">待签署</string>
+    <string name="borrower_info_enter_save">保存</string>
+    <string name="borrower_info_not_enough">不能为空</string>
+    <string name="borrower_info_format_error" formatted="false">%s格式错误</string>
+    <string name="borrower_info_enter_post_data_fail">提交数据失败</string>
+    <string name="image_select_save">保存</string>
+    <string name="guarantor_info_msg">担保人信息</string>
+    <string name="basic_information">基本信息</string>
+    <string name="borrower_info_enter_supplement">补充信息</string>
+    <string name="cloud_vehicle_credit_pic">云车征信审批截图</string>
+    <string name="sesame_credit_video">芝麻信用分视频</string>
+    <string name="differential_operating_video">微粒贷操作视频</string>
+    <string name="borrower_info_id_img_empty">身份证正反面照片未上传</string>
+    <string name="borrower_info_driver_book_img_empty">驾照图片未上传</string>
+    <string name="borrower_info_bank_account_img_empty">银行流水图片未上传</string>
+
+    <string name="borrower_info_enter_emergency_contact_name">紧急联系人(直系亲属)姓名</string>
+    <string name="borrower_info_enter_emergency_contact_phone">紧急联系人(直系亲属)手机号码</string>
+    <string name="borrower_info_enter_emergency_contact_relation">紧急联系人(直系亲属)与借款人关系</string>
+
+    <string name="borrower_info_enter_emergency_contact_name2">紧急联系人(非直系亲属)姓名</string>
+    <string name="borrower_info_enter_emergency_contact_phone2">紧急联系人(非直系亲属)手机号码</string>
+    <string name="borrower_info_enter_emergency_contact_relation2">紧急联系人(非直系亲属)与借款人关系</string>
+
+    <string name="borrower_info_enter_meta_name">配偶姓名</string>
+    <string name="borrower_info_enter_meta_phone">配偶手机号</string>
+    <string name="borrower_info_enter_meta_id_card">配偶身份证号</string>
+
+    <!--录入进件—车辆录入-->
+    <string name="enter_pending_car_title">车辆信息</string>
+    <string name="enter_hint_optional">选填</string>
+    <string name="enter_hint_upload">待上传</string>
+    <string name="enter_hint_car_frame">请输入车架号</string>
+    <string name="enter_hint_car_model">请输入车辆型号</string>
+    <string name="enter_hint_car_engine">请输入发动机号</string>
+    <string name="enter_hint_car_color">请选择车辆颜色</string>
+    <string name="enter_hint_car_date">请选择车辆初次登记日期</string>
+    <string name="enter_hint_car_registration_city">请选择预计上牌城市</string>
+    <string name="enter_hint_car_use_city">请选择使用城市</string>
+    <string name="enter_hint_car_mileage">请输入行驶里程</string>
+    <string name="enter_hint_car_sales">请输入实际销售价格</string>
+    <string name="enter_pending_car_commit_dialog_cancel">放弃</string>
+    <string name="enter_pending_car_commit_change">继续编辑</string>
+    <string name="enter_pending_car_commit_save">保存</string>
+    <string name="enter_pending_car_commit_content">确认要放弃本次编辑吗？</string>
+    <string name="enter_pending_car_commit_content_save">确认要保存本次编辑吗？</string>
+    <string name="enter_pending_car_commit_title">信息提示</string>
+    <string name="enter_default_car_type">乘用车-新车</string>
+
+    <string name="image_select_video_size_limit">每个视频大小不超过50M</string>
+    <string name="image_select_file_cnt_limit">最多上传9个文件</string>
+    <string name="update_version_name_tip">发现新版本%s</string>
+
+    <!--录入合同资料-->
+    <string name="contract">录入合同资料</string>
+    <string name="contract_power_attorney">授权委托书</string>
+    <string name="contract_power_attorney_loan">授权委托书(主贷人)</string>
+    <string name="contract_power_attorney_guarantor1">授权委托书(担保人1)</string>
+    <string name="contract_power_attorney_guarantor2">授权委托书(担保人2)</string>
+    <string name="contract_data_pic">照片资料</string>
+    <string name="contract_loan_protocol">借贷协议</string>
+    <string name="contract_car_application">购车申请表</string>
+    <string name="contract_finance_lease">融资租赁套系合同</string>
+    <string name="contract_mortgage_vehicle">车辆抵押合同</string>
+    <string name="contract_debit_authorigation">委托扣款授权书</string>
+    <string name="contract_car_loan">车辆借款合同</string>
+    <string name="contract_common_attorney">车辆通用委托书</string>
+    <string name="contract_payment_lease">融资租赁支付表</string>
+    <string name="contract_schedule">借款合同明细表</string>
+    <string name="contract_repayment_public">共同还款承诺书(对公)</string>
+    <string name="contract_repayment_private">共同还款承诺书(个人)</string>
+    <string name="contract_company_guarantee_letter">公司担保承诺函</string>
+    <string name="contract_guarantee_letter">担保承诺函</string>
+    <string name="contract_credit">征信</string>
+    <string name="contract_video">视频资料</string>
+    <string name="contract_company_pic">挂靠公司照片(选填)</string>
+    <string name="contract_id_card">法人身份证正反面</string>
+    <string name="contract_business_licence">公司营业执照</string>
+    <string name="contract_run_licence">公司道路运输经营许可证</string>
+    <string name="contract_accounts_licence">开户许可证</string>
+    <string name="contract_office_seal">公司公章法人章</string>
+    <string name="contract_car_sales">汽车买卖合同</string>
+    <string name="contract_payment_receipt">首付款收款收据</string>
+    <string name="contract_anchored_agreement">挂靠协议</string>
+    <string name="contract_manager_agreement_pic">委托管理协议</string>
+    <string name="contract_manager_agreement_video">委托管理协议</string>
+
+
+    <string name="zrx_commit">您有未完善资料，请输入后再提交！</string>
+
+
+    <!--放款录入-->
+    <string name="loan_title">录入放款资料</string>
+    <!--放车录入-->
+    <string name="car_title">录入放车资料</string>
+
+    <!--备注-->
+    <string name="comments_hint">说点什么吧~</string>
+    <string name="comments_count" formatted="false">%d/%d</string>
+    <string name="comments_title">添加备注</string>
+
+    <!--查看状态下文案（未上传）-->
+    <string name="file_not_upload">未上传</string>
+</resources>

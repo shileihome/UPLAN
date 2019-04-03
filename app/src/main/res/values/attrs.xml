@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--自定义edittext-->
+    <declare-styleable name="XEditText">
+        <attr name="x_text_color" format="color"/>
+        <attr name="x_hint_text_color" format="color"/>
+        <attr name="x_lines" format="integer"/>
+        <attr name="x_maxLength" format="integer"/>
+        <attr name="x_hint" format="string"/>
+        <attr name="x_textSize" format="dimension"/>
+        <attr name="x_hintTextSize" format="dimension"/>
+        <attr name="x_leftIconDrawable" format="reference"/>
+        <attr name="android:inputType"/>
+    </declare-styleable>
+
+    <!--透明渐变的TabView-->
+    <declare-styleable name="AlphaView">
+        <attr name="av_tabIconNormal" format="reference"/>
+        <attr name="av_tabIconSelected" format="reference"/>
+        <attr name="av_tabText" format="string"/>
+        <attr name="av_tabTextSize" format="dimension"/>
+        <attr name="av_textColorNormal" format="color"/>
+        <attr name="av_textColorSelected" format="color"/>
+    </declare-styleable>
+
+    <!--自定义输入框BoxEditText-->
+    <declare-styleable name="BoxEditText">
+        <attr name="bdt_text_color" format="color"/>
+        <attr name="bdt_box_color" format="color"/>
+        <attr name="bdt_box_padding" format="dimension"/>
+        <attr name="bdt_box_count" format="integer"/>
+    </declare-styleable>
+
+    <!--************ QMUILoading ***********-->
+    <declare-styleable name="QMUILoadingView">
+        <attr name="qmui_loading_view_size" format="dimension"/>
+        <attr name="android:color"/>
+    </declare-styleable>
+    <attr name="QMUILoadingStyle" format="reference"/>
+
+    <!--自定义导航布局属性-->
+    <declare-styleable name="NavigateRelativeLayout">
+        <!--左边文案字体大小、字体颜色、文案内容-->
+        <attr name="navigate_left_size" format="dimension"/>
+        <attr name="navigate_left_color" format="color"/>
+        <attr name="navigate_left_text" format="string"/>
+
+        <!--右边文案字体大小、字体颜色、文案内容-->
+        <attr name="navigate_right_size" format="dimension"/>
+        <attr name="navigate_right_color" format="color"/>
+        <attr name="navigate_right_text" format="string"/>
+        <attr name="navigate_right_icon" format="reference"/>
+
+        <!--显示自定义背景-->
+        <attr name="navigate_background" format="reference|color"/>
+
+        <!--显示箭头-->
+        <attr name="navigate_show_arrow" format="boolean"/>
+
+        <!--显示分割线-->
+        <attr name="navigate_show_divide" format="boolean"/>
+    </declare-styleable>
+
+    <!--自定义导航布局属性-->
+    <declare-styleable name="EditableRelativeLayout">
+        <!--左边文案字体大小、字体颜色、文案内容、最大字数-->
+        <attr name="editable_left_text" format="string"/>
+        <attr name="editable_left_length" format="integer"/>
+
+        <!--EditText hint文案-->
+        <attr name="editable_hint_text" format="string"/>
+
+        <!--EditText文案-->
+        <attr name="editable_default_text" format="string"/>
+
+        <!--EditText不可编辑-->
+        <attr name="editable_edit_enable" format="boolean"/>
+
+        <!--EditText输入类型-->
+        <attr name="android:inputType"/>
+
+        <!--EditText最大输入长度-->
+        <attr name="android:maxLength"/>
+
+        <!--显示箭头-->
+        <attr name="editable_show_arrow" format="boolean"/>
+
+        <!--显示清除-->
+        <attr name="editable_show_close" format="boolean"/>
+
+        <!--显示分割线-->
+        <attr name="editable_show_divide" format="boolean"/>
+    </declare-styleable>
+</resources>

@@ -1,5 +1,7 @@
 package com.uplan.miyao.ui.home.view.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -83,6 +85,10 @@ public class MainActivity extends AppBaseActivity {
         setSelectItem(financialLayout);
     }
 
+    public static void start(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onRestart() {
@@ -90,22 +96,22 @@ public class MainActivity extends AppBaseActivity {
         switch (mSelectIndex) {
             case SELECT_INDEX_FINANCIAL:
                 if (financialFragment != null) {
-                    financialFragment.updateWebData();
+                    //     financialFragment.updateWebData();
                 }
                 break;
             case SELECT_INDEX_SURVEY:
                 if (surveyFragment != null) {
-                    surveyFragment.updateWebData();
+                    //     surveyFragment.updateWebData();
                 }
                 break;
             case SELECT_INDEX_DISCOVER:
-                if(discoverFragment!=null){
-                    discoverFragment.updateWebData();
+                if (discoverFragment != null) {
+                    //   discoverFragment.updateWebData();
                 }
                 break;
             case SELECT_INDEX_ACCOUNT:
                 if (accountFragment != null) {
-                    accountFragment.updateWebData();
+                    //   accountFragment.updateWebData();
                 }
                 break;
             default:
@@ -113,7 +119,7 @@ public class MainActivity extends AppBaseActivity {
         }
     }
 
-    @OnClick({ R.id.financial_layout, R.id.survey_layout,R.id.discover_layout,R.id.account_layout})
+    @OnClick({R.id.financial_layout, R.id.survey_layout, R.id.discover_layout, R.id.account_layout})
     public void setSelectItem(View view) {
 
         FragmentTransaction transaction = fManager.beginTransaction();
@@ -123,7 +129,7 @@ public class MainActivity extends AppBaseActivity {
                 mSelectIndex = SELECT_INDEX_FINANCIAL;
                 clearSelect();
                 hideFragments(transaction, SELECT_INDEX_FINANCIAL);
-                financialImage.setImageResource(R.mipmap.financial_pressed);
+                //  financialImage.setImageResource(R.mipmap.financial_pressed);
                 if (financialFragment == null) {
                     financialFragment = new FinancialFragment();
                     transaction.add(R.id.content, financialFragment, "HomeWebViewFragment");
@@ -136,7 +142,7 @@ public class MainActivity extends AppBaseActivity {
                 mSelectIndex = SELECT_INDEX_SURVEY;
                 clearSelect();
                 hideFragments(transaction, SELECT_INDEX_SURVEY);
-                surveyImage.setImageResource(R.mipmap.survey_pressed);
+                //  surveyImage.setImageResource(R.mipmap.survey_pressed);
                 if (surveyFragment == null) {
 
                     surveyFragment = new SurveyFragment();
@@ -147,14 +153,14 @@ public class MainActivity extends AppBaseActivity {
                 }
                 break;
             case R.id.discover_layout:
-                mSelectIndex =SELECT_INDEX_DISCOVER;
+                mSelectIndex = SELECT_INDEX_DISCOVER;
                 clearSelect();
-                hideFragments(transaction,SELECT_INDEX_DISCOVER);
-                discoverImage.setImageResource(R.mipmap.discover_pressed);
-                if(discoverFragment==null){
-                    discoverFragment=new DiscoverFragment();
-                    transaction.add(R.id.content,discoverFragment,"discoverFragment");
-                }else{
+                hideFragments(transaction, SELECT_INDEX_DISCOVER);
+                //  discoverImage.setImageResource(R.mipmap.discover_pressed);
+                if (discoverFragment == null) {
+                    discoverFragment = new DiscoverFragment();
+                    transaction.add(R.id.content, discoverFragment, "discoverFragment");
+                } else {
                     transaction.show(discoverFragment);
                 }
                 break;
@@ -162,7 +168,7 @@ public class MainActivity extends AppBaseActivity {
                 mSelectIndex = SELECT_INDEX_ACCOUNT;
                 clearSelect();
                 hideFragments(transaction, SELECT_INDEX_ACCOUNT);
-                accountImage.setImageResource(R.mipmap.account_pressed);
+                // accountImage.setImageResource(R.mipmap.account_pressed);
                 if (accountFragment == null) {
 
                     accountFragment = new AccountFragment();
@@ -182,15 +188,15 @@ public class MainActivity extends AppBaseActivity {
      */
     public void clearSelect() {
         int bar_item_bg = 0xFFFFFFFF;
-        financialImage.setImageResource(R.mipmap.financial_normal);
+        //    financialImage.setImageResource(R.mipmap.financial_normal);
         financialLayout.setBackgroundColor(bar_item_bg);
 
-        surveyImage.setImageResource(R.mipmap.survey_normal);
+        //  surveyImage.setImageResource(R.mipmap.survey_normal);
         surveyLayout.setBackgroundColor(bar_item_bg);
 
-        discoverImage.setImageResource(R.mipmap.discover_normal);
+        //   discoverImage.setImageResource(R.mipmap.discover_normal);
         discoverLayout.setBackgroundColor(bar_item_bg);
-        accountImage.setImageResource(R.mipmap.account_normal);
+        //  accountImage.setImageResource(R.mipmap.account_normal);
         accountLayout.setBackgroundColor(bar_item_bg);
     }
 
@@ -205,7 +211,7 @@ public class MainActivity extends AppBaseActivity {
             if (surveyFragment != null) {
                 transaction.hide(surveyFragment);
             }
-            if(discoverFragment!=null){
+            if (discoverFragment != null) {
                 transaction.hide(discoverFragment);
             }
             if (accountFragment != null) {
@@ -218,7 +224,7 @@ public class MainActivity extends AppBaseActivity {
             if (financialFragment != null) {
                 transaction.hide(financialFragment);
             }
-            if(discoverFragment!=null){
+            if (discoverFragment != null) {
                 transaction.hide(discoverFragment);
             }
             if (accountFragment != null) {
@@ -227,14 +233,14 @@ public class MainActivity extends AppBaseActivity {
         }
 
         //选中发现页
-        if(selectIndex==SELECT_INDEX_DISCOVER){
-            if(financialFragment!=null){
+        if (selectIndex == SELECT_INDEX_DISCOVER) {
+            if (financialFragment != null) {
                 transaction.hide(financialFragment);
             }
-            if(surveyFragment!=null){
+            if (surveyFragment != null) {
                 transaction.hide(surveyFragment);
             }
-            if(accountFragment!=null){
+            if (accountFragment != null) {
                 transaction.hide(accountFragment);
             }
 
@@ -249,7 +255,7 @@ public class MainActivity extends AppBaseActivity {
             if (surveyFragment != null) {
                 transaction.hide(surveyFragment);
             }
-            if(discoverFragment!=null){
+            if (discoverFragment != null) {
                 transaction.hide(discoverFragment);
             }
         }

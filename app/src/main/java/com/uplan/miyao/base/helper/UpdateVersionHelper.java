@@ -1,3 +1,4 @@
+/*
 package com.uplan.miyao.base.helper;
 
 import android.app.Activity;
@@ -7,16 +8,15 @@ import android.util.Log;
 import android.view.View;
 
 import com.google.gson.Gson;
-import com.uplan.miyao.app.R;
+import com.uplan.miyao.R;
+import com.uplan.miyao.net.RequestInterceptor;
 import com.uplan.miyao.base.AppBaseActivity;
 import com.uplan.miyao.base.UiUtils;
 import com.uplan.miyao.base.helper.entity.HistoryUpdateType;
 import com.uplan.miyao.base.helper.entity.UpdateInfoResp;
-import com.uplan.miyao.app.net.RequestInterceptor;
 import com.uplan.miyao.net.constant.ErrorConstant;
 import com.uplan.miyao.net.constant.NetWorkConfig;
 import com.uplan.miyao.util.ApkUtils;
-import com.uplan.miyao.util.SystemUtils;
 import com.uplan.miyao.util.ToastUtils;
 import com.uplan.miyao.widget.UpdateVersionDialog;
 
@@ -30,40 +30,56 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import timber.log.Timber;
 
+*/
 /**
  * Author: Created by zs on 2018/4/26.
  *
  * Description: 版本更新帮助类
- */
+ *//*
+
 
 public class UpdateVersionHelper {
 
-    /**  版本更新: 无最新版本*/
+    */
+/**  版本更新: 无最新版本*//*
+
     private static final int UPDATE_NO_NEW_VERSION = 0;
 
-    /**  版本更新: 不提示更新*/
+    */
+/**  版本更新: 不提示更新*//*
+
     private static final int UPDATE_NO_PROMPT = 1;
 
-    /**  版本更新: 提示更新*/
+    */
+/**  版本更新: 提示更新*//*
+
     private static final int UPDATE_HAVE_PROMPT = 2;
 
-    /**  版本更新: 强制更新*/
+    */
+/**  版本更新: 强制更新*//*
+
     private static final int UPDATE_FORCE = 3;
 
-    /** 下载失败重试次数 */
+    */
+/** 下载失败重试次数 *//*
+
     private static final int RETRY_DOWNLOAD_COUNT = 5;
 
-    /** 当前已下载次数 */
+    */
+/** 当前已下载次数 *//*
+
     private static int mCurrentDownloadCount;
 
     private UpdateVersionHelper() {}
 
-    /**
+    */
+/**
      * 检查版本更新
      *
      * @param context   上下文
      * @param isSetting true:来自设置页  false:首页
-     */
+     *//*
+
     public static void checkUpdateVersion(Activity context, boolean isSetting) {
         String url = NetWorkConfig.UPDATE_VERSION;
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(new RequestInterceptor()).build();
@@ -104,11 +120,13 @@ public class UpdateVersionHelper {
         });
     }
 
-    /**
+    */
+/**
      * 失败处理
      *
      * @param message 错误信息
-     */
+     *//*
+
     private static void dealFailure(String message) {
         UiUtils.getMainThreadHandler().post(new Runnable() {
             @Override
@@ -118,12 +136,14 @@ public class UpdateVersionHelper {
         });
     }
 
-    /**
+    */
+/**
      * 成功处理
      *
      * @param context     上下文
      * @param isSetting   true:来自设置页  false:首页
-     */
+     *//*
+
     private static void dealSuccess(Activity context, UpdateInfoResp updateInfoResp, boolean isSetting) {
         UiUtils.getMainThreadHandler().post(new Runnable() {
             @Override
@@ -156,11 +176,13 @@ public class UpdateVersionHelper {
         });
     }
 
-    /**
+    */
+/**
      * 弹出提示信息
      *
      * @param context 上下文
-     */
+     *//*
+
     private static void showUpdateTipDialog(Activity context, UpdateInfoResp updateInfoResp) {
         UpdateVersionDialog updateVersionDialog = new UpdateVersionDialog(context).builder();
         updateVersionDialog.setVersionName(String.format(context.getString(R.string.update_version_name_tip), updateInfoResp.version))
@@ -174,13 +196,16 @@ public class UpdateVersionHelper {
                 }).show();
     }
 
-    /**
+    */
+/**
      * 开始下载
      *
      * @param context     上下文
-     */
+     *//*
+
     private static void download(Activity context, UpdateInfoResp updateInfoResp) {
- /*       //进度对话框
+ */
+/*       //进度对话框
         UpdateDownloadDialog downloadDialog = new UpdateDownloadDialog(context).builder();
         downloadDialog.setVersionCurrent(SystemUtils.getVersionName(context)).setVersionUpdate(updateInfoResp.version);
 
@@ -232,16 +257,19 @@ public class UpdateVersionHelper {
                                 downloadDialog.dismiss();
                                 mCurrentDownloadCount = 0;
                             }
-                        }).build();*/
+                        }).build();*//*
+
     }
 
-    /**
+    */
+/**
      * 检查是否需要更新
      *
      * @param updateInfoResp 更新信息
      * @param isSetting 点击来源是否来自设置页
      * @return true: 需要更新  false: 不需要更新
-     */
+     *//*
+
     private static boolean checkNeedUpdate(UpdateInfoResp updateInfoResp, boolean isSetting){
         boolean newVersionCode = ApkUtils.checkNeedUpdate(UiUtils.getContext(), updateInfoResp.versionCode);
         if(!newVersionCode){
@@ -259,12 +287,14 @@ public class UpdateVersionHelper {
         return updateType >= UPDATE_HAVE_PROMPT;
     }
 
-    /**
+    */
+/**
      * 根据当前版本获取更新策略
      *
      * @param updateInfoResp 更新信息
      * @return 更新策略
-     */
+     *//*
+
     private static int getUpdateTypeByVersionCode(UpdateInfoResp updateInfoResp){
         int updateType = UPDATE_NO_NEW_VERSION;
         int localVersionCode = SystemUtils.getVersionCode(UiUtils.getContext());
@@ -278,12 +308,14 @@ public class UpdateVersionHelper {
         return updateType;
     }
 
-    /**
+    */
+/**
      * 检测数据
      *
      * @param updateInfoResp 更新信息
      * @return true: 数据合法， false: 数据异常
-     */
+     *//*
+
     private static boolean checkData(UpdateInfoResp updateInfoResp){
         if(updateInfoResp == null){
             return false;
@@ -309,3 +341,4 @@ public class UpdateVersionHelper {
         return true;
     }
 }
+*/

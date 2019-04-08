@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 
+import com.uplan.miyao.BuildConfig;
 
 import java.util.UUID;
 

@@ -1,6 +1,8 @@
 package com.uplan.miyao.net;
 
 
+import com.uplan.miyao.BuildConfig;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

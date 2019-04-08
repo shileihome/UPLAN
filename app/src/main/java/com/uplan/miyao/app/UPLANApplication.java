@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Process;
 import android.support.multidex.MultiDex;
 
+import com.uplan.miyao.BuildConfig;
 import com.uplan.miyao.base.helper.SmartRefreshInitHelper;
 
 import timber.log.Timber;

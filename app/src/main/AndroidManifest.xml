@@ -11,9 +11,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name=".UPLANApplication"
+        android:name=".app.UPLANApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/miyao"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/ZRXAppTheme"
@@ -50,7 +50,6 @@
         <activity android:name=".ui.order.view.activity.TaskActivity" />
         <activity android:name=".ui.pendingdata.view.activity.PendingDataEnterActivity" />
         <activity android:name=".ui.pendingdata.view.activity.PendingDataCarActivity" />
-        <activity android:name=".widget.SelectActivity" />
         <activity android:name=".ui.pendingdata.view.activity.BorrowerInfoEnterActivity" />
         <activity android:name=".ui.video.PlayActivity" />
         <activity android:name=".ui.pendingdata.view.activity.GuarantorInfoActivity" />
@@ -71,7 +70,11 @@
         <activity android:name=".ui.account.AccountActivity" />
         <activity android:name=".ui.discover.DiscoverActivity" />
         <activity android:name=".ui.financial.FinancialActivity" />
-        <activity android:name=".ui.survey.SurveyActivity"></activity>
+        <activity android:name=".ui.survey.SurveyActivity" />
+        <activity android:name=".ui.financial.view.FinancialActivity"></activity>
+        <activity android:name=".ui.account.view.activity.VIPEquityActivity" />
+        <activity android:name=".ui.account.view.activity.RiskEvaluationActivity" />
+        <activity android:name=".ui.account.view.activity.HelpCenterActivity" />
     </application>
 
 </manifest>

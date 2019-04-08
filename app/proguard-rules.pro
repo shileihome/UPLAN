@@ -30,7 +30,7 @@
 -dontwarn android.support.**
 
 
--keep class com.uplan.zrx.app.widget.** { *; } #自定义控件不参与混淆
+-keep class com.uplan.miyao.widget.** { *; } #自定义控件不参与混淆
 -keep class * implements android.os.Parcelable {
   public static final android.os.Parcelable$Creator *;
 }
@@ -160,7 +160,7 @@
 -keep interface com.tbruyelle.rxpermissions2.** { *; }
 
 ################RxErrorHandler#################
--keep class com.uplan.zrx.app.net.ErrorHandleSubscriber{ *; }
+-keep class com.uplan.miyao.net.ErrorHandleSubscriber{ *; }
 
 ################Timber#################
 -dontwarn org.jetbrains.annotations.**
@@ -170,8 +170,8 @@
 -dontwarn android.app.Notification
 
 # 实例类
--keep class com.uplan.zrx.app.**.entity.** { *; }
--keep class com.uplan.zrx.app.net.ResponseData { *; }
+-keep class com.uplan.miyao.**.entity.** { *; }
+-keep class com.uplan.miyao.net.ResponseData { *; }
 
 -keepclassmembers enum * {
     public static **[] values();
@@ -283,7 +283,7 @@
     public static ** valueOf(java.lang.String);
 }
 
--keep public class com.uplan.zrx.app.R$*{
+-keep public class com.uplan.miyao.R$*{
     public static final int *;
 }
 

@@ -53,10 +53,10 @@ android {
     signingConfigs {
         debug {}
         release {
-            storeFile file('zrx-release.jks')
-            storePassword 'f512bcf02c'
-            keyAlias "zrx"
-            keyPassword 'zrx0330'
+            storeFile file('miyao.jks')
+            storePassword 'miyao123'
+            keyAlias "key"
+            keyPassword 'miyao123'
             v2SigningEnabled false
         }
     }
@@ -86,6 +86,9 @@ android {
         disable "ResourceType"
         abortOnError false
     }
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
 }
 
 buildscript {
@@ -196,4 +199,7 @@ dependencies {
     compile 'com.alibaba:fastjson:1.1.56.android'
     //版本更新库
 //    compile(name: 'version_update-release', ext: 'aar')
+
+    //折线图demo
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 }

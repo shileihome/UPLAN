@@ -12,7 +12,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-import com.uplan.miyao.app.R;
+import com.uplan.miyao.R;
 
 /**
  * 下拉刷新、上拉加载更多组件初始化

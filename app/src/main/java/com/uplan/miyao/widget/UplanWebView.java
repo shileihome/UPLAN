@@ -16,12 +16,12 @@ import com.uplan.miyao.R;
  * Author: Created by shilei on 2018/6/8-14:05
  * Description: 自定义webView
  */
-public class ZRXWebView extends WebView{
+public class UplanWebView extends WebView{
 
     public ProgressBar mProgressBar;
     private IWebChromeClient i;
 
-    public ZRXWebView(Context context, AttributeSet attrs) {
+    public UplanWebView(Context context, AttributeSet attrs) {
         super(context,attrs);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && BuildConfig.LOG_DEBUG) {
             setWebContentsDebuggingEnabled(true);

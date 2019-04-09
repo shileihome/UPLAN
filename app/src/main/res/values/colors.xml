@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">@color/color_dddddd</color>
     <color name="colorAccent">#55bfeb</color>
     <color name="white">#ffffff</color>
+    <color name="color_eeeeeee">#eeeeee</color>
     <color name="color_dddddd">#dddddd</color>
     <color name="color_333333">#333333</color>
     <color name="color_F27070">#F27070</color>

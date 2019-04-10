@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
@@ -21,7 +23,6 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.listener.BarLineChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.uplan.miyao.R;
 import com.uplan.miyao.widget.mpchart.DetailsMarkerView;
@@ -32,117 +33,64 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class FinancialActivity extends AppCompatActivity {
     MyLineChart mLineChart;
+    @BindView(R.id.ll_recent_1)
+    LinearLayout llRecent1;
+    @BindView(R.id.ll_recent_2)
+    LinearLayout llRecent2;
+    @BindView(R.id.ll_recent_3)
+    LinearLayout llRecent3;
+    @BindView(R.id.ll_recent_4)
+    LinearLayout llRecent4;
+    @BindView(R.id.ll_recent_5)
+    LinearLayout llRecent5;
+    @BindView(R.id.underline_1)
+    TextView underline1;
+    @BindView(R.id.underline_2)
+    TextView underline2;
+    @BindView(R.id.underline_3)
+    TextView underline3;
+    @BindView(R.id.underline_4)
+    TextView underline4;
+    @BindView(R.id.underline_5)
+    TextView underline5;
+
+    private List<String> xlist = new ArrayList<>();
+    private List<Entry> zuhelist = new ArrayList<>();
+    private List<Entry> hushenlist = new ArrayList<>();
+    private List<Entry> zhongzhenglist = new ArrayList<>();
+
+    /** 成立以来的天数 */
+    private int max = 30 * 24;
+
     public static void start(Context context) {
         Intent starter = new Intent(context, FinancialActivity.class);
         context.startActivity(starter);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_financial);
+        ButterKnife.bind(this);
         mLineChart = (MyLineChart) findViewById(R.id.chart);
+        initLineChart();
+        initPieChart();
+    }
 
-        findViewById(R.id.btn_show).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<ILineDataSet> dataSets = mLineChart.getLineData().getDataSets();
-                for (ILineDataSet set : dataSets)
-                    set.setVisible(!set.isVisible());
-                mLineChart.animateXY(500, 500);
-                mLineChart.invalidate();
-            }
-        });
-
-        findViewById(R.id.btn_update).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //1,准备要更换的数据
-                List<Entry> entries = new ArrayList<>();
-                for (int i = 0; i < 12; i++)
-                    entries.add(new Entry(i, new Random().nextInt(300)));
-
-                //2. 获取LineDataSet线条数据集
-                List<ILineDataSet> dataSets = mLineChart.getLineData().getDataSets();
-
-                //是否存在
-                if (dataSets != null && dataSets.size() > 0) {
-                    //直接更换数据源
-                    for (ILineDataSet set : dataSets) {
-                        LineDataSet data = (LineDataSet) set;
-                        data.setValues(entries);
-                    }
-                } else {
-                    //重新生成LineDataSet线条数据集
-                    LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
-                    dataSet.setDrawCircles(false);
-                    dataSet.setColor(Color.parseColor("#7d7d7d"));//线条颜色
-                    dataSet.setCircleColor(Color.parseColor("#7d7d7d"));//圆点颜色
-                    dataSet.setLineWidth(1f);//线条宽度
-                    LineData lineData = new LineData(dataSet);
-                    //是否绘制线条上的文字
-                    lineData.setDrawValues(false);
-                    mLineChart.setData(lineData);
-                }
-                //更新
-                mLineChart.invalidate();
-            }
-        });
-
-        findViewById(R.id.btn_delete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //清空数据
-                mLineChart.getLineData().clearValues();
-                mLineChart.highlightValues(null);
-                mLineChart.invalidate();
-            }
-        });
-
-
-        findViewById(R.id.btn_slide).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                float scaleX = mLineChart.getScaleX();
-                if (scaleX == 1)
-                    mLineChart.zoomToCenter(5, 1f);
-                else {
-                    BarLineChartTouchListener barLineChartTouchListener = (BarLineChartTouchListener) mLineChart.getOnTouchListener();
-                    barLineChartTouchListener.stopDeceleration();
-                    mLineChart.fitScreen();
-                }
-
-                mLineChart.invalidate();
-            }
-        });
-
+    private void initLineChart() {
         //1.设置x轴和y轴的点
-        List<Entry> entries = new ArrayList<>();
-        List<Entry> entries2 = new ArrayList<>();
-        for (int i = 0; i < 12; i++)
-            entries.add(new Entry(i, new Random().nextInt(300)));
-
-        for (int i = 0; i < 12; i++)
-            entries2.add(new Entry(i, new Random().nextInt(600)));
-
-
-
+        onClick(llRecent1);
         //2.把数据赋值到你的线条
-        LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
-        dataSet.setDrawCircles(false);
-        dataSet.setColor(Color.parseColor("#7d7d7d"));//线条颜色
-        dataSet.setCircleColor(Color.parseColor("#7d7d7d"));//圆点颜色
-        dataSet.setLineWidth(1f);//线条宽度
-        //2.把数据赋值到你的线条
-        LineDataSet dataSet2 = new LineDataSet(entries2, "Label"); // add entries to dataset
-        dataSet2.setDrawCircles(false);
-        dataSet2.setColor(Color.parseColor("#7d7d7d"));//线条颜色
-        dataSet2.setCircleColor(Color.parseColor("#7d7d7d"));//圆点颜色
-        dataSet2.setLineWidth(1f);//线条宽度
 
+        LineDataSet dataSet = (LineDataSet) dataAssignmentZuhe();
+        LineDataSet dataSet2 = (LineDataSet) dataAssignmentHushen();
+        LineDataSet dataSet3 = (LineDataSet) dataAssignmentZhongzheng();
 
         mLineChart.setScaleEnabled(false);
 
@@ -151,11 +99,11 @@ public class FinancialActivity extends AppCompatActivity {
         YAxis rightAxis = mLineChart.getAxisRight();
         //设置图表右边的y轴禁用
         rightAxis.setEnabled(false);
-        YAxis leftAxis = mLineChart.getAxisLeft();
+      //  YAxis leftAxis = mLineChart.getAxisLeft();
         //设置图表左边的y轴禁用
-        leftAxis.setEnabled(false);
+       // leftAxis.setEnabled(false);
         rightAxis.setAxisMaximum(dataSet.getYMax() * 2);
-        leftAxis.setAxisMaximum(dataSet.getYMax() * 2);
+       // leftAxis.setAxisMaximum(dataSet.getYMax() * 2);
         //设置x轴
         XAxis xAxis = mLineChart.getXAxis();
         xAxis.setTextColor(Color.parseColor("#333333"));
@@ -207,11 +155,12 @@ public class FinancialActivity extends AppCompatActivity {
 
         //3.chart设置数据
 
-        List<ILineDataSet> lineDataSets=new ArrayList<>();
+        List<ILineDataSet> lineDataSets = new ArrayList<>();
         lineDataSets.add(dataSet);
         lineDataSets.add(dataSet2);
+        lineDataSets.add(dataSet3);
 
-       // LineData lineData = new LineData(dataSet);
+        // LineData lineData = new LineData(dataSet);
         LineData lineData = new LineData(lineDataSets);
         //是否绘制线条上的文字
         lineData.setDrawValues(false);
@@ -219,10 +168,7 @@ public class FinancialActivity extends AppCompatActivity {
         mLineChart.invalidate(); // refresh
 
 
-        initPieChart();
     }
-
-
 
     /**
      * 创建覆盖物
@@ -235,9 +181,36 @@ public class FinancialActivity extends AppCompatActivity {
         mLineChart.setRoundMarker(new RoundMarker(this));
     }
 
+    private ILineDataSet dataAssignmentZuhe() {
+        LineDataSet dataSet = new LineDataSet(zuhelist, "Label"); // add entries to dataset
+        dataSet.setDrawCircles(false);
+        dataSet.setColor(Color.parseColor("#2492D6"));//线条颜色
+        dataSet.setCircleColor(Color.parseColor("#2492D6"));//圆点颜色
+        dataSet.setLineWidth(1f);//线条宽度
+        return dataSet;
+    }
 
-    private void initPieChart(){
-        PieChart pieChart= (PieChart) findViewById(R.id.pieChart);
+    private ILineDataSet dataAssignmentHushen() {
+        LineDataSet dataSet2 = new LineDataSet(hushenlist, "Label"); // add entries to dataset
+        dataSet2.setDrawCircles(false);
+        dataSet2.setColor(Color.parseColor("#B9B9B9"));//线条颜色
+        dataSet2.setCircleColor(Color.parseColor("#B9B9B9"));//圆点颜色
+        dataSet2.setLineWidth(1f);//线条宽度
+        return dataSet2;
+    }
+
+    private ILineDataSet dataAssignmentZhongzheng() {
+        LineDataSet dataSet3 = new LineDataSet(zhongzhenglist, "Label"); // add entries to dataset
+        dataSet3.setDrawCircles(false);
+        dataSet3.setColor(Color.parseColor("#D4E383"));//线条颜色
+        dataSet3.setCircleColor(Color.parseColor("#D4E383"));//圆点颜色
+        dataSet3.setLineWidth(1f);//线条宽度
+        return dataSet3;
+    }
+
+
+    private void initPieChart() {
+        PieChart pieChart = (PieChart) findViewById(R.id.pieChart);
         pieChart.setUsePercentValues(false);//这货，是否使用百分比显示，但是我还是没操作出来。
         Description description = pieChart.getDescription();
         description.setText("Assets View"); //设置描述的文字
@@ -261,7 +234,6 @@ public class FinancialActivity extends AppCompatActivity {
         pieChart.setTransparentCircleAlpha(50);//设置透明圆你的透明度
 
 
-
         Legend legend = pieChart.getLegend();//图例
         legend.setEnabled(true);//是否显示
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);//对齐
@@ -278,7 +250,7 @@ public class FinancialActivity extends AppCompatActivity {
 
     }
 
-    private void initPieChartData(PieChart pieChart){
+    private void initPieChartData(PieChart pieChart) {
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         pieEntries.add(new PieEntry(70f, "cash banlance : 1500"));
         pieEntries.add(new PieEntry(30f, "consumption banlance : 500"));
@@ -299,4 +271,158 @@ public class FinancialActivity extends AppCompatActivity {
 
     }
 
+    @OnClick({R.id.ll_recent_1, R.id.ll_recent_2, R.id.ll_recent_3, R.id.ll_recent_4, R.id.ll_recent_5})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_recent_1:
+                clearList();
+                invisibleUnderLine();
+                underline1.setVisibility(View.VISIBLE);
+                for (int i = 0; i < 30; i++) {
+                    xlist.add(" ");
+                }
+                for (int i = 0; i < 30; i++)
+                    zuhelist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < 30; i++)
+                    hushenlist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < 30; i++)
+                    zhongzhenglist.add(new Entry(i, new Random().nextInt(300)));
+
+
+                LineDataSet dataSet1 = (LineDataSet) dataAssignmentZuhe();
+                LineDataSet dataSet1_2 = (LineDataSet) dataAssignmentHushen();
+                LineDataSet dataSet1_3 = (LineDataSet) dataAssignmentZhongzheng();
+
+                List<ILineDataSet> lineDataSets = new ArrayList<>();
+                lineDataSets.add(dataSet1);
+                lineDataSets.add(dataSet1_2);
+                lineDataSets.add(dataSet1_3);
+                LineData lineData = new LineData(lineDataSets);
+                mLineChart.setData(lineData);
+                mLineChart.invalidate(); // refresh
+                break;
+            case R.id.ll_recent_2:
+                clearList();
+                invisibleUnderLine();
+                underline2.setVisibility(View.VISIBLE);
+                for (int i = 0; i < 30 * 3; i++) {
+                    xlist.add(" ");
+                }
+                for (int i = 0; i < 30 * 3; i++)
+                    zuhelist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < 30 * 3; i++)
+                    hushenlist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < 30 * 3; i++)
+                    zhongzhenglist.add(new Entry(i, new Random().nextInt(300)));
+
+                LineDataSet dataSet2 = (LineDataSet) dataAssignmentZuhe();
+                LineDataSet dataSet2_2 = (LineDataSet) dataAssignmentHushen();
+                LineDataSet dataSet2_3 = (LineDataSet) dataAssignmentZhongzheng();
+
+                List<ILineDataSet> lineDataSets2 = new ArrayList<>();
+                lineDataSets2.add(dataSet2);
+                lineDataSets2.add(dataSet2_2);
+                lineDataSets2.add(dataSet2_3);
+                LineData lineData2 = new LineData(lineDataSets2);
+                mLineChart.setData(lineData2);
+                mLineChart.invalidate(); // refresh
+                break;
+            case R.id.ll_recent_3:
+                clearList();
+                invisibleUnderLine();
+                underline3.setVisibility(View.VISIBLE);
+                for (int i = 0; i < 30 * 6; i++) {
+                    xlist.add(" ");
+                }
+                for (int i = 0; i < 30 * 6; i++)
+                    zuhelist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < 30 * 6; i++)
+                    hushenlist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < 30 * 6; i++)
+                    zhongzhenglist.add(new Entry(i, new Random().nextInt(300)));
+
+                LineDataSet dataSet3 = (LineDataSet) dataAssignmentZuhe();
+                LineDataSet dataSet3_2 = (LineDataSet) dataAssignmentHushen();
+                LineDataSet dataSet3_3 = (LineDataSet) dataAssignmentZhongzheng();
+
+                List<ILineDataSet> lineDataSets3 = new ArrayList<>();
+                lineDataSets3.add(dataSet3);
+                lineDataSets3.add(dataSet3_2);
+                lineDataSets3.add(dataSet3_3);
+                LineData lineData3 = new LineData(lineDataSets3);
+                mLineChart.setData(lineData3);
+                mLineChart.invalidate(); // refresh
+                break;
+            case R.id.ll_recent_4:
+                clearList();
+                invisibleUnderLine();
+                underline4.setVisibility(View.VISIBLE);
+                for (int i = 0; i < 30 * 12; i++) {
+                    xlist.add(" ");
+                }
+                for (int i = 0; i < 30 * 12; i++)
+                    zuhelist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < 30 * 12; i++)
+                    hushenlist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < 30 * 12; i++)
+                    zhongzhenglist.add(new Entry(i, new Random().nextInt(300)));
+
+
+                LineDataSet dataSet4 = (LineDataSet) dataAssignmentZuhe();
+                LineDataSet dataSet4_2 = (LineDataSet) dataAssignmentHushen();
+                LineDataSet dataSet4_3 = (LineDataSet) dataAssignmentZhongzheng();
+
+                List<ILineDataSet> lineDataSets4 = new ArrayList<>();
+                lineDataSets4.add(dataSet4);
+                lineDataSets4.add(dataSet4_2);
+                lineDataSets4.add(dataSet4_3);
+                LineData lineData4 = new LineData(lineDataSets4);
+                mLineChart.setData(lineData4);
+                mLineChart.invalidate(); // refresh
+                break;
+            case R.id.ll_recent_5:
+                clearList();
+                invisibleUnderLine();
+                underline5.setVisibility(View.VISIBLE);
+                for (int i = 0; i < max; i++) {
+                    xlist.add(" ");
+                }
+                for (int i = 0; i < max; i++)
+                    zuhelist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < max; i++)
+                    hushenlist.add(new Entry(i, new Random().nextInt(300)));
+                for (int i = 0; i < max; i++)
+                    zhongzhenglist.add(new Entry(i, new Random().nextInt(300)));
+
+
+                LineDataSet dataSet5 = (LineDataSet) dataAssignmentZuhe();
+                LineDataSet dataSet5_2 = (LineDataSet) dataAssignmentHushen();
+                LineDataSet dataSet5_3 = (LineDataSet) dataAssignmentZhongzheng();
+
+                List<ILineDataSet> lineDataSets5 = new ArrayList<>();
+                lineDataSets5.add(dataSet5);
+                lineDataSets5.add(dataSet5_2);
+                lineDataSets5.add(dataSet5_3);
+                LineData lineData5 = new LineData(lineDataSets5);
+                mLineChart.setData(lineData5);
+                mLineChart.invalidate(); // refresh
+                break;
+        }
+    }
+
+    private void clearList() {
+        xlist.clear();
+        zuhelist.clear();
+        hushenlist.clear();
+        zhongzhenglist.clear();
+
+    }
+
+    private void invisibleUnderLine() {
+        underline1.setVisibility(View.INVISIBLE);
+        underline2.setVisibility(View.INVISIBLE);
+        underline3.setVisibility(View.INVISIBLE);
+        underline4.setVisibility(View.INVISIBLE);
+        underline5.setVisibility(View.INVISIBLE);
+    }
 }

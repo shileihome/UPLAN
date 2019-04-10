@@ -279,39 +279,6 @@
 
             </HorizontalScrollView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_show"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="隐藏/显示" />
-
-                <Button
-                    android:id="@+id/btn_update"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="更新数据" />
-
-                <Button
-                    android:id="@+id/btn_delete"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="清空数据" />
-
-                <Button
-                    android:id="@+id/btn_slide"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:text="图表左右滑动" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -439,6 +406,7 @@
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/underline_1"
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
                         android:layout_marginTop="5dp"
@@ -459,11 +427,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="近一月"
+                        android:text="近三月"
                         android:textColor="@color/color_55bfeb"
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/underline_2"
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
                         android:layout_marginTop="5dp"
@@ -484,12 +453,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="近一月"
+                        android:text="近六月"
                         android:textColor="@color/color_55bfeb"
 
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/underline_3"
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
                         android:layout_marginTop="5dp"
@@ -508,13 +478,14 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="近一月"
+                        android:text="近一年"
                         android:textColor="@color/color_55bfeb"
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/underline_4"
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
                         android:layout_marginTop="5dp"
@@ -535,11 +506,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="近一月"
+                        android:text="成立以来"
                         android:textColor="@color/color_55bfeb"
                         android:textSize="11sp" />
 
                     <TextView
+                        android:id="@+id/underline_5"
                         android:layout_width="match_parent"
                         android:layout_height="1.5dp"
                         android:layout_marginTop="5dp"

@@ -16,6 +16,7 @@ import com.uplan.miyao.ui.account.presenter.AccountPresenter;
 import com.uplan.miyao.ui.account.view.activity.HelpCenterActivity;
 import com.uplan.miyao.ui.account.view.activity.RiskEvaluationActivity;
 import com.uplan.miyao.ui.account.view.activity.VIPEquityActivity;
+import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,10 +59,10 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 Toast.makeText(getActivity(), "设置", Toast.LENGTH_LONG).show();
                 break;
             case R.id.iv_login:
-                Toast.makeText(getActivity(), "头像", Toast.LENGTH_LONG).show();
+                LoginActivity.start(getActivity());
                 break;
             case R.id.tv_login_name:
-                Toast.makeText(getActivity(), "登录名", Toast.LENGTH_LONG).show();
+                LoginActivity.start(getActivity());
                 break;
             case R.id.tv_honav1:
                 break;

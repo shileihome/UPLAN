@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.uplan.miyao.R;
+import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.util.WebViewUtils;
 import com.uplan.miyao.widget.UplanWebView;
 
@@ -31,8 +32,16 @@ public abstract class BaseWebViewActivity extends Activity {
         setContentView(getContentLayout());
         uplanWebView= (UplanWebView) findViewById(R.id.uplan_web_view);
         initView();
+        setTranslucent();
     }
-
+    /**
+     * 设置沉浸式状态栏
+     */
+    public void setTranslucent(){
+        QMUIStatusBarHelper.setStatusBarDarkMode(this);
+        QMUIStatusBarHelper.translucent(this);
+        QMUIStatusBarHelper.setStatusBarLightMode(this);
+    }
     protected int getContentLayout() {
         return R.layout.activity_base_web;
     }

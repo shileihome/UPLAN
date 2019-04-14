@@ -2,7 +2,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:paddingTop="26dp"
     android:orientation="vertical">
 <!--     android:background="@color/color_f0f0f0"-->
     <FrameLayout
@@ -26,7 +26,8 @@
             android:id="@+id/financial_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@color/color_F27070">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,7 +50,8 @@
             android:id="@+id/survey_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@color/color_80d136">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,7 +74,8 @@
             android:id="@+id/discover_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@color/color_37A4DC">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,7 +99,8 @@
             android:id="@+id/account_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@color/color_494949">
 
             <LinearLayout
                 android:layout_width="match_parent"

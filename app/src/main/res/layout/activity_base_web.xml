@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="26dp"
    >
 <com.uplan.miyao.widget.UplanWebView
     android:id="@+id/uplan_web_view"

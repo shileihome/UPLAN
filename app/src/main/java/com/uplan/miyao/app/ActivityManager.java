@@ -3,7 +3,7 @@ package com.uplan.miyao.app;
 import android.app.Activity;
 import android.util.Log;
 
-import com.uplan.miyao.ui.home.view.activity.MainActivity;
+import com.uplan.miyao.ui.main.view.activity.MainActivity;
 
 import java.util.Iterator;
 import java.util.Stack;

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:paddingTop="26dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -16,12 +17,14 @@
             android:src="@drawable/titarrow"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
-            android:paddingLeft="20dp"/>
+            android:paddingLeft="20dp"
+            android:paddingRight="25dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="25dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-
+                android:inputType="number"
                 android:background="@null"
                 android:hint="请输入手机号"
                 android:textSize="16sp"
@@ -63,6 +66,7 @@
             android:layout_marginRight="44dp"
             android:background="@null"
             android:hint="请输入密码"
+            android:inputType="textPassword"
             android:textSize="16sp"
             android:layout_marginTop="24dp"/>
         <TextView
@@ -99,6 +103,7 @@
         android:textColor="@color/color_08afde"
         android:textSize="16sp"
         android:text="还没有账号？点这里注册"
+        android:drawableRight="@drawable/shape"
         android:layout_marginTop="20dp"/>
 
     <TextView
@@ -111,7 +116,7 @@
         android:textStyle="bold"/>
 
     <ImageView
-        android:id="@id/iv_wx_login"
+        android:id="@+id/iv_wx_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

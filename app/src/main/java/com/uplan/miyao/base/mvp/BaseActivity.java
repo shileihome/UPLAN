@@ -1,6 +1,8 @@
 package com.uplan.miyao.base.mvp;
 
 import android.app.Dialog;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.uplan.miyao.R;
@@ -18,6 +20,15 @@ public abstract class BaseActivity<P extends IPresenter> extends AppBaseActivity
     /** mPresenter的具体实例由子类初始化 */
     protected P mPresenter;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter=getPresenter();
+        setTranslucent();
+        init();
+    }
+
+    protected abstract void init();
     /**
      * 获取presenter
      *
@@ -50,6 +61,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppBaseActivity
     public void setTranslucent(){
         QMUIStatusBarHelper.setStatusBarDarkMode(this);
         QMUIStatusBarHelper.translucent(this);
+        QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
 
     /**
@@ -71,6 +83,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppBaseActivity
     protected void hideLoadingDialog(){
         if(mLoadingDialog != null && mLoadingDialog.isShowing()){
             mLoadingDialog.dismiss();
+            mLoadingDialog=null;
         }
     }
 

@@ -5,7 +5,6 @@ import android.net.ParseException;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.uplan.miyao.base.UiUtils;
-import com.uplan.miyao.base.helper.LoginOutHelper;
 import com.uplan.miyao.net.constant.ErrorConstant;
 import com.uplan.miyao.util.NetUtils;
 import com.uplan.miyao.util.ToastUtils;
@@ -55,12 +54,7 @@ public abstract class ErrorHandleSubscriber<T extends ResponseData> implements O
             if (t.code == 0) {
                 onSuccess(t);
             } else {
-                //session失效，强制退出，重新登录
-                if(ErrorConstant.SESSION_INVALID.equals(t.msg)){
-                    LoginOutHelper.loginOut();
-                }else {
                     onFailure(t.code, t.msg);
-                }
             }
         }catch (Exception e){
             onFailure(-1, "数据处理异常");

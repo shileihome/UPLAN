@@ -8,6 +8,7 @@ import android.support.multidex.MultiDex;
 
 import com.uplan.miyao.BuildConfig;
 import com.uplan.miyao.base.helper.SmartRefreshInitHelper;
+import com.uplan.miyao.util.PreferencesUtils;
 
 import timber.log.Timber;
 
@@ -32,6 +33,7 @@ public class UPLANApplication extends Application {
 
         initTimber();
         initSmartRefreshLayout();
+        PreferencesUtils.putBoolean(this,PreferencesUtils.LOGIN_STATE,false);
     }
 
     @Override

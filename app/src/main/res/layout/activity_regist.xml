@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:paddingTop="26dp">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="45dp"
@@ -16,7 +17,8 @@
         android:src="@drawable/titarrow"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
-        android:paddingLeft="20dp"/>
+        android:paddingLeft="20dp"
+        android:paddingRight="25dp"/>
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-
+                android:inputType="number"
                 android:background="@null"
                 android:hint="请输入手机号"
                 android:textSize="16sp"
@@ -64,6 +66,7 @@
             android:background="@null"
             android:hint="请设置密码"
             android:textSize="16sp"
+            android:inputType="textPassword"
             android:layout_marginTop="24dp"/>
         <TextView
             android:layout_width="match_parent"
@@ -80,6 +83,7 @@
             android:layout_marginRight="44dp"
             android:background="@null"
             android:hint="请确认密码"
+            android:inputType="textPassword"
             android:textSize="16sp"
             android:layout_marginTop="24dp"/>
         <TextView
@@ -99,12 +103,15 @@
             android:orientation="horizontal"
             >
             <EditText
+                android:id="@+id/et_verification_code"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:hint="请输入验证码"
                 android:textSize="16sp"
-                android:background="@null"/>
+                android:background="@null"
+                android:inputType="number"
+                android:layout_gravity="center_vertical"/>
             <TextView
                 android:id="@+id/tv_verification_code"
                 android:layout_width="wrap_content"
@@ -113,7 +120,7 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:paddingTop="3dp"
-                android:paddingBottom="3dp"
+                android:paddingBottom="3.5dp"
                 android:textSize="18sp"
                 android:textColor="@color/color_08afde"
                 android:gravity="center"

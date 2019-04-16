@@ -1,15 +1,24 @@
-package com.uplan.miyao.ui.survey.view.fragment;
+package com.uplan.miyao.ui.account.view.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.webkit.WebView;
 
-import com.uplan.miyao.base.web.BaseWebViewFragment;
+import com.uplan.miyao.base.web.BaseWebViewActivity;
+
+/**
+ * Author: Created by shilei on 2019/4/14-22:20
+ * Description:
+ */
+public class RemindActivity extends BaseWebViewActivity {
+    private String homeUrl="http://22ju570648.iok.la/wechat/account/Message/getMyMessage";
 
 
-public class SurveyFragment extends BaseWebViewFragment {
-    private String homeUrl="http://22ju570648.iok.la/wechat/account/planInstructions?isFocus=1";
-
-
+    public static void start(Context context) {
+        Intent starter = new Intent(context, RemindActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     public void initView() {
@@ -20,7 +29,7 @@ public class SurveyFragment extends BaseWebViewFragment {
 
 
     private void setWebViewClient() {
-        uplanWebView.setWebViewClient(new WebAppClient(getActivity(), uplanWebView) {
+        uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
@@ -51,6 +60,5 @@ public class SurveyFragment extends BaseWebViewFragment {
         }
         progressWebView.loadUrl(homeUrl);*/
     }
-
 
 }

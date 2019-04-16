@@ -38,23 +38,23 @@ public class MainActivity extends AppBaseActivity {
     private long exitTime = 0;
     //三个按钮布局
     @BindView(R.id.financial_layout)
-    RelativeLayout financialLayout;
+    public RelativeLayout financialLayout;
     @BindView(R.id.survey_layout)
-    RelativeLayout surveyLayout;
+    public RelativeLayout surveyLayout;
     @BindView(R.id.discover_layout)
-    RelativeLayout discoverLayout;
+    public RelativeLayout discoverLayout;
     @BindView(R.id.account_layout)
-    RelativeLayout accountLayout;
+    public RelativeLayout accountLayout;
 
     //三个按钮图片及文本
     @BindView(R.id.financial_image)
-    ImageView financialImage;
+    public ImageView financialImage;
     @BindView(R.id.survey_image)
-    ImageView surveyImage;
+    public ImageView surveyImage;
     @BindView(R.id.discover_image)
-    ImageView discoverImage;
+    public ImageView discoverImage;
     @BindView(R.id.account_image)
-    ImageView accountImage;
+    public ImageView accountImage;
 
 
     private HomeFragment homeFragment;
@@ -194,12 +194,12 @@ public class MainActivity extends AppBaseActivity {
         //financialLayout.setBackgroundColor(bar_item_bg);
 
         //  surveyImage.setImageResource(R.mipmap.survey_normal);
-       // surveyLayout.setBackgroundColor(bar_item_bg);
+        // surveyLayout.setBackgroundColor(bar_item_bg);
 
         //   discoverImage.setImageResource(R.mipmap.discover_normal);
-       // discoverLayout.setBackgroundColor(bar_item_bg);
+        // discoverLayout.setBackgroundColor(bar_item_bg);
         //  accountImage.setImageResource(R.mipmap.account_normal);
-     //   accountLayout.setBackgroundColor(bar_item_bg);
+        //   accountLayout.setBackgroundColor(bar_item_bg);
     }
 
     /**
@@ -278,7 +278,8 @@ public class MainActivity extends AppBaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-    public void setTranslucent(){
+
+    public void setTranslucent() {
         QMUIStatusBarHelper.setStatusBarDarkMode(this);
         QMUIStatusBarHelper.translucent(this);
         QMUIStatusBarHelper.setStatusBarLightMode(this);

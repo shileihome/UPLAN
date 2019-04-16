@@ -54,6 +54,10 @@
         <activity android:name=".ui.financial.view.activity.TeamInfoActivity" />
         <activity android:name=".ui.financial.view.activity.FinancialActivity" />
         <activity android:name=".ui.financial.view.activity.FinancialWebActivity" />
+        <activity android:name=".ui.account.view.activity.HoldActivity" />
+        <activity android:name=".ui.account.view.activity.RecordActivity" />
+        <activity android:name=".ui.account.view.activity.RedeemActivity" />
+        <activity android:name=".ui.account.view.activity.RemindActivity" />
     </application>
 
 </manifest>

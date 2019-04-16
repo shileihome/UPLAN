@@ -14,9 +14,14 @@ import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.ui.account.contract.AccountContract;
 import com.uplan.miyao.ui.account.presenter.AccountPresenter;
 import com.uplan.miyao.ui.account.view.activity.HelpCenterActivity;
+import com.uplan.miyao.ui.account.view.activity.HoldActivity;
+import com.uplan.miyao.ui.account.view.activity.RecordActivity;
+import com.uplan.miyao.ui.account.view.activity.RedeemActivity;
+import com.uplan.miyao.ui.account.view.activity.RemindActivity;
 import com.uplan.miyao.ui.account.view.activity.RiskEvaluationActivity;
 import com.uplan.miyao.ui.account.view.activity.VIPEquityActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
+import com.uplan.miyao.ui.main.view.activity.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,23 +72,29 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             case R.id.tv_honav1:
                 break;
             case R.id.tv_honav2:
+                ((MainActivity)getActivity()).setSelectItem( ((MainActivity)getActivity()).financialLayout);
                 break;
             case R.id.tv_honav3:
+                RedeemActivity.start(getActivity());
                 break;
             case R.id.tv_honav4:
                 break;
             case R.id.tv_honav5:
                 break;
             case R.id.rl_holist1:
+                ((MainActivity)getActivity()).setSelectItem( ((MainActivity)getActivity()).surveyLayout);
                 break;
             case R.id.rl_holist2:
+                HoldActivity.start(getActivity());
                 break;
             case R.id.rl_holist3:
+                RecordActivity.start(getActivity());
                 break;
             case R.id.rl_holist4:
                 RiskEvaluationActivity.start(getActivity());
                 break;
             case R.id.rl_holist5:
+                RemindActivity.start(getActivity());
                 break;
             case R.id.rl_holist6:
                 VIPEquityActivity.start(getActivity());

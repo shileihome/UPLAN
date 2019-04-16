@@ -77,7 +77,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void dealLoginSuccess(ResponseData data) {
         PreferencesUtils.putBoolean(this,PreferencesUtils.LOGIN_STATE,true);
-        this.finish();
+        LoginActivity.this.finish();
     }
 
     @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_login, R.id.tv_to_regist, R.id.iv_wx_login})

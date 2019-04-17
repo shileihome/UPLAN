@@ -204,4 +204,6 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     //可折叠textView
     compile 'com.lcodecorex:extextview:1.0.2'
+    //左右滑动视图切换
+    compile 'com.allure0:LMBanners:1.0.9'
 }

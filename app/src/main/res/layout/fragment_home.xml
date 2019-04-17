@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,34 +13,142 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="                                     顶部图片"/>
-        <TextView
-            android:id="@+id/tv_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn2"
-            android:text="登陆/注册"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="80dp"/>
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="11dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/notice"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/oval"
+                />
+        </RelativeLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_marginTop="8dp">
+
+          <com.allure.lbanners.LMBanners
+              android:id="@+id/banners"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/transparent"
+              app:auto_play="true"
+              app:canLoop="true"
+              app:durtion="5000"
+              app:horizontal_transitionEffect="accordion"
+              app:indicatorBottomPadding="100"
+              app:indicator_position="bottom_mid"
+              app:indicator_select="@drawable/page_indicator_select"
+              app:indicator_unselect="@drawable/page_indicator_unselect"
+              app:isGuide="true"
+              app:isVertical="false"
+              app:scroll_duration="1000"
+
+              >
+
+          </com.allure.lbanners.LMBanners>
+
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"></LinearLayout>
+
+      </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_financial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/uplan_idea"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="9dp"/>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="密小宝\n6.82模拟数据。。。\n30天有效....."
-            android:gravity="center"
-            android:layout_marginTop="40dp"
-            />
+            >
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+android:layout_marginTop="9dp"
+                android:background="@drawable/home_semicircle_background">
+                <com.allure.lbanners.LMBanners
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    app:auto_play="true"
+                    app:canLoop="true"
+                    app:durtion="5000"
+                    app:horizontal_transitionEffect="accordion"
+                    app:indicatorBottomPadding="100"
+                    app:indicator_position="bottom_mid"
+                    app:indicator_select="@drawable/page_indicator_select"
+                    app:indicator_unselect="@drawable/page_indicator_unselect"
+                    app:isGuide="true"
+                    app:isVertical="false"
+                    app:scroll_duration="1000"
+                    android:layout_centerInParent="true"
+                    >
+
+                </com.allure.lbanners.LMBanners>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrows_home"
+                    android:layout_marginRight="26dp"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/shape_btn_home"
+                android:gravity="center"
+                android:paddingLeft="26dp"
+                android:paddingTop="5dp"
+                android:paddingRight="26dp"
+                android:paddingBottom="5dp"
+                android:text="登陆/注册"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="6dp"
+                android:background="#EAA131"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="四大优势"
+                android:textStyle="bold"
+                android:textSize="12.5sp"
+                android:textColor="#FF000000"/>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,60 +160,115 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
-                <TextView
+                <android.support.v7.widget.CardView
                     android:id="@+id/tv_safe"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="安全按钮图片"
-                    android:gravity="center"/>
-                <TextView
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="安全按钮图片"/>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="透明按钮图片"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="安全按钮图片"/>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
-                <TextView
+
+                <android.support.v7.widget.CardView
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="有效按钮图片"
-                    android:gravity="center"/>
-                <TextView
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="安全按钮图片"/>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="简单按钮图片"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="安全按钮图片"/>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
             </LinearLayout>
         </LinearLayout>
-        <TextView
-
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="关于我们图片"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="6dp"
+                android:background="#EAA131"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="四大优势"
+                android:textStyle="bold"
+                android:textSize="12.5sp"
+                android:textColor="#FF000000"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_team_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="团队介绍背景图"
             android:gravity="center"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/about_us"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="密钥 家庭账户..工具\n背景图"
             android:gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bottom_explain"/>
     </LinearLayout>
 </ScrollView>
 

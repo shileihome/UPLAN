@@ -34,6 +34,7 @@ public abstract class BaseWebViewActivity extends Activity {
         initView();
         setTranslucent();
     }
+
     /**
      * 设置沉浸式状态栏
      */

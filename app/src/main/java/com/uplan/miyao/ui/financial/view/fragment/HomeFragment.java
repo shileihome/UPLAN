@@ -46,6 +46,11 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     public void onResume() {
         super.onResume();
         loginState= PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.LOGIN_STATE);
+        if(loginState){
+            tvLogin.setVisibility(View.GONE);
+        }else{
+            tvLogin.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -67,7 +72,6 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 LoginActivity.start(getActivity());
                 break;
             case R.id.tv_financial:
-                FinancialActivity.start(getActivity());
                 if(loginState){
                     FinancialActivity.start(getActivity());
                 }else{

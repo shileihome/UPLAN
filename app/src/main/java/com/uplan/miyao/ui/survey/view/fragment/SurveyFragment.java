@@ -7,7 +7,7 @@ import com.uplan.miyao.base.web.BaseWebViewFragment;
 
 
 public class SurveyFragment extends BaseWebViewFragment {
-    private String homeUrl="http://key.51mix.cn/wechat/family/InfoInputAction/publicize";
+    private String homeUrl="http://22ju570648.iok.la/wechat/account/planInstructions?isFocus=1";
 
 
 

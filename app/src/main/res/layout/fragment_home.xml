@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -19,6 +21,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginRight="11dp">
+
+                <TextView
+                    android:id="@+id/tv_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/shape_btn_home"
+                    android:gravity="center"
+                    android:paddingLeft="26dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="26dp"
+                    android:paddingBottom="5dp"
+                    android:text="登陆/注册"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -125,20 +143,7 @@
                         android:src="@drawable/arrows_home" />
                 </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/tv_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/shape_btn_home"
-                    android:gravity="center"
-                    android:paddingLeft="26dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="26dp"
-                    android:paddingBottom="5dp"
-                    android:text="登陆/注册"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
+
             </RelativeLayout>
 
             <LinearLayout
@@ -182,7 +187,19 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/safe"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="安全按钮图片" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -199,7 +216,17 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/lucency"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="安全按钮图片" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -225,7 +252,17 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/valid"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="安全按钮图片" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -242,7 +279,17 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/simple"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="安全按钮图片" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -271,7 +318,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="四大优势"
+                    android:text="关于我们"
                     android:textColor="#FF000000"
                     android:textSize="12.5sp"
                     android:textStyle="bold" />

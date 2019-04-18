@@ -140,7 +140,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
       bannersTop.setSelectIndicatorRes(R.drawable.select_indicator);//选中的原点
       bannersTop.setUnSelectUnIndicatorRes(R.drawable.unselect_indicator);//未选中的原点
       //若自定义原点到底部的距离,默认20,必须在setIndicatorWidth之前调用
-      bannersTop.setIndicatorBottomPadding(-10);
+      bannersTop.setIndicatorBottomPadding(0);
       bannersTop.setIndicatorWidth(5);//原点默认为5dp
       bannersTop.setHoriZontalTransitionEffect(TransitionEffect.Default);//选中喜欢的样式
 //        bannersTop.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式

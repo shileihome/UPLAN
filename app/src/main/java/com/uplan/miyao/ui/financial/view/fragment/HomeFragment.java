@@ -76,17 +76,11 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     @Override
     public void onResume() {
         super.onResume();
-<<<<<<< HEAD
-        loginState= PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.LOGIN_STATE);
-        if(loginState){
-            tvLogin.setVisibility(View.GONE);
-        }else{
-=======
+
         loginState = PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
         if (loginState) {
             tvLogin.setVisibility(View.GONE);
         } else {
->>>>>>> 2763ac7beff03463ece64964d9635594de2e794a
             tvLogin.setVisibility(View.VISIBLE);
         }
     }
@@ -110,11 +104,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 LoginActivity.start(getActivity());
                 break;
             case R.id.tv_financial:
-<<<<<<< HEAD
-                if(loginState){
-=======
 /*                if (loginState) {
->>>>>>> 2763ac7beff03463ece64964d9635594de2e794a
                     FinancialActivity.start(getActivity());
                 } else {
                     CommonDialog commonDialog = new CommonDialog(getActivity()).builder();

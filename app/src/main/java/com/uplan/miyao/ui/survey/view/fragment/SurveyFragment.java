@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewFragment;
+import com.uplan.miyao.ui.login.view.activity.LoginActivity;
+import com.uplan.miyao.ui.survey.view.SurveyActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
@@ -27,8 +29,9 @@ public class SurveyFragment extends BaseWebViewFragment {
         uplanWebView.setWebViewClient(new WebAppClient(getActivity(), uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                return super.shouldOverrideUrlLoading(view, url);
+                SurveyActivity.start(getActivity(),url);
+                return true;
+                //return super.shouldOverrideUrlLoading(view, url);
             }
 
             @Override
@@ -48,13 +51,16 @@ public class SurveyFragment extends BaseWebViewFragment {
 
     @Override
     public void updateWebData() {
-       /* if (AppManager.getInstance().hasLogin()) {
-            homeUrl = NetWorkConfig.HTTP_HOME_WEB_URL + "?token=" + AppManager.getInstance().getUser().token;
-        } else {
-            homeUrl = NetWorkConfig.HTTP_HOME_WEB_URL;
-        }
-        progressWebView.loadUrl(homeUrl);*/
-    }
 
+        if(isLogined()){
+           uplanWebView.loadUrl(homeUrl);
+        }else{
+            LoginActivity.start(getActivity());
+        }
+
+    }
+    public boolean isLogined(){
+        return PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.LOGIN_STATE);
+    }
 
 }

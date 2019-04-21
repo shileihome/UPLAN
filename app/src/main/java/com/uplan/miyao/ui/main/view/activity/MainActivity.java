@@ -115,7 +115,7 @@ public class MainActivity extends AppBaseActivity {
                 break;
             case SELECT_INDEX_SURVEY:
                 if (surveyFragment != null) {
-                    //     surveyFragment.updateWebData();
+                         surveyFragment.updateWebData();
                 }
                 break;
             case SELECT_INDEX_DISCOVER:
@@ -308,7 +308,7 @@ public class MainActivity extends AppBaseActivity {
         QMUIStatusBarHelper.translucent(this);
         QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
-    private boolean isLogined(){
+    public boolean isLogined(){
         return PreferencesUtils.getBoolean(this,PreferencesUtils.LOGIN_STATE);
     }
 }

@@ -1,4 +1,4 @@
-package com.uplan.miyao.ui.login.model.api;
+package com.uplan.miyao.ui.login.api;
 
 import com.uplan.miyao.ui.login.model.LoginResp;
 

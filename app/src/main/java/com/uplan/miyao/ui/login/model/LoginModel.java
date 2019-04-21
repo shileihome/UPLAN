@@ -3,7 +3,7 @@ package com.uplan.miyao.ui.login.model;
 import com.uplan.miyao.base.mvp.BaseModel;
 import com.uplan.miyao.net.RxService;
 import com.uplan.miyao.ui.login.contract.LoginContract;
-import com.uplan.miyao.ui.login.model.api.LoginService;
+import com.uplan.miyao.ui.login.api.LoginService;
 
 import io.reactivex.Observable;
 

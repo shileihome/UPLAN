@@ -13,9 +13,12 @@ public interface RegistContract {
         void loading();
         void unLoad();
         void dealRegistSuccess(ResponseData data);
+        void delRegistVerificationCodeSucess(ResponseData data);
     }
 
     interface Model extends IModel {
-        Observable<RegistResp> regist(String phoneNum, String pwd);
+        Observable<RegistResp> regist(String phoneNum, String pwd,String verificationCode);
+
+        Observable<ResponseData> registVerificationCode(String tel);
     }
 }

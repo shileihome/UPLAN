@@ -86,6 +86,11 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
         finish();
     }
 
+    @Override
+    public void delRegistVerificationCodeSucess(ResponseData data) {
+
+    }
+
 
     @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_verification_code, R.id.tv_regist, R.id.iv_wx_regist})
     public void onClick(View view) {
@@ -99,6 +104,11 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                 etPwdAgain.setText("");
                 break;
             case R.id.tv_verification_code:
+                if(TextUtils.isEmpty(etPhotoNo.getText().toString())){
+                    ToastUtils.shortShow("请输入手机号！");
+                    return;
+                }
+                mPresenter.registVerificationCode(etPhotoNo.getText().toString());
                 break;
             case R.id.tv_regist:
                 if (TextUtils.isEmpty(etPhotoNo.getText().toString())) {
@@ -124,7 +134,8 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                 }
                 String tel = etPhotoNo.getText().toString();
                 String pwd = etPwd.getText().toString();
-                mPresenter.regist(tel, pwd);
+                String verificationCode=etVerificationCode.getText().toString();
+                mPresenter.regist(tel, pwd,verificationCode );
                 break;
             case R.id.iv_wx_regist:
                 break;

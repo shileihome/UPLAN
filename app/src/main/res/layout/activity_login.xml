@@ -79,6 +79,16 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_forget_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="忘记密码？"
+        android:textColor="#FFA2A2A2"
+        android:layout_marginRight="44dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
         android:id="@+id/tv_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,7 +100,7 @@
         android:layout_marginRight="44dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:textColor="@color/white"
         />
 
@@ -111,7 +121,7 @@
         android:layout_height="wrap_content"
         android:text="使用微信账号登录"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="35dp"
         android:textSize="16sp"
         android:textStyle="bold"/>
 

@@ -2,6 +2,7 @@ package com.uplan.miyao.ui.login.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -10,8 +11,8 @@ import android.widget.TextView;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.mvp.BaseActivity;
-import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.login.contract.LoginContract;
+import com.uplan.miyao.ui.login.model.LoginResp;
 import com.uplan.miyao.ui.login.presenter.LoginPresenter;
 import com.uplan.miyao.ui.regist.view.activity.RegistActivity;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -39,6 +40,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     TextView tvToRegist;
     @BindView(R.id.iv_wx_login)
     ImageView ivWxLogin;
+    @BindView(R.id.tv_forget_pwd)
+    TextView tvForgetPwd;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, LoginActivity.class);
@@ -75,8 +78,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
-    public void dealLoginSuccess(ResponseData data) {
-        PreferencesUtils.putBoolean(this,PreferencesUtils.LOGIN_STATE,true);
+    public void dealLoginSuccess(LoginResp data) {
+        PreferencesUtils.putBoolean(this, PreferencesUtils.LOGIN_STATE, true);
+        PreferencesUtils.putString(this,PreferencesUtils.PLAY_SESSION,data.data.get(1).PLAY_SESSION);
         LoginActivity.this.finish();
     }
 
@@ -114,9 +118,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RegistActivity.REQUEST_CODE&&resultCode==RegistActivity.RESULT_CODE){
+        if (requestCode == RegistActivity.REQUEST_CODE && resultCode == RegistActivity.RESULT_CODE) {
             etPhotoNo.setText(data.getStringExtra("username"));
             etPwd.setText(data.getStringExtra("password"));
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

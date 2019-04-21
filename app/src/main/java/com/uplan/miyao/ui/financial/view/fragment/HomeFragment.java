@@ -24,10 +24,12 @@ import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.ui.financial.adapter.LocalImgAdapter;
 import com.uplan.miyao.ui.financial.contract.FinancialContract;
 import com.uplan.miyao.ui.financial.presenter.FinancialPresenter;
+import com.uplan.miyao.ui.financial.view.activity.FinancialActivity;
 import com.uplan.miyao.ui.financial.view.activity.SafeActivity;
 import com.uplan.miyao.ui.financial.view.activity.TeamInfoActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.widget.CommonDialog;
 
 import java.util.ArrayList;
 
@@ -76,17 +78,11 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     @Override
     public void onResume() {
         super.onResume();
-<<<<<<< HEAD
-        loginState= PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.LOGIN_STATE);
-        if(loginState){
-            tvLogin.setVisibility(View.GONE);
-        }else{
-=======
+
         loginState = PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
         if (loginState) {
             tvLogin.setVisibility(View.GONE);
         } else {
->>>>>>> 2763ac7beff03463ece64964d9635594de2e794a
             tvLogin.setVisibility(View.VISIBLE);
         }
     }
@@ -110,11 +106,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 LoginActivity.start(getActivity());
                 break;
             case R.id.tv_financial:
-<<<<<<< HEAD
-                if(loginState){
-=======
-/*                if (loginState) {
->>>>>>> 2763ac7beff03463ece64964d9635594de2e794a
+                if (loginState) {
                     FinancialActivity.start(getActivity());
                 } else {
                     CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
@@ -126,7 +118,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
                                 LoginActivity.start(getActivity());
                             }).show();
-                }*/
+                }
                 break;
             case R.id.cv_safe:
                 SafeActivity.start(getActivity());

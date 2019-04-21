@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewFragment;
+import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.WebViewUtils;
 
 
 public class SurveyFragment extends BaseWebViewFragment {
@@ -14,6 +16,7 @@ public class SurveyFragment extends BaseWebViewFragment {
     @Override
     public void initView() {
         setWebViewClient();
+        WebViewUtils.getCookie(getActivity(),homeUrl, PreferencesUtils.getString(getActivity(),PreferencesUtils.PLAY_SESSION));
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

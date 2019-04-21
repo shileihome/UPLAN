@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
+import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.WebViewUtils;
 
 /**
  * Author: Created by shilei on 2019/4/14-22:19
@@ -23,6 +25,7 @@ public class RecordActivity extends BaseWebViewActivity {
     @Override
     public void initView() {
         setWebViewClient();
+        WebViewUtils.getCookie(this,homeUrl, PreferencesUtils.getString(this,PreferencesUtils.PLAY_SESSION));
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

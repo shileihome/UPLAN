@@ -7,5 +7,4 @@ import com.uplan.miyao.net.ResponseData;
  * Description:
  */
 public class RegistResp extends ResponseData {
-    public String data;
 }

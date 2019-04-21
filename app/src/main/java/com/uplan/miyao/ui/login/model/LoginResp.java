@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class LoginResp extends ResponseData {
 
+
     public List<DataBean> data;
 
     public static class DataBean {
@@ -19,7 +20,7 @@ public class LoginResp extends ResponseData {
          * client : 0
          * fp_level : 0
          * freeze : 0
-         * id : 114
+         * id : 130
          * is_active : false
          * is_allow_login : true
          * is_fp : 0
@@ -27,17 +28,18 @@ public class LoginResp extends ResponseData {
          * is_mobile_verified : false
          * is_password_error_locked : false
          * is_pay_password_error_locked : false
-         * last_login_time : 1555157789000
+         * last_login_time : 1555816166000
          * level_id : 1
          * login_count : 0
-         * mobile : 10010
+         * mobile : 133
          * name : 东方不败
          * open_id : ceshi
-         * password : 123
+         * password : 1
          * password_continuous_errors : 0
          * pay_password_continuous_errors : 0
          * score : 0
-         * time : 1555157789000
+         * time : 1555816166000
+         * PLAY_SESSION : 70cfff7ba34fedbbfe5921a7f4f9642f3d39a274-___ID=14416570-ccb3-430d-8617-83a1b17d226c& ___TS=1556421860191
          */
 
         public int age;
@@ -64,5 +66,6 @@ public class LoginResp extends ResponseData {
         public int pay_password_continuous_errors;
         public int score;
         public long time;
+        public String PLAY_SESSION;
     }
 }

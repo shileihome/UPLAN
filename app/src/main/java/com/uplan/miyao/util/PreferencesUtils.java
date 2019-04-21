@@ -12,6 +12,7 @@ public class PreferencesUtils {
 
     public static String LOGIN_STATE = "login_state";
 
+    public static String PLAY_SESSION="play_session";
     private PreferencesUtils() {
         throw new AssertionError();
     }

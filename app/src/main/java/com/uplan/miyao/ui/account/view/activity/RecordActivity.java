@@ -14,9 +14,8 @@ import com.uplan.miyao.util.WebViewUtils;
  * Description:
  */
 public class RecordActivity extends BaseWebViewActivity {
+
     private String homeUrl="http://22ju570648.iok.la/wechat/yingmi/FundTransaction/tradingRecords";
-
-
     public static void start(Context context) {
         Intent starter = new Intent(context, RecordActivity.class);
         context.startActivity(starter);
@@ -25,7 +24,7 @@ public class RecordActivity extends BaseWebViewActivity {
     @Override
     public void initView() {
         setWebViewClient();
-        WebViewUtils.getCookie(this,homeUrl, PreferencesUtils.getString(this,PreferencesUtils.PLAY_SESSION));
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION));
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

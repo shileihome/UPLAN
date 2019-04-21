@@ -14,6 +14,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.uplan.miyao.R;
+import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.WebViewUtils;
 import com.uplan.miyao.widget.UplanWebView;
 
@@ -27,7 +28,6 @@ import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
  */
 public abstract class BaseWebViewFragment extends Fragment {
     public UplanWebView uplanWebView;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public abstract class BaseWebViewFragment extends Fragment {
         String url=uplanWebView.getUrl();
         uplanWebView.loadUrl(url);
     }
-
 
     protected class WebAppClient extends WebViewClient {
         private Context context;
@@ -85,6 +84,7 @@ public abstract class BaseWebViewFragment extends Fragment {
      * 设置错误页面
      */
     private void showErrorPage() {
+        LoginActivity.start(getActivity());
     }
 
     /**

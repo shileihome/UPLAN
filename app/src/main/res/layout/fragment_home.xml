@@ -19,15 +19,15 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="11dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp">
 
                 <TextView
                     android:id="@+id/tv_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:background="@drawable/shape_btn_home"
                     android:gravity="center"
                     android:paddingLeft="26dp"
@@ -56,7 +56,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="18dp"
                 android:orientation="vertical">
 
                 <com.allure.lbanners.LMBanners
@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="18dp"
                 android:background="@drawable/uplan_idea" />
 
             <RelativeLayout
@@ -104,19 +104,21 @@
                     android:id="@+id/tv_financial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="18dp"
                     android:background="@drawable/home_semicircle_background">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical"
+                      >
 
                         <com.allure.lbanners.LMBanners
                             android:id="@+id/banners_center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+android:layout_marginTop="10dp"
                             android:background="@android:color/transparent"
                             app:auto_play="true"
                             app:canLoop="true"
@@ -131,6 +133,21 @@
                             app:scroll_duration="1000">
 
                         </com.allure.lbanners.LMBanners>
+
+                        <TextView
+                            android:id="@+id/tv_home_buy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="立即买入"
+                            android:background="@drawable/shape_home_buy"
+                            android:textSize="12sp"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="24dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="56dp"
+                            android:paddingRight="56dp"/>
                     </LinearLayout>
 
 
@@ -149,7 +166,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -164,74 +181,117 @@
                     android:layout_height="wrap_content"
                     android:text="四大优势"
                     android:textColor="#FF000000"
-                    android:textSize="12.5sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="12dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
 
                     <android.support.v7.widget.CardView
                         android:id="@+id/cv_safe"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp"
+                        app:cardPreventCornerOverlap="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:layout_marginLeft="20dp">
+                        >
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/safe"/>
+                                android:src="@drawable/safe"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="26dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="安全按钮图片" />
+                                android:text="安全"
+                                android:textColor="#FF565656"
+                                android:textStyle="bold"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="14sp"
+                                android:layout_marginTop="17dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="安全按钮图片" />
+                                android:textColor="#FF565656"
+                                android:text="和余额宝一样安全"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="12sp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="28dp"/>
                         </LinearLayout>
 
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/cv_lucency"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp"
+                        app:cardPreventCornerOverlap="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            >
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/lucency"/>
+                                android:src="@drawable/lucency"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="26dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="安全按钮图片" />
+                                android:text="透明"
+                                android:textColor="#FF565656"
+                                android:textStyle="bold"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="14sp"
+                                android:layout_marginTop="17dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="安全按钮图片" />
+                                android:textColor="#FF565656"
+                                android:text="平台信息透明"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="12sp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="28dp"/>
                         </LinearLayout>
 
                     </android.support.v7.widget.CardView>
@@ -242,59 +302,104 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/cv_valid"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp"
+                        app:cardPreventCornerOverlap="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            >
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/valid"/>
+                                android:src="@drawable/valid"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="26dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="安全按钮图片" />
+                                android:text="有效"
+                                android:textColor="#FF565656"
+                                android:textStyle="bold"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="14sp"
+                                android:layout_marginTop="17dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="安全按钮图片" />
+                                android:textColor="#FF565656"
+                                android:text="本金踏实赚收益"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="12sp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="28dp"/>
                         </LinearLayout>
 
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
+                        android:id="@+id/cv_simple"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp"
+                        app:cardPreventCornerOverlap="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            >
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/simple"/>
+                                android:src="@drawable/simple"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="26dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="安全按钮图片" />
+                                android:text="简单"
+                                android:textColor="#FF565656"
+                                android:textStyle="bold"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="14sp"
+                                android:layout_marginTop="17dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="安全按钮图片" />
+                                android:textColor="#FF565656"
+                                android:text="智能动态调仓"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="12sp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="28dp"/>
                         </LinearLayout>
 
                     </android.support.v7.widget.CardView>
@@ -305,7 +410,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -320,7 +425,7 @@
                     android:layout_height="wrap_content"
                     android:text="关于我们"
                     android:textColor="#FF000000"
-                    android:textSize="12.5sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -328,14 +433,12 @@
                 android:id="@+id/tv_team_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/about_us"
                 android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/bottom_explain"
                 android:gravity="center" />
 

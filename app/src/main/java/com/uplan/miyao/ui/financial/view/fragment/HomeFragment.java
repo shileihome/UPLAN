@@ -53,6 +53,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     @BindView(R.id.banners_center)
     LMBanners bannersCenter;
 
+    @BindView(R.id.tv_home_buy)
+    TextView tvHomeBuy;
     //本地图片BannerTop
     private ArrayList<Integer> localImagesTop = new ArrayList<Integer>();
 
@@ -82,8 +84,10 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         loginState = PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
         if (loginState) {
             tvLogin.setVisibility(View.GONE);
+            tvHomeBuy.setVisibility(View.VISIBLE);
         } else {
             tvLogin.setVisibility(View.VISIBLE);
+            tvHomeBuy.setVisibility(View.GONE);
         }
     }
 
@@ -99,39 +103,28 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
 
-    @OnClick({R.id.tv_login, R.id.tv_financial, R.id.cv_safe, R.id.tv_team_info})
+    @OnClick({R.id.tv_login,  R.id.cv_safe, R.id.tv_team_info,R.id.tv_home_buy})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
                 LoginActivity.start(getActivity());
                 break;
-            case R.id.tv_financial:
-                if (loginState) {
-                    FinancialActivity.start(getActivity());
-                } else {
-                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-                    commonDialog.setSubMessage("请先登陆!").
-                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
 
-                            }).
-                            setRightButton(getString(R.string.commit_change), v -> {
-
-                                LoginActivity.start(getActivity());
-                            }).show();
-                }
-                break;
             case R.id.cv_safe:
                 SafeActivity.start(getActivity());
                 break;
             case R.id.tv_team_info:
                 TeamInfoActivity.start(getActivity());
                 break;
+            case R.id.tv_home_buy:
+                FinancialActivity.start(getActivity());
+                break;
         }
     }
 
   private void initBannerTop(){
       //设置Banners高度
-      bannersTop.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 170)));
+      bannersTop.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 200)));
 
 
       //参数设置

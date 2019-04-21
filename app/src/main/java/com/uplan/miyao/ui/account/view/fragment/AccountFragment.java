@@ -19,9 +19,9 @@ import com.uplan.miyao.ui.account.view.activity.RecordActivity;
 import com.uplan.miyao.ui.account.view.activity.RedeemActivity;
 import com.uplan.miyao.ui.account.view.activity.RemindActivity;
 import com.uplan.miyao.ui.account.view.activity.RiskEvaluationActivity;
-import com.uplan.miyao.ui.account.view.activity.VIPEquityActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.main.view.activity.MainActivity;
+import com.uplan.miyao.util.PreferencesUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,8 +57,14 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     }
 
 
-    @OnClick({R.id.tv_setting, R.id.iv_login, R.id.tv_login_name,R.id.tv_honav1, R.id.tv_honav2, R.id.tv_honav3, R.id.tv_honav4, R.id.tv_honav5, R.id.rl_holist1, R.id.rl_holist2, R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist6, R.id.rl_holist7})
+    @OnClick({R.id.tv_setting, R.id.iv_login, R.id.tv_login_name,R.id.tv_honav2, R.id.tv_honav3,R.id.rl_holist1, R.id.rl_holist2, R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist7,R.id.rl_holist8})
     public void onClick(View view) {
+
+        if(!isLogined()){
+            LoginActivity.start(getActivity());
+            return;
+        }
+
         switch (view.getId()) {
             case R.id.tv_setting:
                 Toast.makeText(getActivity(), "设置", Toast.LENGTH_LONG).show();
@@ -69,17 +75,11 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             case R.id.tv_login_name:
                 LoginActivity.start(getActivity());
                 break;
-            case R.id.tv_honav1:
-                break;
             case R.id.tv_honav2:
                 ((MainActivity)getActivity()).setSelectItem( ((MainActivity)getActivity()).financialLayout);
                 break;
             case R.id.tv_honav3:
                 RedeemActivity.start(getActivity());
-                break;
-            case R.id.tv_honav4:
-                break;
-            case R.id.tv_honav5:
                 break;
             case R.id.rl_holist1:
                 ((MainActivity)getActivity()).setSelectItem( ((MainActivity)getActivity()).surveyLayout);
@@ -96,12 +96,17 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             case R.id.rl_holist5:
                 RemindActivity.start(getActivity());
                 break;
-            case R.id.rl_holist6:
-                VIPEquityActivity.start(getActivity());
-                break;
+
             case R.id.rl_holist7:
+                //我的邀请
+                break;
+            case R.id.rl_holist8:
                 HelpCenterActivity.start(getActivity());
                 break;
         }
+    }
+
+    private boolean isLogined(){
+        return PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.LOGIN_STATE);
     }
 }

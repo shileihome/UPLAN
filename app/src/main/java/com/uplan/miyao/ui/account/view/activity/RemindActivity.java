@@ -6,15 +6,16 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
+import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.WebViewUtils;
 
 /**
  * Author: Created by shilei on 2019/4/14-22:20
  * Description:
  */
 public class RemindActivity extends BaseWebViewActivity {
-    private String homeUrl="http://22ju570648.iok.la/wechat/account/Message/getMyMessage";
 
-
+    private String homeUrl= "http://22ju570648.iok.la/wechat/account/Message/getMyMessage";
     public static void start(Context context) {
         Intent starter = new Intent(context, RemindActivity.class);
         context.startActivity(starter);
@@ -23,6 +24,7 @@ public class RemindActivity extends BaseWebViewActivity {
     @Override
     public void initView() {
         setWebViewClient();
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION));
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

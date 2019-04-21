@@ -6,23 +6,26 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
+import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.WebViewUtils;
 
 /**
  * Author: Created by shilei on 2019/4/14-22:18
  * Description:
  */
 public class HoldActivity extends BaseWebViewActivity {
+
     private String homeUrl="http://22ju570648.iok.la/wechat/yingmi/FundTransaction/getMyProperty";
-
-
     public static void start(Context context) {
         Intent starter = new Intent(context, HoldActivity.class);
         context.startActivity(starter);
     }
 
+
     @Override
     public void initView() {
         setWebViewClient();
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION));
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

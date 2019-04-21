@@ -12,6 +12,7 @@ import android.webkit.WebViewClient;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
+import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.WebViewUtils;
 import com.uplan.miyao.widget.UplanWebView;
 
@@ -25,7 +26,6 @@ import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
  */
 public abstract class BaseWebViewActivity extends Activity {
     public UplanWebView uplanWebView;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +51,6 @@ public abstract class BaseWebViewActivity extends Activity {
         String url=uplanWebView.getUrl();
         uplanWebView.loadUrl(url);
     }
-
 
     protected class WebAppClient extends WebViewClient {
         private Context context;
@@ -91,6 +90,7 @@ public abstract class BaseWebViewActivity extends Activity {
      * 设置错误页面
      */
     private void showErrorPage() {
+        LoginActivity.start(this);
     }
 
     /**

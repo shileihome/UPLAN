@@ -17,15 +17,14 @@
     <LinearLayout
         android:id="@+id/home_bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
-<!--        android:background="@drawable/bottom_border"-->
 
 
         <RelativeLayout
             android:id="@+id/financial_layout"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/color_F27070">
 
@@ -40,16 +39,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dimen_9"
 
-
-                    />  <!--    android:src="@mipmap/financial_normal"-->
+                    />
+                <TextView
+                    android:id="@+id/tv_financial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="首页"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:textSize="10sp"
+                    android:layout_marginBottom="4dp"
+                    />
             </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/survey_layout"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/color_80d136">
 
@@ -64,16 +74,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="34dp"
-
+                    android:layout_marginTop="@dimen/dimen_9"
                     />
-                <!--     android:src="@mipmap/home_normal"-->
+                <TextView
+                    android:id="@+id/tv_survey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="规划"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:textSize="10sp"
+                    android:layout_marginBottom="4dp"/>
             </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/discover_layout"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/color_37A4DC">
 
@@ -89,16 +108,25 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginRight="34dp"
-
+                    android:layout_marginTop="@dimen/dimen_9"
                     />
-                <!--                android:src="@mipmap/account_normal"-->
+                <TextView
+                    android:id="@+id/tv_discover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="发现"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:textSize="10sp"
+                    android:layout_marginBottom="4dp"/>
             </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/account_layout"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/color_494949">
 
@@ -114,9 +142,18 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginRight="34dp"
-
+android:layout_marginTop="@dimen/dimen_9"
                     />
-                <!--                android:src="@mipmap/account_normal"-->
+                <TextView
+                    android:id="@+id/tv_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="我的"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:textSize="10sp"
+                    android:layout_marginBottom="4dp"/>
             </LinearLayout>
         </RelativeLayout>
 

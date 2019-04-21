@@ -9,14 +9,15 @@ import com.uplan.miyao.util.WebViewUtils;
 
 
 public class SurveyFragment extends BaseWebViewFragment {
-    private String homeUrl="http://22ju570648.iok.la/wechat/account/planInstructions?isFocus=1";
 
-
+    private String homeUrl = "http://22ju570648.iok.la/wechat/account/planInstructions?isFocus=1";
 
     @Override
     public void initView() {
+
         setWebViewClient();
-        WebViewUtils.getCookie(getActivity(),homeUrl, PreferencesUtils.getString(getActivity(),PreferencesUtils.PLAY_SESSION));
+        String cookie = "PLAY_SESSION=" + PreferencesUtils.getString(getActivity(), PreferencesUtils.PLAY_SESSION);
+        WebViewUtils.getCookie(getActivity(), uplanWebView, homeUrl, cookie);
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

@@ -6,15 +6,16 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
+import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.WebViewUtils;
 
 /**
  * Author: Created by shilei on 2019/4/5-14:14
  * Description:
  */
 public class RiskEvaluationActivity extends BaseWebViewActivity {
-    private String homeUrl="http://key.51mix.cn/wechat/family/InfoInputAction/publicize";
 
-
+private String homeUrl="http://key.51mix.cn/wechat/family/InfoInputAction/publicize";
     public static void start(Context context) {
         Intent starter = new Intent(context, RiskEvaluationActivity.class);
         context.startActivity(starter);
@@ -23,6 +24,7 @@ public class RiskEvaluationActivity extends BaseWebViewActivity {
     @Override
     public void initView() {
         setWebViewClient();
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION));
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

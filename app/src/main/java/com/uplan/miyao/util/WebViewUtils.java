@@ -34,9 +34,8 @@ public class WebViewUtils {
      * 自定义UA
      */
     public static String generateCustomUserAgent(WebView webView){
-        return webView.getSettings().getUserAgentString()
-                + "versioncode=" + SystemUtils.getVersionCode(webView.getContext())
-                + "/ZRXAndroid/" + SystemUtils.getVersionName(webView.getContext());
+        return webView.getSettings().getUserAgentString();
+
 
     }
 
@@ -47,10 +46,10 @@ public class WebViewUtils {
      * @param url url
      * @param cookie  cookie
      */
-    public static void getCookie(Context context, String url, String cookie){
+    public static void getCookie(Context context, WebView webView,String url, String cookie){
         List<String> cookies=new ArrayList<>();
         cookies.add(cookie);
-        syncCookieToWebView(context,url,cookies);
+        syncCookieToWebView(webView,context,url,cookies);
     }
 
     /**
@@ -60,7 +59,7 @@ public class WebViewUtils {
      * @param url url
      * @param cookies List<cookie>
      */
-    public static void syncCookieToWebView(Context context,String url, List<String> cookies) {
+    public static void syncCookieToWebView(WebView webView,Context context,String url, List<String> cookies) {
         CookieSyncManager.createInstance(context);
         CookieManager cm=CookieManager.getInstance();
         cm.setAcceptCookie(true);
@@ -70,6 +69,7 @@ public class WebViewUtils {
             }
         }
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP_MR1){
+            cm.setAcceptThirdPartyCookies(webView, true);
             CookieManager.getInstance().flush();
         }else{
             CookieSyncManager.getInstance().sync();

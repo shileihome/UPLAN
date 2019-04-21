@@ -2,6 +2,7 @@ package com.uplan.miyao.ui.main.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.app.ActivityManager;
@@ -18,8 +20,10 @@ import com.uplan.miyao.base.AppBaseActivity;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.ui.account.view.fragment.AccountFragment;
 import com.uplan.miyao.ui.financial.view.fragment.HomeFragment;
+import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.survey.view.fragment.SurveyFragment;
 import com.uplan.miyao.ui.vip.view.fragment.VipFragment;
+import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.ToastUtils;
 
 import butterknife.BindView;
@@ -35,6 +39,14 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppBaseActivity {
 
+    @BindView(R.id.tv_financial)
+    TextView tvFinancial;
+    @BindView(R.id.tv_survey)
+    TextView tvSurvey;
+    @BindView(R.id.tv_discover)
+    TextView tvDiscover;
+    @BindView(R.id.tv_account)
+    TextView tvAccount;
     private long exitTime = 0;
     //三个按钮布局
     @BindView(R.id.financial_layout)
@@ -131,7 +143,8 @@ public class MainActivity extends AppBaseActivity {
                 mSelectIndex = SELECT_INDEX_FINANCIAL;
                 clearSelect();
                 hideFragments(transaction, SELECT_INDEX_FINANCIAL);
-                //  financialImage.setImageResource(R.mipmap.financial_pressed);
+                financialImage.setImageResource(R.drawable.shouye_select);
+                tvFinancial.setTextColor(Color.parseColor("#FF31BCE9"));
                 if (homeFragment == null) {
                     homeFragment = new HomeFragment();
                     transaction.add(R.id.content, homeFragment, "HomeWebViewFragment");
@@ -141,10 +154,17 @@ public class MainActivity extends AppBaseActivity {
                 }
                 break;
             case R.id.survey_layout:
+
+                if(!isLogined()){
+                    LoginActivity.start(this);
+                    return;
+                }
+
                 mSelectIndex = SELECT_INDEX_SURVEY;
                 clearSelect();
                 hideFragments(transaction, SELECT_INDEX_SURVEY);
-                //  surveyImage.setImageResource(R.mipmap.survey_pressed);
+                surveyImage.setImageResource(R.drawable.guihua_select);
+                tvSurvey.setTextColor(Color.parseColor("#FF31BCE9"));
                 if (surveyFragment == null) {
 
                     surveyFragment = new SurveyFragment();
@@ -158,7 +178,8 @@ public class MainActivity extends AppBaseActivity {
                 mSelectIndex = SELECT_INDEX_DISCOVER;
                 clearSelect();
                 hideFragments(transaction, SELECT_INDEX_DISCOVER);
-                //  discoverImage.setImageResource(R.mipmap.discover_pressed);
+                discoverImage.setImageResource(R.drawable.faxian_select);
+                tvDiscover.setTextColor(Color.parseColor("#FF31BCE9"));
                 if (discoverFragment == null) {
                     discoverFragment = new VipFragment();
                     transaction.add(R.id.content, discoverFragment, "discoverFragment");
@@ -170,7 +191,8 @@ public class MainActivity extends AppBaseActivity {
                 mSelectIndex = SELECT_INDEX_ACCOUNT;
                 clearSelect();
                 hideFragments(transaction, SELECT_INDEX_ACCOUNT);
-                // accountImage.setImageResource(R.mipmap.account_pressed);
+                accountImage.setImageResource(R.drawable.wode_select);
+                tvAccount.setTextColor(Color.parseColor("#FF31BCE9"));
                 if (accountFragment == null) {
 
                     accountFragment = new AccountFragment();
@@ -190,16 +212,18 @@ public class MainActivity extends AppBaseActivity {
      */
     public void clearSelect() {
         int bar_item_bg = 0xFFFFFFFF;
-        //    financialImage.setImageResource(R.mipmap.financial_normal);
-        //financialLayout.setBackgroundColor(bar_item_bg);
-
-        //  surveyImage.setImageResource(R.mipmap.survey_normal);
-        // surveyLayout.setBackgroundColor(bar_item_bg);
-
-        //   discoverImage.setImageResource(R.mipmap.discover_normal);
-        // discoverLayout.setBackgroundColor(bar_item_bg);
-        //  accountImage.setImageResource(R.mipmap.account_normal);
-        //   accountLayout.setBackgroundColor(bar_item_bg);
+        financialImage.setImageResource(R.drawable.shouye_normal);
+        financialLayout.setBackgroundColor(bar_item_bg);
+        tvFinancial.setTextColor(Color.parseColor("#666666"));
+        surveyImage.setImageResource(R.drawable.guihua_normal);
+        surveyLayout.setBackgroundColor(bar_item_bg);
+        tvSurvey.setTextColor(Color.parseColor("#666666"));
+        discoverImage.setImageResource(R.drawable.faxian_normal);
+        discoverLayout.setBackgroundColor(bar_item_bg);
+        tvDiscover.setTextColor(Color.parseColor("#666666"));
+        accountImage.setImageResource(R.drawable.wode_normal);
+        accountLayout.setBackgroundColor(bar_item_bg);
+        tvAccount.setTextColor(Color.parseColor("#666666"));
     }
 
     /**
@@ -284,5 +308,7 @@ public class MainActivity extends AppBaseActivity {
         QMUIStatusBarHelper.translucent(this);
         QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
-
+    private boolean isLogined(){
+        return PreferencesUtils.getBoolean(this,PreferencesUtils.LOGIN_STATE);
+    }
 }

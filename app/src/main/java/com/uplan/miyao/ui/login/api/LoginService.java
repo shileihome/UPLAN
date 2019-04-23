@@ -1,5 +1,6 @@
 package com.uplan.miyao.ui.login.api;
 
+import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.login.model.resp.ForgetPwdResp;
 import com.uplan.miyao.ui.login.model.resp.LoginResp;
 
@@ -15,10 +16,14 @@ public interface LoginService {
 
     final String REGIST = "/appClient/signinSignup/signin";
     final String FORGETPWD = "/appClient/signinSignup/resetpwd";
+    final String REGIST_VERIFICATION_CODE = "/appClient/utils/sendmsg";
 
     @GET(REGIST)
     Observable<LoginResp> login(@Query("tel") String id, @Query("pwd") String key);
 
     @GET(FORGETPWD)
     Observable<ForgetPwdResp> ModifyPwd(@Query("tel") String tel,@Query("msgCode") String msgCode ,@Query("pwd") String pwd);
+
+    @GET(REGIST_VERIFICATION_CODE)
+    Observable<ResponseData> registVerificationCode(@Query("tel") String tel);
 }

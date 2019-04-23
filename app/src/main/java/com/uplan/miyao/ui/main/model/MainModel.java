@@ -4,8 +4,8 @@ import com.uplan.miyao.base.mvp.BaseModel;
 import com.uplan.miyao.net.RxService;
 import com.uplan.miyao.ui.main.contract.MainContract;
 import com.uplan.miyao.ui.main.model.api.MainService;
-import com.uplan.miyao.ui.main.model.entity.StatusCountResp;
-import com.uplan.miyao.ui.main.model.entity.UserInfoResp;
+import com.uplan.miyao.ui.main.model.resp.StatusCountResp;
+import com.uplan.miyao.ui.main.model.resp.UserInfoResp;
 
 import io.reactivex.Observable;
 

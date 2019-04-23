@@ -7,7 +7,6 @@ import com.uplan.miyao.net.RxService;
 import com.uplan.miyao.ui.login.api.LoginService;
 import com.uplan.miyao.ui.login.contract.ForgetPwdContract;
 import com.uplan.miyao.ui.login.model.resp.ForgetPwdResp;
-import com.uplan.miyao.ui.regist.api.RegistService;
 
 import io.reactivex.Observable;
 
@@ -23,6 +22,6 @@ public class ForgetPwdModel extends  BaseModel implements ForgetPwdContract.Mode
     }
 
     public Observable<ResponseData> registVerificationCode(String tel) {
-        return RxService.createApi(RegistService.class).registVerificationCode(tel);
+        return RxService.createApi(LoginService.class).registVerificationCode(tel);
     }
 }

@@ -1,5 +1,7 @@
 package com.uplan.miyao.ui.login.presenter;
 
+import android.util.Log;
+
 import com.uplan.miyao.base.mvp.BasePresenter;
 import com.uplan.miyao.net.ErrorHandleSubscriber;
 import com.uplan.miyao.net.ResponseData;
@@ -32,11 +34,13 @@ public class ForgetPwdPresenter extends BasePresenter<ForgetPwdContract.View, Fo
             @Override
             public void onSuccess(ForgetPwdResp forgetPwdResp) {
                 mView.unLoad();
+                Log.e("riri","我日");
                 mView.dealModifySuccess(forgetPwdResp);
             }
 
             @Override
             public void onFailure(int code, String msg) {
+                Log.e("riri","ni日");
                 mView.unLoad();
                 mView.dealFailure(code, msg);
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.mvp.BaseActivity;
 import com.uplan.miyao.ui.login.contract.LoginContract;
-import com.uplan.miyao.ui.login.model.LoginResp;
+import com.uplan.miyao.ui.login.model.resp.LoginResp;
 import com.uplan.miyao.ui.login.presenter.LoginPresenter;
 import com.uplan.miyao.ui.regist.view.activity.RegistActivity;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -83,7 +83,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         LoginActivity.this.finish();
     }
 
-    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_login, R.id.tv_to_regist, R.id.iv_wx_login})
+    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_login, R.id.tv_to_regist, R.id.iv_wx_login, R.id.tv_forget_pwd})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -108,6 +108,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 break;
             case R.id.tv_to_regist:
                 RegistActivity.start(this);
+                break;
+            case R.id.tv_forget_pwd:
+
                 break;
             case R.id.iv_wx_login:
                 break;

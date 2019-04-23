@@ -173,6 +173,7 @@
 -keep class com.uplan.miyao.**.entity.** { *; }
 -keep class com.uplan.miyao.net.ResponseData { *; }
 -keep class com.uplan.miyao.**.model.**{*;}
+-keep class com.uplan.miyao.ui.** { *;}
 -keepclassmembers enum * {
     public static **[] values();
     public static ** valueOf(java.lang.String);

@@ -110,7 +110,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 RegistActivity.start(this);
                 break;
             case R.id.tv_forget_pwd:
-
+ForgetPwdActivity.start(this);
                 break;
             case R.id.iv_wx_login:
                 break;
@@ -120,9 +120,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RegistActivity.REQUEST_CODE && resultCode == RegistActivity.RESULT_CODE) {
-            etPhotoNo.setText(data.getStringExtra("username"));
-            etPwd.setText(data.getStringExtra("password"));
+        if (requestCode == RegistActivity.REQUEST_CODE) {
+            if( resultCode == RegistActivity.RESULT_CODE){
+                etPhotoNo.setText(data.getStringExtra("username"));
+                etPwd.setText(data.getStringExtra("password"));
+            }
         }
     }
 

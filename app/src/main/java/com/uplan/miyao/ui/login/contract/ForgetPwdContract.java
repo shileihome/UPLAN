@@ -2,6 +2,7 @@ package com.uplan.miyao.ui.login.contract;
 
 import com.uplan.miyao.base.mvp.IModel;
 import com.uplan.miyao.base.mvp.IView;
+import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.login.model.resp.ForgetPwdResp;
 
 import io.reactivex.Observable;
@@ -15,9 +16,12 @@ public interface ForgetPwdContract {
         void loading();
         void unLoad();
         void dealModifySuccess(ForgetPwdResp data);
+        void delRegistVerificationCodeSucess(ResponseData responseData);
     }
 
     interface Model extends IModel {
         Observable<ForgetPwdResp> ModifyPwd(String phoneNum, String msgCode, String pwd);
+        Observable<ResponseData> registVerificationCode(String tel);
+
     }
 }

@@ -2,6 +2,7 @@ package com.uplan.miyao.ui.login.presenter;
 
 import com.uplan.miyao.base.mvp.BasePresenter;
 import com.uplan.miyao.net.ErrorHandleSubscriber;
+import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.login.contract.ForgetPwdContract;
 import com.uplan.miyao.ui.login.model.ForgetPwdModel;
 import com.uplan.miyao.ui.login.model.resp.ForgetPwdResp;
@@ -23,7 +24,7 @@ public class ForgetPwdPresenter extends BasePresenter<ForgetPwdContract.View, Fo
     }
 
 
-    public void login(String phoneNum, String msgCode, String pwd) {
+    public void ModifyPwd(String phoneNum, String msgCode, String pwd) {
         mView.loading();
         mModel.ModifyPwd(phoneNum, msgCode, pwd).compose(RxUtils.applySchedulers(mView)).subscribe(new ErrorHandleSubscriber<ForgetPwdResp>() {
 
@@ -41,5 +42,20 @@ public class ForgetPwdPresenter extends BasePresenter<ForgetPwdContract.View, Fo
 
             }
         });
+    }
+
+    public void registVerificationCode(String tel){
+        mModel.registVerificationCode(tel).compose(RxUtils.applySchedulers(mView)).subscribe(new ErrorHandleSubscriber<ResponseData>() {
+            @Override
+            public void onSuccess(ResponseData responseData) {
+                mView.delRegistVerificationCodeSucess(responseData);
+            }
+
+            @Override
+            public void onFailure(int code, String msg) {
+                mView.dealFailure(code,msg);
+            }
+        });
+
     }
 }

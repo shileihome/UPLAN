@@ -5,6 +5,40 @@
     android:orientation="vertical"
     android:paddingTop="26dp">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#FF31BCE9"
+        >
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/financial_detail_left_arrow"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:paddingLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="16sp"
+            android:text="蜜小宝"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="12sp"
+            android:text="我的账户"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
    <ScrollView
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
@@ -15,57 +49,17 @@
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="图：密小宝\n新手小白基金组合体验\n{密小宝广告}"
+                android:background="@drawable/financial_detail"
                android:gravity="center"/>
-
            <TextView
+               android:id="@+id/tv_start_financial"
                android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="图：低风险基金组合产品\n6.82|30天..."
-               android:layout_marginTop="40dp"/>
-
-           <TextView
-               android:id="@+id/tv_login"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:background="@drawable/btn2"
-               android:text="立即买入"
-               android:paddingTop="5dp"
-               android:paddingBottom="5dp"
-               android:layout_gravity="center_horizontal"
-               android:gravity="center"
-               android:textSize="16sp"
+               android:layout_height="48dp"
+               android:background="#FF31BCE9"
                android:textColor="@color/white"
-               android:layout_marginLeft="25dp"
-               android:layout_marginRight="25dp"
-               android:layout_marginTop="80dp"/>
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="图：每款产品特点适合人群体........."
-               android:layout_marginTop="50dp"/>
-
-           <TextView
-               android:id="@+id/tv_login2"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:background="@drawable/btn2"
-               android:text="立即买入"
-               android:paddingTop="5dp"
-               android:paddingBottom="5dp"
-               android:layout_gravity="center_horizontal"
                android:gravity="center"
-               android:textSize="16sp"
-               android:textColor="@color/white"
-               android:layout_marginLeft="25dp"
-               android:layout_marginRight="25dp"
-               android:layout_marginTop="80dp"/>
-
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="图：底部介绍........."
-               android:layout_marginTop="50dp"/>
+               android:text="开始投资"
+               android:textSize="18sp"/>
        </LinearLayout>
    </ScrollView>
 

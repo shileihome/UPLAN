@@ -60,6 +60,10 @@
         <activity android:name=".ui.account.view.activity.RemindActivity" />
         <activity android:name=".ui.survey.view.SurveyActivity" />
         <activity android:name=".ui.login.view.activity.ForgetPwdActivity" />
+        <activity android:name=".ui.financial.view.activity.ValidActivity" />
+        <activity android:name=".ui.financial.view.activity.SimpleActivity" />
+        <activity android:name=".ui.financial.view.activity.LucencyActivity" />
+        <activity android:name=".ui.vip.view.activity.VipActivity" />
     </application>
 
 </manifest>

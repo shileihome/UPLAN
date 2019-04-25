@@ -29,7 +29,6 @@ public class SafeActivity extends AppCompatActivity {
     public void setTranslucent(){
         QMUIStatusBarHelper.setStatusBarDarkMode(this);
         QMUIStatusBarHelper.translucent(this);
-        QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
 
 }

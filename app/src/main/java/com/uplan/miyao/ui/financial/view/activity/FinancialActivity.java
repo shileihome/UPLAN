@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.uplan.miyao.R;
@@ -21,10 +22,13 @@ import butterknife.OnClick;
  */
 public class FinancialActivity extends AppCompatActivity {
 
-    @BindView(R.id.tv_login)
-    TextView tvLogin;
-    @BindView(R.id.tv_login2)
-    TextView tvLogin2;
+
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.tv_account)
+    TextView tvAccount;
+    @BindView(R.id.tv_start_financial)
+    TextView tvStartFinancial;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, FinancialActivity.class);
@@ -39,20 +43,23 @@ public class FinancialActivity extends AppCompatActivity {
         setTranslucent();
     }
 
-    @OnClick({R.id.tv_login, R.id.tv_login2})
+    public void setTranslucent() {
+        QMUIStatusBarHelper.setStatusBarDarkMode(this);
+        QMUIStatusBarHelper.translucent(this);
+        //   QMUIStatusBarHelper.setStatusBarLightMode(this);
+    }
+
+    @OnClick({R.id.iv_back, R.id.tv_account, R.id.tv_start_financial})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_login:
-                FinancialWebActivity.start(this);
+            case R.id.iv_back:
+                finish();
                 break;
-            case R.id.tv_login2:
+            case R.id.tv_account:
+                break;
+            case R.id.tv_start_financial:
+                FinancialWebActivity.start(this);
                 break;
         }
     }
-    public void setTranslucent(){
-        QMUIStatusBarHelper.setStatusBarDarkMode(this);
-        QMUIStatusBarHelper.translucent(this);
-        QMUIStatusBarHelper.setStatusBarLightMode(this);
-    }
-
 }

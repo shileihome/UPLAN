@@ -124,10 +124,11 @@ ForgetPwdActivity.start(this);
             if( resultCode == RegistActivity.RESULT_CODE){
                 etPhotoNo.setText(data.getStringExtra("username"));
                 etPwd.setText(data.getStringExtra("password"));
+            }else if(requestCode == ForgetPwdActivity.RESULT_CODE){
+                etPhotoNo.setText(data.getStringExtra("username"));
+                etPwd.setText(data.getStringExtra("password"));
             }
         }
     }
-
-
 
 }

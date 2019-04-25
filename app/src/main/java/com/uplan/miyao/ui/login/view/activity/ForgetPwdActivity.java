@@ -136,7 +136,7 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
                 String tel = etPhotoNo.getText().toString();
                 String pwd = etPwd.getText().toString();
                 String verificationCode=etVerificationCode.getText().toString();
-                mPresenter.ModifyPwd(tel, pwd,verificationCode );
+                mPresenter.ModifyPwd(tel,verificationCode, pwd);
                 break;
 
         }

@@ -201,11 +201,11 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
   private void addBannerTops(){
         localImagesCenter.add(R.drawable.center_financial);
-        localImagesCenter.add(R.drawable.center_financial2);
   }
   private void addBannerCenters(){
-        localImagesTop.add(R.drawable.focus_financial);
-        localImagesTop.add(R.drawable.focus_financial2);
+        localImagesTop.add(R.drawable.focus_financial_1);
+        localImagesTop.add(R.drawable.focus_financial_2);
+        localImagesTop.add(R.drawable.focus_financial_3);
   }
 
     private void initImageLoader() {

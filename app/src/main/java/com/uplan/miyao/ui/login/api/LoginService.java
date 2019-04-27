@@ -1,6 +1,6 @@
 package com.uplan.miyao.ui.login.api;
 
-import com.uplan.miyao.ui.login.model.LoginResp;
+import com.uplan.miyao.ui.login.model.resp.LoginResp;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -14,6 +14,9 @@ public interface LoginService {
 
     final String REGIST = "/appClient/signinSignup/signin";
 
+
+
     @GET(REGIST)
     Observable<LoginResp> login(@Query("tel") String id, @Query("pwd") String key);
+
 }

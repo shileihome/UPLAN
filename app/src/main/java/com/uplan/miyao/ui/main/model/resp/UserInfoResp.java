@@ -1,4 +1,4 @@
-package com.uplan.miyao.ui.main.model.entity;
+package com.uplan.miyao.ui.main.model.resp;
 
 import com.uplan.miyao.net.ResponseData;
 

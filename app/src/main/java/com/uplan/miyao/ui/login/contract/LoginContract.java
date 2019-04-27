@@ -2,7 +2,7 @@ package com.uplan.miyao.ui.login.contract;
 
 import com.uplan.miyao.base.mvp.IModel;
 import com.uplan.miyao.base.mvp.IView;
-import com.uplan.miyao.ui.login.model.LoginResp;
+import com.uplan.miyao.ui.login.model.resp.LoginResp;
 
 import io.reactivex.Observable;
 

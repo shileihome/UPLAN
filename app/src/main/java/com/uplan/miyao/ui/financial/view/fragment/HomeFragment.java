@@ -25,11 +25,13 @@ import com.uplan.miyao.ui.financial.adapter.LocalImgAdapter;
 import com.uplan.miyao.ui.financial.contract.FinancialContract;
 import com.uplan.miyao.ui.financial.presenter.FinancialPresenter;
 import com.uplan.miyao.ui.financial.view.activity.FinancialActivity;
+import com.uplan.miyao.ui.financial.view.activity.LucencyActivity;
 import com.uplan.miyao.ui.financial.view.activity.SafeActivity;
+import com.uplan.miyao.ui.financial.view.activity.SimpleActivity;
 import com.uplan.miyao.ui.financial.view.activity.TeamInfoActivity;
+import com.uplan.miyao.ui.financial.view.activity.ValidActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.PreferencesUtils;
-import com.uplan.miyao.widget.CommonDialog;
 
 import java.util.ArrayList;
 
@@ -103,7 +105,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
 
-    @OnClick({R.id.tv_login,  R.id.cv_safe, R.id.tv_team_info,R.id.tv_home_buy})
+    @OnClick({R.id.tv_login,  R.id.cv_safe, R.id.tv_team_info,R.id.tv_home_buy,R.id.cv_lucency,R.id.cv_simple,R.id.cv_valid})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
@@ -112,6 +114,15 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
             case R.id.cv_safe:
                 SafeActivity.start(getActivity());
+                break;
+            case R.id.cv_lucency:
+                LucencyActivity.start(getActivity());
+                break;
+            case R.id.cv_simple:
+                SimpleActivity.start(getActivity());
+                break;
+            case R.id.cv_valid:
+                ValidActivity.start(getActivity());
                 break;
             case R.id.tv_team_info:
                 TeamInfoActivity.start(getActivity());
@@ -190,11 +201,11 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
   private void addBannerTops(){
         localImagesCenter.add(R.drawable.center_financial);
-        localImagesCenter.add(R.drawable.center_financial2);
   }
   private void addBannerCenters(){
-        localImagesTop.add(R.drawable.focus_financial);
-        localImagesTop.add(R.drawable.focus_financial2);
+        localImagesTop.add(R.drawable.focus_financial_1);
+        localImagesTop.add(R.drawable.focus_financial_2);
+        localImagesTop.add(R.drawable.focus_financial_3);
   }
 
     private void initImageLoader() {

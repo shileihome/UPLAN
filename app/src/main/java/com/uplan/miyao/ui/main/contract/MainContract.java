@@ -2,8 +2,8 @@ package com.uplan.miyao.ui.main.contract;
 
 import com.uplan.miyao.base.mvp.IModel;
 import com.uplan.miyao.base.mvp.IView;
-import com.uplan.miyao.ui.main.model.entity.StatusCountResp;
-import com.uplan.miyao.ui.main.model.entity.UserInfoResp;
+import com.uplan.miyao.ui.main.model.resp.StatusCountResp;
+import com.uplan.miyao.ui.main.model.resp.UserInfoResp;
 
 import io.reactivex.Observable;
 

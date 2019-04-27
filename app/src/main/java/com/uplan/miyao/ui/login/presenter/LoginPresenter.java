@@ -4,7 +4,7 @@ import com.uplan.miyao.base.mvp.BasePresenter;
 import com.uplan.miyao.net.ErrorHandleSubscriber;
 import com.uplan.miyao.ui.login.contract.LoginContract;
 import com.uplan.miyao.ui.login.model.LoginModel;
-import com.uplan.miyao.ui.login.model.LoginResp;
+import com.uplan.miyao.ui.login.model.resp.LoginResp;
 import com.uplan.miyao.util.RxUtils;
 
 

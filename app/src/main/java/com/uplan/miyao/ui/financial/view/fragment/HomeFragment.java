@@ -2,7 +2,6 @@ package com.uplan.miyao.ui.financial.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +43,6 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
     @BindView(R.id.tv_login)
     TextView tvLogin;
-    @BindView(R.id.cv_safe)
-    CardView tvSafe;
     @BindView(R.id.tv_team_info)
     TextView tvTeamInfo;
 
@@ -80,9 +77,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
+    public void onStart() {
+        super.onStart();
         loginState = PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
         if (loginState) {
             tvLogin.setVisibility(View.GONE);
@@ -92,6 +88,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             tvHomeBuy.setVisibility(View.GONE);
         }
     }
+
 
     @Override
     protected FinancialPresenter getPresenter() {
@@ -135,23 +132,25 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
   private void initBannerTop(){
       //设置Banners高度
-      bannersTop.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 200)));
+//      bannersTop.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 210)));
+      bannersTop.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
 
 
       //参数设置
       bannersTop.isGuide(false);//是否为引导页
-      bannersTop.setAutoPlay(true);//自动播放
+  //    bannersTop.setAutoPlay(true);//自动播放
+      bannersTop.setAutoPlay(false);//自动播放
       bannersTop.setVertical(false);//是否锤子播放
       bannersTop.setScrollDurtion(2000);//两页切换时间
       bannersTop.setCanLoop(true);//循环播放
       bannersTop.setSelectIndicatorRes(R.drawable.select_indicator);//选中的原点
       bannersTop.setUnSelectUnIndicatorRes(R.drawable.unselect_indicator);//未选中的原点
       //若自定义原点到底部的距离,默认20,必须在setIndicatorWidth之前调用
-      bannersTop.setIndicatorBottomPadding(0);
+      bannersTop.setIndicatorBottomPadding(5);
       bannersTop.setIndicatorWidth(5);//原点默认为5dp
       bannersTop.setHoriZontalTransitionEffect(TransitionEffect.Default);//选中喜欢的样式
 //        bannersTop.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式
-      bannersTop.setDurtion(3000);//轮播切换时间
+    //  bannersTop.setDurtion(3000);//轮播切换时间
 //        bannersTop.hideIndicatorLayout();//隐藏原点
 //        bannersTop.showIndicatorLayout();//显示原点
       bannersTop.setIndicatorPosition(LMBanners.IndicaTorPosition.BOTTOM_MID);//设置原点显示位置

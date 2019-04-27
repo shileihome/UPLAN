@@ -34,6 +34,7 @@ public class UPLANApplication extends Application {
         initTimber();
         initSmartRefreshLayout();
         PreferencesUtils.putBoolean(this,PreferencesUtils.LOGIN_STATE,false);
+        PreferencesUtils.putBoolean(this,PreferencesUtils.IS_ACTIVEA,false);
     }
 
     @Override

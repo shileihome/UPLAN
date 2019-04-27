@@ -2,9 +2,9 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="26dp"
-    android:orientation="vertical">
-<!--     android:background="@color/color_f0f0f0"-->
+    android:orientation="vertical"
+    android:paddingTop="26dp">
+    <!--     android:background="@color/color_f0f0f0"-->
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -42,17 +42,17 @@
                     android:layout_marginTop="@dimen/dimen_9"
 
                     />
+
                 <TextView
                     android:id="@+id/tv_financial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="首页"
-                    android:gravity="center"
-                    android:layout_marginTop="4dp"
-                    android:textSize="10sp"
                     android:layout_marginBottom="4dp"
-                    />
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="首页"
+                    android:textSize="10sp" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -73,19 +73,19 @@
                     android:id="@+id/survey_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="34dp"
-                    android:layout_marginTop="@dimen/dimen_9"
-                    />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dimen_9" />
+
                 <TextView
                     android:id="@+id/tv_survey"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="规划"
-                    android:gravity="center"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginTop="4dp"
-                    android:textSize="10sp"
-                    android:layout_marginBottom="4dp"/>
+                    android:gravity="center"
+                    android:text="规划"
+                    android:textSize="10sp" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -106,20 +106,19 @@
                     android:id="@+id/discover_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="34dp"
-                    android:layout_marginTop="@dimen/dimen_9"
-                    />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dimen_9" />
+
                 <TextView
                     android:id="@+id/tv_discover"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="发现"
-                    android:gravity="center"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginTop="4dp"
-                    android:textSize="10sp"
-                    android:layout_marginBottom="4dp"/>
+                    android:gravity="center"
+                    android:text="发现"
+                    android:textSize="10sp" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -140,20 +139,19 @@
                     android:id="@+id/account_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="34dp"
-android:layout_marginTop="@dimen/dimen_9"
-                    />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dimen_9" />
+
                 <TextView
                     android:id="@+id/tv_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="我的"
-                    android:gravity="center"
+                    android:layout_marginBottom="4dp"
                     android:layout_marginTop="4dp"
-                    android:textSize="10sp"
-                    android:layout_marginBottom="4dp"/>
+                    android:gravity="center"
+                    android:text="我的"
+                    android:textSize="10sp" />
             </LinearLayout>
         </RelativeLayout>
 

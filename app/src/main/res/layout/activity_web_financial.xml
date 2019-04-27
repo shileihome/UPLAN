@@ -684,7 +684,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="密钥投研"
+                            android:text="蜜钥投研"
                             android:textColor="@color/color_333333"
                             android:textSize="13sp" />
                     </LinearLayout>

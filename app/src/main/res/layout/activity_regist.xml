@@ -22,15 +22,17 @@
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="44dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="15dp">
             <EditText
                 android:id="@+id/et_photo_no"
                 android:layout_width="0dp"
@@ -40,6 +42,7 @@
                 android:background="@null"
                 android:hint="请输入手机号"
                 android:textSize="16sp"
+                android:layout_gravity="bottom"
               />
 
             <ImageView
@@ -47,59 +50,76 @@
                 android:layout_width="21dp"
                 android:layout_height="21dp"
                 android:src="@drawable/regist_1"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="bottom"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#FFA2A2A2"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="44dp"/>
-        <EditText
-            android:id="@+id/et_pwd"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="44dp"
-            android:background="@null"
-            android:hint="请设置密码"
-            android:textSize="16sp"
-            android:inputType="textPassword"
-            android:layout_marginTop="24dp"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            >
+            <EditText
+                android:id="@+id/et_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="44dp"
+                android:background="@null"
+                android:hint="请设置密码"
+                android:textSize="16sp"
+                android:inputType="textPassword"
+                android:layout_gravity="bottom"
+               />
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#FFA2A2A2"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="44dp"/>
-        <EditText
-            android:id="@+id/et_pwd_again"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="44dp"
-            android:background="@null"
-            android:hint="请确认密码"
-            android:inputType="textPassword"
-            android:textSize="16sp"
-            android:layout_marginTop="24dp"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            >
+            <EditText
+                android:id="@+id/et_pwd_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="44dp"
+                android:background="@null"
+                android:hint="请确认密码"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:layout_gravity="bottom"
+                />
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#FFA2A2A2"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="44dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="44dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             >
             <EditText
@@ -111,7 +131,7 @@
                 android:textSize="16sp"
                 android:background="@null"
                 android:inputType="number"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="bottom"/>
             <TextView
                 android:id="@+id/tv_verification_code"
                 android:layout_width="wrap_content"
@@ -123,6 +143,7 @@
                 android:paddingBottom="3.5dp"
                 android:textSize="18sp"
                 android:textColor="@color/color_08afde"
+                android:layout_gravity="bottom"
                 android:gravity="center"
                 android:background="@drawable/shape_verification_code"/>
         </LinearLayout>
@@ -131,58 +152,72 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#FFA2A2A2"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="44dp"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_regist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_btn_regist"
-        android:text="同意协议并注册"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="44dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="48dp"
-        android:textColor="@color/white"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="使用微信账号注册"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="45dp"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
-
-    <ImageView
-        android:id="@+id/iv_wx_regist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/wx" />
-    
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="36dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_regist"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/regist2"/>
+            android:background="@drawable/shape_btn_regist"
+            android:text="同意协议并注册"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="44dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/white"
+            />
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="使用微信账号注册"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
-            android:text="已阅读并同意《法律条款与隐私政策》"
-            android:textColor="#FFA2A2A2"/>
+        <ImageView
+            android:id="@+id/iv_wx_regist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/wx" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/regist2"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="已阅读并同意《法律条款与隐私政策》"
+                android:textColor="#FFA2A2A2"
+                android:layout_gravity="center"/>
+        </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>

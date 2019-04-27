@@ -80,7 +80,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void dealLoginSuccess(LoginResp data) {
         PreferencesUtils.putBoolean(this, PreferencesUtils.LOGIN_STATE, true);
-        PreferencesUtils.putString(this,PreferencesUtils.PLAY_SESSION,data.data.get(1).PLAY_SESSION);
+        PreferencesUtils.putString(this, PreferencesUtils.PLAY_SESSION, data.data.get(1).PLAY_SESSION);
+        PreferencesUtils.putString(this,PreferencesUtils.USER_NAME,data.data.get(0).name);
+        PreferencesUtils.putString(this,PreferencesUtils.USER_TEL,etPhotoNo.getText().toString());
+        PreferencesUtils.putBoolean(this,PreferencesUtils.IS_ACTIVEA,data.data.get(0).is_active);
         LoginActivity.this.finish();
     }
 
@@ -111,7 +114,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 RegistActivity.start(this);
                 break;
             case R.id.tv_forget_pwd:
-ForgetPwdActivity.start(this);
+                ForgetPwdActivity.start(this);
                 break;
             case R.id.iv_wx_login:
                 break;
@@ -122,10 +125,10 @@ ForgetPwdActivity.start(this);
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RegistActivity.REQUEST_CODE) {
-            if( resultCode == RegistActivity.RESULT_CODE){
+            if (resultCode == RegistActivity.RESULT_CODE) {
                 etPhotoNo.setText(data.getStringExtra("username"));
                 etPwd.setText(data.getStringExtra("password"));
-            }else if(requestCode == ForgetPwdActivity.RESULT_CODE){
+            } else if (requestCode == ForgetPwdActivity.RESULT_CODE) {
                 etPhotoNo.setText(data.getStringExtra("username"));
                 etPwd.setText(data.getStringExtra("password"));
             }

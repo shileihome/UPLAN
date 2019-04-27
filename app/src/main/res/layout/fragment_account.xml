@@ -264,7 +264,8 @@ android:src="@drawable/default_head"
             <RelativeLayout
                 android:id="@+id/rl_holist2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/iv_holist2"
@@ -299,7 +300,8 @@ android:src="@drawable/default_head"
             <RelativeLayout
                 android:id="@+id/rl_holist3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/iv_holist3"
@@ -334,7 +336,8 @@ android:src="@drawable/default_head"
             <RelativeLayout
                 android:id="@+id/rl_holist5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/iv_holist5"
@@ -369,7 +372,8 @@ android:src="@drawable/default_head"
             <RelativeLayout
                 android:id="@+id/rl_holist4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/iv_holist4"
@@ -404,7 +408,8 @@ android:src="@drawable/default_head"
             <RelativeLayout
                 android:id="@+id/rl_holist1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/iv_holist1"
@@ -439,7 +444,8 @@ android:src="@drawable/default_head"
             <RelativeLayout
                 android:id="@+id/rl_holist7"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/iv_holist7"
@@ -474,7 +480,8 @@ android:src="@drawable/default_head"
             <RelativeLayout
                 android:id="@+id/rl_holist8"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/iv_holist8"

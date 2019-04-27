@@ -25,6 +25,7 @@ import com.uplan.miyao.ui.survey.view.fragment.SurveyFragment;
 import com.uplan.miyao.ui.vip.view.fragment.VipFragment;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.ToastUtils;
+import com.uplan.miyao.widget.CommonDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -156,7 +157,15 @@ public class MainActivity extends AppBaseActivity {
             case R.id.survey_layout:
 
                 if(!isLogined()){
-                    LoginActivity.start(this);
+                    CommonDialog commonDialog = new CommonDialog(this).builder();
+                    commonDialog.setSubMessage("请先登陆!").
+                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+
+                            }).
+                            setRightButton(getString(R.string.commit_change), v -> {
+
+                                LoginActivity.start(this);
+                            }).show();
                     return;
                 }
 

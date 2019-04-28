@@ -39,25 +39,38 @@ import timber.log.Timber;
  * 网络请求拦截器
  *//*
 
+
 public class RequestInterceptor implements Interceptor {
 
-    */
-/** token *//*
+*/
+/*
+* token
+*//*
+
 
     private static final String ACCESS_TOKEN = "X-CSRF-TOKEN";
+*/
+/*
 
-    */
-/** cookie*//*
+* cookie
+*//*
+
 
     private static final String COOKIE = "Cookie";
 
-    */
-/** versionCode*//*
+*/
+/*
+* versionCode
+*//*
+
 
     private static final String VERSION_CODE = "versionCode";
 
-    */
-/** 签名参数名*//*
+*/
+/*
+* 签名参数名
+*//*
+
 
     private static final String PARAM_SIGN = "sign";
 
@@ -94,25 +107,23 @@ public class RequestInterceptor implements Interceptor {
     }
 
 
-    */
-/**
+*
      * 发起请求之前
      * 在这里做一些请求服务器前的一些操作, 比如添加统一的参数和header,或者对参数进行签名
      *
      * @param request
      * @return
-     *//*
+
 
     private Request onHttpRequestBefore(Request request) {
         return processParams(request);
     }
 
-    */
-/**
+*
      * 处理请求参数 比如对请求参数进行签名，添加公用的参数
      *
      * @param originRequest 请求
-     *//*
+
 
     private Request processParams(Request originRequest) {
 
@@ -177,12 +188,11 @@ public class RequestInterceptor implements Interceptor {
     }
 
 
-    */
-/**
+*
      * 添加公共header
      *
      * @return  header
-     *//*
+
 
     private Map<String, String> getHeaderMap() {
         Map<String, String> headers = new HashMap<>();
@@ -198,12 +208,11 @@ public class RequestInterceptor implements Interceptor {
     }
 
 
-    */
-/**
+*
      * get请求添加通过参数
      *
      * @return
-     *//*
+
 
     public Map<String, String> getQueryParamMap() {
 
@@ -212,12 +221,11 @@ public class RequestInterceptor implements Interceptor {
         return params;
     }
 
-    */
-/**
+*
      * post请求添加公共参数
      *
      * @return
-     *//*
+
 
     public Map<String, String> getFormBodyParamMap() {
         Map<String, String> postParams = new HashMap<>();
@@ -226,20 +234,18 @@ public class RequestInterceptor implements Interceptor {
     }
 
 
-    */
-/**
+*
      * 获取登录token
      *
      * @return token
-     *//*
+
 
     private String accessToken() {
         return AccountManager.getInstance().getToken();
     }
 
 
-    */
-/**
+*
      * 响应日志
      *
      * @param request
@@ -247,7 +253,7 @@ public class RequestInterceptor implements Interceptor {
      * @param logResponse
      * @return
      * @throws IOException
-     *//*
+
 
     @Nullable
     private String printResponse(Request request, Response response, boolean logResponse) throws IOException {
@@ -317,13 +323,12 @@ public class RequestInterceptor implements Interceptor {
         return bodyString;
     }
 
-    */
-/**
+*
      * 请求日志
      *
      * @param request
      * @param debug
-     *//*
+
 
     private void printRequest(Request request, boolean debug) {
         if (!debug) {
@@ -344,15 +349,14 @@ public class RequestInterceptor implements Interceptor {
     }
 
 
-    */
-/**
+*
      * 解析服务器响应的内容
      *
      * @param responseBody
      * @param encoding
      * @param clone
      * @return
-     *//*
+
 
     private String parseContent(ResponseBody responseBody, String encoding, Buffer clone) {
         Charset charset = Charset.forName("UTF-8");
@@ -402,13 +406,12 @@ public class RequestInterceptor implements Interceptor {
     }
 
 
-    */
-/**
+*
      * 获取请求参数
      *
      * @param request
      * @return
-     *//*
+
 
     private String getPostParamsBody(Request request) {
         String paramsStr = "";
@@ -430,13 +433,12 @@ public class RequestInterceptor implements Interceptor {
 
     }
 
-    */
-/**
+*
      * 获取请求header
      *
      * @param request
      * @return
-     *//*
+
 
     private String getHeaders(Request request) {
 

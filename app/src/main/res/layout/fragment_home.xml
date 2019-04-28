@@ -389,19 +389,25 @@
             android:layout_height="0dp"
             android:layout_marginTop="15dp"
             android:layout_weight="2"
-            android:background="@drawable/home_semicircle_background">
+           >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/home_semicircle_background"
+            android:scaleType="fitXY"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
                 <com.allure.lbanners.LMBanners
                     android:id="@+id/banners_center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+
                     android:background="@android:color/transparent"
                     app:auto_play="true"
                     app:canLoop="true"
@@ -422,7 +428,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/shape_home_buy"
                     android:paddingBottom="5dp"
                     android:paddingLeft="56dp"
@@ -431,16 +437,27 @@
                     android:text="立即买入"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrows_up" />
             </LinearLayout>
 
 
-            <ImageView
+           <!-- <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="26dp"
-                android:src="@drawable/arrows_home" />
+                android:src="@drawable/arrows_home" />-->
+
+
         </RelativeLayout>
 
     </LinearLayout>

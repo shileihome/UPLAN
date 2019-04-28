@@ -172,7 +172,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
   }
   private void initBannerCenter(){
       //设置Banners高度
-      bannersCenter.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 135)));
+      bannersCenter.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 125)));
 
 
       //参数设置

@@ -13,6 +13,7 @@ import com.uplan.miyao.R;
 import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.vip.contract.DiscoverContract;
+import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
 import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
 import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -110,5 +111,20 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
                 VipActivity.start(getActivity());
                 break;
         }
+    }
+
+    @Override
+    public void loading() {
+
+    }
+
+    @Override
+    public void unLoad() {
+
+    }
+
+    @Override
+    public void dealPaySuccess(VipDetailResp resp) {
+
     }
 }

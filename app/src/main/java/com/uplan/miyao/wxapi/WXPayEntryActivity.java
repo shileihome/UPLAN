@@ -29,7 +29,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         setContentView(R.layout.activity_pay_result);
         wxApi= WXAPIFactory.createWXAPI(this, null);
 // 将该app注册到微信
-        wxApi.registerApp("wx51f14963092d74d5");
+        wxApi.registerApp("wx05196006651968a1");
 
         wxApi.handleIntent(getIntent(), this);
     }

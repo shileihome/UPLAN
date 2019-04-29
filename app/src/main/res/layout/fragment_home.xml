@@ -47,7 +47,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/notice" />
+                    android:src="@drawable/notice2" />
 
                 <ImageView
                     android:layout_width="wrap_content"

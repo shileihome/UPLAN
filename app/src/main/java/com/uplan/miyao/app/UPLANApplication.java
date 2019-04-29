@@ -23,7 +23,6 @@ public class UPLANApplication extends Application {
     private static UPLANApplication mInstance;
     private static Handler mHandler;
     private static int mMainThreadId;
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -33,7 +32,10 @@ public class UPLANApplication extends Application {
 
         initTimber();
         initSmartRefreshLayout();
-        PreferencesUtils.putBoolean(this,PreferencesUtils.LOGIN_STATE,false);
+        PreferencesUtils.putBoolean(this, PreferencesUtils.LOGIN_STATE, false);
+        PreferencesUtils.putString(this, PreferencesUtils.PLAY_SESSION, "");
+        PreferencesUtils.putString(this,PreferencesUtils.USER_NAME,"未登录");
+        PreferencesUtils.putString(this,PreferencesUtils.USER_TEL,"");
         PreferencesUtils.putBoolean(this,PreferencesUtils.IS_ACTIVEA,false);
     }
 
@@ -94,5 +96,6 @@ public class UPLANApplication extends Application {
             Timber.plant(new Timber.DebugTree());
         }
     }
+
 
 }

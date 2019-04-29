@@ -9,11 +9,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.mvp.BaseFragment;
+import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.account.contract.AccountContract;
+import com.uplan.miyao.ui.account.model.resp.AccountResp;
 import com.uplan.miyao.ui.account.presenter.AccountPresenter;
 import com.uplan.miyao.ui.account.view.activity.HelpCenterActivity;
 import com.uplan.miyao.ui.account.view.activity.HoldActivity;
@@ -75,12 +76,21 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     ImageView ivHolist8;
     @BindView(R.id.rl_holist8)
     RelativeLayout rlHolist8;
+    @BindView(R.id.tv_general_assets)
+    TextView tvGeneralAssets;
+    @BindView(R.id.tv_up_down)
+    TextView tvUpDown;
+    @BindView(R.id.tv_general_up_down)
+    TextView tvGeneralUpDown;
+    @BindView(R.id.tv_login_out)
+    TextView tvLoginOut;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, null);
         ButterKnife.bind(this, view);
+        mPresenter=getPresenter();
         initView();
         return view;
     }
@@ -89,6 +99,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     public void onStart() {
         super.onStart();
         initView();
+        initData();
     }
 
     private void initView() {
@@ -106,6 +117,13 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         }
     }
 
+    private void initData() {
+
+        if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE)) {
+            mPresenter.getAccountInfo();
+        }
+    }
+
     @Override
     protected AccountPresenter getPresenter() {
         return new AccountPresenter(this);
@@ -118,23 +136,17 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     }
 
 
-    @OnClick({R.id.tv_setting, R.id.iv_login, R.id.tv_login_name, R.id.tv_honav2, R.id.tv_honav3, R.id.rl_holist1, R.id.rl_holist2, R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist7, R.id.rl_holist8})
+    @OnClick({R.id.tv_setting, R.id.iv_login, R.id.tv_login_name, R.id.tv_honav2, R.id.tv_honav3, R.id.rl_holist1, R.id.rl_holist2,
+            R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist7, R.id.rl_holist8, R.id.tv_login_out})
     public void onClick(View view) {
 
-        if (!isLogined()) {
-            CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-            commonDialog.setSubMessage("请先登陆!").
-                    setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                    }).
-                    setRightButton(getString(R.string.commit_change), v -> {
-                        LoginActivity.start(getActivity());
-                    }).show();
-            return;
-        }
 
         switch (view.getId()) {
             case R.id.tv_setting:
-                Toast.makeText(getActivity(), "设置", Toast.LENGTH_LONG).show();
+                if(isShowLoginDialog()){
+                    return;
+                }
+                //todo 跳转设置H5页面
                 break;
             case R.id.iv_login:
                 LoginActivity.start(getActivity());
@@ -143,38 +155,122 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 LoginActivity.start(getActivity());
                 break;
             case R.id.tv_honav2:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).financialLayout);
                 break;
             case R.id.tv_honav3:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 RedeemActivity.start(getActivity());
                 break;
             case R.id.rl_holist1:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).surveyLayout);
                 break;
             case R.id.rl_holist2:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 HoldActivity.start(getActivity());
                 break;
             case R.id.rl_holist3:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 RecordActivity.start(getActivity());
                 break;
             case R.id.rl_holist4:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 RiskEvaluationActivity.start(getActivity());
                 break;
             case R.id.rl_holist5:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 RemindActivity.start(getActivity());
                 break;
 
             case R.id.rl_holist7:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 //我的邀请
                 break;
             case R.id.rl_holist8:
+                if(isShowLoginDialog()){
+                    return;
+                }
                 HelpCenterActivity.start(getActivity());
+                break;
+
+            case R.id.tv_login_out:
+                if(isShowLoginDialog()){
+                    return;
+                }
+                mPresenter.logOut(PreferencesUtils.getString(getActivity(),PreferencesUtils.USER_TEL));
                 break;
         }
     }
 
+    protected boolean isShowLoginDialog() {
+        if (!isLogined()) {
+            CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+            commonDialog.setSubMessage("请先登陆!").
+                    setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                    }).
+                    setRightButton(getString(R.string.commit_change), v -> {
+                        LoginActivity.start(getActivity());
+                    }).show();
+            return true;
+        }else{
+           return  false;
+        }
+    }
+
+
     private boolean isLogined() {
         return PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
+    }
+
+    @Override
+    public void loading() {
+        showLoadingDialog();
+    }
+
+    @Override
+    public void unLoad() {
+        hideLoadingDialog();
+    }
+
+    @Override
+    public void dealLogOutSuccess(ResponseData responseData) {
+        PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.LOGIN_STATE, false);
+        PreferencesUtils.putString(getActivity(), PreferencesUtils.PLAY_SESSION, "");
+        PreferencesUtils.putString(getActivity(),PreferencesUtils.USER_NAME,"未登录");
+        PreferencesUtils.putString(getActivity(),PreferencesUtils.USER_TEL,"");
+        PreferencesUtils.putBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA,false);
+        tvLoginName.setText("未登录");
+        tvGeneralAssets.setText("---");
+        tvUpDown.setText("---");
+        tvGeneralUpDown.setText("---");
+        ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).financialLayout);
+
+    }
+
+    @Override
+    public void dealGetAccountInfoSuccess(AccountResp accountResp) {
+        if(accountResp!=null&&accountResp.data!=null&&accountResp.data.size()>0){
+            tvGeneralAssets.setText(accountResp.data.get(0).porperty+"");
+            tvUpDown.setText(accountResp.data.get(0).previousProfit+"");
+            tvGeneralUpDown.setText(accountResp.data.get(0).accumulatedProfit+"");
+        }
     }
 
 }

@@ -107,18 +107,29 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
 
     @Override
     public void dealPaySuccess(VipDetailResp resp) {
-        IWXAPI api = WXAPIFactory.createWXAPI(this, null);
-        api.registerApp("wx05196006651968a1");
-        PayReq req = new PayReq();
-        req.appId           = resp.data.get(0).appid;//你的微信appid
-        req.partnerId       = resp.data.get(0).mch_id;//商户号
-        req.prepayId        = resp.data.get(0).prepay_id;//预支付交易会话ID
-        req.nonceStr        = resp.data.get(0).nonce_str;//随机字符串
-    //    req.timeStamp       = "1412000000";//时间戳
-        req.packageValue    = "Sign=WXPay";//扩展字段,这里固定填写Sign=WXPay
-        req.sign            = resp.data.get(0).sign;//签名
+        IWXAPI wxApi = WXAPIFactory.createWXAPI(this, null);
+// 将该app注册到微信
+        wxApi.registerApp("wx51f14963092d74d5");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                PayReq req = new PayReq();
+                req.appId           = resp.data.get(0).appid;//你的微信appid
+                req.partnerId       = resp.data.get(0).mch_id;//商户号
+                req.prepayId        = resp.data.get(0).prepay_id;//预支付交易会话ID
+                req.nonceStr        = resp.data.get(0).nonce_str;//随机字符串
+                    req.timeStamp       = "1412000000";//时间戳
+                req.packageValue    = "Sign=WXPay";//扩展字段,这里固定填写Sign=WXPay
+                req.sign            = resp.data.get(0).sign;//签名
 //              req.extData         = "app data"; // optional
-        // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
-        api.sendReq(req);
+                // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
+//                wxApi.sendReq(req);
+                wxApi.sendReq(req);
+            }
+        }).start();
+
+
+
     }
 }

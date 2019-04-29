@@ -21,27 +21,37 @@ import com.uplan.miyao.R;
 public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 
     private static final String TAG = "WXPayEntryActivity";
-
-    private IWXAPI api;
+    IWXAPI wxApi;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_result);
+        wxApi= WXAPIFactory.createWXAPI(this, null);
+// 将该app注册到微信
+        wxApi.registerApp("wx51f14963092d74d5");
 
-        api = WXAPIFactory.createWXAPI(this, "wx05196006651968a1");
-        api.handleIntent(getIntent(), this);
+        wxApi.handleIntent(getIntent(), this);
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        api.handleIntent(intent, this);
+        wxApi.handleIntent(intent, this);
     }
 
+
     @Override
-    public void onReq(BaseReq req) {
+    public void onReq(BaseReq baseReq) {
+//        Log.d(TAG, "onPayFinish, errCode = " + baseReq.errCode);
+
+        if (baseReq.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("支付结果");
+            builder.setMessage( "微信支付，不知道成功没，没成功钱就打水漂了！");
+            builder.show();
+        }
     }
 
     @Override

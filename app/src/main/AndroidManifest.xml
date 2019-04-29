@@ -72,10 +72,24 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="你的appid"/>
+                <data android:scheme="wx51f14963092d74d5"/>
             </intent-filter>
 
         </activity>
+<!--        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true"
+            android:taskAffinity="net.sourceforge.simcpux"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="wx51f14963092d74d5"/>
+            </intent-filter>
+
+        </activity>-->
     </application>
 
 </manifest>

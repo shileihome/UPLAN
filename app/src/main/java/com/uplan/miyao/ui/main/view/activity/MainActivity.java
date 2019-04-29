@@ -245,12 +245,15 @@ public class MainActivity extends AppBaseActivity {
         if (selectIndex == SELECT_INDEX_FINANCIAL) {
             if (surveyFragment != null) {
                 transaction.hide(surveyFragment);
+                surveyFragment=null;
             }
             if (discoverFragment != null) {
                 transaction.hide(discoverFragment);
+                discoverFragment=null;
             }
             if (accountFragment != null) {
                 transaction.hide(accountFragment);
+                accountFragment=null;
             }
         }
 
@@ -258,12 +261,15 @@ public class MainActivity extends AppBaseActivity {
         if (selectIndex == SELECT_INDEX_SURVEY) {
             if (homeFragment != null) {
                 transaction.hide(homeFragment);
+                homeFragment=null;
             }
             if (discoverFragment != null) {
                 transaction.hide(discoverFragment);
+                discoverFragment=null;
             }
             if (accountFragment != null) {
                 transaction.hide(accountFragment);
+                accountFragment=null;
             }
         }
 
@@ -271,12 +277,15 @@ public class MainActivity extends AppBaseActivity {
         if (selectIndex == SELECT_INDEX_DISCOVER) {
             if (homeFragment != null) {
                 transaction.hide(homeFragment);
+                homeFragment=null;
             }
             if (surveyFragment != null) {
                 transaction.hide(surveyFragment);
+                surveyFragment=null;
             }
             if (accountFragment != null) {
                 transaction.hide(accountFragment);
+                accountFragment=null;
             }
 
         }
@@ -285,13 +294,16 @@ public class MainActivity extends AppBaseActivity {
         if (selectIndex == SELECT_INDEX_ACCOUNT) {
             if (homeFragment != null) {
                 transaction.hide(homeFragment);
+                homeFragment=null;
             }
 
             if (surveyFragment != null) {
                 transaction.hide(surveyFragment);
+                surveyFragment=null;
             }
             if (discoverFragment != null) {
                 transaction.hide(discoverFragment);
+                discoverFragment=null;
             }
         }
     }

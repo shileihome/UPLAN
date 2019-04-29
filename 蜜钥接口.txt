@@ -66,7 +66,10 @@ http://22ju570648.iok.la/APPClient/wechatPay/getprepayid?vipType=1默认值()
 
 
 
-
+7.我的账户：
+http://22ju570648.iok.la/appClient/getUserInfo/getInfo
+响应示例:
+{"code":0,"msg":"查询个人资产信息成功,总资产:porperty,昨日盈亏:previousProfit,累计盈亏:accumulatedProfit","data":[{"porperty":0.00,"previousProfit":0.00,"accumulatedProfit":0.00}]}
 
 
 

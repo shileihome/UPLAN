@@ -169,6 +169,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
                         "&prepayid=" + resp.data.get(0).prepay_id +
                         "&timestamp=" + time;
                 String stringSignTemp = stringA + "&key=JRiSzRi0Fyaoo9hOqoQcsR6YaWtX5wxA";
+                Log.e("sign",stringSignTemp);
                 String sign = "";
 
                 try {
@@ -190,7 +191,6 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
                 }
 
                 req.sign = sign;//签名
-                Log.e("sign",sign);
                 wxApi.sendReq(req);
             }
         }).start();

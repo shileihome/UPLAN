@@ -87,10 +87,16 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         QMUIStatusBarHelper.translucent(this);
     }
 
-    @OnClick(R.id.tv_dredge)
-    public void onClick() {
-        mPresenter.pay();
-        ;
+    @OnClick({R.id.iv_back, R.id.tv_dredge})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.tv_dredge:
+                mPresenter.pay();
+                break;
+        }
     }
 
     @Override
@@ -169,7 +175,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
                         "&prepayid=" + resp.data.get(0).prepay_id +
                         "&timestamp=" + time;
                 String stringSignTemp = stringA + "&key=JRiSzRi0Fyaoo9hOqoQcsR6YaWtX5wxA";
-                Log.e("sign",stringSignTemp);
+                Log.e("sign", stringSignTemp);
                 String sign = "";
 
                 try {
@@ -197,4 +203,5 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
 
 
     }
+
 }

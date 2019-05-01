@@ -84,6 +84,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         PreferencesUtils.putString(this,PreferencesUtils.USER_NAME,data.data.get(0).name);
         PreferencesUtils.putString(this,PreferencesUtils.USER_TEL,etPhotoNo.getText().toString());
         PreferencesUtils.putBoolean(this,PreferencesUtils.IS_ACTIVEA,data.data.get(0).is_active);
+        PreferencesUtils.putLong(this,PreferencesUtils.EXPIRE_TIME,data.data.get(0).level_end_time);
         LoginActivity.this.finish();
     }
 

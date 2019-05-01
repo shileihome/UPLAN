@@ -20,6 +20,8 @@ import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
 import com.uplan.miyao.util.PreferencesUtils;
 
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,7 +74,8 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
             llVip.setVisibility(View.VISIBLE);
             llCommon.setVisibility(View.GONE);
             tvUserTel.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
-            tvExpireTime.setText(PreferencesUtils.getString(this, PreferencesUtils.EXPIRE_TIME));
+            String date=fomatDate(PreferencesUtils.getLong(this, PreferencesUtils.EXPIRE_TIME));
+            tvExpireTime.setText("您的VIP会员将于"+date+"到期");
             tvDredge.setText("立即续费 19.9/月");
         } else {
             llVip.setVisibility(View.GONE);
@@ -204,4 +207,11 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
 
     }
 
+    private String fomatDate(long time){
+        Date date=new Date();
+        date.setTime(time);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String expire=sdf.format(date);
+        return expire;
+    }
 }

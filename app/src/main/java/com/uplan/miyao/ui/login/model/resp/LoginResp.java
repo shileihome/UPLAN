@@ -21,7 +21,7 @@ public class LoginResp extends ResponseData {
          * fp_level : 0
          * freeze : 0
          * id : 130
-         * is_active : false
+         * is_active : true
          * is_allow_login : true
          * is_fp : 0
          * is_fp_make : 0
@@ -29,17 +29,19 @@ public class LoginResp extends ResponseData {
          * is_password_error_locked : false
          * is_pay_password_error_locked : false
          * last_login_time : 1555816166000
-         * level_id : 1
+         * last_logout_time : 1556599067000
+         * level_end_time : 1559201249000
+         * level_id : 2
          * login_count : 0
          * mobile : 133
          * name : 东方不败
          * open_id : ceshi
-         * password : 1
+         * password : 4
          * password_continuous_errors : 0
          * pay_password_continuous_errors : 0
-         * score : 0
+         * score : 0.01
          * time : 1555816166000
-         * PLAY_SESSION : 70cfff7ba34fedbbfe5921a7f4f9642f3d39a274-___ID=14416570-ccb3-430d-8617-83a1b17d226c& ___TS=1556421860191
+         * PLAY_SESSION : ae210547d0dd7aa8e8eae8fa74db107b0cd878d6-___ID=f5fdeab2-64b4-4a1c-8c29-30fb6a46b4be&___TS=1557290979545
          */
 
         public int age;
@@ -56,6 +58,8 @@ public class LoginResp extends ResponseData {
         public boolean is_password_error_locked;
         public boolean is_pay_password_error_locked;
         public long last_login_time;
+        public long last_logout_time;
+        public long level_end_time;
         public int level_id;
         public int login_count;
         public String mobile;
@@ -64,7 +68,7 @@ public class LoginResp extends ResponseData {
         public String password;
         public int password_continuous_errors;
         public int pay_password_continuous_errors;
-        public int score;
+        public double score;
         public long time;
         public String PLAY_SESSION;
     }

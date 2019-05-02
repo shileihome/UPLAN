@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -77,19 +78,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.85"
+                android:layout_weight="0.8"
+                android:weightSum="8"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -103,20 +101,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="四大优势"
+                        android:layout_gravity="center_vertical"
                         android:textColor="#FF000000"
                         android:textSize="18sp" />
                 </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
                 <android.support.v7.widget.CardView
                     android:id="@+id/ll_vip"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="6"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="2dp"
                     app:cardPreventCornerOverlap="true"
@@ -124,41 +120,42 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:id="@+id/cv_safe"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="26dp"
                             android:layout_marginRight="13dp"
                             android:layout_weight="1"
-                            android:orientation="vertical">
+                            >
 
                             <ImageView
+                                android:id="@+id/iv_safe"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="20dp"
+                                android:layout_height="50dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/safe" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:layout_marginBottom="20dp"
                                 android:layout_marginTop="10dp"
+                                android:layout_below="@id/iv_safe"
+                                android:layout_centerHorizontal="true"
                                 android:text="安全"
                                 android:textColor="#FF565656"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
-                        </LinearLayout>
+                        </RelativeLayout>
 
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:id="@+id/cv_lucency"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -168,17 +165,18 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:id="@+id/iv_lucency"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="20dp"
+                                android:layout_height="50dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/lucency" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:layout_marginBottom="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_below="@id/iv_lucency"
                                 android:layout_marginTop="10dp"
                                 android:text="透明"
                                 android:textColor="#FF565656"
@@ -186,10 +184,10 @@
                                 android:textStyle="bold" />
 
 
-                        </LinearLayout>
+                        </RelativeLayout>
 
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:id="@+id/cv_valid"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -199,28 +197,28 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:id="@+id/iv_valid"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="20dp"
+                                android:layout_height="50dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/valid" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginBottom="20dp"
                                 android:layout_marginTop="10dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_below="@id/iv_valid"
                                 android:text="有效"
                                 android:textColor="#FF565656"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
 
-                        </LinearLayout>
+                        </RelativeLayout>
 
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:id="@+id/cv_simple"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -230,37 +228,35 @@
                             android:orientation="vertical">
 
                             <ImageView
+                                android:id="@+id/iv_simple"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="20dp"
+                                android:layout_height="50dp"
+                                android:layout_centerInParent="true"
                                 android:src="@drawable/simple" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginBottom="20dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_below="@id/iv_simple"
                                 android:layout_marginTop="10dp"
                                 android:text="简单"
                                 android:textColor="#FF565656"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
-                        </LinearLayout>
+                        </RelativeLayout>
 
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -275,6 +271,7 @@
                         android:layout_marginLeft="10dp"
                         android:text="关于我们"
                         android:textColor="#FF000000"
+                        android:layout_gravity="center_vertical"
                         android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -282,30 +279,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.05"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-                <TextView
+                android:layout_weight="1.15"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+
+                <ImageView
                     android:id="@+id/tv_team_info"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/about_us"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/about_us"
                     android:gravity="center" />
-                <TextView
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bottom_explain"
-                    android:gravity="center" />
+                    android:layout_weight="1"
+                    android:src="@drawable/bottom_explain"
+                    android:gravity="center"
+                    android:layout_marginTop="-10dp"/>
             </LinearLayout>
 
 

@@ -80,7 +80,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         } else {
             llVip.setVisibility(View.GONE);
             llCommon.setVisibility(View.VISIBLE);
-            tvUserName.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_NAME));
+            tvUserName.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
             tvDredge.setText("立即加入 19.9/月");
         }
     }

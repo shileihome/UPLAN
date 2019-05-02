@@ -66,7 +66,7 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
             if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                 llVip.setVisibility(View.VISIBLE);
                 llCommon.setVisibility(View.GONE);
-                tvVipLab.setText("尊敬的"+PreferencesUtils.getString(getActivity(),PreferencesUtils.USER_NAME)+"，您好");
+                tvVipLab.setText("尊敬的"+PreferencesUtils.getString(getActivity(),PreferencesUtils.USER_TEL)+"，您好");
             } else {
                 llCommon.setVisibility(View.VISIBLE);
                 llVip.setVisibility(View.GONE);
@@ -97,7 +97,7 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
                    VipActivity.start(getActivity());
                 }else{
                     CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-                    commonDialog.setSubMessage("请先登陆!").
+                    commonDialog.setSubMessage("请先登录!").
                             setLeftButton(getString(R.string.common_dialog_cancel), v -> {
 
                             }).

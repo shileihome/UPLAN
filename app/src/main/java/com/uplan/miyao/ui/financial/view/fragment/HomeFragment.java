@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,7 +45,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     @BindView(R.id.tv_login)
     TextView tvLogin;
     @BindView(R.id.tv_team_info)
-    TextView tvTeamInfo;
+    ImageView tvTeamInfo;
 
     boolean loginState;
     @BindView(R.id.banners_top)

@@ -104,7 +104,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 
     private void initView() {
         if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE)) {
-            tvLoginName.setText(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_NAME));
+            tvLoginName.setText(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_TEL));
             if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                 ivVipLogo.setVisibility(View.VISIBLE);
 
@@ -112,7 +112,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 ivVipLogo.setVisibility(View.GONE);
             }
         } else {
-            tvLoginName.setText("未登陆");
+            tvLoginName.setText("未登录");
             ivVipLogo.setVisibility(View.GONE);
         }
     }
@@ -222,7 +222,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     protected boolean isShowLoginDialog() {
         if (!isLogined()) {
             CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-            commonDialog.setSubMessage("请先登陆!").
+            commonDialog.setSubMessage("请先登录!").
                     setLeftButton(getString(R.string.common_dialog_cancel), v -> {
                     }).
                     setRightButton(getString(R.string.commit_change), v -> {

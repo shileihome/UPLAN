@@ -256,6 +256,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         PreferencesUtils.putString(getActivity(),PreferencesUtils.USER_NAME,"未登录");
         PreferencesUtils.putString(getActivity(),PreferencesUtils.USER_TEL,"");
         PreferencesUtils.putBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA,false);
+        PreferencesUtils.putLong(getActivity(),PreferencesUtils.EXPIRE_TIME,0);
         tvLoginName.setText("未登录");
         tvGeneralAssets.setText("---");
         tvUpDown.setText("---");

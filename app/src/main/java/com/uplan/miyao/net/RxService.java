@@ -2,18 +2,12 @@ package com.uplan.miyao.net;
 
 
 import com.uplan.miyao.BuildConfig;
-import com.uplan.miyao.app.UPLANApplication;
-import com.uplan.miyao.util.PreferencesUtils;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -24,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RxService {
-    private static final int TIMEOUT_READ = 20;
+    private static final int TIMEOUT_READ = 15;
     private static final int TIMEOUT_CONNECTION = 10;
     //    private static RequestInterceptor requestInterceptor = new RequestInterceptor();
     private static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -50,7 +44,7 @@ public class RxService {
         return new OkHttpClient.Builder()
                 .addNetworkInterceptor(cacheInterceptor)//缓存拦截器
 //                .addInterceptor(requestInterceptor)//请求拦截器
-                .addInterceptor(new Interceptor() {
+      /*          .addInterceptor(new Interceptor() {
                     @Override
 
                     public Response intercept(Chain chain) throws IOException {
@@ -60,7 +54,7 @@ public class RxService {
                                 .build();
                         return chain.proceed(request);
                     }
-                })
+                })*/
                 .addInterceptor(loggingInterceptor)//日志拦截器
                 .connectTimeout(TIMEOUT_CONNECTION, TimeUnit.SECONDS)//time out
                 .readTimeout(TIMEOUT_READ, TimeUnit.SECONDS)//读超时

@@ -69,6 +69,7 @@ public abstract class ErrorHandleSubscriber<T extends ResponseData> implements O
         try {
             dealError(t);
         }catch (Exception e){
+            onFailure(-1,"接口异常");
             e.printStackTrace();
         }
     }

@@ -26,7 +26,8 @@ public class SurveyActivity extends BaseWebViewActivity {
     public void initView() {
         homeUrl=getIntent().getStringExtra("url");
         setWebViewClient();
-        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION));
+        String cookie=PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION);
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +cookie );
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

@@ -18,6 +18,7 @@ import com.uplan.miyao.ui.vip.contract.DiscoverContract;
 import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
 import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.ToastUtils;
 
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
@@ -104,7 +105,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
 
     @Override
     public void dealFailure(int code, String message) {
-
+        ToastUtils.shortShow(message);
     }
 
     @Override

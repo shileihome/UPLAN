@@ -22,6 +22,7 @@ import com.uplan.miyao.ui.account.view.activity.RecordActivity;
 import com.uplan.miyao.ui.account.view.activity.RedeemActivity;
 import com.uplan.miyao.ui.account.view.activity.RemindActivity;
 import com.uplan.miyao.ui.account.view.activity.RiskEvaluationActivity;
+import com.uplan.miyao.ui.account.view.activity.SettingActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.main.view.activity.MainActivity;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -146,13 +147,24 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 if(isShowLoginDialog()){
                     return;
                 }
-                //todo 跳转设置H5页面
+                SettingActivity.start(getActivity());
                 break;
             case R.id.iv_login:
-                LoginActivity.start(getActivity());
+                if(!isLogined()){
+                    LoginActivity.start(getActivity());
+                }else{
+
+                    return;
+                }
+
                 break;
             case R.id.tv_login_name:
-                LoginActivity.start(getActivity());
+                if(!isLogined()){
+                    LoginActivity.start(getActivity());
+                }else{
+
+                    return;
+                }
                 break;
             case R.id.tv_honav2:
                 if(isShowLoginDialog()){

@@ -61,7 +61,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         setContentView(R.layout.activity_vip);
         ButterKnife.bind(this);
         setTranslucent();
-        initView();
+
     }
 
     @Override
@@ -69,6 +69,11 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         return new DiscoverPresenter(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initView();
+    }
 
     public void initView() {
         if (PreferencesUtils.getBoolean(this, PreferencesUtils.IS_ACTIVEA)) {

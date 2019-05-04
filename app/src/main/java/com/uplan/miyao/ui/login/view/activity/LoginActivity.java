@@ -12,6 +12,7 @@ import com.uplan.miyao.R;
 import com.uplan.miyao.base.mvp.BaseActivity;
 import com.uplan.miyao.ui.login.contract.LoginContract;
 import com.uplan.miyao.ui.login.model.resp.LoginResp;
+import com.uplan.miyao.ui.login.model.resp.VerifyTelResp;
 import com.uplan.miyao.ui.login.presenter.LoginPresenter;
 import com.uplan.miyao.ui.regist.view.activity.RegistActivity;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -53,6 +54,23 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+        etPhotoNo.setOnFocusChangeListener(new android.view.View.
+                OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                } else {
+                    if(TextUtils.isEmpty(etPhotoNo.getText().toString())){
+                        ToastUtils.shortShow("请输入手机号！");
+                        return;
+                    }
+
+                    mPresenter.verifyTel(etPhotoNo.getText().toString());
+                }
+            }
+        });
+
     }
 
 
@@ -86,6 +104,19 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         PreferencesUtils.putBoolean(this,PreferencesUtils.IS_ACTIVEA,data.data.get(0).is_active);
         PreferencesUtils.putLong(this,PreferencesUtils.EXPIRE_TIME,data.data.get(0).level_end_time);
         LoginActivity.this.finish();
+    }
+
+    @Override
+    public void dealVerifyTelSucess(VerifyTelResp data) {
+        ToastUtils.shortShow(data.msg);
+    }
+
+    @Override
+    public void dealVerifyTelFail(int code, String msg) {
+        ToastUtils.shortShow(msg);
+        if(code==1){
+            ForgetPwdActivity.start(this);
+        }
     }
 
     @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_login, R.id.tv_to_regist, R.id.iv_wx_login, R.id.tv_forget_pwd})

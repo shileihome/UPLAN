@@ -31,7 +31,9 @@ import com.uplan.miyao.ui.financial.view.activity.SimpleActivity;
 import com.uplan.miyao.ui.financial.view.activity.TeamInfoActivity;
 import com.uplan.miyao.ui.financial.view.activity.ValidActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
+import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.widget.CommonDialog;
 
 import java.util.ArrayList;
 
@@ -126,7 +128,17 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 TeamInfoActivity.start(getActivity());
                 break;
             case R.id.tv_home_buy:
-                FinancialActivity.start(getActivity());
+                if(PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA)){
+                    FinancialActivity.start(getActivity());
+                }else{
+                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+                    commonDialog.setSubMessage("请先成为会员!").
+                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                            }).
+                            setRightButton(getString(R.string.commit_change), v -> {
+                                VipActivity.start(getActivity());
+                            }).show();
+                }
                 break;
         }
     }

@@ -128,17 +128,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 TeamInfoActivity.start(getActivity());
                 break;
             case R.id.tv_home_buy:
-                if(PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA)){
-                    FinancialActivity.start(getActivity());
-                }else{
-                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-                    commonDialog.setSubMessage("请先成为会员!").
-                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                            }).
-                            setRightButton(getString(R.string.commit_change), v -> {
-                                VipActivity.start(getActivity());
-                            }).show();
-                }
+                FinancialActivity.start(getActivity());
+
                 break;
         }
     }

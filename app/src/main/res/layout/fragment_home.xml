@@ -123,14 +123,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
                         android:orientation="horizontal">
 
 
                         <RelativeLayout
                             android:id="@+id/cv_safe"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="26dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginRight="13dp"
                             android:layout_weight="1"
                             >
@@ -139,15 +141,15 @@
                                 android:id="@+id/iv_safe"
                                 android:layout_width="wrap_content"
                                 android:layout_height="50dp"
-                                android:layout_centerInParent="true"
+                                android:layout_centerHorizontal="true"
                                 android:src="@drawable/safe" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="10dp"
                                 android:layout_below="@id/iv_safe"
+                                android:layout_marginTop="10dp"
                                 android:layout_centerHorizontal="true"
                                 android:text="安全"
                                 android:textColor="#FF565656"
@@ -159,9 +161,10 @@
                         <RelativeLayout
                             android:id="@+id/cv_lucency"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="13dp"
                             android:layout_marginRight="13dp"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -169,13 +172,12 @@
                                 android:id="@+id/iv_lucency"
                                 android:layout_width="wrap_content"
                                 android:layout_height="50dp"
-                                android:layout_centerInParent="true"
+                                android:layout_centerHorizontal="true"
                                 android:src="@drawable/lucency" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_centerHorizontal="true"
                                 android:layout_below="@id/iv_lucency"
                                 android:layout_marginTop="10dp"
@@ -191,9 +193,10 @@
                         <RelativeLayout
                             android:id="@+id/cv_valid"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="13dp"
                             android:layout_marginRight="13dp"
+                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -201,7 +204,7 @@
                                 android:id="@+id/iv_valid"
                                 android:layout_width="wrap_content"
                                 android:layout_height="50dp"
-                                android:layout_centerInParent="true"
+                                android:layout_centerHorizontal="true"
                                 android:src="@drawable/valid" />
 
                             <TextView
@@ -222,9 +225,9 @@
                         <RelativeLayout
                             android:id="@+id/cv_simple"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginLeft="13dp"
-                            android:layout_marginRight="16dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -232,7 +235,7 @@
                                 android:id="@+id/iv_simple"
                                 android:layout_width="wrap_content"
                                 android:layout_height="50dp"
-                                android:layout_centerInParent="true"
+                                android:layout_centerHorizontal="true"
                                 android:src="@drawable/simple" />
 
                             <TextView
@@ -294,7 +297,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="12dp"
-                    android:src="@drawable/about_us_2"
+                    android:src="@drawable/about_us"
                     android:scaleType="fitXY"
                     android:gravity="center" />
                 <ImageView

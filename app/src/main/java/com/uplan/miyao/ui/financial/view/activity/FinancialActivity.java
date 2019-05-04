@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
+import com.uplan.miyao.ui.vip.view.activity.VipActivity;
+import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.widget.CommonDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,7 +57,18 @@ public class FinancialActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.tv_start_financial:
-                FinancialWebActivity.start(this);
+                if(PreferencesUtils.getBoolean(this,PreferencesUtils.IS_ACTIVEA)){
+                    FinancialWebActivity.start(this);
+                }else{
+                    CommonDialog commonDialog = new CommonDialog(this).builder();
+                    commonDialog.setSubMessage("请先成为会员!").
+                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                            }).
+                            setRightButton(getString(R.string.commit_change), v -> {
+                                VipActivity.start(this);
+                            }).show();
+                }
+
                 break;
         }
     }

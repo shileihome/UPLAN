@@ -49,14 +49,17 @@ public class ForgetPwdPresenter extends BasePresenter<ForgetPwdContract.View, Fo
     }
 
     public void registVerificationCode(String tel){
+        mView.loading();
         mModel.registVerificationCode(tel).compose(RxUtils.applySchedulers(mView)).subscribe(new ErrorHandleSubscriber<ResponseData>() {
             @Override
             public void onSuccess(ResponseData responseData) {
+                mView.unLoad();
                 mView.delRegistVerificationCodeSucess(responseData);
             }
 
             @Override
             public void onFailure(int code, String msg) {
+                mView.unLoad();
                 mView.dealFailure(code,msg);
             }
         });

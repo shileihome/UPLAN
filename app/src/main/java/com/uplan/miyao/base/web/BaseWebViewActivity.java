@@ -65,6 +65,12 @@ public abstract class BaseWebViewActivity extends Activity {
             settings.setJavaScriptEnabled(true);
             settings.setBuiltInZoomControls(false);
             settings.setDefaultTextEncodingName("utf-8");
+            //自适应屏幕
+       /*     settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+            settings.setUseWideViewPort(true);
+            settings.setLoadWithOverviewMode(true);
+*/
+            settings.setDefaultZoom(WebSettings.ZoomDensity.MEDIUM) ;
             settings.setUserAgentString(WebViewUtils.generateCustomUserAgent(uplanWebView));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 settings.setMixedContentMode(MIXED_CONTENT_ALWAYS_ALLOW);

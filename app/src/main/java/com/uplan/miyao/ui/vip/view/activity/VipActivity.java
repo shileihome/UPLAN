@@ -18,8 +18,11 @@ import com.uplan.miyao.ui.vip.contract.DiscoverContract;
 import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
 import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.ToastUtils;
 
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,7 +61,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         setContentView(R.layout.activity_vip);
         ButterKnife.bind(this);
         setTranslucent();
-        initView();
+
     }
 
     @Override
@@ -66,18 +69,24 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         return new DiscoverPresenter(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initView();
+    }
 
     public void initView() {
         if (PreferencesUtils.getBoolean(this, PreferencesUtils.IS_ACTIVEA)) {
             llVip.setVisibility(View.VISIBLE);
             llCommon.setVisibility(View.GONE);
             tvUserTel.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
-            tvExpireTime.setText(PreferencesUtils.getString(this, PreferencesUtils.EXPIRE_TIME));
+            String date=fomatDate(PreferencesUtils.getLong(this, PreferencesUtils.EXPIRE_TIME));
+            tvExpireTime.setText("您的VIP会员将于"+date+"到期");
             tvDredge.setText("立即续费 19.9/月");
         } else {
             llVip.setVisibility(View.GONE);
             llCommon.setVisibility(View.VISIBLE);
-            tvUserName.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_NAME));
+            tvUserName.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
             tvDredge.setText("立即加入 19.9/月");
         }
     }
@@ -87,15 +96,21 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         QMUIStatusBarHelper.translucent(this);
     }
 
-    @OnClick(R.id.tv_dredge)
-    public void onClick() {
-        mPresenter.pay();
-        ;
+    @OnClick({R.id.iv_back, R.id.tv_dredge})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.tv_dredge:
+                mPresenter.pay();
+                break;
+        }
     }
 
     @Override
     public void dealFailure(int code, String message) {
-
+        ToastUtils.shortShow(message);
     }
 
     @Override
@@ -169,7 +184,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
                         "&prepayid=" + resp.data.get(0).prepay_id +
                         "&timestamp=" + time;
                 String stringSignTemp = stringA + "&key=JRiSzRi0Fyaoo9hOqoQcsR6YaWtX5wxA";
-                Log.e("sign",stringSignTemp);
+                Log.e("sign", stringSignTemp);
                 String sign = "";
 
                 try {
@@ -196,5 +211,13 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         }).start();
 
 
+    }
+
+    private String fomatDate(long time){
+        Date date=new Date();
+        date.setTime(time);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String expire=sdf.format(date);
+        return expire;
     }
 }

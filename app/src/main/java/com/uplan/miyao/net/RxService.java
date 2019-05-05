@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RxService {
-    private static final int TIMEOUT_READ = 20;
+    private static final int TIMEOUT_READ = 15;
     private static final int TIMEOUT_CONNECTION = 10;
     //    private static RequestInterceptor requestInterceptor = new RequestInterceptor();
     private static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -56,7 +56,7 @@ public class RxService {
                     public Response intercept(Chain chain) throws IOException {
                         Request request = chain.request()
                                 .newBuilder()
-                                .addHeader("cookie", "PLAY_SESSION="+PreferencesUtils.getString(UPLANApplication.getContext(), PreferencesUtils.PLAY_SESSION))
+                                .addHeader("cookie", "PLAY_SESSION="+ PreferencesUtils.getString(UPLANApplication.getContext(), PreferencesUtils.PLAY_SESSION))
                                 .build();
                         return chain.proceed(request);
                     }

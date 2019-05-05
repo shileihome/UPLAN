@@ -22,6 +22,7 @@ import com.uplan.miyao.ui.account.view.activity.RecordActivity;
 import com.uplan.miyao.ui.account.view.activity.RedeemActivity;
 import com.uplan.miyao.ui.account.view.activity.RemindActivity;
 import com.uplan.miyao.ui.account.view.activity.RiskEvaluationActivity;
+import com.uplan.miyao.ui.account.view.activity.SettingActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.main.view.activity.MainActivity;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -104,7 +105,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 
     private void initView() {
         if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE)) {
-            tvLoginName.setText(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_NAME));
+            tvLoginName.setText(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_TEL));
             if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                 ivVipLogo.setVisibility(View.VISIBLE);
 
@@ -112,7 +113,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 ivVipLogo.setVisibility(View.GONE);
             }
         } else {
-            tvLoginName.setText("未登陆");
+            tvLoginName.setText("未登录");
             ivVipLogo.setVisibility(View.GONE);
         }
     }
@@ -146,13 +147,24 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 if(isShowLoginDialog()){
                     return;
                 }
-                //todo 跳转设置H5页面
+                SettingActivity.start(getActivity());
                 break;
             case R.id.iv_login:
-                LoginActivity.start(getActivity());
+                if(!isLogined()){
+                    LoginActivity.start(getActivity());
+                }else{
+
+                    return;
+                }
+
                 break;
             case R.id.tv_login_name:
-                LoginActivity.start(getActivity());
+                if(!isLogined()){
+                    LoginActivity.start(getActivity());
+                }else{
+
+                    return;
+                }
                 break;
             case R.id.tv_honav2:
                 if(isShowLoginDialog()){
@@ -222,7 +234,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     protected boolean isShowLoginDialog() {
         if (!isLogined()) {
             CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-            commonDialog.setSubMessage("请先登陆!").
+            commonDialog.setSubMessage("请先登录!").
                     setLeftButton(getString(R.string.common_dialog_cancel), v -> {
                     }).
                     setRightButton(getString(R.string.commit_change), v -> {
@@ -256,6 +268,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         PreferencesUtils.putString(getActivity(),PreferencesUtils.USER_NAME,"未登录");
         PreferencesUtils.putString(getActivity(),PreferencesUtils.USER_TEL,"");
         PreferencesUtils.putBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA,false);
+        PreferencesUtils.putLong(getActivity(),PreferencesUtils.EXPIRE_TIME,0);
         tvLoginName.setText("未登录");
         tvGeneralAssets.setText("---");
         tvUpDown.setText("---");

@@ -158,7 +158,7 @@ public class MainActivity extends AppBaseActivity {
 
                 if(!isLogined()){
                     CommonDialog commonDialog = new CommonDialog(this).builder();
-                    commonDialog.setSubMessage("请先登陆!").
+                    commonDialog.setSubMessage("请先登录!").
                             setLeftButton(getString(R.string.common_dialog_cancel), v -> {
 
                             }).

@@ -146,9 +146,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:drawableLeft="@drawable/discover1"
+                            android:drawableLeft="@drawable/discover2"
                             android:drawablePadding="@dimen/dimen_6"
-                            android:text="组合投资"
+                            android:text="蜜钥学院"
                             android:textColor="@color/white"
                             android:textSize="10sp" />
 
@@ -156,9 +156,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:drawableLeft="@drawable/discover1"
+                            android:drawableLeft="@drawable/discover3"
                             android:drawablePadding="@dimen/dimen_6"
-                            android:text="组合投资"
+                            android:text="实时跟踪"
                             android:textColor="@color/white"
                             android:textSize="10sp" />
 
@@ -166,9 +166,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:drawableLeft="@drawable/discover1"
+                            android:drawableLeft="@drawable/discover4"
                             android:drawablePadding="@dimen/dimen_6"
-                            android:text="组合投资"
+                            android:text="一键调仓"
                             android:textColor="@color/white"
                             android:textSize="10sp" />
                     </LinearLayout>
@@ -192,7 +192,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/discover_vip_background"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                   >
 
                     <TextView
                         android:layout_width="0dp"

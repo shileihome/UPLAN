@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +31,9 @@ import com.uplan.miyao.ui.financial.view.activity.SimpleActivity;
 import com.uplan.miyao.ui.financial.view.activity.TeamInfoActivity;
 import com.uplan.miyao.ui.financial.view.activity.ValidActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
+import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.widget.CommonDialog;
 
 import java.util.ArrayList;
 
@@ -44,7 +47,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     @BindView(R.id.tv_login)
     TextView tvLogin;
     @BindView(R.id.tv_team_info)
-    TextView tvTeamInfo;
+    ImageView tvTeamInfo;
 
     boolean loginState;
     @BindView(R.id.banners_top)
@@ -126,6 +129,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 break;
             case R.id.tv_home_buy:
                 FinancialActivity.start(getActivity());
+
                 break;
         }
     }

@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
+import com.uplan.miyao.ui.vip.view.activity.VipActivity;
+import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.widget.CommonDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,8 +28,6 @@ public class FinancialActivity extends AppCompatActivity {
 
     @BindView(R.id.iv_back)
     ImageView ivBack;
-    @BindView(R.id.tv_account)
-    TextView tvAccount;
     @BindView(R.id.tv_start_financial)
     TextView tvStartFinancial;
 
@@ -49,16 +50,25 @@ public class FinancialActivity extends AppCompatActivity {
         //   QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
 
-    @OnClick({R.id.iv_back, R.id.tv_account, R.id.tv_start_financial})
+    @OnClick({R.id.iv_back,  R.id.tv_start_financial})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.tv_account:
-                break;
             case R.id.tv_start_financial:
-                FinancialWebActivity.start(this);
+                if(PreferencesUtils.getBoolean(this,PreferencesUtils.IS_ACTIVEA)){
+                    FinancialWebActivity.start(this);
+                }else{
+                    CommonDialog commonDialog = new CommonDialog(this).builder();
+                    commonDialog.setSubMessage("请先成为会员!").
+                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                            }).
+                            setRightButton(getString(R.string.commit_change), v -> {
+                                VipActivity.start(this);
+                            }).show();
+                }
+
                 break;
         }
     }

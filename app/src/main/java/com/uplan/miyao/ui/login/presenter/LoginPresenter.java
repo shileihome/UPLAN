@@ -5,6 +5,7 @@ import com.uplan.miyao.net.ErrorHandleSubscriber;
 import com.uplan.miyao.ui.login.contract.LoginContract;
 import com.uplan.miyao.ui.login.model.LoginModel;
 import com.uplan.miyao.ui.login.model.resp.LoginResp;
+import com.uplan.miyao.ui.login.model.resp.VerifyTelResp;
 import com.uplan.miyao.util.RxUtils;
 
 
@@ -36,6 +37,23 @@ public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContr
                 mView.unLoad();
                 mView.dealFailure(code,msg);
 
+            }
+        });
+    }
+
+    public void verifyTel(String tel){
+        mView.loading();
+        mModel.verifyTel(tel).compose(RxUtils.applySchedulers(mView)).subscribe(new ErrorHandleSubscriber<VerifyTelResp>(){
+            @Override
+            public void onSuccess(VerifyTelResp verifyTelResp) {
+                mView.unLoad();
+                mView.dealVerifyTelSucess(verifyTelResp);
+            }
+
+            @Override
+            public void onFailure(int code, String msg) {
+                mView.unLoad();
+                mView.dealVerifyTelFail(code,msg);
             }
         });
     }

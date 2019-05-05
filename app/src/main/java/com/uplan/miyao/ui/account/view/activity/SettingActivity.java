@@ -1,4 +1,4 @@
-package com.uplan.miyao.ui.survey.view;
+package com.uplan.miyao.ui.account.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,24 +10,22 @@ import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
 /**
- * Author: Created by shilei on 2019/4/21-22:07
+ * Author: Created by shilei on 2019/5/3-21:03
  * Description:
  */
-public class SurveyActivity extends BaseWebViewActivity {
+public class SettingActivity extends BaseWebViewActivity {
+    private String homeUrl="http://22ju570648.iok.la/wechat/account/userSetr'x";
 
-    private String homeUrl;
-    public static void start(Context context,String url) {
-        Intent starter = new Intent(context, SurveyActivity.class);
-        starter.putExtra("url",url);
+    public static void start(Context context) {
+        Intent starter = new Intent(context, SettingActivity.class);
         context.startActivity(starter);
     }
 
+
     @Override
     public void initView() {
-        homeUrl=getIntent().getStringExtra("url");
         setWebViewClient();
-        String cookie=PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION);
-        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +cookie );
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION));
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

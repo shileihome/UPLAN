@@ -64,7 +64,8 @@ android:src="@drawable/default_head"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:singleLine="true"
+                android:textSize="14sp"
                 android:text="未登录"
          />
         </LinearLayout>

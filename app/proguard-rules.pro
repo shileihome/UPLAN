@@ -170,14 +170,15 @@
 -dontwarn android.app.Notification
 
 # 实例类
--keep class com.uplan.miyao.**.resp.** { *; }
--keep class com.uplan.miyao.net.ResponseData { *; }
+#-keep class com.uplan.miyao.**.resp.** { *; }
+#-keep class com.uplan.miyao.net.ResponseData { *; }
 
--keepclassmembers enum * {
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
-}
+#-keepclassmembers enum * {
+#    public static **[] values();
+#    public static ** valueOf(java.lang.String);
+#}
 
+-keep class com.uplan.miyao.** { *; }
 
 
 ## Event Bus

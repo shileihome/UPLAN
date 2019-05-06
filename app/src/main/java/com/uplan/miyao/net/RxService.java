@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -49,7 +50,7 @@ public class RxService {
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         }
         return new OkHttpClient.Builder()
-                .addNetworkInterceptor(cacheInterceptor)//缓存拦截器
+//                .addNetworkInterceptor(cacheInterceptor)//缓存拦截器
 //                .addInterceptor(requestInterceptor)//请求拦截器
                 .addInterceptor(new Interceptor() {
                     @Override
@@ -58,7 +59,12 @@ public class RxService {
                         Log.e("最终",""+PreferencesUtils.getString(UPLANApplication.getContext(), PreferencesUtils.PLAY_SESSION));
                         Request request = chain.request()
                                 .newBuilder()
-                                .addHeader("cookie", "PLAY_SESSION="+ PreferencesUtils.getString(UPLANApplication.getContext(), PreferencesUtils.PLAY_SESSION))
+                                .cacheControl(new CacheControl.Builder().noCache().build())
+                                .addHeader("cookie", "PLAY_SESSION="+"\""+ PreferencesUtils.getString(UPLANApplication.getContext(), PreferencesUtils.PLAY_SESSION)
+                                                +"\""
+                                   //     +";HttpOnly=false;"
+                                    //    +";path=/;domain=www.51mix.cn;"
+                                )
                                 .build();
                         return chain.proceed(request);
                     }
@@ -103,6 +109,5 @@ public class RxService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
-
 
 }

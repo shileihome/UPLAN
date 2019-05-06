@@ -40,7 +40,7 @@ android {
          * 设置so支持的库
          */
         ndk {
-            abiFilters 'armeabi-v7a'
+            abiFilters 'armeabi-v7a','x86'
         }
     }
 

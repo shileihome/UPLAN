@@ -15,7 +15,7 @@ import com.uplan.miyao.util.WebViewUtils;
  */
 public class RemindActivity extends BaseWebViewActivity {
 
-    private String homeUrl= "http://22ju570648.iok.la/wechat/account/Message/getMyMessage";
+    private String homeUrl= "http://www.51mix.cn/wechat/account/Message/getMyMessage";
     public static void start(Context context) {
         Intent starter = new Intent(context, RemindActivity.class);
         context.startActivity(starter);

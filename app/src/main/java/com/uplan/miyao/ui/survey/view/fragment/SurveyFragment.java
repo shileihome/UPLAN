@@ -12,7 +12,7 @@ import com.uplan.miyao.util.WebViewUtils;
 
 public class SurveyFragment extends BaseWebViewFragment {
 
-    private String homeUrl = "http://22ju570648.iok.la/wechat/account/planInstructions?isFocus=1";
+    private String homeUrl = "http://www.51mix.cn/wechat/account/planInstructions?isFocus=1";
 
     @Override
     public void initView() {

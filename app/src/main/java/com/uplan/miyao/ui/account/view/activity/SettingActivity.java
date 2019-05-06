@@ -14,7 +14,7 @@ import com.uplan.miyao.util.WebViewUtils;
  * Description:
  */
 public class SettingActivity extends BaseWebViewActivity {
-    private String homeUrl="http://22ju570648.iok.la/wechat/account/userSetr'x";
+    private String homeUrl="http://www.51mix.cn/wechat/account/userSetr'x";
 
     public static void start(Context context) {
         Intent starter = new Intent(context, SettingActivity.class);

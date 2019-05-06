@@ -1,6 +1,8 @@
 package com.uplan.miyao.net;
 
 
+import android.util.Log;
+
 import com.uplan.miyao.BuildConfig;
 import com.uplan.miyao.app.UPLANApplication;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -32,7 +34,6 @@ public class RxService {
 
     /** retrofit service缓存 */
     private static Map<String, Object> retrofitServices = new HashMap<>();
-    private static Retrofit sRetrofit;
 
     /**
      * 获取OkHttp
@@ -54,6 +55,7 @@ public class RxService {
                     @Override
 
                     public Response intercept(Chain chain) throws IOException {
+                        Log.e("最终",""+PreferencesUtils.getString(UPLANApplication.getContext(), PreferencesUtils.PLAY_SESSION));
                         Request request = chain.request()
                                 .newBuilder()
                                 .addHeader("cookie", "PLAY_SESSION="+ PreferencesUtils.getString(UPLANApplication.getContext(), PreferencesUtils.PLAY_SESSION))
@@ -93,11 +95,8 @@ public class RxService {
      * @return
      */
     public static Retrofit getRetrofit(String url) {
-
-        if (sRetrofit != null && Api.BASE_URL.equals(url)) {
-            return sRetrofit;
-        }
-        return sRetrofit = new Retrofit.Builder()
+        Retrofit retrofit;
+        return retrofit = new Retrofit.Builder()
                 .baseUrl(url)
                 .client(getOkHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//使用rxjava

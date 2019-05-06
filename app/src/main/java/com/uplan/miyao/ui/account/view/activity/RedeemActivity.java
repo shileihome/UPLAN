@@ -15,7 +15,7 @@ import com.uplan.miyao.util.WebViewUtils;
  */
 public class RedeemActivity extends BaseWebViewActivity {
 
-private String homeUrl="http://22ju570648.iok.la/wechat/yingmi/FundTransaction/getMyProperty?showTit=1";
+private String homeUrl="http://www.51mix.cn/wechat/yingmi/FundTransaction/getMyProperty?showTit=1";
     public static void start(Context context) {
         Intent starter = new Intent(context, RedeemActivity.class);
         context.startActivity(starter);

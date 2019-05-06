@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,6 +20,7 @@ import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.WebViewUtils;
 import com.uplan.miyao.widget.UplanWebView;
 
+import java.io.File;
 import java.util.HashMap;
 
 import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
@@ -28,11 +31,13 @@ import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
  */
 public abstract class BaseWebViewFragment extends Fragment {
     public UplanWebView uplanWebView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(getContentLayout(),null);
-        uplanWebView= (UplanWebView) view.findViewById(R.id.uplan_web_view);
+        View view = inflater.inflate(getContentLayout(), null);
+        uplanWebView = (UplanWebView) view.findViewById(R.id.uplan_web_view);
+        clearCookies(getActivity());
         initView();
         return view;
     }
@@ -42,7 +47,7 @@ public abstract class BaseWebViewFragment extends Fragment {
     }
 
     protected void onReload() {
-        String url=uplanWebView.getUrl();
+        String url = uplanWebView.getUrl();
         uplanWebView.loadUrl(url);
     }
 
@@ -59,6 +64,12 @@ public abstract class BaseWebViewFragment extends Fragment {
             settings.setJavaScriptEnabled(true);
             settings.setBuiltInZoomControls(false);
             settings.setDefaultTextEncodingName("utf-8");
+
+//优先使用缓存：
+//            settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+
+//不使用缓存：
+            settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
             settings.setUserAgentString(WebViewUtils.generateCustomUserAgent(uplanWebView));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 settings.setMixedContentMode(MIXED_CONTENT_ALWAYS_ALLOW);
@@ -68,7 +79,7 @@ public abstract class BaseWebViewFragment extends Fragment {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            String title=view.getTitle();
+            String title = view.getTitle();
 //            if(!TextUtils.isEmpty(title)&&!title.contains(".")){
 //                mTitle.setText(title);
 //            }
@@ -104,19 +115,25 @@ public abstract class BaseWebViewFragment extends Fragment {
      * @param map header为LoadUrl参数
      */
 
-    protected HashMap getHeader(HashMap map){
+    protected HashMap getHeader(HashMap map) {
         return map;
     }
 
 
     @Override
-     public void onResume() {
-         super.onResume();
-         if(uplanWebView != null){
-             uplanWebView.onResume();
-             uplanWebView.resumeTimers();
-         }
-     }
+    public void onResume() {
+        super.onResume();
+        if (uplanWebView != null) {
+            uplanWebView.onResume();
+            uplanWebView.resumeTimers();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        clearCookies(getActivity());
+    }
 
     @Override
     public void onPause() {
@@ -128,7 +145,7 @@ public abstract class BaseWebViewFragment extends Fragment {
     }
 
     @Override
-    public  void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         if (uplanWebView != null) {
             uplanWebView.loadUrl("about:blank");
@@ -139,4 +156,34 @@ public abstract class BaseWebViewFragment extends Fragment {
             uplanWebView = null;
         }
     }
+
+    public void clearCookies(Context context) {
+        @SuppressWarnings("unused")
+        CookieSyncManager cookieSyncMngr = CookieSyncManager.createInstance(context);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.removeAllCookie();
+    }
+
+    public int clearCacheFolder(File dir, long numDays) {
+        int deletedFiles = 0;
+        if (dir != null && dir.isDirectory()) {
+            try {
+                for (File child : dir.listFiles()) {
+                    if (child.isDirectory()) {
+                        deletedFiles += clearCacheFolder(child, numDays);
+                    }
+                    if (child.lastModified() < numDays) {
+                        if (child.delete()) {
+                            deletedFiles++;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return deletedFiles;
+    }
+
+
 }

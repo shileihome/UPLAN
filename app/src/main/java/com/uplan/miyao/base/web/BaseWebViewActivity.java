@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,6 +18,7 @@ import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.WebViewUtils;
 import com.uplan.miyao.widget.UplanWebView;
 
+import java.io.File;
 import java.util.HashMap;
 
 import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
@@ -31,6 +34,7 @@ public abstract class BaseWebViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(getContentLayout());
         uplanWebView= (UplanWebView) findViewById(R.id.uplan_web_view);
+        clearCookies(this);
         initView();
         setTranslucent();
     }
@@ -65,6 +69,12 @@ public abstract class BaseWebViewActivity extends Activity {
             settings.setJavaScriptEnabled(true);
             settings.setBuiltInZoomControls(false);
             settings.setDefaultTextEncodingName("utf-8");
+
+//优先使用缓存：
+//            settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+
+//不使用缓存：
+            settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
             //自适应屏幕
        /*     settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
             settings.setUseWideViewPort(true);
@@ -125,6 +135,7 @@ public abstract class BaseWebViewActivity extends Activity {
     public void onResume() {
         super.onResume();
         if(uplanWebView != null){
+            clearCookies(this);
             uplanWebView.onResume();
             uplanWebView.resumeTimers();
         }
@@ -151,4 +162,34 @@ public abstract class BaseWebViewActivity extends Activity {
             uplanWebView = null;
         }
     }
+
+
+    public void clearCookies(Context context) {
+        @SuppressWarnings("unused")
+        CookieSyncManager cookieSyncMngr = CookieSyncManager.createInstance(context);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.removeAllCookie();
+    }
+
+    public int clearCacheFolder(File dir, long numDays) {
+        int deletedFiles = 0;
+        if (dir != null && dir.isDirectory()) {
+            try {
+                for (File child : dir.listFiles()) {
+                    if (child.isDirectory()) {
+                        deletedFiles += clearCacheFolder(child, numDays);
+                    }
+                    if (child.lastModified() < numDays) {
+                        if (child.delete()) {
+                            deletedFiles++;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return deletedFiles;
+    }
+
 }

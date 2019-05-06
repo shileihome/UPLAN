@@ -25,7 +25,7 @@ private String homeUrl="http://www.51mix.cn/wechat/account/HomePage/plan";
     @Override
     public void initView() {
         setWebViewClient();
-        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION));
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + "\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
         updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }

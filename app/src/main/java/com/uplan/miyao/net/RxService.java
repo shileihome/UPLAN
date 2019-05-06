@@ -51,7 +51,8 @@ public class RxService {
         }
         return new OkHttpClient.Builder()
 //                .addNetworkInterceptor(cacheInterceptor)//缓存拦截器
-//                .addInterceptor(requestInterceptor)//请求拦截器
+//                .addInterce
+// ptor(requestInterceptor)//请求拦截器
                 .addInterceptor(new Interceptor() {
                     @Override
 

@@ -18,7 +18,7 @@ public class SurveyFragment extends BaseWebViewFragment {
     public void initView() {
 
         setWebViewClient();
-        String cookie = "PLAY_SESSION=" + PreferencesUtils.getString(getActivity(), PreferencesUtils.PLAY_SESSION);
+        String cookie = "PLAY_SESSION=" + "\""+PreferencesUtils.getString(getActivity(), PreferencesUtils.PLAY_SESSION)+"\"";
         WebViewUtils.getCookie(getActivity(), uplanWebView, homeUrl, cookie);
         updateWebData();
         uplanWebView.loadUrl(homeUrl);

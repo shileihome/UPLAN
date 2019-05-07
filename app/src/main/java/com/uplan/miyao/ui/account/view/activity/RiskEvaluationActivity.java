@@ -14,8 +14,7 @@ import com.uplan.miyao.util.WebViewUtils;
  * Description:
  */
 public class RiskEvaluationActivity extends BaseWebViewActivity {
-
-private String homeUrl="http://key.51mix.cn/wechat/family/InfoInputAction/publicize";
+private String homeUrl="http://www.51mix.cn/wechat/plan/surveyList";
     public static void start(Context context) {
         Intent starter = new Intent(context, RiskEvaluationActivity.class);
         context.startActivity(starter);

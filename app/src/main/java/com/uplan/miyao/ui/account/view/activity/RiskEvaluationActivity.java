@@ -23,11 +23,15 @@ private String homeUrl="http://www.51mix.cn/wechat/plan/surveyList";
     @Override
     public void initView() {
         setWebViewClient();
-        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION="+"\"" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
         updateWebData();
-        uplanWebView.loadUrl(homeUrl);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION="+"\"" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
+        uplanWebView.loadUrl(homeUrl);
+    }
 
     private void setWebViewClient() {
         uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {

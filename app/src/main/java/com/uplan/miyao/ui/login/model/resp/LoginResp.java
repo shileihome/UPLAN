@@ -15,61 +15,45 @@ public class LoginResp extends ResponseData {
 
     public static class DataBean {
         /**
+         * account_id : 8ha6l8jbxe8w
          * age : 0
-         * balance : 0
+         * balance : 2002.56
          * client : 0
          * fp_level : 0
          * freeze : 0
-         * id : 130
+         * id : 986
          * is_active : true
+         * is_adequacy : 1
          * is_allow_login : true
          * is_fp : 0
          * is_fp_make : 0
          * is_mobile_verified : false
          * is_password_error_locked : false
          * is_pay_password_error_locked : false
-         * last_login_time : 1555816166000
-         * last_logout_time : 1556599067000
-         * level_end_time : 1559201249000
+         * last_login_ip : 111.196.145.229
+         * last_login_time : 1557136484000
+         * level_end_time : 1557315413000
          * level_id : 2
-         * login_count : 0
-         * mobile : 133
-         * name : 东方不败
-         * open_id : ceshi
-         * password : 4
+         * login_count : 2
+         * mobile : 18612790610
+         * name : 大路
+         * open_id : oyZ1m0dhPmQUYtGrCd7DLVJG-hl4
+         * password : 123456
          * password_continuous_errors : 0
+         * pay_password : 8eb9b637c0be935f8d4dac7103cc4a70
          * pay_password_continuous_errors : 0
-         * score : 0.01
-         * time : 1555816166000
-         * PLAY_SESSION : ae210547d0dd7aa8e8eae8fa74db107b0cd878d6-___ID=f5fdeab2-64b4-4a1c-8c29-30fb6a46b4be&___TS=1557290979545
+         * photo : http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIoMZ0nMlGrcxCS2gx0sL6lpuZQRI0Nv0CZq1gnvMM39XDk8oAiaibpjqShN1mdU0Z4fP3tL2jTh7Lw/132
+         * score : 20.9
+         * sex : 0
+         * time : 1554223521000
+         * PLAY_SESSION : 9bde5359b7e3c8d23d742234a2acc16538668a13-___ID=0ff2f1c7-dca0-4894-8cd6-57f2d780dc33
          */
 
-        public int age;
-        public int balance;
-        public int client;
-        public int fp_level;
-        public int freeze;
-        public int id;
         public boolean is_active;
-        public boolean is_allow_login;
-        public int is_fp;
-        public int is_fp_make;
-        public boolean is_mobile_verified;
-        public boolean is_password_error_locked;
-        public boolean is_pay_password_error_locked;
-        public long last_login_time;
-        public long last_logout_time;
         public long level_end_time;
-        public int level_id;
-        public int login_count;
         public String mobile;
         public String name;
-        public String open_id;
         public String password;
-        public int password_continuous_errors;
-        public int pay_password_continuous_errors;
-        public double score;
-        public long time;
         public String PLAY_SESSION;
     }
 }

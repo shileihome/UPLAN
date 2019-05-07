@@ -20,7 +20,6 @@ public class SurveyFragment extends BaseWebViewFragment {
         setWebViewClient();
         String cookie = "PLAY_SESSION=" + "\""+PreferencesUtils.getString(getActivity(), PreferencesUtils.PLAY_SESSION)+"\"";
         WebViewUtils.getCookie(getActivity(), uplanWebView, homeUrl, cookie);
-        updateWebData();
         uplanWebView.loadUrl(homeUrl);
     }
 
@@ -53,6 +52,8 @@ public class SurveyFragment extends BaseWebViewFragment {
     public void updateWebData() {
 
         if(isLogined()){
+            String cookie = "PLAY_SESSION=" + "\""+PreferencesUtils.getString(getActivity(), PreferencesUtils.PLAY_SESSION)+"\"";
+            WebViewUtils.getCookie(getActivity(), uplanWebView, homeUrl, cookie);
            uplanWebView.loadUrl(homeUrl);
         }else{
             LoginActivity.start(getActivity());

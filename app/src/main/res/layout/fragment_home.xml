@@ -42,11 +42,12 @@
                     android:textSize="16sp" />
 
                 <ImageView
+                    android:id="@+id/iv_notify_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginRight="20dp"
+                    android:paddingRight="20dp"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/notice2" />
 
@@ -59,61 +60,61 @@
                     android:layout_marginTop="20dp"
                     android:src="@drawable/oval" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="56dp"
-                    android:layout_marginStart="56dp"
-                    android:layout_marginTop="151dp"
-                    android:text="安全"
-                    android:textColor="#FF565656"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                <!--   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentLeft="true"
+                       android:layout_alignParentStart="true"
+                       android:layout_alignParentTop="true"
+                       android:layout_gravity="center_horizontal"
+                       android:layout_marginLeft="56dp"
+                       android:layout_marginStart="56dp"
+                       android:layout_marginTop="151dp"
+                       android:text="安全"
+                       android:textColor="#FF565656"
+                       android:textSize="14sp"
+                       android:textStyle="bold" />-->
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.8"
+                android:layout_weight="0.6"
                 android:weightSum="8"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                <!-- <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     android:layout_weight="1"
+                     android:layout_marginLeft="20dp"
+                     android:layout_marginTop="10dp"
+                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/label_icon" />
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center_vertical"
+                         android:src="@drawable/label_icon" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="四大优势"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="#FF000000"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:text="四大优势"
+                         android:layout_gravity="center_vertical"
+                         android:textColor="#FF000000"
+                         android:textSize="18sp"
+                         android:textStyle="bold" />
+                 </LinearLayout>-->
                 <android.support.v7.widget.CardView
                     android:id="@+id/ll_vip"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="6"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="2dp"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="2dp"
                     app:cardPreventCornerOverlap="true"
@@ -255,30 +256,30 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                <!--  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="0dp"
+                      android:layout_weight="1"
+                      android:layout_marginLeft="20dp"
+                      android:layout_marginTop="10dp"
+                      android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:src="@drawable/label_icon" />
+                      <ImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:src="@drawable/label_icon" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="关于我们"
-                        android:textColor="#FF000000"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="10dp"
+                          android:text="关于我们"
+                          android:textColor="#FF000000"
+                          android:layout_gravity="center_vertical"
+                          android:textSize="18sp"
+                          android:textStyle="bold" />
+                  </LinearLayout>-->
             </LinearLayout>
 
             <LinearLayout
@@ -296,7 +297,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/about_us"
                     android:scaleType="fitXY"
                     android:gravity="center" />
@@ -306,7 +307,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/bottom_explain"
                     android:gravity="center"
-                    android:layout_marginTop="-10dp"/>
+                    />
             </LinearLayout>
 
 
@@ -328,7 +329,7 @@
               <RelativeLayout
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_marginRight="20dp"
+
                   android:layout_marginTop="20dp">
 
                   <TextView
@@ -348,18 +349,21 @@
                       android:textSize="12sp" />
 
                   <ImageView
+                      android:id="@+id/iv_notify_1"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_alignParentRight="true"
                       android:layout_alignParentTop="true"
-                      android:src="@drawable/notice" />
+                      android:src="@drawable/notice"
+                      android:paddingRight="20dp"/>
 
                   <ImageView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_alignParentRight="true"
                       android:layout_alignParentTop="true"
-                      android:src="@drawable/oval" />
+                      android:src="@drawable/oval"
+                      android:paddingRight="20dp"/>
               </RelativeLayout>
 
               <LinearLayout
@@ -420,13 +424,21 @@
               android:scaleType="fitXY"/>
 
               <LinearLayout
+
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_alignParentTop="true"
                   android:layout_marginTop="30dp"
                   android:orientation="vertical">
 
-                  <com.allure.lbanners.LMBanners
+                  <ImageView
+                      android:id="@+id/iv_center"
+                      android:layout_width="match_parent"
+                      android:layout_height="130dp"
+                      android:src="@drawable/center_financial"/>
+
+               <!--   <com.allure.lbanners.LMBanners
+
                       android:id="@+id/banners_center"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
@@ -444,7 +456,7 @@
                       app:isVertical="false"
                       app:scroll_duration="1000">
 
-                  </com.allure.lbanners.LMBanners>
+                  </com.allure.lbanners.LMBanners>-->
 
                   <TextView
                       android:id="@+id/tv_home_buy"

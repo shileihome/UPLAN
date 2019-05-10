@@ -34,6 +34,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/ll_account"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -44,6 +45,7 @@
                 android:id="@+id/iv_login"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:clickable="false"
 android:src="@drawable/default_head"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/shape_title_circle" />
@@ -55,6 +57,7 @@ android:src="@drawable/default_head"
                 android:src="@drawable/vip_logo"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="13dp"
+                android:clickable="false"
                 android:layout_marginBottom="8dp"/>
             <TextView
                 android:id="@+id/tv_login_name"
@@ -66,6 +69,7 @@ android:src="@drawable/default_head"
                 android:textColor="@color/white"
                 android:singleLine="true"
                 android:textSize="14sp"
+                android:clickable="false"
                 android:text="未登录"
          />
         </LinearLayout>
@@ -445,7 +449,7 @@ android:src="@drawable/default_head"
                 android:layout_height="1dp"
                 android:background="@color/color_dddddd"
                 android:layout_marginLeft="60dp"/>
-            <RelativeLayout
+<!--            <RelativeLayout
                 android:id="@+id/rl_holist7"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -480,7 +484,7 @@ android:src="@drawable/default_head"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/color_dddddd"
-                android:layout_marginLeft="60dp"/>
+                android:layout_marginLeft="60dp"/>-->
             <RelativeLayout
                 android:id="@+id/rl_holist8"
                 android:layout_width="match_parent"

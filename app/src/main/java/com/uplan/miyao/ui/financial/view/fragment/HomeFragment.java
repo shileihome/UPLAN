@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.allure.lbanners.LMBanners;
 import com.allure.lbanners.transformer.TransitionEffect;
-import com.allure.lbanners.utils.ScreenUtils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -21,6 +20,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.uplan.miyao.R;
 import com.uplan.miyao.app.UPLANApplication;
 import com.uplan.miyao.base.mvp.BaseFragment;
+import com.uplan.miyao.ui.account.view.activity.RemindActivity;
 import com.uplan.miyao.ui.financial.adapter.LocalImgAdapter;
 import com.uplan.miyao.ui.financial.contract.FinancialContract;
 import com.uplan.miyao.ui.financial.presenter.FinancialPresenter;
@@ -31,7 +31,6 @@ import com.uplan.miyao.ui.financial.view.activity.SimpleActivity;
 import com.uplan.miyao.ui.financial.view.activity.TeamInfoActivity;
 import com.uplan.miyao.ui.financial.view.activity.ValidActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
-import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
@@ -52,8 +51,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     boolean loginState;
     @BindView(R.id.banners_top)
     LMBanners bannersTop;
-    @BindView(R.id.banners_center)
-    LMBanners bannersCenter;
+   /* @BindView(R.id.banners_center)
+    LMBanners bannersCenter;*/
 
     @BindView(R.id.tv_home_buy)
     TextView tvHomeBuy;
@@ -71,10 +70,10 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
         initImageLoader();
 
-        addBannerCenters();
+//        addBannerCenters();
         addBannerTops();
 
-        initBannerCenter();
+      //  initBannerCenter();
         initBannerTop();
         return view;
     }
@@ -105,9 +104,15 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
 
-    @OnClick({R.id.tv_login,  R.id.cv_safe, R.id.tv_team_info,R.id.tv_home_buy,R.id.cv_lucency,R.id.cv_simple,R.id.cv_valid})
+    @OnClick({R.id.iv_center,R.id.iv_notify_2,R.id.iv_notify_1,R.id.tv_login,  R.id.cv_safe, R.id.tv_team_info,R.id.tv_home_buy,R.id.cv_lucency,R.id.cv_simple,R.id.cv_valid})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.iv_center:
+                if(isShowLoginDialog()){
+                    return;
+                }
+                FinancialActivity.start(getActivity());
+                break;
             case R.id.tv_login:
                 LoginActivity.start(getActivity());
                 break;
@@ -129,8 +134,20 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 break;
             case R.id.tv_home_buy:
                 FinancialActivity.start(getActivity());
-
                 break;
+            case R.id.iv_notify_1:
+                if(isShowLoginDialog()){
+                    return;
+                }
+                RemindActivity.start(getActivity());
+                break;
+            case R.id.iv_notify_2:
+                if(isShowLoginDialog()){
+                    return;
+                }
+                RemindActivity.start(getActivity());
+                break;
+
         }
     }
 
@@ -174,6 +191,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
           }
       });
   }
+  /*
   private void initBannerCenter(){
       //设置Banners高度
       bannersCenter.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 125)));
@@ -201,11 +219,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
           }
       });
   }
-
+*/
   private void addBannerTops(){
-        localImagesCenter.add(R.drawable.center_financial);
-  }
-  private void addBannerCenters(){
         localImagesTop.add(R.drawable.focus_financial_1);
         localImagesTop.add(R.drawable.focus_financial_2);
         localImagesTop.add(R.drawable.focus_financial_3);
@@ -222,5 +237,21 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 .tasksProcessingOrder(QueueProcessingType.LIFO).build();
         ImageLoader.getInstance().init(config);
     }
-
+    protected boolean isShowLoginDialog() {
+        if (!isLogined()) {
+            CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+            commonDialog.setSubMessage("请先登录!").
+                    setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                    }).
+                    setRightButton(getString(R.string.commit_change), v -> {
+                        LoginActivity.start(getActivity());
+                    }).show();
+            return true;
+        }else{
+            return  false;
+        }
+    }
+    private boolean isLogined() {
+        return PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
+    }
 }

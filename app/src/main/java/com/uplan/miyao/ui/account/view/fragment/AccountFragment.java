@@ -25,6 +25,7 @@ import com.uplan.miyao.ui.account.view.activity.RiskEvaluationActivity;
 import com.uplan.miyao.ui.account.view.activity.SettingActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.main.view.activity.MainActivity;
+import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
@@ -69,10 +70,10 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     ImageView ivHolist1;
     @BindView(R.id.rl_holist1)
     RelativeLayout rlHolist1;
-    @BindView(R.id.iv_holist7)
-    ImageView ivHolist7;
-    @BindView(R.id.rl_holist7)
-    RelativeLayout rlHolist7;
+    /*  @BindView(R.id.iv_holist7)
+      ImageView ivHolist7;
+      @BindView(R.id.rl_holist7)
+      RelativeLayout rlHolist7;*/
     @BindView(R.id.iv_holist8)
     ImageView ivHolist8;
     @BindView(R.id.rl_holist8)
@@ -85,13 +86,15 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     TextView tvGeneralUpDown;
     @BindView(R.id.tv_login_out)
     TextView tvLoginOut;
+    @BindView(R.id.ll_account)
+    LinearLayout llAccount;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, null);
         ButterKnife.bind(this, view);
-        mPresenter=getPresenter();
+        mPresenter = getPresenter();
         initView();
         return view;
     }
@@ -116,6 +119,8 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             tvLoginName.setText("未登录");
             ivVipLogo.setVisibility(View.GONE);
         }
+
+
     }
 
     private void initData() {
@@ -137,96 +142,104 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     }
 
 
-    @OnClick({R.id.tv_setting, R.id.iv_login, R.id.tv_login_name, R.id.tv_honav2, R.id.tv_honav3, R.id.rl_holist1, R.id.rl_holist2,
-            R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist7, R.id.rl_holist8, R.id.tv_login_out})
+    @OnClick({R.id.tv_setting, R.id.ll_account, R.id.tv_honav2, R.id.tv_honav3, R.id.rl_holist1, R.id.rl_holist2,
+            R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist8, R.id.tv_login_out})
     public void onClick(View view) {
 
 
         switch (view.getId()) {
             case R.id.tv_setting:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 SettingActivity.start(getActivity());
                 break;
-            case R.id.iv_login:
-                if(!isLogined()){
+            case R.id.ll_account:
+                if (!isLogined()) {
+                    LoginActivity.start(getActivity());
+                } else {
+                    VipActivity.start(getActivity());
+                    return;
+                }
+                break;
+        /*    case R.id.iv_login:
+               *//* if(!isLogined()){
                     LoginActivity.start(getActivity());
                 }else{
 
                     return;
-                }
+                }*//*
 
                 break;
             case R.id.tv_login_name:
-                if(!isLogined()){
+               *//* if(!isLogined()){
                     LoginActivity.start(getActivity());
                 }else{
 
                     return;
-                }
-                break;
+                }*//*
+                break;*/
             case R.id.tv_honav2:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).financialLayout);
                 break;
             case R.id.tv_honav3:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 RedeemActivity.start(getActivity());
                 break;
             case R.id.rl_holist1:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).surveyLayout);
                 break;
             case R.id.rl_holist2:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 HoldActivity.start(getActivity());
                 break;
             case R.id.rl_holist3:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 RecordActivity.start(getActivity());
                 break;
             case R.id.rl_holist4:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 RiskEvaluationActivity.start(getActivity());
                 break;
             case R.id.rl_holist5:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 RemindActivity.start(getActivity());
                 break;
 
-            case R.id.rl_holist7:
+   /*         case R.id.rl_holist7:
                 if(isShowLoginDialog()){
                     return;
                 }
                 //我的邀请
-                break;
+                break;*/
             case R.id.rl_holist8:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
                 HelpCenterActivity.start(getActivity());
                 break;
 
             case R.id.tv_login_out:
-                if(isShowLoginDialog()){
+                if (isShowLoginDialog()) {
                     return;
                 }
-                mPresenter.logOut(PreferencesUtils.getString(getActivity(),PreferencesUtils.USER_TEL));
+                mPresenter.logOut(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_TEL));
                 break;
         }
     }
@@ -241,8 +254,8 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                         LoginActivity.start(getActivity());
                     }).show();
             return true;
-        }else{
-           return  false;
+        } else {
+            return false;
         }
     }
 
@@ -265,10 +278,10 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     public void dealLogOutSuccess(ResponseData responseData) {
         PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.LOGIN_STATE, false);
         PreferencesUtils.putString(getActivity(), PreferencesUtils.PLAY_SESSION, "");
-        PreferencesUtils.putString(getActivity(),PreferencesUtils.USER_NAME,"未登录");
-        PreferencesUtils.putString(getActivity(),PreferencesUtils.USER_TEL,"");
-        PreferencesUtils.putBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA,false);
-        PreferencesUtils.putLong(getActivity(),PreferencesUtils.EXPIRE_TIME,0);
+        PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_NAME, "未登录");
+        PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_TEL, "");
+        PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, false);
+        PreferencesUtils.putLong(getActivity(), PreferencesUtils.EXPIRE_TIME, 0);
         tvLoginName.setText("未登录");
         tvGeneralAssets.setText("---");
         tvUpDown.setText("---");
@@ -279,11 +292,10 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 
     @Override
     public void dealGetAccountInfoSuccess(AccountResp accountResp) {
-        if(accountResp!=null&&accountResp.data!=null&&accountResp.data.size()>0){
-            tvGeneralAssets.setText(accountResp.data.get(0).porperty+"");
-            tvUpDown.setText(accountResp.data.get(0).previousProfit+"");
-            tvGeneralUpDown.setText(accountResp.data.get(0).accumulatedProfit+"");
+        if (accountResp != null && accountResp.data != null && accountResp.data.size() > 0) {
+            tvGeneralAssets.setText(accountResp.data.get(0).porperty + "");
+            tvUpDown.setText(accountResp.data.get(0).previousProfit + "");
+            tvGeneralUpDown.setText(accountResp.data.get(0).accumulatedProfit + "");
         }
     }
-
 }

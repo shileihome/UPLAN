@@ -32,14 +32,14 @@
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
-                <ImageView
+             <!--   <ImageView
                     android:id="@+id/iv_shared"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="17dp"
                     android:layout_marginRight="20dp"
-                    android:src="@drawable/shared" />
+                    android:src="@drawable/shared" />-->
             </RelativeLayout>
 
             <android.support.v7.widget.CardView
@@ -55,6 +55,7 @@
                 app:cardPreventCornerOverlap="true"
                 app:layout_constraintTop_toTopOf="parent">
                 <LinearLayout
+                    android:id="@+id/ll_join_vip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
@@ -223,6 +224,7 @@
             </android.support.v7.widget.CardView>
 
             <TextView
+                android:id="@+id/tv_un_dev"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/distory" />

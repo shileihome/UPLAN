@@ -6,7 +6,6 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.uplan.miyao.R;
@@ -17,6 +16,7 @@ import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
 import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
 import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.ToastUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
 import butterknife.BindView;
@@ -28,8 +28,8 @@ import butterknife.Unbinder;
 public class VipFragment extends BaseFragment<DiscoverPresenter> implements DiscoverContract.View {
 
 
-    @BindView(R.id.iv_shared)
-    ImageView ivShared;
+ /*   @BindView(R.id.iv_shared)
+    ImageView ivShared;*/
     @BindView(R.id.tv_join_vip)
     TextView tvJoinVip;
     Unbinder unbinder;
@@ -89,12 +89,18 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
     }
 
 
-    @OnClick({R.id.tv_join_vip, R.id.ll_vip})
+    @OnClick({R.id.tv_join_vip, R.id.ll_vip,R.id.ll_join_vip,R.id.tv_un_dev})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_join_vip:
+
+                break;
+            case R.id.ll_vip:
+                VipActivity.start(getActivity());
+                break;
+            case R.id.ll_join_vip:
                 if(PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.LOGIN_STATE)){
-                   VipActivity.start(getActivity());
+                    VipActivity.start(getActivity());
                 }else{
                     CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
                     commonDialog.setSubMessage("请先登录!").
@@ -107,8 +113,8 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
                             }).show();
                 }
                 break;
-            case R.id.ll_vip:
-                VipActivity.start(getActivity());
+            case R.id.tv_un_dev:
+                ToastUtils.shortShow("此功能正在开发中！");
                 break;
         }
     }

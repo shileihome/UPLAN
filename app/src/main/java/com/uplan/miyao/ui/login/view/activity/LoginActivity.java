@@ -43,6 +43,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @BindView(R.id.tv_forget_pwd)
     TextView tvForgetPwd;
 
+    private boolean isBind = false;
     public static void start(Context context) {
         Intent starter = new Intent(context, LoginActivity.class);
         context.startActivity(starter);
@@ -115,7 +116,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void dealVerifyTelFail(int code, String msg) {
         ToastUtils.shortShow(msg);
         if(code==1){
-            ForgetPwdActivity.start(this);
+            isBind=true;
+            ForgetPwdActivity.start(this,true);
         }
     }
 
@@ -146,7 +148,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 RegistActivity.start(this);
                 break;
             case R.id.tv_forget_pwd:
-                ForgetPwdActivity.start(this);
+                if(isBind){
+                    ForgetPwdActivity.start(this,true);
+                }else{
+                    ForgetPwdActivity.start(this,false);
+                }
                 break;
             case R.id.iv_wx_login:
                 break;

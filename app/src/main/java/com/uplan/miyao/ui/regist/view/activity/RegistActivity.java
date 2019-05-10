@@ -15,6 +15,9 @@ import com.uplan.miyao.ui.regist.contract.RegistContract;
 import com.uplan.miyao.ui.regist.presenter.RegistPresenter;
 import com.uplan.miyao.util.ToastUtils;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,14 +40,13 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
     TextView tvVerificationCode;
     @BindView(R.id.tv_regist)
     TextView tvRegist;
-    @BindView(R.id.iv_wx_regist)
-    ImageView ivWxRegist;
     @BindView(R.id.et_verification_code)
     EditText etVerificationCode;
 
     public static final int REQUEST_CODE = 100;
     public static final int RESULT_CODE = 200;
 
+    int recLen;
     public static void start(Activity context) {
         Intent starter = new Intent(context, RegistActivity.class);
         context.startActivityForResult(starter, REQUEST_CODE);
@@ -92,7 +94,7 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
     }
 
 
-    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_verification_code, R.id.tv_regist, R.id.iv_wx_regist})
+    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_verification_code, R.id.tv_regist})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -108,7 +110,13 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                     ToastUtils.shortShow("请输入手机号！");
                     return;
                 }
-                mPresenter.registVerificationCode(etPhotoNo.getText().toString());
+
+                if(recLen>0){
+                    return;
+                }else{
+                    setTimeTask();
+                    mPresenter.registVerificationCode(etPhotoNo.getText().toString());
+                }
                 break;
             case R.id.tv_regist:
                 if (TextUtils.isEmpty(etPhotoNo.getText().toString())) {
@@ -137,9 +145,35 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                 String verificationCode=etVerificationCode.getText().toString();
                 mPresenter.regist(tel, pwd,verificationCode );
                 break;
-            case R.id.iv_wx_regist:
-                break;
+
         }
     }
+
+    public void setTimeTask(){
+        recLen=60;
+        Timer timer=new Timer();
+        TimerTask task=new TimerTask() {
+            @Override
+            public void run() {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recLen--;
+                        tvVerificationCode.setText(recLen+"");
+                        if(recLen<0){
+                            timer.cancel();
+                            tvVerificationCode.setText("重新发送");
+                            return;
+
+                        }
+                    }
+                });
+            }
+        };
+       timer.schedule(task ,1000,1000);
+
+    }
+
 
 }

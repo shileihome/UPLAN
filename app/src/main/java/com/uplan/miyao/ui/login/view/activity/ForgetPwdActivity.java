@@ -16,6 +16,9 @@ import com.uplan.miyao.ui.login.model.resp.ForgetPwdResp;
 import com.uplan.miyao.ui.login.presenter.ForgetPwdPresenter;
 import com.uplan.miyao.util.ToastUtils;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -46,8 +49,12 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     public static final int REQUEST_CODE = 100;
     public static final int RESULT_CODE = 300;
 
-    public static void start(Activity context) {
+    /** 是否绑定过公众号 */
+    private boolean isBinding = false;
+    int recLen;
+    public static void start(Activity context, boolean isBind) {
         Intent starter = new Intent(context, ForgetPwdActivity.class);
+        starter.putExtra("isBind", isBind);
         context.startActivityForResult(starter, REQUEST_CODE);
     }
 
@@ -56,6 +63,20 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     protected void init() {
         setContentView(R.layout.activity_forgetpwd);
         ButterKnife.bind(this);
+        isBinding = getIntent().getBooleanExtra("isBind",false);
+        initView();
+    }
+
+    private void initView(){
+        if(isBinding){
+           etPwd.setHint("请设置密码");
+            etPwdAgain.setHint("请确认密码");
+            tvRegist.setText("确定");
+        }else{
+            etPwd.setHint("请设置新密码");
+            etPwdAgain.setHint("请确认新密码");
+            tvRegist.setText("确认修改");
+        }
     }
 
     @Override
@@ -105,11 +126,16 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
                 etPwdAgain.setText("");
                 break;
             case R.id.tv_verification_code:
-                if(TextUtils.isEmpty(etPhotoNo.getText().toString())){
+                if (TextUtils.isEmpty(etPhotoNo.getText().toString())) {
                     ToastUtils.shortShow("请输入手机号！");
                     return;
                 }
-                mPresenter.registVerificationCode(etPhotoNo.getText().toString());
+                if(recLen>0){
+                    return;
+                }else {
+                    setTimeTask();
+                    mPresenter.registVerificationCode(etPhotoNo.getText().toString());
+                }
                 break;
             case R.id.tv_regist:
                 if (TextUtils.isEmpty(etPhotoNo.getText().toString())) {
@@ -135,12 +161,38 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
                 }
                 String tel = etPhotoNo.getText().toString();
                 String pwd = etPwd.getText().toString();
-                String verificationCode=etVerificationCode.getText().toString();
-                mPresenter.ModifyPwd(tel,verificationCode, pwd);
+                String verificationCode = etVerificationCode.getText().toString();
+                mPresenter.ModifyPwd(tel, verificationCode, pwd);
                 break;
 
         }
     }
 
+
+    public void setTimeTask(){
+        recLen=60;
+        Timer timer=new Timer();
+        TimerTask task=new TimerTask() {
+            @Override
+            public void run() {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recLen--;
+                        tvVerificationCode.setText(recLen+"");
+                        if(recLen<0){
+                            timer.cancel();
+                            tvVerificationCode.setText("重新发送");
+                            return;
+
+                        }
+                    }
+                });
+            }
+        };
+        timer.schedule(task ,1000,1000);
+
+    }
 
 }

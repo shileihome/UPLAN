@@ -89,12 +89,10 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
     }
 
 
-    @OnClick({R.id.tv_join_vip, R.id.ll_vip,R.id.ll_join_vip,R.id.tv_un_dev})
+    @OnClick({ R.id.ll_vip,R.id.ll_join_vip,R.id.tv_un_dev})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_join_vip:
 
-                break;
             case R.id.ll_vip:
                 VipActivity.start(getActivity());
                 break;

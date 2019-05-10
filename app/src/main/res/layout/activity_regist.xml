@@ -141,7 +141,7 @@
                 android:paddingRight="15dp"
                 android:paddingTop="3dp"
                 android:paddingBottom="3.5dp"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/color_08afde"
                 android:layout_gravity="bottom"
                 android:gravity="center"

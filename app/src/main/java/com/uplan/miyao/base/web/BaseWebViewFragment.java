@@ -124,6 +124,7 @@ public abstract class BaseWebViewFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (uplanWebView != null) {
+            clearCookies(getActivity());
             uplanWebView.onResume();
             uplanWebView.resumeTimers();
         }

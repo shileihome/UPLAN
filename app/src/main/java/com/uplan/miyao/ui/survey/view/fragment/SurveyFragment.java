@@ -23,6 +23,11 @@ public class SurveyFragment extends BaseWebViewFragment {
         uplanWebView.loadUrl(homeUrl);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateWebData();
+    }
 
     private void setWebViewClient() {
         uplanWebView.setWebViewClient(new WebAppClient(getActivity(), uplanWebView) {

@@ -51,14 +51,14 @@
                     android:layout_marginTop="20dp"
                     android:src="@drawable/notice2" />
 
-                <ImageView
+       <!--         <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/oval" />
+                    android:src="@drawable/oval" />-->
 
                 <!--   <TextView
                        android:layout_width="wrap_content"
@@ -357,13 +357,13 @@
                       android:src="@drawable/notice"
                       android:paddingRight="20dp"/>
 
-                  <ImageView
+        <!--          <ImageView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_alignParentRight="true"
                       android:layout_alignParentTop="true"
                       android:src="@drawable/oval"
-                      android:paddingRight="20dp"/>
+                      android:paddingRight="20dp"/>-->
               </RelativeLayout>
 
               <LinearLayout

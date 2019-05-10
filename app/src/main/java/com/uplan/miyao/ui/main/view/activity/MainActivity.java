@@ -116,7 +116,7 @@ public class MainActivity extends AppBaseActivity {
                 break;
             case SELECT_INDEX_SURVEY:
                 if (surveyFragment != null) {
-                         surveyFragment.updateWebData();
+//                         surveyFragment.updateWebData();
                 }
                 break;
             case SELECT_INDEX_DISCOVER:

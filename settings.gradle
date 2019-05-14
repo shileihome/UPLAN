@@ -1,2 +1,2 @@
 include ':app'
-include ':amm_sdk_sample'
+include ':lm_banner_library'

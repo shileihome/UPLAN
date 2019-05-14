@@ -17,10 +17,15 @@
             android:background="@color/white"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:background="#7F7F7F"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/semicircle_discover_title"
+             
                 android:orientation="horizontal">
 
                 <TextView

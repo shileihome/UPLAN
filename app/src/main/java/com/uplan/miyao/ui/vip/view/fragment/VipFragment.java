@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.uplan.miyao.R;
+import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.vip.contract.DiscoverContract;
@@ -52,6 +53,7 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
         View view = inflater.inflate(R.layout.fragment_vip, null);
         unbinder = ButterKnife.bind(this, view);
         initView();
+        setTranslucent();
         return view;
     }
 
@@ -130,5 +132,11 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
     @Override
     public void dealPaySuccess(VipDetailResp resp) {
 
+    }
+
+    public void setTranslucent() {
+        QMUIStatusBarHelper.setStatusBarDarkMode(getActivity());
+        QMUIStatusBarHelper.translucent(getActivity());
+//        QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
     }
 }

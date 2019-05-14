@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.uplan.miyao.R;
+import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.account.contract.AccountContract;
@@ -96,6 +97,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         ButterKnife.bind(this, view);
         mPresenter = getPresenter();
         initView();
+        setTranslucent();
         return view;
     }
 
@@ -297,5 +299,11 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             tvUpDown.setText(accountResp.data.get(0).previousProfit + "");
             tvGeneralUpDown.setText(accountResp.data.get(0).accumulatedProfit + "");
         }
+    }
+
+    public void setTranslucent() {
+        QMUIStatusBarHelper.setStatusBarDarkMode(getActivity());
+        QMUIStatusBarHelper.translucent(getActivity());
+//        QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
     }
 }

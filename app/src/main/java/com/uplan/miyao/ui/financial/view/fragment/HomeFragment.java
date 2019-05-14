@@ -19,6 +19,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.uplan.miyao.R;
 import com.uplan.miyao.app.UPLANApplication;
+import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.ui.account.view.activity.RemindActivity;
 import com.uplan.miyao.ui.financial.adapter.LocalImgAdapter;
@@ -75,6 +76,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
       //  initBannerCenter();
         initBannerTop();
+        setTranslucent();
         return view;
     }
 
@@ -253,5 +255,10 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
     private boolean isLogined() {
         return PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
+    }
+    public void setTranslucent() {
+        QMUIStatusBarHelper.setStatusBarDarkMode(getActivity());
+        QMUIStatusBarHelper.translucent(getActivity());
+        QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
     }
 }

@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="26dp">
+    >
     <!--     android:background="@color/color_f0f0f0"-->
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/home_bottom_layout">
+        android:layout_above="@+id/home_bottom_layout"
+        >
 
     </FrameLayout>
 

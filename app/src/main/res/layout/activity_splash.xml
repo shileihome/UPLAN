@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
     android:background="@color/white"
     >
-    <LinearLayout
+
+    <com.allure.lbanners.LMBanners
+        android:id="@+id/banners_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        app:auto_play="true"
+        app:canLoop="true"
+        app:durtion="5000"
+        app:horizontal_transitionEffect="accordion"
+        app:indicatorBottomPadding="100"
+        app:indicator_position="bottom_mid"
+        app:indicator_select="@drawable/page_indicator_select"
+        app:indicator_unselect="@drawable/page_indicator_unselect"
+        app:isGuide="true"
+        app:isVertical="false"
+        app:scroll_duration="1000"
+
+        >
+
+    </com.allure.lbanners.LMBanners>
+<!--    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -51,5 +74,5 @@
         android:paddingRight="15dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:textSize="12dp"/>
+        android:textSize="12dp"/>-->
 </RelativeLayout>

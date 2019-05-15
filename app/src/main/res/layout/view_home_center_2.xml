@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/ll_viewpager_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_center"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:src="@drawable/center_financial"/>
+
+        <TextView
+            android:id="@+id/tv_home_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_home_buy"
+            android:paddingBottom="5dp"
+            android:paddingLeft="56dp"
+            android:paddingRight="56dp"
+            android:paddingTop="5dp"
+            android:text="立即买入"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/arrows_up" />
+    </LinearLayout>
+</LinearLayout>

@@ -42,6 +42,7 @@ public class SplashActivity extends AppBaseActivity {
         setTranslucent();
         addBannerSplash();
         initBannerSplash();
+
     }
 
     /**

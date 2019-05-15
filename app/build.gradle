@@ -234,4 +234,7 @@ dependencies {
 
     //微信sdk接入
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //垂直滑动viewpager
+//    compile 'me.kaelaela:verticalviewpager:1.0.0@aar'
+    compile 'com.github.open-android:ViewPager:0.1.0'
 }

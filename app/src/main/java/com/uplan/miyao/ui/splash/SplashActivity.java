@@ -100,7 +100,7 @@ public class SplashActivity extends AppBaseActivity {
         bannersSplash.isGuide(true);//是否为引导页
             bannersSplash.setAutoPlay(true);//自动播放
         bannersSplash.setVertical(false);//是否锤子播放
-        bannersSplash.setScrollDurtion(2000);//两页切换时间
+        bannersSplash.setScrollDurtion(1000);//两页切换时间
         bannersSplash.setCanLoop(true);//循环播放
         bannersSplash.setSelectIndicatorRes(R.drawable.splash_select);//选中的原点
         bannersSplash.setUnSelectUnIndicatorRes(R.drawable.splash_unselect);//未选中的原点

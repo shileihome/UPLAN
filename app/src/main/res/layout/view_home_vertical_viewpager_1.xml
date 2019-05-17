@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    android:background="@color/color_3aa2d8">
+    >
     <LinearLayout
         android:id="@+id/ll_first_layout"
         android:layout_width="match_parent"
@@ -86,10 +86,6 @@
 
                 </com.allure.lbanners.LMBanners>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"></LinearLayout>
 
             </LinearLayout>
 
@@ -99,14 +95,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/uplan_idea" />
 
         <RelativeLayout
             android:id="@+id/tv_financial"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="13dp"
             android:layout_weight="2"
             >
             <ImageView
@@ -134,7 +130,7 @@
                     android:id="@+id/iv_center"
                     android:layout_width="match_parent"
                     android:layout_height="130dp"
-                    android:src="@drawable/center_financial"/>
+                    android:src="@drawable/center_financial_1"/>
 
                 <!--   <com.allure.lbanners.LMBanners
 

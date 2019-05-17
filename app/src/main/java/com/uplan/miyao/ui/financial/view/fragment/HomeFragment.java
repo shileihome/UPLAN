@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.allure.lbanners.LMBanners;
@@ -35,7 +36,6 @@ import com.uplan.miyao.ui.financial.view.activity.TeamInfoActivity;
 import com.uplan.miyao.ui.financial.view.activity.ValidActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.PreferencesUtils;
-import com.uplan.miyao.util.ToastUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
 import java.util.ArrayList;
@@ -43,29 +43,21 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import cn.youngkaaa.yviewpager.YViewPager;
 
 
 public class HomeFragment extends BaseFragment<FinancialPresenter> implements FinancialContract.View {
 
-    @BindView(R.id.tv_login)
-    TextView tvLogin;
-    @BindView(R.id.tv_team_info)
-    ImageView tvTeamInfo;
 
-    boolean loginState;
-    @BindView(R.id.banners_top)
-    LMBanners bannersTop;
-
-    @BindView(R.id.tv_home_buy)
-    TextView tvHomeBuy;
-    @BindView(R.id.viewpager_center)
-    ViewPager viewpagerCenter;
     @BindView(R.id.viewpager_y)
     YViewPager viewpagerVertical;
-    @BindView(R.id.ll_first_layout)
-    LinearLayout llFirstLayout;
+
+    TextView tvLogin;
+    TextView tvHomeBuy1;
+    TextView tvHomeBuy2;
+    TextView tvHomeBuy3;
+
+    boolean loginState;
     //本地图片BannerTop
     private ArrayList<Integer> localImagesTop = new ArrayList<Integer>();
 
@@ -81,13 +73,9 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         View view = inflater.inflate(R.layout.fragment_home, null);
         ButterKnife.bind(this, view);
         initImageLoader();
-//        addBannerTops();
-//        initBannerTop();
         setTranslucent();
         initVerticalViews();
         initVerticalViewPager();
-//        initPagerViews();
-//        initViewPager();
         return view;
     }
 
@@ -95,50 +83,76 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
      * 这是上下滑动
      */
     private void initVerticalViewPager() {
-        YViewPagerAdapter adapter =new YViewPagerAdapter(verticalViews,getActivity());
+        YViewPagerAdapter adapter = new YViewPagerAdapter(verticalViews, getActivity());
         viewpagerVertical.setAdapter(adapter);
         viewpagerVertical.setOverScrollMode(View.OVER_SCROLL_NEVER);
     }
 
-    private void initVerticalViews(){
+    private void initVerticalViews() {
         View firstLayout = View.inflate(getActivity(), R.layout.view_home_vertical_viewpager_1, null);
-        View secondLayout=View.inflate(getActivity(),R.layout.view_home_vertical_viewpager_2,null);
+        View secondLayout = View.inflate(getActivity(), R.layout.view_home_vertical_viewpager_2, null);
         verticalViews.add(firstLayout);
         verticalViews.add(secondLayout);
 
-        LMBanners bannersTop= (LMBanners) firstLayout.findViewById(R.id.banners_top);
+        LMBanners bannersTop = (LMBanners) firstLayout.findViewById(R.id.banners_top);
         addBannerTops();
         initBannerTop(bannersTop);
         ViewPager viewpagerCenter = (ViewPager) firstLayout.findViewById(R.id.viewpager_center);
-        initPagerViews();
-        initViewPager(viewpagerCenter);
+        initCenterViews();
+        initCenterViewPager(viewpagerCenter);
+
+        //第一个页面点击事件--------------------------------------------------------------
+         tvLogin= (TextView) firstLayout.findViewById(R.id.tv_login);
+        tvLogin.setOnClickListener(view->{
+            LoginActivity.start(getActivity());
+        });
+        ImageView ivNotify1= (ImageView) firstLayout.findViewById(R.id.iv_notify_1);
+        ivNotify1.setOnClickListener(view->{
+            if (isShowLoginDialog()) {
+                return;
+            }
+            RemindActivity.start(getActivity());
+        });
+
+        //第二个页面点击事件--------------------------------------------------------------
+        RelativeLayout cvSafe = (RelativeLayout) secondLayout.findViewById(R.id.cv_safe);
+        cvSafe.setOnClickListener(view -> {
+            SafeActivity.start(getActivity());
+        });
+        RelativeLayout cvLucency = (RelativeLayout) secondLayout.findViewById(R.id.cv_lucency);
+        cvLucency.setOnClickListener(view -> {
+            LucencyActivity.start(getActivity());
+        });
+        RelativeLayout cvValid = (RelativeLayout) secondLayout.findViewById(R.id.cv_valid);
+        cvValid.setOnClickListener(view -> {
+            ValidActivity.start(getActivity());
+        });
+        RelativeLayout cvSimple = (RelativeLayout) secondLayout.findViewById(R.id.cv_simple);
+        cvSimple.setOnClickListener(view -> {
+            SimpleActivity.start(getActivity());
+        });
+        ImageView ivTeamInfo = (ImageView) secondLayout.findViewById(R.id.iv_team_info);
+        ivTeamInfo.setOnClickListener(view -> {
+            TeamInfoActivity.start(getActivity());
+        });
+        ImageView ivNotify2 = (ImageView) secondLayout.findViewById(R.id.iv_notify_2);
+        ivNotify2.setOnClickListener(view -> {
+            if (isShowLoginDialog()) {
+                return;
+            }
+            RemindActivity.start(getActivity());
+        });
     }
 
     /**
      * 设置中部滑动
      */
-    private void initViewPager(ViewPager viewpagerCenter) {
+    private void initCenterViewPager(ViewPager viewpagerCenter) {
         CenterViewPageAdapter adapter = new CenterViewPageAdapter(views, getActivity());
         viewpagerCenter.setAdapter(adapter);
-        viewpagerCenter.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
 
-    private void initPagerViews() {
+    private void initCenterViews() {
         View view_1 = View.inflate(getActivity(), R.layout.view_home_center_1, null);
         View view_2 = View.inflate(getActivity(), R.layout.view_home_center_2, null);
         View view_3 = View.inflate(getActivity(), R.layout.view_home_center_3, null);
@@ -147,14 +161,28 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         views.add(view_3);
 
         view_1.setOnClickListener(view1 -> {
-            ToastUtils.shortShow("心塞塞");
+            if (isShowLoginDialog()) {
+                return;
+            }
+            FinancialActivity.start(getActivity());
         });
+         tvHomeBuy1= (TextView) view_1.findViewById(R.id.tv_home_buy_1);
+
         view_2.setOnClickListener(view2 -> {
-            ToastUtils.shortShow("是啊");
+            if (isShowLoginDialog()) {
+                return;
+            }
+            FinancialActivity.start(getActivity());
         });
+         tvHomeBuy2= (TextView) view_2.findViewById(R.id.tv_home_buy_2);
+
         view_3.setOnClickListener(view3 -> {
-            ToastUtils.shortShow("我也是");
+            if (isShowLoginDialog()) {
+                return;
+            }
+            FinancialActivity.start(getActivity());
         });
+         tvHomeBuy3= (TextView) view_3.findViewById(R.id.tv_home_buy_3);
     }
 
     @Override
@@ -163,10 +191,14 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         loginState = PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
         if (loginState) {
             tvLogin.setVisibility(View.GONE);
-            tvHomeBuy.setVisibility(View.VISIBLE);
+            tvHomeBuy1.setVisibility(View.VISIBLE);
+            tvHomeBuy2.setVisibility(View.VISIBLE);
+            tvHomeBuy3.setVisibility(View.VISIBLE);
         } else {
             tvLogin.setVisibility(View.VISIBLE);
-            tvHomeBuy.setVisibility(View.GONE);
+            tvHomeBuy1.setVisibility(View.GONE);
+            tvHomeBuy2.setVisibility(View.GONE);
+            tvHomeBuy3.setVisibility(View.GONE);
         }
     }
 
@@ -183,52 +215,6 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
 
-    @OnClick({R.id.iv_center, R.id.iv_notify_2, R.id.iv_notify_1, R.id.tv_login, R.id.cv_safe, R.id.tv_team_info, R.id.tv_home_buy, R.id.cv_lucency, R.id.cv_simple, R.id.cv_valid})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.iv_center:
-                if (isShowLoginDialog()) {
-                    return;
-                }
-                FinancialActivity.start(getActivity());
-                break;
-            case R.id.tv_login:
-                LoginActivity.start(getActivity());
-                break;
-
-            case R.id.cv_safe:
-                SafeActivity.start(getActivity());
-                break;
-            case R.id.cv_lucency:
-                LucencyActivity.start(getActivity());
-                break;
-            case R.id.cv_simple:
-                SimpleActivity.start(getActivity());
-                break;
-            case R.id.cv_valid:
-                ValidActivity.start(getActivity());
-                break;
-            case R.id.tv_team_info:
-                TeamInfoActivity.start(getActivity());
-                break;
-            case R.id.tv_home_buy:
-                FinancialActivity.start(getActivity());
-                break;
-            case R.id.iv_notify_1:
-                if (isShowLoginDialog()) {
-                    return;
-                }
-                RemindActivity.start(getActivity());
-                break;
-            case R.id.iv_notify_2:
-                if (isShowLoginDialog()) {
-                    return;
-                }
-                RemindActivity.start(getActivity());
-                break;
-
-        }
-    }
 
     private void initBannerTop(LMBanners bannersTop) {
         //设置Banners高度
@@ -239,7 +225,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         bannersTop.setAutoPlay(true);//自动播放
 //        bannersTop.setAutoPlay(false);//自动播放
         bannersTop.setVertical(false);//是否锤子播放
-        bannersTop.setScrollDurtion(2000);//两页切换时间
+        bannersTop.setScrollDurtion(1500);//两页切换时间
         bannersTop.setCanLoop(true);//循环播放
         bannersTop.setSelectIndicatorRes(R.drawable.select_indicator);//选中的原点
         bannersTop.setUnSelectUnIndicatorRes(R.drawable.unselect_indicator);//未选中的原点
@@ -248,7 +234,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         bannersTop.setIndicatorWidth(5);//原点默认为5dp
         bannersTop.setHoriZontalTransitionEffect(TransitionEffect.Default);//选中喜欢的样式
 //        bannersTop.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式
-        //  bannersTop.setDurtion(3000);//轮播切换时间
+          bannersTop.setDurtion(2000);//轮播切换时间
 //        bannersTop.hideIndicatorLayout();//隐藏原点
 //        bannersTop.showIndicatorLayout();//显示原点
         bannersTop.setIndicatorPosition(LMBanners.IndicaTorPosition.BOTTOM_MID);//设置原点显示位置

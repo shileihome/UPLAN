@@ -2,15 +2,19 @@ package com.uplan.miyao.ui.regist.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.mvp.BaseActivity;
 import com.uplan.miyao.net.ResponseData;
+import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.regist.contract.RegistContract;
 import com.uplan.miyao.ui.regist.presenter.RegistPresenter;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -43,21 +47,39 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
     TextView tvRegist;
     @BindView(R.id.et_verification_code)
     EditText etVerificationCode;
+    @BindView(R.id.rb_privacy)
+    RadioButton rbPrivacy;
+    @BindView(R.id.tv_privacy)
+    TextView tvPrivacy;
 
-    public static final int REQUEST_CODE = 100;
-    public static final int RESULT_CODE = 200;
+
+    /** 是否选中了阅读隐私按钮 */
+    private boolean isPrivacy = true;
 
     int recLen;
+
     public static void start(Activity context) {
         Intent starter = new Intent(context, RegistActivity.class);
-        context.startActivityForResult(starter, REQUEST_CODE);
+        context.startActivityForResult(starter, LoginActivity.REGIST_REQUEST_CODE);
     }
 
     @Override
     protected void init() {
         setContentView(R.layout.activity_regist);
         ButterKnife.bind(this);
-        etPhotoNo.setText(PreferencesUtils.getString(this,PreferencesUtils.USER_TEL));
+        etPhotoNo.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
+        rbPrivacy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    isPrivacy = true;
+                    rbPrivacy.setBackgroundResource(R.drawable.privacy_select);
+                } else {
+                    isPrivacy = false;
+                    rbPrivacy.setBackgroundResource(R.drawable.privacy_unselect);
+                }
+            }
+        });
     }
 
     @Override
@@ -86,7 +108,7 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
         Intent intent = new Intent();
         intent.putExtra("username", etPhotoNo.getText().toString());
         intent.putExtra("password", etPwd.getText().toString());
-        setResult(RESULT_CODE, intent);
+        setResult(LoginActivity.REGIST_RESULT_CODE, intent);
         finish();
     }
 
@@ -96,7 +118,7 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
     }
 
 
-    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_verification_code, R.id.tv_regist})
+    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_verification_code, R.id.tv_regist, R.id.tv_privacy})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -108,14 +130,14 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                 etPwdAgain.setText("");
                 break;
             case R.id.tv_verification_code:
-                if(TextUtils.isEmpty(etPhotoNo.getText().toString())){
+                if (TextUtils.isEmpty(etPhotoNo.getText().toString())) {
                     ToastUtils.shortShow("请输入手机号！");
                     return;
                 }
 
-                if(recLen>0){
+                if (recLen > 0) {
                     return;
-                }else{
+                } else {
                     setTimeTask();
                     mPresenter.registVerificationCode(etPhotoNo.getText().toString());
                 }
@@ -142,19 +164,25 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                     ToastUtils.shortShow("两次密码不一致");
                     return;
                 }
+                if (!isPrivacy) {
+                    ToastUtils.shortShow("请先阅读并同意《隐私保护政策》");
+                    return;
+                }
                 String tel = etPhotoNo.getText().toString();
                 String pwd = etPwd.getText().toString();
-                String verificationCode=etVerificationCode.getText().toString();
-                mPresenter.regist(tel, pwd,verificationCode );
+                String verificationCode = etVerificationCode.getText().toString();
+                mPresenter.regist(tel, pwd, verificationCode);
                 break;
-
+            case R.id.tv_privacy:
+                PrivacyActivity.start(this);
+                break;
         }
     }
 
-    public void setTimeTask(){
-        recLen=60;
-        Timer timer=new Timer();
-        TimerTask task=new TimerTask() {
+    public void setTimeTask() {
+        recLen = 60;
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
 
@@ -162,8 +190,8 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                     @Override
                     public void run() {
                         recLen--;
-                        tvVerificationCode.setText(recLen+"");
-                        if(recLen<0){
+                        tvVerificationCode.setText(recLen + "");
+                        if (recLen < 0) {
                             timer.cancel();
                             tvVerificationCode.setText("重新发送");
                             return;
@@ -173,9 +201,15 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                 });
             }
         };
-       timer.schedule(task ,1000,1000);
+        timer.schedule(task, 1000, 1000);
 
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

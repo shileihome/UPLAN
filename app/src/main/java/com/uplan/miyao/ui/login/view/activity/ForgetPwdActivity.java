@@ -47,8 +47,7 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     @BindView(R.id.et_verification_code)
     EditText etVerificationCode;
 
-    public static final int REQUEST_CODE = 100;
-    public static final int RESULT_CODE = 300;
+
 
     /** 是否绑定过公众号 */
     private boolean isBinding = false;
@@ -56,7 +55,7 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     public static void start(Activity context, boolean isBind) {
         Intent starter = new Intent(context, ForgetPwdActivity.class);
         starter.putExtra("isBind", isBind);
-        context.startActivityForResult(starter, REQUEST_CODE);
+        context.startActivityForResult(starter, LoginActivity.FORGET_REQUEST_CODE);
     }
 
 
@@ -101,7 +100,7 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
         Intent intent = new Intent();
         intent.putExtra("username", etPhotoNo.getText().toString());
         intent.putExtra("password", etPwd.getText().toString());
-        setResult(RESULT_CODE, intent);
+        setResult(LoginActivity.FORGET_RESULT_CODE, intent);
         finish();
     }
 

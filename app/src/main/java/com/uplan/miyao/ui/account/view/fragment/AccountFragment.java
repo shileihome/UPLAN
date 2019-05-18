@@ -1,5 +1,6 @@
 package com.uplan.miyao.ui.account.view.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.uplan.miyao.ui.account.model.resp.AccountResp;
 import com.uplan.miyao.ui.account.presenter.AccountPresenter;
 import com.uplan.miyao.ui.account.view.activity.HelpCenterActivity;
 import com.uplan.miyao.ui.account.view.activity.HoldActivity;
+import com.uplan.miyao.ui.account.view.activity.Mix50Activity;
 import com.uplan.miyao.ui.account.view.activity.RecordActivity;
 import com.uplan.miyao.ui.account.view.activity.RedeemActivity;
 import com.uplan.miyao.ui.account.view.activity.RemindActivity;
@@ -90,6 +92,8 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     TextView tvLoginOut;
     @BindView(R.id.ll_account)
     LinearLayout llAccount;
+    @BindView(R.id.ll_title_background)
+    LinearLayout llTitleBackground;
 
     @Nullable
     @Override
@@ -114,9 +118,10 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             tvLoginName.setText(StringUtils.formatTel(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_TEL)));
             if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                 ivVipLogo.setVisibility(View.VISIBLE);
-
+                llTitleBackground.setBackgroundColor(Color.parseColor("#FFC69D5B"));
             } else {
                 ivVipLogo.setVisibility(View.GONE);
+                llTitleBackground.setBackgroundColor(Color.parseColor("#FF31BCE9"));
             }
         } else {
             tvLoginName.setText("未登录");
@@ -146,7 +151,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 
 
     @OnClick({R.id.tv_setting, R.id.ll_account, R.id.tv_honav2, R.id.tv_honav3, R.id.rl_holist1, R.id.rl_holist2,
-            R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist8, R.id.tv_login_out})
+            R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist8,R.id.ll_mix50, R.id.tv_login_out})
     public void onClick(View view) {
 
 
@@ -165,8 +170,8 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                     return;
                 }
                 break;
-        /*    case R.id.iv_login:
-               *//* if(!isLogined()){
+            /*    case R.id.iv_login:
+             *//* if(!isLogined()){
                     LoginActivity.start(getActivity());
                 }else{
 
@@ -237,7 +242,10 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 }
                 HelpCenterActivity.start(getActivity());
                 break;
-
+            case R.id.ll_mix50:
+                //mix50 事件入口
+                Mix50Activity.start(getActivity());
+                break;
             case R.id.tv_login_out:
                 if (isShowLoginDialog()) {
                     return;
@@ -282,7 +290,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.LOGIN_STATE, false);
         PreferencesUtils.putString(getActivity(), PreferencesUtils.PLAY_SESSION, "");
         PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_NAME, "未登录");
-        PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_TEL, "");
+//        PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_TEL, "");
         PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, false);
         PreferencesUtils.putLong(getActivity(), PreferencesUtils.EXPIRE_TIME, 0);
         tvLoginName.setText("未登录");

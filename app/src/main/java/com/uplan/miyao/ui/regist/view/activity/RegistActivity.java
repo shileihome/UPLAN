@@ -13,6 +13,7 @@ import com.uplan.miyao.base.mvp.BaseActivity;
 import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.regist.contract.RegistContract;
 import com.uplan.miyao.ui.regist.presenter.RegistPresenter;
+import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.ToastUtils;
 
 import java.util.Timer;
@@ -56,6 +57,7 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
     protected void init() {
         setContentView(R.layout.activity_regist);
         ButterKnife.bind(this);
+        etPhotoNo.setText(PreferencesUtils.getString(this,PreferencesUtils.USER_TEL));
     }
 
     @Override

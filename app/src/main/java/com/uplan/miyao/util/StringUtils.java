@@ -333,4 +333,12 @@ public class StringUtils {
         return dest;
     }
 
+    public static String formatTel(String mobile){
+        if(TextUtils.isEmpty(mobile) || mobile.length() != 11){
+            return "";
+        }
+        String maskNumber="";
+        return  maskNumber = mobile.substring(0,3)+"****"+mobile.substring(7,mobile.length());
+    }
+
 }

@@ -14,6 +14,7 @@ import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.login.contract.ForgetPwdContract;
 import com.uplan.miyao.ui.login.model.resp.ForgetPwdResp;
 import com.uplan.miyao.ui.login.presenter.ForgetPwdPresenter;
+import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.ToastUtils;
 
 import java.util.Timer;
@@ -68,6 +69,7 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     }
 
     private void initView(){
+        etPhotoNo.setText(PreferencesUtils.getString(this,PreferencesUtils.USER_TEL));
         if(isBinding){
            etPwd.setHint("请设置密码");
             etPwdAgain.setHint("请确认密码");

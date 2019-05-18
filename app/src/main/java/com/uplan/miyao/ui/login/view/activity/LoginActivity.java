@@ -54,7 +54,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     protected void init() {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
+        etPhotoNo.setText(PreferencesUtils.getString(this,PreferencesUtils.USER_TEL));
         etPhotoNo.setOnFocusChangeListener(new android.view.View.
                 OnFocusChangeListener() {
             @Override
@@ -71,7 +71,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 }
             }
         });
-
     }
 
 
@@ -109,7 +108,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void dealVerifyTelSucess(VerifyTelResp data) {
-        ToastUtils.shortShow(data.msg);
+        //取消请继续提示
+       // ToastUtils.shortShow(data.msg);
     }
 
     @Override

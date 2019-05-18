@@ -18,6 +18,7 @@ import com.uplan.miyao.ui.vip.contract.DiscoverContract;
 import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
 import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.StringUtils;
 import com.uplan.miyao.util.ToastUtils;
 
 import java.security.MessageDigest;
@@ -79,14 +80,14 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         if (PreferencesUtils.getBoolean(this, PreferencesUtils.IS_ACTIVEA)) {
             llVip.setVisibility(View.VISIBLE);
             llCommon.setVisibility(View.GONE);
-            tvUserTel.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
+            tvUserTel.setText(StringUtils.formatTel(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL)));
             String date=fomatDate(PreferencesUtils.getLong(this, PreferencesUtils.EXPIRE_TIME));
             tvExpireTime.setText("您的VIP会员将于"+date+"到期");
             tvDredge.setText("立即续费 19.9/月");
         } else {
             llVip.setVisibility(View.GONE);
             llCommon.setVisibility(View.VISIBLE);
-            tvUserName.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
+            tvUserName.setText(StringUtils.formatTel(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL)));
             tvDredge.setText("立即加入 19.9/月");
         }
     }

@@ -28,6 +28,7 @@ import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.main.view.activity.MainActivity;
 import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.StringUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
 import butterknife.BindView;
@@ -110,7 +111,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 
     private void initView() {
         if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE)) {
-            tvLoginName.setText(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_TEL));
+            tvLoginName.setText(StringUtils.formatTel(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_TEL)));
             if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                 ivVipLogo.setVisibility(View.VISIBLE);
 

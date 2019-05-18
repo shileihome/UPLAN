@@ -35,7 +35,7 @@ public class UPLANApplication extends Application {
         PreferencesUtils.putBoolean(this, PreferencesUtils.LOGIN_STATE, false);
         PreferencesUtils.putString(this, PreferencesUtils.PLAY_SESSION, "");
         PreferencesUtils.putString(this,PreferencesUtils.USER_NAME,"未登录");
-        PreferencesUtils.putString(this,PreferencesUtils.USER_TEL,"");
+//        PreferencesUtils.putString(this,PreferencesUtils.USER_TEL,"");
         PreferencesUtils.putBoolean(this,PreferencesUtils.IS_ACTIVEA,false);
         PreferencesUtils.putLong(this,PreferencesUtils.EXPIRE_TIME,0);
     }

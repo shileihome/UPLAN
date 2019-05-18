@@ -17,6 +17,7 @@ import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
 import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
 import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.util.StringUtils;
 import com.uplan.miyao.util.ToastUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
@@ -68,7 +69,7 @@ public class VipFragment extends BaseFragment<DiscoverPresenter> implements Disc
             if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                 llVip.setVisibility(View.VISIBLE);
                 llCommon.setVisibility(View.GONE);
-                tvVipLab.setText("尊敬的"+PreferencesUtils.getString(getActivity(),PreferencesUtils.USER_TEL)+"，您好");
+                tvVipLab.setText("尊敬的"+StringUtils.formatTel(PreferencesUtils.getString(getActivity(),PreferencesUtils.USER_TEL))+"，您好");
             } else {
                 llCommon.setVisibility(View.VISIBLE);
                 llVip.setVisibility(View.GONE);

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.uplan.miyao.R;
+import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +35,7 @@ public class PrivacyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_privacy);
         ButterKnife.bind(this);
+        setTranslucent();
     }
 
     @OnClick({R.id.iv_back, R.id.tv_end})
@@ -46,5 +48,10 @@ public class PrivacyActivity extends AppCompatActivity {
                 finish();
                 break;
         }
+    }
+    public void setTranslucent() {
+        QMUIStatusBarHelper.setStatusBarDarkMode(this);
+        QMUIStatusBarHelper.translucent(this);
+        QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
 }

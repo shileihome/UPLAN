@@ -35,6 +35,7 @@ import com.uplan.miyao.ui.financial.view.activity.SimpleActivity;
 import com.uplan.miyao.ui.financial.view.activity.TeamInfoActivity;
 import com.uplan.miyao.ui.financial.view.activity.ValidActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
+import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
@@ -156,9 +157,11 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         View view_1 = View.inflate(getActivity(), R.layout.view_home_center_1, null);
         View view_2 = View.inflate(getActivity(), R.layout.view_home_center_2, null);
         View view_3 = View.inflate(getActivity(), R.layout.view_home_center_3, null);
+        View view_4 = View.inflate(getActivity(),R.layout.view_home_center_4,null);
         views.add(view_1);
         views.add(view_2);
         views.add(view_3);
+        views.add(view_4);
 
         view_1.setOnClickListener(view1 -> {
             if (isShowLoginDialog()) {
@@ -172,6 +175,17 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             if (isShowLoginDialog()) {
                 return;
             }
+            //只有会员可以购买
+            if(!PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA)){
+                CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+                commonDialog.setSubMessage("请先成为会员!").
+                        setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                        }).
+                        setRightButton(getString(R.string.commit_change), v -> {
+                            VipActivity.start(getActivity());
+                        }).show();
+                return;
+            }
             FinancialActivity.start(getActivity());
         });
          tvHomeBuy2= (TextView) view_2.findViewById(R.id.tv_home_buy_2);
@@ -180,9 +194,23 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             if (isShowLoginDialog()) {
                 return;
             }
+            //只有会员可以购买
+            if(!PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA)){
+                CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+                commonDialog.setSubMessage("请先成为会员!").
+                        setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                        }).
+                        setRightButton(getString(R.string.commit_change), v -> {
+                            VipActivity.start(getActivity());
+                        }).show();
+                return;
+            }
             FinancialActivity.start(getActivity());
         });
          tvHomeBuy3= (TextView) view_3.findViewById(R.id.tv_home_buy_3);
+         view_4.setOnClickListener(view4->{
+
+         });
     }
 
     @Override

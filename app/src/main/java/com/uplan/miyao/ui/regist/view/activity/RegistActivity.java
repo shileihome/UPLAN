@@ -2,7 +2,6 @@ package com.uplan.miyao.ui.regist.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -12,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.uplan.miyao.R;
+import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.base.mvp.BaseActivity;
 import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
@@ -205,11 +205,9 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
 
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    public void setTranslucent() {
+        QMUIStatusBarHelper.setStatusBarDarkMode(this);
+        QMUIStatusBarHelper.translucent(this);
+        QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
 }

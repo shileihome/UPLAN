@@ -87,10 +87,6 @@ public class SplashActivity extends AppBaseActivity {
 
     }
 */
-    public void setTranslucent() {
-        QMUIStatusBarHelper.setStatusBarDarkMode(this);
-        QMUIStatusBarHelper.translucent(this);
-    }
 
     private void initBannerSplash() {
       //设置Banners高度
@@ -132,5 +128,10 @@ public class SplashActivity extends AppBaseActivity {
         localImagesTop.add(R.drawable.splash_banner_1);
         localImagesTop.add(R.drawable.splash_banner_2);
         localImagesTop.add(R.drawable.splash_banner_3);
+    }
+    public void setTranslucent() {
+        QMUIStatusBarHelper.setStatusBarDarkMode(this);
+        QMUIStatusBarHelper.translucent(this);
+        QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
 }

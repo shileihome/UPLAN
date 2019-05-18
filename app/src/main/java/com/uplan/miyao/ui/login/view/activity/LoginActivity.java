@@ -2,7 +2,6 @@ package com.uplan.miyao.ui.login.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -211,10 +210,4 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

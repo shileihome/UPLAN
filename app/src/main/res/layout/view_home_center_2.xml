@@ -13,7 +13,7 @@
             android:id="@+id/iv_center_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/center_financial_2"/>
+            android:src="@drawable/center_financial_1"/>
 
         <TextView
             android:id="@+id/tv_home_buy_2"

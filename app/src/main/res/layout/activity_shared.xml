@@ -5,25 +5,32 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="330dp"
         >
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/financial_detail_left_arrow"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
-            android:paddingLeft="20dp"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@drawable/shared_title"
             android:scaleType="fitXY"/>
-
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shared_arrow_left"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="30dp"/>
     </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shared_btn"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-30dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -40,15 +47,19 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/shared_step_lab_1"
             android:layout_marginLeft="22dp"/>
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp">
+        >
         <ImageView
             android:layout_width="101dp"
             android:layout_height="101dp"
@@ -56,6 +67,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/shared_step_lab_2"
             android:layout_marginLeft="22dp"/>
     </LinearLayout>
     <TextView

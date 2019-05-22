@@ -19,6 +19,9 @@ import com.uplan.miyao.R;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.util.PreferencesUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -41,6 +44,8 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     TextView tvPayText;
     @BindView(R.id.tv_sure)
     TextView tvSure;
+    @BindView(R.id.tv_pay_time)
+    TextView tvPayTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,13 +94,22 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 Log.d(TAG, "onPayFinish" + "支付成功！");
                 if (PreferencesUtils.getBoolean(this, PreferencesUtils.IS_ACTIVEA)) {
                     PreferencesUtils.putBoolean(this, PreferencesUtils.IS_ACTIVEA, true);
+                    String lastDate=PreferencesUtils.getString(this,PreferencesUtils.EXPIRE_TIME);
+                    long time=Long.parseLong(lastDate);
+                    time=time+30*24*60*60*1000;
+                    String expireTime=fomatDate(time);
+                    tvPayText.setText("续费成功！");
+                    tvPayTime.setVisibility(View.VISIBLE);
+                    tvPayTime.setText("您的VIP会员将于"+expireTime+"日到期");
+
                 } else {
                     PreferencesUtils.putBoolean(this, PreferencesUtils.IS_ACTIVEA, true);
+                    tvPayText.setText("恭喜您成为会员！");
+                    tvPayTime.setVisibility(View.GONE);
                 }
 
                 tvTitle.setText("开通成功");
                 tvPayImage.setBackground(getResources().getDrawable(R.drawable.pay_sucess));
-                tvPayText.setText("恭喜您成为会员！");
                 tvSure.setText("我知道了");
             } else {
                 Log.d(TAG, "onPayFinish" + resp.errCode);
@@ -107,6 +121,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 tvTitle.setText("支付失败");
                 tvPayImage.setBackground(getResources().getDrawable(R.drawable.pay_faile));
                 tvPayText.setText("抱歉，支付失败了！");
+                tvPayTime.setVisibility(View.GONE);
                 tvSure.setText("我知道了");
             }
         }
@@ -128,6 +143,14 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 finish();
                 break;
         }
+    }
+
+    private String fomatDate(long time){
+        Date date=new Date();
+        date.setTime(time);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String expire=sdf.format(date);
+        return expire;
     }
 }
 

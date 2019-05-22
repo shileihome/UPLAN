@@ -79,6 +79,12 @@
         <activity android:name=".ui.account.view.activity.SettingActivity" />
         <activity android:name=".ui.account.view.activity.Mix50Activity" />
         <activity android:name=".ui.regist.view.activity.PrivacyActivity" />
+        <activity android:name=".ui.vip.view.activity.ClassroomWebActivity" />
+        <activity android:name=".ui.vip.view.activity.FinanceWebActivity" />
+        <activity android:name=".ui.vip.view.activity.FundGroupWebActivity" />
+        <activity android:name=".ui.vip.view.activity.InsuranceWebActivity" />
+        <activity android:name=".ui.vip.view.activity.MerchantWebActivity" />
+        <activity android:name=".ui.vip.view.activity.SharedActivity" />
         <!--        <activity
                     android:name=".wxapi.WXPayEntryActivity"
                     android:label="@string/app_name"

@@ -22,7 +22,7 @@ import com.uplan.miyao.ui.account.view.fragment.AccountFragment;
 import com.uplan.miyao.ui.financial.view.fragment.HomeFragment;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.survey.view.fragment.SurveyFragment;
-import com.uplan.miyao.ui.vip.view.fragment.VipFragment;
+import com.uplan.miyao.ui.vip.view.fragment.DiscoverFragment;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.ToastUtils;
 import com.uplan.miyao.widget.CommonDialog;
@@ -72,7 +72,7 @@ public class MainActivity extends AppBaseActivity {
 
     private HomeFragment homeFragment;
     private SurveyFragment surveyFragment;
-    private VipFragment discoverFragment;
+    private DiscoverFragment discoverFragment;
     private AccountFragment accountFragment;
     FragmentManager fManager;
 
@@ -190,7 +190,7 @@ public class MainActivity extends AppBaseActivity {
                 discoverImage.setImageResource(R.drawable.faxian_select);
                 tvDiscover.setTextColor(Color.parseColor("#FF31BCE9"));
                 if (discoverFragment == null) {
-                    discoverFragment = new VipFragment();
+                    discoverFragment = new DiscoverFragment();
                     transaction.add(R.id.content, discoverFragment, "discoverFragment");
                 } else {
                     transaction.show(discoverFragment);

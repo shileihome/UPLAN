@@ -28,6 +28,13 @@ private String homeUrl="http://key.51mix.cn/wechat/family/InfoInputAction/public
     }
 
     @Override
+    protected void onReload() {
+        super.onReload();
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +"\""+ PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
+        uplanWebView.loadUrl(homeUrl);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +"\""+ PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");

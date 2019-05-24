@@ -6,15 +6,17 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
-import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.WebViewUtils;
 import com.uplan.miyao.widget.UplanWebView;
 
@@ -29,11 +31,15 @@ import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
  */
 public abstract class BaseWebViewActivity extends Activity {
     public UplanWebView uplanWebView;
+    public LinearLayout llError;
+    public TextView tvReload;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentLayout());
         uplanWebView= (UplanWebView) findViewById(R.id.uplan_web_view);
+        llError= (LinearLayout) findViewById(R.id.ll_error);
+        tvReload= (TextView) findViewById(R.id.tv_reload);
         clearCookies(this);
         initView();
         setTranslucent();
@@ -51,9 +57,8 @@ public abstract class BaseWebViewActivity extends Activity {
         return R.layout.activity_base_web;
     }
 
-    protected void onReload() {
-        String url=uplanWebView.getUrl();
-        uplanWebView.loadUrl(url);
+    protected  void onReload(){
+        llError.setVisibility(View.GONE);
     }
 
     protected class WebAppClient extends WebViewClient {
@@ -106,7 +111,10 @@ public abstract class BaseWebViewActivity extends Activity {
      * 设置错误页面
      */
     private void showErrorPage() {
-        LoginActivity.start(this);
+    llError.setVisibility(View.VISIBLE);
+    tvReload.setOnClickListener(view->{
+        onReload();
+    });
     }
 
     /**

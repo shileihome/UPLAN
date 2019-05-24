@@ -21,6 +21,12 @@ public class SettingActivity extends BaseWebViewActivity {
         context.startActivity(starter);
     }
 
+    @Override
+    protected void onReload() {
+        super.onReload();
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +"\""+ PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
+        uplanWebView.loadUrl(homeUrl);
+    }
 
     @Override
     public void initView() {

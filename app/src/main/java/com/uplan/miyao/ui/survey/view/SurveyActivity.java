@@ -30,6 +30,14 @@ public class SurveyActivity extends BaseWebViewActivity {
     }
 
     @Override
+    protected void onReload() {
+        super.onReload();
+        String cookie="\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"";
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +cookie );
+        uplanWebView.loadUrl(homeUrl);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         String cookie="\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"";

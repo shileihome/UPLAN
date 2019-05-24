@@ -14,9 +14,10 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.uplan.miyao.R;
-import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.util.WebViewUtils;
 import com.uplan.miyao.widget.UplanWebView;
 
@@ -31,12 +32,15 @@ import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
  */
 public abstract class BaseWebViewFragment extends Fragment {
     public UplanWebView uplanWebView;
-
+    public LinearLayout llError;
+    public TextView tvReload;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getContentLayout(), null);
         uplanWebView = (UplanWebView) view.findViewById(R.id.uplan_web_view);
+        llError= (LinearLayout) view.findViewById(R.id.ll_error);
+        tvReload= (TextView) view.findViewById(R.id.tv_reload);
         clearCookies(getActivity());
         initView();
         return view;
@@ -46,9 +50,8 @@ public abstract class BaseWebViewFragment extends Fragment {
         return R.layout.activity_base_web;
     }
 
-    protected void onReload() {
-        String url = uplanWebView.getUrl();
-        uplanWebView.loadUrl(url);
+    protected  void onReload(){
+        llError.setVisibility(View.GONE);
     }
 
     protected class WebAppClient extends WebViewClient {
@@ -95,9 +98,11 @@ public abstract class BaseWebViewFragment extends Fragment {
      * 设置错误页面
      */
     private void showErrorPage() {
-        LoginActivity.start(getActivity());
+        llError.setVisibility(View.VISIBLE);
+        tvReload.setOnClickListener(view->{
+            onReload();
+        });
     }
-
     /**
      * 子类init
      */

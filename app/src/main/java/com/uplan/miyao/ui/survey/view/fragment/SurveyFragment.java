@@ -24,6 +24,14 @@ public class SurveyFragment extends BaseWebViewFragment {
     }
 
     @Override
+    protected void onReload() {
+        super.onReload();
+        String cookie = "PLAY_SESSION=" + "\""+PreferencesUtils.getString(getActivity(), PreferencesUtils.PLAY_SESSION)+"\"";
+        WebViewUtils.getCookie(getActivity(), uplanWebView, homeUrl, cookie);
+        uplanWebView.loadUrl(homeUrl);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         updateWebData();

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="26dp"
     android:background="@color/white"
     android:orientation="vertical">
     <RelativeLayout
+        android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/white"
@@ -28,31 +29,43 @@
             />
 
     </RelativeLayout>
-
+    <TextView
+        android:id="@+id/tv_end"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FF31BCE9"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="确定"
+        android:layout_alignParentBottom="true"
+        android:textSize="18sp"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title"
+        android:layout_above="@+id/tv_end"
+        android:scrollbars="none">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/privacy" />
+     <!--   <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/home_safe"
-                android:gravity="center"/>
-            <TextView
-                android:id="@+id/tv_end"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="#FF31BCE9"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:text="确定"
-                android:layout_alignParentBottom="true"
-                android:textSize="18sp"/>
-        </LinearLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/privacy"
+                android:layout_gravity="center_horizontal"
+                />&ndash;&gt;
+
+        </LinearLayout>-->
     </ScrollView>
 
-</LinearLayout>
+
+
+</RelativeLayout>

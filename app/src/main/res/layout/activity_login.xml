@@ -117,13 +117,14 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="44dp"
-            android:background="@drawable/shape_btn_regist"
+            android:background="@drawable/select_btn_login_regist"
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="登录"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:clickable="true"/>
 
 
         <TextView
@@ -161,12 +162,11 @@
 
             <RadioButton
                 android:id="@+id/rb_privacy"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:button="@null"
-                android:background="@drawable/privacy_select"
                 android:layout_gravity="center_vertical"
-                android:checked="true"/>
+                />
             <TextView
 
                 android:id="@+id/tv_privacy"

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -86,18 +85,19 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 }
             }
         });
-        rbPrivacy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    isPrivacy=true;
-                    rbPrivacy.setBackgroundResource(R.drawable.privacy_select);
-                }else{
-                    isPrivacy=false;
-                    rbPrivacy.setBackgroundResource(R.drawable.privacy_unselect);
-                }
+        rbPrivacy.setButtonDrawable(R.drawable.privacy_select);
+        rbPrivacy.setOnClickListener(view->{
+            if(isPrivacy){
+                isPrivacy=false;
+                tvLogin.setEnabled(false);
+                rbPrivacy.setButtonDrawable(R.drawable.privacy_unselect);
+            }else{
+                isPrivacy=true;
+                tvLogin.setEnabled(true);
+                rbPrivacy.setButtonDrawable(R.drawable.privacy_select);
             }
         });
+
     }
 
 
@@ -160,6 +160,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 etPwd.setText("");
                 break;
             case R.id.tv_login:
+                if(!isPrivacy){
+                    return;
+                }
                 String tel = etPhotoNo.getText().toString();
                 String pwd = etPwd.getText().toString();
                 if (TextUtils.isEmpty(tel)) {
@@ -170,10 +173,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                     ToastUtils.shortShow("密码不能为空");
                     return;
                 }
-                if(!isPrivacy){
-                    ToastUtils.shortShow("请先阅读并同意《隐私保护政策》");
-                    return;
-                }
+
                 mPresenter.login(tel, pwd);
                 break;
             case R.id.tv_to_regist:

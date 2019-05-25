@@ -2,10 +2,15 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="26dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFAFAFA"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:paddingTop="26dp"
+        android:background="@color/white"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,14 +44,35 @@
 
             </RelativeLayout>
 
-            <TextView
+            <com.allure.lbanners.LMBanners
+                android:id="@+id/banners_discover"
+                android:layout_width="match_parent"
+                android:layout_height="136dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@android:color/transparent"
+                app:auto_play="true"
+                app:canLoop="true"
+                app:durtion="5000"
+                app:horizontal_transitionEffect="accordion"
+                app:indicatorBottomPadding="100"
+                app:indicator_position="bottom_mid"
+                app:indicator_select="@drawable/page_indicator_select"
+                app:indicator_unselect="@drawable/page_indicator_unselect"
+                app:isGuide="true"
+                app:isVertical="false"
+                app:scroll_duration="1000"
+
+                />
+          <!--  <TextView
                 android:id="@+id/iv_discover_title"
                 android:layout_width="match_parent"
                 android:layout_height="136dp"
-                android:background="@drawable/discover_1"
+                android:background="@drawable/discover_1_2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"/>
-
+-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="320dp"

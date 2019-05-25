@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -68,16 +67,16 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
         setContentView(R.layout.activity_regist);
         ButterKnife.bind(this);
         etPhotoNo.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
-        rbPrivacy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    isPrivacy = true;
-                    rbPrivacy.setBackgroundResource(R.drawable.privacy_select);
-                } else {
-                    isPrivacy = false;
-                    rbPrivacy.setBackgroundResource(R.drawable.privacy_unselect);
-                }
+        rbPrivacy.setButtonDrawable(R.drawable.privacy_select);
+        rbPrivacy.setOnClickListener(view->{
+            if(isPrivacy){
+                isPrivacy=false;
+                tvRegist.setEnabled(false);
+                rbPrivacy.setButtonDrawable(R.drawable.privacy_unselect);
+            }else{
+                isPrivacy=true;
+                tvRegist.setEnabled(true);
+                rbPrivacy.setButtonDrawable(R.drawable.privacy_select);
             }
         });
     }
@@ -143,6 +142,9 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                 }
                 break;
             case R.id.tv_regist:
+                if (!isPrivacy) {
+                    return;
+                }
                 if (TextUtils.isEmpty(etPhotoNo.getText().toString())) {
                     ToastUtils.shortShow("请输入手机号");
                     return;
@@ -164,10 +166,7 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                     ToastUtils.shortShow("两次密码不一致");
                     return;
                 }
-                if (!isPrivacy) {
-                    ToastUtils.shortShow("请先阅读并同意《隐私保护政策》");
-                    return;
-                }
+
                 String tel = etPhotoNo.getText().toString();
                 String pwd = etPwd.getText().toString();
                 String verificationCode = etVerificationCode.getText().toString();

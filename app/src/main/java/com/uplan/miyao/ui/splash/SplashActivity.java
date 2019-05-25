@@ -102,7 +102,7 @@ public class SplashActivity extends AppBaseActivity {
         bannersSplash.setUnSelectUnIndicatorRes(R.drawable.splash_unselect);//未选中的原点
         //若自定义原点到底部的距离,默认20,必须在setIndicatorWidth之前调用
 //        bannersSplash.setIndicatorBottomPadding(5);
-        bannersSplash.setIndicatorWidth(8);//原点默认为5dp
+        bannersSplash.setIndicatorWidth(6);//原点默认为5dp
         bannersSplash.setHoriZontalTransitionEffect(TransitionEffect.Default);//选中喜欢的样式
   //        bannersSplash.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式
           bannersSplash.setDurtion(3000);//轮播切换时间

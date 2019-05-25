@@ -224,9 +224,9 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             tvHomeBuy3.setVisibility(View.VISIBLE);
         } else {
             tvLogin.setVisibility(View.VISIBLE);
-            tvHomeBuy1.setVisibility(View.GONE);
-            tvHomeBuy2.setVisibility(View.GONE);
-            tvHomeBuy3.setVisibility(View.GONE);
+            tvHomeBuy1.setVisibility(View.INVISIBLE);
+            tvHomeBuy2.setVisibility(View.INVISIBLE);
+            tvHomeBuy3.setVisibility(View.INVISIBLE);
         }
     }
 

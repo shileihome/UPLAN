@@ -1,5 +1,6 @@
 package com.uplan.miyao.ui.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.RelativeLayout;
@@ -35,6 +36,17 @@ public class SplashActivity extends AppBaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (!isTaskRoot()) {
+            final Intent intent = getIntent();
+            final String intentAction = intent.getAction();
+            if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && intentAction != null && intentAction.equals(Intent
+                    .ACTION_MAIN)) {
+                finish();
+                return;
+            }
+        }
+
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         /*MyCountDownTimer mCountDownTimer= new MyCountDownTimer(3000,1000);

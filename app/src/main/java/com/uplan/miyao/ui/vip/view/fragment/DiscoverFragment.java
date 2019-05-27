@@ -112,7 +112,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     public void setTranslucent() {
         QMUIStatusBarHelper.setStatusBarDarkMode(getActivity());
         QMUIStatusBarHelper.translucent(getActivity());
-//        QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
+        QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
     }
 
 

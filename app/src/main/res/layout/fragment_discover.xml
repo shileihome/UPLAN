@@ -97,7 +97,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="17dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -365,7 +366,8 @@
                android:text="2019-01-09 01:12:27"
                android:layout_gravity="end"
                android:layout_marginLeft="20dp"
-               android:layout_marginRight="20dp"/>
+               android:layout_marginRight="20dp"
+               android:layout_marginBottom="17dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -430,9 +432,10 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="86dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="23dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp">
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="23dp">
 
                     <TextView
                         android:id="@+id/tv_classroom"
@@ -474,21 +477,21 @@
                         android:layout_alignParentBottom="true"/>
 
                 </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_shared"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="23dp"
+                    android:background="@drawable/discover_shared"/>
             </LinearLayout>
-            <TextView
-                android:id="@+id/tv_shared"
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="23dp"
-                android:background="@drawable/discover_shared"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="86dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="23dp"
                 android:background="@drawable/discover_bottom"/>
         </LinearLayout>
     </ScrollView>

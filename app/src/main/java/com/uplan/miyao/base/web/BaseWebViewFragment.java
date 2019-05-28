@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,19 @@ public abstract class BaseWebViewFragment extends Fragment {
         tvReload= (TextView) view.findViewById(R.id.tv_reload);
         clearCookies(getActivity());
         initView();
+        uplanWebView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK && uplanWebView.canGoBack()) {  //表示按返回键
+                        uplanWebView.goBack();   //后退
+                        //webview.goForward();//前进
+                        return true;    //已处理
+                    }
+                }
+                return false;
+            }
+        });
         return view;
     }
 

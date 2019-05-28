@@ -336,38 +336,46 @@
                         android:drawablePadding="4dp"
                         android:layout_gravity="center_vertical"/>
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/tv_finance"
-                    android:layout_width="match_parent"
-                    android:layout_height="86dp"
-                    android:layout_marginTop="18dp"
-                    android:background="@drawable/discover_finance"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_finance_text"
+                <LinearLayout
+                    android:id="@+id/ll_finance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FF3A3A3A"
-                    android:textSize="12sp"
-                    android:text="摘要：国务院首发“税改大红包”；工信部将发放5G零食拍照；2018年12月份CPI和PPI同比涨幅继续双双回落。"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"/>
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_finance"
+                        android:layout_width="match_parent"
+                        android:layout_height="86dp"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/discover_finance"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_finance_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FF3A3A3A"
+                        android:textSize="12sp"
+                        android:text="摘要：国务院首发“税改大红包”；工信部将发放5G零食拍照；2018年12月份CPI和PPI同比涨幅继续双双回落。"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"/>
 
-           <TextView
-               android:id="@+id/tv_finance_time"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="6dp"
-               android:textColor="#FF979797"
-               android:textSize="8sp"
-               android:text="2019-01-09 01:12:27"
-               android:layout_gravity="end"
-               android:layout_marginLeft="20dp"
-               android:layout_marginRight="20dp"
-               android:layout_marginBottom="17dp"/>
+                    <TextView
+                        android:id="@+id/tv_finance_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="#FF979797"
+                        android:textSize="8sp"
+                        android:text="2019-01-09 01:12:27"
+                        android:layout_gravity="end"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="17dp"/>
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -408,7 +416,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:text="财经"
+                        android:text="课堂"
                         android:textColor="#FF000000"
                         android:layout_gravity="center_vertical"
                         android:textSize="18sp"/>
@@ -430,6 +438,7 @@
                 </LinearLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rl_classroom"
                     android:layout_width="match_parent"
                     android:layout_height="86dp"
                     android:layout_marginTop="23dp"

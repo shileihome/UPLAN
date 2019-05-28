@@ -137,7 +137,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
 
-    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.tv_finance, R.id.tv_classroom_more, R.id.tv_classroom, R.id.tv_shared})
+    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared})
     public void onClick(View view) {
         if (isShowLoginDialog()) {
             return;
@@ -191,13 +191,13 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
             case R.id.text_finance_more:
                 FinanceWebActivity.start(getActivity());
                 break;
-            case R.id.tv_finance:
+            case R.id.ll_finance:
                 FinanceWebActivity.start(getActivity());
                 break;
             case R.id.tv_classroom_more:
                 ClassroomWebActivity.start(getActivity());
                 break;
-            case R.id.tv_classroom:
+            case R.id.rl_classroom:
                 ClassroomWebActivity.start(getActivity());
                 break;
             case R.id.tv_shared:

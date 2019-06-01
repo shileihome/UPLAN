@@ -300,13 +300,16 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_height="wrap_content"
                         android:src="@drawable/about_yinmi_1"
                         android:gravity="center"
-                        android:layout_marginTop="16dp"
                         />
                     <ImageView
                         android:layout_width="wrap_content"
@@ -346,7 +349,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        >
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -363,6 +367,10 @@
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"/>
                     </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.5"/>
                 </LinearLayout>
 
             </LinearLayout>

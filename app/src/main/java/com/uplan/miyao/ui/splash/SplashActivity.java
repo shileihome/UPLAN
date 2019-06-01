@@ -123,7 +123,7 @@ public class SplashActivity extends AppBaseActivity {
         bannersSplash.setIndicatorPosition(LMBanners.IndicaTorPosition.BOTTOM_MID);//设置原点显示位置
 
         //本地用法
-        bannersSplash.setAdapter(new LocalImgAdapter(this), localImagesTop);
+        bannersSplash.setAdapter(new LocalImgAdapter(this,LocalImgAdapter.TYPE_SPLASH), localImagesTop);
         //网络图片
 //        bannersSplash.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
 

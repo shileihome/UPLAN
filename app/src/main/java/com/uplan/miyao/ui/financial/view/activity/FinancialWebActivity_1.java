@@ -13,11 +13,11 @@ import com.uplan.miyao.util.WebViewUtils;
  * Author: Created by shilei on 2019/4/13-16:01
  * Description:
  */
-public class FinancialWebActivity extends BaseWebViewActivity {
+public class FinancialWebActivity_1 extends BaseWebViewActivity {
 
 private String homeUrl="http://www.51mix.cn/wechat/account/HomePage/plan";
     public static void start(Context context) {
-        Intent starter = new Intent(context, FinancialWebActivity.class);
+        Intent starter = new Intent(context, FinancialWebActivity_1.class);
         context.startActivity(starter);
     }
 

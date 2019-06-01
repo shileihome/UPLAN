@@ -53,6 +53,8 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     TextView tvClassroomTime;
     @BindView(R.id.banners_discover)
     LMBanners<TextView> bannersDiscover;
+    @BindView(R.id.tv_yinmi_detail)
+    TextView tvYinmiDetail;
     //本地图片BannerTop
     private ArrayList<Integer> localImagesDiscover = new ArrayList<Integer>();
 
@@ -67,16 +69,24 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
 
         View view = inflater.inflate(R.layout.fragment_discover, null);
         ButterKnife.bind(this, view);
+
+        initView();
+
         setTranslucent();
         addBannerDiscover();
         initBannerDiscover(bannersDiscover);
         return view;
     }
 
+    private void initView() {
+        tvYinmiDetail.setOnClickListener(v -> YinMiDetailActivity.start(getActivity()));
+    }
+
+
     private void initBannerDiscover(LMBanners bannersDiscover) {
         //设置Banners高度
 //      bannersDiscover.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 210)));
-        bannersDiscover.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, QMUIDisplayHelper.dp2px(getActivity(),136)));
+        bannersDiscover.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, QMUIDisplayHelper.dp2px(getActivity(), 136)));
         //参数设置
         bannersDiscover.isGuide(false);//是否为引导页
         bannersDiscover.setAutoPlay(true);//自动播放
@@ -98,7 +108,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
 
 
         //本地用法
-        bannersDiscover.setAdapter(new LocalImgAdapter(getActivity()), localImagesDiscover);
+        bannersDiscover.setAdapter(new LocalImgAdapter(getActivity(),LocalImgAdapter.TYPE_DISCOVER), localImagesDiscover);
         //网络图片
 //        bannersDiscover.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
 
@@ -138,7 +148,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
 
-    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared,R.id.tv_yinmi_detail})
+    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared})
     public void onClick(View view) {
         if (isShowLoginDialog()) {
             return;
@@ -204,9 +214,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
             case R.id.tv_shared:
                 SharedActivity.start(getActivity());
                 break;
-            case R.id.tv_yinmi_detail:
-                YinMiDetailActivity.start(getActivity());
-                break;
+
         }
     }
 

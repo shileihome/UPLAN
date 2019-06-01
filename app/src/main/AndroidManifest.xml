@@ -54,7 +54,7 @@
         <activity android:name=".ui.financial.view.activity.SafeActivity" />
         <activity android:name=".ui.financial.view.activity.TeamInfoActivity" />
         <activity android:name=".ui.financial.view.activity.FinancialActivity" />
-        <activity android:name=".ui.financial.view.activity.FinancialWebActivity" />
+        <activity android:name=".ui.financial.view.activity.FinancialWebActivity_1" />
         <activity android:name=".ui.account.view.activity.HoldActivity" />
         <activity android:name=".ui.account.view.activity.RecordActivity" />
         <activity android:name=".ui.account.view.activity.RedeemActivity" />
@@ -86,6 +86,13 @@
         <activity android:name=".ui.vip.view.activity.MerchantWebActivity" />
         <activity android:name=".ui.vip.view.activity.SharedActivity" />
         <activity android:name=".ui.regist.view.activity.PlatformActivity" />
+        <activity android:name=".ui.financial.view.activity.YinMiDetailActivity" />
+        <activity android:name=".ui.financial.view.activity.TopBannerHomeWebActivity_1" />
+        <activity android:name=".ui.financial.view.activity.TopBannerHomeWebActivity_2" />
+        <activity android:name=".ui.financial.view.activity.TopBannerHomeWebActivity_3" />
+        <activity android:name=".ui.vip.view.activity.TopBannerDiscoverWebActivity_1" />
+        <activity android:name=".ui.vip.view.activity.TopBannerDiscoverWebActivity_3" />
+        <activity android:name=".ui.vip.view.activity.TopBannerDiscoverWebActivity_2" />
         <!--        <activity
                     android:name=".wxapi.WXPayEntryActivity"
                     android:label="@string/app_name"

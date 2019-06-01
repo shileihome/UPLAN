@@ -27,7 +27,7 @@ public class PlatformActivity  extends AppCompatActivity {
     TextView tvEnd;
 
     public static void start(Context context){
-        Intent intent=new Intent(context,PrivacyActivity.class);
+        Intent intent=new Intent(context,PlatformActivity.class);
         context.startActivity(intent);
     }
     @Override

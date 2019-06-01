@@ -28,7 +28,9 @@ import com.uplan.miyao.ui.financial.adapter.LocalImgAdapter;
 import com.uplan.miyao.ui.financial.adapter.YViewPagerAdapter;
 import com.uplan.miyao.ui.financial.contract.FinancialContract;
 import com.uplan.miyao.ui.financial.presenter.FinancialPresenter;
-import com.uplan.miyao.ui.financial.view.activity.FinancialActivity;
+import com.uplan.miyao.ui.financial.view.activity.FinancialWebActivity_1;
+import com.uplan.miyao.ui.financial.view.activity.FinancialWebActivity_2;
+import com.uplan.miyao.ui.financial.view.activity.FinancialWebActivity_3;
 import com.uplan.miyao.ui.financial.view.activity.LucencyActivity;
 import com.uplan.miyao.ui.financial.view.activity.SafeActivity;
 import com.uplan.miyao.ui.financial.view.activity.SimpleActivity;
@@ -172,7 +174,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             if (isShowLoginDialog()) {
                 return;
             }
-            FinancialActivity.start(getActivity());
+            FinancialWebActivity_1.start(getActivity());
         });
          tvHomeBuy1= (TextView) view_1.findViewById(R.id.tv_home_buy_1);
 
@@ -191,7 +193,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                         }).show();
                 return;
             }
-            FinancialActivity.start(getActivity());
+            FinancialWebActivity_2.start(getActivity());
         });
          tvHomeBuy2= (TextView) view_2.findViewById(R.id.tv_home_buy_2);
 
@@ -210,7 +212,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                         }).show();
                 return;
             }
-            FinancialActivity.start(getActivity());
+            FinancialWebActivity_3.start(getActivity());
         });
          tvHomeBuy3= (TextView) view_3.findViewById(R.id.tv_home_buy_3);
          view_4.setOnClickListener(view4->{
@@ -274,7 +276,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
 
         //本地用法
-        bannersTop.setAdapter(new LocalImgAdapter(getActivity()), localImagesTop);
+        bannersTop.setAdapter(new LocalImgAdapter(getActivity(),LocalImgAdapter.TYPE_HOME), localImagesTop);
         //网络图片
 //        bannersTop.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
 

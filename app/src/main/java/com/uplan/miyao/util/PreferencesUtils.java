@@ -14,7 +14,17 @@ public class PreferencesUtils {
     public static String USER_NAME = "username";
     public static String USER_TEL = "user_tel";
     public static String IS_ACTIVEA = "is_active";
-    public static String EXPIRE_TIME="expire_time";
+    public static String EXPIRE_TIME = "expire_time";
+
+    /** 首页面轮播图点击url地址 */
+    public static String URL_BANNER_HOME_1 = "url_banner_home_1";
+    public static String URL_BANNER_HOME_2 = "url_banner_home_2";
+    public static String URL_BANNER_HOME_3 = "url_banner_home_3";
+
+    /** 发现页面卢波图点url地址 */
+    public static String URL_BANNER_DISCOVER_1 = "url_banner_discover_1";
+    public static String URL_BANNER_DISCOVER_2 = "url_banner_discover_2";
+    public static String URL_BANNER_DISCOVER_3 = "url_banner_discover_3";
 
     private PreferencesUtils() {
         throw new AssertionError();

@@ -1,4 +1,4 @@
-package com.uplan.miyao.ui.financial.view.activity;
+package com.uplan.miyao.ui.vip.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,14 +10,15 @@ import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
 /**
- * Author: Created by shilei on 2019/6/1-17:21
+ * Author: Created by shilei on 2019/4/13-16:01
  * Description:
  */
-public class YinMiDetailActivity extends BaseWebViewActivity {
+public class TopBannerDiscoverWebActivity_3 extends BaseWebViewActivity {
 
-    private String homeUrl="http://www.51mix.cn/wechat/account/HomePage/plan";
-    public static void start(Context context) {
-        Intent starter = new Intent(context, YinMiDetailActivity.class);
+private String homeUrl;
+    public static void start(Context context,String url) {
+        Intent starter = new Intent(context, TopBannerDiscoverWebActivity_3.class);
+        starter.putExtra("url",url);
         context.startActivity(starter);
     }
 
@@ -31,6 +32,7 @@ public class YinMiDetailActivity extends BaseWebViewActivity {
     @Override
     protected void onReload() {
         super.onReload();
+        homeUrl=getIntent().getStringExtra("url");
         WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +"\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
         uplanWebView.loadUrl(homeUrl);
     }
@@ -43,7 +45,7 @@ public class YinMiDetailActivity extends BaseWebViewActivity {
     }
 
     private void setWebViewClient() {
-        uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {
+        uplanWebView.setWebViewClient(new WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
@@ -76,4 +78,3 @@ public class YinMiDetailActivity extends BaseWebViewActivity {
     }
 
 }
-

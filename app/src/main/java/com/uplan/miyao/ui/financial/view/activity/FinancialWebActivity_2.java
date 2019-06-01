@@ -10,14 +10,14 @@ import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
 /**
- * Author: Created by shilei on 2019/6/1-17:21
+ * Author: Created by shilei on 2019/4/13-16:01
  * Description:
  */
-public class YinMiDetailActivity extends BaseWebViewActivity {
+public class FinancialWebActivity_2 extends BaseWebViewActivity {
 
-    private String homeUrl="http://www.51mix.cn/wechat/account/HomePage/plan";
+private String homeUrl="http://www.51mix.cn/wechat/account/HomePage/plan";
     public static void start(Context context) {
-        Intent starter = new Intent(context, YinMiDetailActivity.class);
+        Intent starter = new Intent(context, FinancialWebActivity_2.class);
         context.startActivity(starter);
     }
 
@@ -43,7 +43,7 @@ public class YinMiDetailActivity extends BaseWebViewActivity {
     }
 
     private void setWebViewClient() {
-        uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {
+        uplanWebView.setWebViewClient(new WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
@@ -76,4 +76,3 @@ public class YinMiDetailActivity extends BaseWebViewActivity {
     }
 
 }
-

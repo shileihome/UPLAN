@@ -178,23 +178,6 @@
            android:layout_marginTop="48dp"
            android:textColor="@color/white"
            />
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center_horizontal"
-           android:layout_marginTop="56dp"
-           android:orientation="horizontal">
-           <ImageView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/privacy_unselect"/>
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-
-               android:text="已阅读并同意《法律条款与隐私政策》"
-               android:textColor="#FFA2A2A2"/>
-       </LinearLayout>
    </LinearLayout>
 
 </LinearLayout>

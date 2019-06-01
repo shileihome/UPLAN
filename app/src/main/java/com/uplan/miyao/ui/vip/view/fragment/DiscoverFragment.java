@@ -15,6 +15,7 @@ import com.uplan.miyao.base.helper.QMUIDisplayHelper;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.ui.financial.adapter.LocalImgAdapter;
+import com.uplan.miyao.ui.financial.view.activity.YinMiDetailActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.vip.contract.DiscoverContract;
 import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
@@ -137,7 +138,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
 
-    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared})
+    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared,R.id.tv_yinmi_detail})
     public void onClick(View view) {
         if (isShowLoginDialog()) {
             return;
@@ -202,6 +203,9 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
                 break;
             case R.id.tv_shared:
                 SharedActivity.start(getActivity());
+                break;
+            case R.id.tv_yinmi_detail:
+                YinMiDetailActivity.start(getActivity());
                 break;
         }
     }

@@ -71,7 +71,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.6"
+                android:layout_weight="0.7"
                 android:weightSum="8"
                 android:orientation="vertical">
 
@@ -105,8 +105,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="30dp"
+
+                    android:layout_marginBottom="10dp"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="2dp"
                     app:cardPreventCornerOverlap="true"
@@ -293,13 +294,77 @@
                     android:src="@drawable/about_us"
                     android:scaleType="fitXY"
                     android:gravity="center" />
-                <ImageView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_explain"
-                    android:gravity="center"
-                    />
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/about_yinmi_1"
+                        android:gravity="center"
+                        android:layout_marginTop="16dp"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/about_yinmi_2"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="基金销售服务由"
+                            android:textSize="12sp"
+                            android:textColor="#FF909090"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/about_yinmi_3"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="提供"
+                            android:textSize="12sp"
+                            android:textColor="#FF909090"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="基金销售资格证号000000378"
+                            android:textSize="10sp"
+                            android:textColor="#FF909090"/>
+                        <TextView
+                            android:id="@+id/tv_yinmi_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="详情"
+                            android:textSize="10sp"
+                            android:textColor="#FF31BCE9"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
 

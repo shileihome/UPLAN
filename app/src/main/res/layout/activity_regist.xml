@@ -215,6 +215,7 @@
             android:layout_marginRight="34dp"
             android:src="@drawable/about_mix50" />
 
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -223,20 +224,36 @@
             android:layout_marginBottom="30dp"
             android:orientation="horizontal">
 
+
             <RadioButton
                 android:id="@+id/rb_privacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@null"
                 android:layout_gravity="center_vertical"
-               />
-
+                />
             <TextView
-                android:id="@+id/tv_privacy"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="已阅读并同意《法律条款与隐私政策》"
+                android:text="已阅读并同意"
+                android:textColor="#FFA2A2A2"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+
+                android:id="@+id/tv_platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《平台服务协议》"
+                android:textColor="#FFA2A2A2"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+
+                android:id="@+id/tv_privacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《隐私保护政策》"
                 android:textColor="#FFA2A2A2"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>

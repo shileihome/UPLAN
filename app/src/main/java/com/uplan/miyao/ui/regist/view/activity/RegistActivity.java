@@ -117,7 +117,7 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
     }
 
 
-    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_verification_code, R.id.tv_regist, R.id.tv_privacy})
+    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_verification_code, R.id.tv_regist, R.id.tv_privacy,R.id.tv_platform})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -174,6 +174,9 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                 break;
             case R.id.tv_privacy:
                 PrivacyActivity.start(this);
+                break;
+            case R.id.tv_platform:
+                PlatformActivity.start(this);
                 break;
         }
     }

@@ -34,6 +34,7 @@ import com.uplan.miyao.ui.financial.view.activity.SafeActivity;
 import com.uplan.miyao.ui.financial.view.activity.SimpleActivity;
 import com.uplan.miyao.ui.financial.view.activity.TeamInfoActivity;
 import com.uplan.miyao.ui.financial.view.activity.ValidActivity;
+import com.uplan.miyao.ui.financial.view.activity.YinMiDetailActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -142,6 +143,10 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 return;
             }
             RemindActivity.start(getActivity());
+        });
+        TextView tvYinMiDetail= (TextView) secondLayout.findViewById(R.id.tv_yinmi_detail);
+        tvYinMiDetail.setOnClickListener(view->{
+            YinMiDetailActivity.start(getActivity());
         });
     }
 

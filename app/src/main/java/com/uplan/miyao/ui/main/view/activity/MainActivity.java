@@ -20,12 +20,10 @@ import com.uplan.miyao.base.AppBaseActivity;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.ui.account.view.fragment.AccountFragment;
 import com.uplan.miyao.ui.financial.view.fragment.HomeFragment;
-import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.survey.view.fragment.SurveyFragment;
 import com.uplan.miyao.ui.vip.view.fragment.DiscoverFragment;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.ToastUtils;
-import com.uplan.miyao.widget.CommonDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -155,19 +153,6 @@ public class MainActivity extends AppBaseActivity {
                 }
                 break;
             case R.id.survey_layout:
-
-                if(!isLogined()){
-                    CommonDialog commonDialog = new CommonDialog(this).builder();
-                    commonDialog.setSubMessage("请先登录!").
-                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-
-                            }).
-                            setRightButton(getString(R.string.commit_change), v -> {
-
-                                LoginActivity.start(this);
-                            }).show();
-                    return;
-                }
 
                 mSelectIndex = SELECT_INDEX_SURVEY;
                 clearSelect();
@@ -329,7 +314,5 @@ public class MainActivity extends AppBaseActivity {
         QMUIStatusBarHelper.translucent(this);
         QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
-    public boolean isLogined(){
-        return PreferencesUtils.getBoolean(this,PreferencesUtils.LOGIN_STATE);
-    }
+
 }

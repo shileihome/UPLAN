@@ -15,16 +15,14 @@ import com.uplan.miyao.util.WebViewUtils;
  */
 public class SurveyActivity extends BaseWebViewActivity {
 
-    private String homeUrl;
-    public static void start(Context context,String url) {
+    private String homeUrl="http://22ju570648.iok.la/appClient/goplan";
+    public static void start(Context context) {
         Intent starter = new Intent(context, SurveyActivity.class);
-        starter.putExtra("url",url);
         context.startActivity(starter);
     }
 
     @Override
     public void initView() {
-        homeUrl=getIntent().getStringExtra("url");
         setWebViewClient();
         updateWebData();
     }

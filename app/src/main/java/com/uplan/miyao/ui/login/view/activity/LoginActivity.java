@@ -15,6 +15,7 @@ import com.uplan.miyao.ui.login.contract.LoginContract;
 import com.uplan.miyao.ui.login.model.resp.LoginResp;
 import com.uplan.miyao.ui.login.model.resp.VerifyTelResp;
 import com.uplan.miyao.ui.login.presenter.LoginPresenter;
+import com.uplan.miyao.ui.regist.view.activity.PlatformActivity;
 import com.uplan.miyao.ui.regist.view.activity.PrivacyActivity;
 import com.uplan.miyao.ui.regist.view.activity.RegistActivity;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -149,7 +150,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         }
     }
 
-    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_login, R.id.tv_to_regist, R.id.tv_forget_pwd, R.id.tv_privacy})
+    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_login, R.id.tv_to_regist, R.id.tv_forget_pwd, R.id.tv_privacy,R.id.tv_platform})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -189,6 +190,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 break;
             case R.id.tv_privacy:
                 PrivacyActivity.start(this);
+                break;
+            case R.id.tv_platform:
+                PlatformActivity.start(this);
                 break;
         }
     }

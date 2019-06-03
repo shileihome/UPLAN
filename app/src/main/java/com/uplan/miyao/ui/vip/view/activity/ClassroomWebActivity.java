@@ -15,7 +15,7 @@ import com.uplan.miyao.util.WebViewUtils;
  */
 public class ClassroomWebActivity  extends BaseWebViewActivity {
 
-    private String homeUrl="http://www.51mix.cn/wechat/yingmi/FundTransaction/tradingRecords";
+    private String homeUrl="http://22ju570648.iok.la/wechat/plan/PlanList/plan?keyword=";
     public static void start(Context context) {
         Intent starter = new Intent(context, ClassroomWebActivity.class);
         context.startActivity(starter);

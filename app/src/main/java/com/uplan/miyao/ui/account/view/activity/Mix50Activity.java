@@ -15,7 +15,7 @@ import com.uplan.miyao.util.WebViewUtils;
  */
 public class Mix50Activity  extends BaseWebViewActivity {
 
-    private String homeUrl="http://www.51mix.cn/wechat/yingmi/FundTransaction/getMyProperty";
+    private String homeUrl="http://www.51mix.cn/wechat/plan/PlanList/plan?keyword=";
     public static void start(Context context) {
         Intent starter = new Intent(context, Mix50Activity.class);
         context.startActivity(starter);

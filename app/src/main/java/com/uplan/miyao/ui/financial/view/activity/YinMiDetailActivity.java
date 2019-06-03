@@ -15,12 +15,11 @@ import com.uplan.miyao.util.WebViewUtils;
  */
 public class YinMiDetailActivity extends BaseWebViewActivity {
 
-    private String homeUrl="http://www.51mix.cn/wechat/account/HomePage/plan";
+    private String homeUrl="https://asset.yingmi.cn/sites/compliance/qualifications-mobile.html";
     public static void start(Context context) {
         Intent starter = new Intent(context, YinMiDetailActivity.class);
         context.startActivity(starter);
     }
-
 
     @Override
     public void initView() {

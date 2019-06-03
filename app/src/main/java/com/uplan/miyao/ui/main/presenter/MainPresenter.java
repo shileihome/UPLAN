@@ -4,8 +4,7 @@ import com.uplan.miyao.base.mvp.BasePresenter;
 import com.uplan.miyao.net.ErrorHandleSubscriber;
 import com.uplan.miyao.ui.main.contract.MainContract;
 import com.uplan.miyao.ui.main.model.MainModel;
-import com.uplan.miyao.ui.main.model.resp.StatusCountResp;
-import com.uplan.miyao.ui.main.model.resp.UserInfoResp;
+import com.uplan.miyao.ui.main.model.resp.BannerInfoResp;
 import com.uplan.miyao.util.RxUtils;
 
 
@@ -21,15 +20,13 @@ public class MainPresenter extends BasePresenter<MainContract.View, MainContract
     }
 
 
-    /**
-     * 用户信息
-     */
-    public void getUserInfo() {
+    public void getBannerInfo() {
+        // mView.loading();
+        mModel.getBannerInfo().compose(RxUtils.applySchedulers(mView)).subscribe(new ErrorHandleSubscriber<BannerInfoResp>(){
 
-        mModel.getUserInfo().compose(RxUtils.applySchedulers(mView)).subscribe(new ErrorHandleSubscriber<UserInfoResp>() {
             @Override
-            public void onSuccess(UserInfoResp resp) {
-                mView.dealSuccess(resp);
+            public void onSuccess(BannerInfoResp bannerInfoResp) {
+                mView.dealBannerSuccess(bannerInfoResp);
             }
 
             @Override
@@ -38,22 +35,4 @@ public class MainPresenter extends BasePresenter<MainContract.View, MainContract
             }
         });
     }
-
-    /**
-     * 获取各状态对应的数量
-     */
-    public void getStatusCount(){
-        mModel.getStatusCount().compose(RxUtils.applySchedulers(mView)).subscribe(new ErrorHandleSubscriber<StatusCountResp>() {
-            @Override
-            public void onSuccess(StatusCountResp statusCountResp) {
-                mView.dealStatusCountSuccess(statusCountResp);
-            }
-
-            @Override
-            public void onFailure(int code, String msg) {
-                mView.dealStatusCountFailure(code, msg);
-            }
-        });
-    }
-
 }

@@ -1,6 +1,7 @@
 package com.uplan.miyao.ui.financial.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,7 @@ import com.uplan.miyao.util.PreferencesUtils;
 /**
  * Created by luomin on 16/7/12.
  */
-public class LocalImgAdapter implements LBaseAdapter<Integer> {
+public class LocalImgAdapter implements LBaseAdapter<Bitmap> {
     private Context mContext;
     public static final String TYPE_HOME="type_home";
     public static final String TYPE_SPLASH="type_splash";
@@ -34,10 +35,10 @@ public class LocalImgAdapter implements LBaseAdapter<Integer> {
     }
 
     @Override
-    public View getView(final LMBanners lBanners, final Context context, int position, Integer data) {
+    public View getView(final LMBanners lBanners, final Context context, int position, Bitmap data) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_home_banner, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.id_image);
-        imageView.setImageResource(data);
+        imageView.setImageBitmap(data);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

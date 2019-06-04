@@ -1,7 +1,10 @@
 package com.uplan.miyao.ui.vip.view.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +59,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     @BindView(R.id.tv_yinmi_detail)
     TextView tvYinmiDetail;
     //本地图片BannerTop
-    private ArrayList<Integer> localImagesDiscover = new ArrayList<Integer>();
+    private ArrayList<Bitmap> localImagesDiscover = new ArrayList<Bitmap>();
 
     @Override
     protected DiscoverPresenter getPresenter() {
@@ -115,9 +118,28 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
     private void addBannerDiscover() {
-        localImagesDiscover.add(R.drawable.discover_1_1);
-        localImagesDiscover.add(R.drawable.discover_1_2);
-        localImagesDiscover.add(R.drawable.discover_1_3);
+        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_1))){
+
+        }else{
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_1);
+            localImagesDiscover.add(bmp);
+        }
+
+        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_2))){
+
+        }else{
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_2);
+            localImagesDiscover.add(bmp);
+        }
+        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_3))){
+
+        }else{
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_3);
+            localImagesDiscover.add(bmp);
+        }
+
+
+
     }
 
     public void setTranslucent() {

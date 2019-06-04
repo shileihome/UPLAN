@@ -26,6 +26,17 @@ public class PreferencesUtils {
     public static String URL_BANNER_DISCOVER_2 = "url_banner_discover_2";
     public static String URL_BANNER_DISCOVER_3 = "url_banner_discover_3";
 
+    /** 首页轮播图base64字符串 */
+    public static String BITMAP_STRING_HOME_1 = "bitmap_string_home_1";
+    public static String BITMAP_STRING_HOME_2 = "bitmap_string_home_2";
+    public static String BITMAP_STRING_HOME_3 = "bitmap_string_home_3";
+
+    /** 发现也轮播图base64字符串 */
+    public static String BITMAP_STRING_DISCOVER_1="bitmap_string_discover_1";
+    public static String BITMAP_STRING_DISCOVER_2="bitmap_string_discover_2";
+    public static String BITMAP_STRING_DISCOVER_3="bitmap_string_discover_3";
+
+
     private PreferencesUtils() {
         throw new AssertionError();
     }

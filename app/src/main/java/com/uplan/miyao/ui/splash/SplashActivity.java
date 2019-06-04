@@ -1,6 +1,8 @@
 package com.uplan.miyao.ui.splash;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.RelativeLayout;
@@ -31,7 +33,7 @@ public class SplashActivity extends AppBaseActivity {
     @BindView(R.id.banners_splash)
     LMBanners bannersSplash;
     //本地图片BannerTop
-    private ArrayList<Integer> localImagesTop = new ArrayList<Integer>();
+    private ArrayList<Bitmap> localImagesTop = new ArrayList<Bitmap>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -137,9 +139,12 @@ public class SplashActivity extends AppBaseActivity {
 
     }
     private void addBannerSplash(){
-        localImagesTop.add(R.drawable.splash_banner_1);
-        localImagesTop.add(R.drawable.splash_banner_2);
-        localImagesTop.add(R.drawable.splash_banner_3);
+        Bitmap bmp1 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_1);
+        localImagesTop.add(bmp1);
+        Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_2);
+        localImagesTop.add(bmp2);
+        Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_3);
+        localImagesTop.add(bmp3);
     }
     public void setTranslucent() {
         QMUIStatusBarHelper.setStatusBarDarkMode(this);

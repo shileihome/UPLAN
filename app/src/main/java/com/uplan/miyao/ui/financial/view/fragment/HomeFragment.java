@@ -1,8 +1,11 @@
 package com.uplan.miyao.ui.financial.view.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +42,7 @@ import com.uplan.miyao.ui.financial.view.activity.ValidActivity;
 import com.uplan.miyao.ui.financial.view.activity.YinMiDetailActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.vip.view.activity.VipActivity;
+import com.uplan.miyao.util.EncodeUtils;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
@@ -63,7 +67,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
     boolean loginState;
     //本地图片BannerTop
-    private ArrayList<Integer> localImagesTop = new ArrayList<Integer>();
+    private ArrayList<Bitmap> localImagesTop = new ArrayList<Bitmap>();
 
     //中间投资计划
     private List<View> views = new ArrayList<View>();
@@ -78,7 +82,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         ButterKnife.bind(this, view);
         initImageLoader();
         setTranslucent();
-        initVerticalViews();
+        initViews();
         initVerticalViewPager();
         return view;
     }
@@ -92,7 +96,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         viewpagerVertical.setOverScrollMode(View.OVER_SCROLL_NEVER);
     }
 
-    private void initVerticalViews() {
+    private void initViews() {
         View firstLayout = View.inflate(getActivity(), R.layout.view_home_vertical_viewpager_1, null);
         View secondLayout = View.inflate(getActivity(), R.layout.view_home_vertical_viewpager_2, null);
         verticalViews.add(firstLayout);
@@ -283,9 +287,25 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
     private void addBannerTops() {
-        localImagesTop.add(R.drawable.focus_financial_1);
-        localImagesTop.add(R.drawable.focus_financial_2);
-        localImagesTop.add(R.drawable.focus_financial_3);
+        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_1))){
+            Bitmap bitmap=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_1));
+        }else{
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_1);
+            localImagesTop.add(bmp);
+        }
+        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_2))){
+
+        }else{
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_2);
+            localImagesTop.add(bmp);
+        }
+
+        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_3))){
+
+        }else{
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_3);
+            localImagesTop.add(bmp);
+        }
     }
 
     private void initImageLoader() {
@@ -325,4 +345,9 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
 }

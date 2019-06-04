@@ -3,8 +3,6 @@ package com.uplan.miyao.ui.main.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
@@ -16,10 +14,13 @@ import android.widget.TextView;
 import com.uplan.miyao.R;
 import com.uplan.miyao.app.ActivityManager;
 import com.uplan.miyao.app.UPLANApplication;
-import com.uplan.miyao.base.AppBaseActivity;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
+import com.uplan.miyao.base.mvp.BaseActivity;
 import com.uplan.miyao.ui.account.view.fragment.AccountFragment;
 import com.uplan.miyao.ui.financial.view.fragment.HomeFragment;
+import com.uplan.miyao.ui.main.contract.MainContract;
+import com.uplan.miyao.ui.main.model.resp.BannerInfoResp;
+import com.uplan.miyao.ui.main.presenter.MainPresenter;
 import com.uplan.miyao.ui.survey.view.fragment.SurveyFragment;
 import com.uplan.miyao.ui.vip.view.fragment.DiscoverFragment;
 import com.uplan.miyao.util.PreferencesUtils;
@@ -36,7 +37,7 @@ import butterknife.OnClick;
  * Description：首页
  */
 
-public class MainActivity extends AppBaseActivity {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
     @BindView(R.id.tv_financial)
     TextView tvFinancial;
@@ -88,14 +89,20 @@ public class MainActivity extends AppBaseActivity {
     /** 当前选择index */
     private int mSelectIndex = SELECT_INDEX_FINANCIAL;
 
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void init() {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         fManager = getSupportFragmentManager();
         setSelectItem(financialLayout);
         setTranslucent();
+        mPresenter.getBannerInfo();
+    }
+
+    @Override
+    protected MainPresenter getPresenter() {
+        return new MainPresenter(this);
     }
 
     public static void start(Context context) {
@@ -314,5 +321,30 @@ public class MainActivity extends AppBaseActivity {
         QMUIStatusBarHelper.translucent(this);
         QMUIStatusBarHelper.setStatusBarLightMode(this);
     }
+
+    @Override
+    public void dealBannerSuccess(BannerInfoResp resp) {
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_HOME_1,resp.data.get(0).shouye1);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_HOME_2,resp.data.get(0).shouye2);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_HOME_3,resp.data.get(0).shouye3);
+
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_DISCOVER_1,resp.data.get(0).faxian1);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_DISCOVER_2,resp.data.get(0).faxian2);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_DISCOVER_3,resp.data.get(0).faxian3);
+
+        PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_HOME_1,resp.data.get(0).shouurl1);
+        PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_HOME_2,resp.data.get(0).shouurl2);
+        PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_HOME_3,resp.data.get(0).shouurl3);
+
+        PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_DISCOVER_1,resp.data.get(0).faurl1);
+        PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_DISCOVER_2,resp.data.get(0).faurl2);
+        PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_DISCOVER_3,resp.data.get(0).faurl3);
+    }
+
+    @Override
+    public void dealFailure(int code, String message) {
+
+    }
+
 
 }

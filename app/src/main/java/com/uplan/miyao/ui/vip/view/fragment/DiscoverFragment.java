@@ -30,6 +30,7 @@ import com.uplan.miyao.ui.vip.view.activity.InsuranceWebActivity;
 import com.uplan.miyao.ui.vip.view.activity.MerchantWebActivity;
 import com.uplan.miyao.ui.vip.view.activity.SharedActivity;
 import com.uplan.miyao.ui.vip.view.activity.VipActivity;
+import com.uplan.miyao.util.EncodeUtils;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
@@ -115,24 +116,29 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
         //网络图片
 //        bannersDiscover.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
 
+
+
     }
 
     private void addBannerDiscover() {
         if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_1))){
-
+            Bitmap bmp=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_1));
+            localImagesDiscover.add(bmp);
         }else{
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_1);
             localImagesDiscover.add(bmp);
         }
 
         if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_2))){
-
+            Bitmap bmp=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_1));
+            localImagesDiscover.add(bmp);
         }else{
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_2);
             localImagesDiscover.add(bmp);
         }
         if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_3))){
-
+            Bitmap bmp=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_1));
+            localImagesDiscover.add(bmp);
         }else{
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_3);
             localImagesDiscover.add(bmp);
@@ -170,25 +176,13 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
 
-    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared})
+    @OnClick({R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared})
     public void onClick(View view) {
         if (isShowLoginDialog()) {
             return;
         }
         switch (view.getId()) {
-            case R.id.iv_vip:
-                if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
-                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-                    commonDialog.setSubMessage("请先成为会员!").
-                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                            }).
-                            setRightButton(getString(R.string.commit_change), v -> {
-                                VipActivity.start(getActivity());
-                            }).show();
-                    return;
-                }
-                VipActivity.start(getActivity());
-                break;
+
             case R.id.tv_vip_group:
                 if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                     CommonDialog commonDialog = new CommonDialog(getActivity()).builder();

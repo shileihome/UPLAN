@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
-import com.uplan.miyao.ui.account.view.activity.HoldActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
@@ -18,7 +17,7 @@ public class SharedActivity extends BaseWebViewActivity {
 
     private String homeUrl="http://22ju570648.iok.la/";
     public static void start(Context context) {
-        Intent starter = new Intent(context, HoldActivity.class);
+        Intent starter = new Intent(context, SharedActivity.class);
         context.startActivity(starter);
     }
 

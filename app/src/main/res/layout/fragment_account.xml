@@ -554,48 +554,59 @@
                     android:layout_marginBottom="15dp"
                     android:src="@drawable/arrowr" />
             </RelativeLayout>
-
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:background="#FFFAFAFA" />
+                android:layout_height="1dp"
+                android:layout_marginLeft="60dp"
+                android:background="@color/color_dddddd" />
 
             <LinearLayout
                 android:id="@+id/ll_mix50"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_width="230dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="34dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/shape_btn_mix50"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/account_mix50" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="(老用户入口)"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:background="#FFFAFAFA" />
 
             <TextView
                 android:id="@+id/tv_login_out"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="230dp"
+                android:layout_height="34dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="45dp"
-                android:background="@drawable/shape_btn_regist"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="34dp"
+                android:background="@drawable/shape_btn_logout"
                 android:gravity="center"
-                android:paddingLeft="70dp"
-                android:paddingTop="10dp"
-                android:paddingRight="70dp"
-                android:paddingBottom="10dp"
                 android:text="退出登录"
-                android:textColor="@color/white"
-
+                android:textColor="#FF00BFEF"
                 android:textSize="16sp" />
         </LinearLayout>
 

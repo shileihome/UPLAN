@@ -98,6 +98,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         setSelectItem(financialLayout);
         setTranslucent();
         mPresenter.getBannerInfo();
+        }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     @Override
@@ -339,6 +345,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_DISCOVER_1,resp.data.get(0).faurl1);
         PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_DISCOVER_2,resp.data.get(0).faurl2);
         PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_DISCOVER_3,resp.data.get(0).faurl3);
+
+
     }
 
     @Override

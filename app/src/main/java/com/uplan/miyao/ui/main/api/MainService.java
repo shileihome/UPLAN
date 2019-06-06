@@ -11,7 +11,7 @@ import retrofit2.http.GET;
  */
 public interface MainService {
 
-    final String GET_BANNER_INFO="/appClient/signinSignup/signout";
+    final String GET_BANNER_INFO="/appClient/carousel";
 
     @GET(GET_BANNER_INFO)
     Observable<BannerInfoResp> getBannerInfo();

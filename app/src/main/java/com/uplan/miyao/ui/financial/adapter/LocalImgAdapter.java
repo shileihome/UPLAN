@@ -13,10 +13,12 @@ import com.uplan.miyao.R;
 import com.uplan.miyao.ui.financial.view.activity.TopBannerHomeWebActivity_1;
 import com.uplan.miyao.ui.financial.view.activity.TopBannerHomeWebActivity_2;
 import com.uplan.miyao.ui.financial.view.activity.TopBannerHomeWebActivity_3;
+import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.vip.view.activity.TopBannerDiscoverWebActivity_1;
 import com.uplan.miyao.ui.vip.view.activity.TopBannerDiscoverWebActivity_2;
 import com.uplan.miyao.ui.vip.view.activity.TopBannerDiscoverWebActivity_3;
 import com.uplan.miyao.util.PreferencesUtils;
+import com.uplan.miyao.widget.CommonDialog;
 
 /**
  * Created by luomin on 16/7/12.
@@ -42,6 +44,9 @@ public class LocalImgAdapter implements LBaseAdapter<Bitmap> {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isShowLoginDialog()) {
+                    return;
+                }
                 if(TYPE_HOME.equals(type)){
                     switch (position){
                         case 0:
@@ -82,6 +87,25 @@ public class LocalImgAdapter implements LBaseAdapter<Bitmap> {
             }
         });
         return view;
+    }
+    protected boolean isShowLoginDialog() {
+        if (!isLogined()) {
+            CommonDialog commonDialog = new CommonDialog(mContext).builder();
+            commonDialog.setSubMessage("请先登录!").
+                    setLeftButton(mContext.getString(R.string.common_dialog_cancel), v -> {
+                    }).
+                    setRightButton(mContext.getString(R.string.commit_change), v -> {
+                        LoginActivity.start(mContext);
+                    }).show();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    private boolean isLogined() {
+        return PreferencesUtils.getBoolean(mContext, PreferencesUtils.LOGIN_STATE);
     }
 
 

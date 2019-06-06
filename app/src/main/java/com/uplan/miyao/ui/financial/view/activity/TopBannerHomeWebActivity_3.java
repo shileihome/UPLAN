@@ -26,6 +26,7 @@ private String homeUrl;
     @Override
     public void initView() {
         setWebViewClient();
+        homeUrl=getIntent().getStringExtra("url");
         updateWebData();
     }
 

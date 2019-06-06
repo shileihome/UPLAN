@@ -289,19 +289,22 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     private void addBannerTops() {
         if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_1))){
             Bitmap bitmap=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_1));
+            localImagesTop.add(bitmap);
         }else{
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_1);
             localImagesTop.add(bmp);
         }
         if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_2))){
-
+            Bitmap bitmap=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_2));
+            localImagesTop.add(bitmap);
         }else{
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_2);
             localImagesTop.add(bmp);
         }
 
         if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_3))){
-
+            Bitmap bitmap=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_3));
+            localImagesTop.add(bitmap);
         }else{
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_3);
             localImagesTop.add(bmp);

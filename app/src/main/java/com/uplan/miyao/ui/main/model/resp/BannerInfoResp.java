@@ -10,24 +10,20 @@ import java.util.List;
  */
 public class BannerInfoResp extends ResponseData {
 
-    /**
-     * data : [{"faurl1":"1","faurl2":"1","faurl3":"1","faxian1":"1","faxian2":"1","faxian3":"1","shouurl1":"1","shouurl2":"1","shouurl3":"1","shouye1":"1","shouye2":"1","shouye3":"1"}]
-     * msg : 0
-     */
 
     public List<DataBean> data;
 
     public static class DataBean {
         /**
-         * faurl1 : 1
-         * faurl2 : 1
-         * faurl3 : 1
+         * faurl1 : http://22ju570648.iok.la/appClient/getCarouselurl?pic=f1
+         * faurl2 : http://22ju570648.iok.la/appClient/getCarouselurl?pic=f2
+         * faurl3 : http://22ju570648.iok.la/appClient/getCarouselurl?pic=f3
          * faxian1 : 1
          * faxian2 : 1
          * faxian3 : 1
-         * shouurl1 : 1
-         * shouurl2 : 1
-         * shouurl3 : 1
+         * shouurl1 : http://22ju570648.iok.la/appClient/getCarouselurl?pic=s1
+         * shouurl2 : http://22ju570648.iok.la/appClient/getCarouselurl?pic=s2
+         * shouurl3 : http://22ju570648.iok.la/appClient/getCarouselurl?pic=s3
          * shouye1 : 1
          * shouye2 : 1
          * shouye3 : 1

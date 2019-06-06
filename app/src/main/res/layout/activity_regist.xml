@@ -239,6 +239,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="已阅读并同意"
                 android:textColor="#FFA2A2A2"
+                android:textSize="10sp"
                 android:layout_gravity="center_vertical"/>
             <TextView
 
@@ -247,6 +248,7 @@
                 android:layout_height="wrap_content"
                 android:text="《平台服务协议》"
                 android:textColor="#FFA2A2A2"
+                android:textSize="10sp"
                 android:layout_gravity="center_vertical"/>
             <TextView
 
@@ -255,6 +257,7 @@
                 android:layout_height="wrap_content"
                 android:text="《隐私保护政策》"
                 android:textColor="#FFA2A2A2"
+                android:textSize="10sp"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
     </LinearLayout>

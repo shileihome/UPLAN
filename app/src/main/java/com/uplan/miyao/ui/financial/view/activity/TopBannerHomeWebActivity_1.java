@@ -26,13 +26,13 @@ private String homeUrl;
     @Override
     public void initView() {
         setWebViewClient();
+        homeUrl=getIntent().getStringExtra("url");
         updateWebData();
     }
 
     @Override
     protected void onReload() {
         super.onReload();
-        homeUrl=getIntent().getStringExtra("url");
         WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +"\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
         uplanWebView.loadUrl(homeUrl);
     }

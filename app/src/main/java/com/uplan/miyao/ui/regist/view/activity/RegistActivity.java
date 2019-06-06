@@ -133,7 +133,10 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
                     ToastUtils.shortShow("请输入手机号！");
                     return;
                 }
-
+                if(!etPwd.getText().toString().equals(etPwdAgain.getText().toString())){
+                    ToastUtils.shortShow("两次密码不一致，请重新输入!");
+                    return;
+                }
                 if (recLen > 0) {
                     return;
                 } else {

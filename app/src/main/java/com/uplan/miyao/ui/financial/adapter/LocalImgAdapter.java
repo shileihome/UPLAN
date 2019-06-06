@@ -44,10 +44,11 @@ public class LocalImgAdapter implements LBaseAdapter<Bitmap> {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isShowLoginDialog()) {
-                    return;
-                }
+
                 if(TYPE_HOME.equals(type)){
+                    if (isShowLoginDialog()) {
+                        return;
+                    }
                     switch (position){
                         case 0:
                             if(!TextUtils.isEmpty(PreferencesUtils.getString(mContext,PreferencesUtils.URL_BANNER_HOME_1))){
@@ -66,6 +67,9 @@ public class LocalImgAdapter implements LBaseAdapter<Bitmap> {
                             break;
                     }
                 }else if(TYPE_DISCOVER.equals(type)){
+                    if (isShowLoginDialog()) {
+                        return;
+                    }
                     switch (position){
                         case 0:
                             if(!TextUtils.isEmpty(PreferencesUtils.getString(mContext,PreferencesUtils.URL_BANNER_DISCOVER_1))){

@@ -52,12 +52,16 @@
             android:orientation="vertical">
 
 
-            <ImageView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/platform"
-                android:scaleType="fitStart"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="3dp"
+                android:textSize="13sp"
+               android:text="@string/platform_text"
                 />
         </LinearLayout>
 

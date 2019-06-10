@@ -82,7 +82,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
             llCommon.setVisibility(View.GONE);
             tvUserTel.setText(StringUtils.formatTel(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL)));
             String date=fomatDate(PreferencesUtils.getLong(this, PreferencesUtils.EXPIRE_TIME));
-            tvExpireTime.setText("您的VIP会员将于"+date+"到期");
+            tvExpireTime.setText("您的会员将于"+date+"到期");
             tvDredge.setText("立即续费 19.9/月");
         } else {
             llVip.setVisibility(View.GONE);

@@ -176,7 +176,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
 
-    @OnClick({R.id.iv_vip,R.id.tv_vip_group, R.id.tv_vip_fund, R.id.tv_insurance, R.id.tv_merchant, R.id.text_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared})
+    @OnClick({R.id.iv_vip,R.id.tv_vip_group, R.id.tv_insurance_more, R.id.tv_insurance, R.id.tv_merchant_more,R.id.tv_merchant, R.id.tv_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared})
     public void onClick(View view) {
         if (isShowLoginDialog()) {
             return;
@@ -210,7 +210,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
                 }
                 FundGroupWebActivity.start(getActivity());
                 break;
-            case R.id.tv_vip_fund:
+/*            case R.id.tv_vip_fund:
                 if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                     CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
                     commonDialog.setSubMessage("请先成为会员!").
@@ -222,14 +222,21 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
                     return;
                 }
                 FundGroupWebActivity.start(getActivity());
+                break;*/
+            case R.id.tv_insurance_more:
+                InsuranceWebActivity.start(getActivity());
                 break;
+
             case R.id.tv_insurance:
                 InsuranceWebActivity.start(getActivity());
+                break;
+            case R.id.tv_merchant_more:
+                MerchantWebActivity.start(getActivity());
                 break;
             case R.id.tv_merchant:
                 MerchantWebActivity.start(getActivity());
                 break;
-            case R.id.text_finance_more:
+            case R.id.tv_finance_more:
                 FinanceWebActivity.start(getActivity());
                 break;
             case R.id.ll_finance:

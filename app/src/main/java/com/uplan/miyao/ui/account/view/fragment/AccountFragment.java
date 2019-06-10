@@ -42,8 +42,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 
     @BindView(R.id.tv_setting)
     TextView tvSetting;
-    @BindView(R.id.iv_login)
-    ImageView ivLogin;
+
     @BindView(R.id.tv_login_name)
     TextView tvLoginName;
     @BindView(R.id.iv_vip_logo)

@@ -100,7 +100,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                     String expireTime=fomatDate(time);
                     tvPayText.setText("续费成功！");
                     tvPayTime.setVisibility(View.VISIBLE);
-                    tvPayTime.setText("您的VIP会员将于"+expireTime+"日到期");
+                    tvPayTime.setText("您的会员将于"+expireTime+"日到期");
 
                 } else {
                     PreferencesUtils.putBoolean(this, PreferencesUtils.IS_ACTIVEA, true);

@@ -89,7 +89,8 @@ public abstract class BaseWebViewActivity extends Activity {
             settings.setJavaScriptEnabled(true);
             settings.setBuiltInZoomControls(false);
             settings.setDefaultTextEncodingName("utf-8");
-
+            settings.setDomStorageEnabled(true);
+            settings.setBlockNetworkImage(false);
 //优先使用缓存：
 //            settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 

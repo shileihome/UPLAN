@@ -3,6 +3,7 @@ package com.uplan.miyao.ui.vip.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.view.View;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
@@ -23,6 +24,7 @@ public class InsuranceWebActivity   extends BaseWebViewActivity {
 
     @Override
     public void initView() {
+        uplanWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         setWebViewClient();
         updateWebData();
 

@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_tool_bar"
+        android:layout_above="@+id/tv_dredge"
         android:scrollbars="none"
         >
 

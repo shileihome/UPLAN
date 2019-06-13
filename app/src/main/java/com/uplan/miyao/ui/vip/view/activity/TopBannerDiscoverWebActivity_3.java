@@ -48,7 +48,10 @@ private String homeUrl;
         uplanWebView.setWebViewClient(new WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+                if(url.equals(WEB_BACK)){
+                    webGoBack(TopBannerDiscoverWebActivity_3.this);
+                    return true;
+                }
                 return super.shouldOverrideUrlLoading(view, url);
             }
 

@@ -46,7 +46,10 @@ private String homeUrl="http://www.51mix.cn/wechat/account/HomePage/plan1";
         uplanWebView.setWebViewClient(new WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+                if(url.equals(WEB_BACK)){
+                    webGoBack(FinancialWebActivity_2.this);
+                    return true;
+                }
                 return super.shouldOverrideUrlLoading(view, url);
             }
 

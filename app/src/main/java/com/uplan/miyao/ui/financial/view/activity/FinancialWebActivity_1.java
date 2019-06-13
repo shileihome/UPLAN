@@ -47,6 +47,10 @@ private String homeUrl="http://www.51mix.cn/wechat/account/HomePage/plan2";
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
+                if(url.equals(WEB_BACK)){
+                    webGoBack(FinancialWebActivity_1.this);
+                    return true;
+                }
                 return super.shouldOverrideUrlLoading(view, url);
             }
 

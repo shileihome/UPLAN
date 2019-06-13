@@ -46,7 +46,10 @@ public class HelpCenterActivity extends BaseWebViewActivity {
         uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+                if(url.equals(WEB_BACK)){
+                    webGoBack(HelpCenterActivity.this);
+                    return true;
+                }
                 return super.shouldOverrideUrlLoading(view, url);
             }
 

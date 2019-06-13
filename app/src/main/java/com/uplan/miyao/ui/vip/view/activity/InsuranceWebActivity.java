@@ -7,6 +7,7 @@ import android.view.View;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
+import com.uplan.miyao.ui.account.view.activity.HoldActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
@@ -48,7 +49,10 @@ public class InsuranceWebActivity   extends BaseWebViewActivity {
         uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+                if(url.equals(WEB_BACK)){
+                    webGoBack(InsuranceWebActivity.this);
+                    return true;
+                }
                 return super.shouldOverrideUrlLoading(view, url);
             }
 

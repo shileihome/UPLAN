@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
+import com.uplan.miyao.ui.financial.view.activity.FinancialWebActivity_3;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
@@ -46,7 +47,10 @@ public class FundGroupWebActivity  extends BaseWebViewActivity {
         uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+                if(url.equals(WEB_BACK)){
+                    webGoBack(FundGroupWebActivity.this);
+                    return true;
+                }
                 return super.shouldOverrideUrlLoading(view, url);
             }
 

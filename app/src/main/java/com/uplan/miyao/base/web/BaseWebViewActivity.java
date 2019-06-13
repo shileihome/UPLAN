@@ -34,6 +34,7 @@ public abstract class BaseWebViewActivity extends Activity {
     public UplanWebView uplanWebView;
     public LinearLayout llError;
     public TextView tvReload;
+    public final String WEB_BACK="http://app.goback/";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -216,4 +217,13 @@ public abstract class BaseWebViewActivity extends Activity {
         return deletedFiles;
     }
 
+    public void webGoBack(Activity activity){
+        if ( uplanWebView.canGoBack()) {  //表示按返回键
+            uplanWebView.goBack();   //后退
+            //webview.goForward();//前进
+
+        }else{
+            activity.finish();
+        }
+    }
 }

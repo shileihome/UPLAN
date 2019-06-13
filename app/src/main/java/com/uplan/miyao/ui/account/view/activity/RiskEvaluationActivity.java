@@ -44,7 +44,10 @@ private String homeUrl="http://www.51mix.cn/wechat/yingmi/RiskAppraisal/surveyRe
         uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+                if(url.equals(WEB_BACK)){
+                    webGoBack(RiskEvaluationActivity.this);
+                    return true;
+                }
                 return super.shouldOverrideUrlLoading(view, url);
             }
 

@@ -185,7 +185,7 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
                     @Override
                     public void run() {
                         recLen--;
-                        tvVerificationCode.setText(recLen+"");
+                        tvVerificationCode.setText(recLen+"s");
                         if(recLen<0){
                             timer.cancel();
                             tvVerificationCode.setText("重新发送");

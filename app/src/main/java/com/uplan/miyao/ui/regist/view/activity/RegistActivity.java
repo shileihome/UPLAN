@@ -16,7 +16,6 @@ import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.regist.contract.RegistContract;
 import com.uplan.miyao.ui.regist.presenter.RegistPresenter;
-import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.ToastUtils;
 
 import java.util.Timer;
@@ -57,16 +56,19 @@ public class RegistActivity extends BaseActivity<RegistPresenter> implements Reg
 
     int recLen;
 
-    public static void start(Activity context) {
-        Intent starter = new Intent(context, RegistActivity.class);
-        context.startActivityForResult(starter, LoginActivity.REGIST_REQUEST_CODE);
+
+
+    public static void start(Activity activity,String tel){
+        Intent starter = new Intent(activity, RegistActivity.class);
+        starter.putExtra("tel",tel);
+        activity.startActivityForResult(starter, LoginActivity.REGIST_REQUEST_CODE);
     }
 
     @Override
     protected void init() {
         setContentView(R.layout.activity_regist);
         ButterKnife.bind(this);
-        etPhotoNo.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
+            etPhotoNo.setText(getIntent().getStringExtra("tel"));
         rbPrivacy.setButtonDrawable(R.drawable.privacy_select);
         rbPrivacy.setOnClickListener(view->{
             if(isPrivacy){

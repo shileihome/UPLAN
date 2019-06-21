@@ -178,7 +178,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 mPresenter.login(tel, pwd);
                 break;
             case R.id.tv_to_regist:
-                RegistActivity.start(this);
+                RegistActivity.start(this,etPhotoNo.getText().toString());
                 break;
             case R.id.tv_forget_pwd:
                 PreferencesUtils.putString(this, PreferencesUtils.USER_TEL, etPhotoNo.getText().toString().trim());

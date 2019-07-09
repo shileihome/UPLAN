@@ -40,6 +40,7 @@ public abstract class BaseWebViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(getContentLayout());
         uplanWebView= (UplanWebView) findViewById(R.id.uplan_web_view);
+        uplanWebView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
         llError= (LinearLayout) findViewById(R.id.ll_error);
         tvReload= (TextView) findViewById(R.id.tv_reload);
         clearCookies(this);

@@ -72,6 +72,68 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"/>
 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="178dp"
+                android:orientation="vertical"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/discover_background_2">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginLeft="14dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="17dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/label_icon"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="保险定制"
+                        android:textColor="#FF000000"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="18sp"
+                         />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/tv_insurance_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看更多"
+                        android:textColor="#FF909090"
+                        android:textSize="12sp"
+                        android:drawableRight="@drawable/discover_arrow_right"
+
+                        android:drawablePadding="4dp"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:id="@+id/tv_insurance"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/discover_insurance"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginBottom="18dp"
+                    />
+            </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="178dp"
@@ -197,13 +259,14 @@
                         android:background="@drawable/discover_vip_2" />-->
                 </LinearLayout>
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="178dp"
                 android:orientation="vertical"
-                android:layout_marginTop="14dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/discover_background_2">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -224,17 +287,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="精选保险"
+                        android:text="GoPlan"
                         android:textColor="#FF000000"
                         android:layout_gravity="center_vertical"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_weight="1"/>
                     <TextView
-                        android:id="@+id/tv_insurance_more"
+                        android:id="@+id/tv_goplan_more"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="查看更多"
@@ -245,15 +308,12 @@
                         android:drawablePadding="4dp"
                         android:layout_gravity="center_vertical"/>
                 </LinearLayout>
-
-
-
                 <TextView
-                    android:id="@+id/tv_insurance"
+                    android:id="@+id/tv_goplan"
                     android:layout_width="match_parent"
                     android:layout_height="86dp"
                     android:layout_marginTop="18dp"
-                    android:background="@drawable/discover_insurance"
+                    android:background="@drawable/discover_goplan"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
                     android:layout_marginBottom="18dp"
@@ -287,11 +347,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="精选商家"
+                        android:text="合作机构"
                         android:textColor="#FF000000"
                         android:layout_gravity="center_vertical"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                         />
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="1dp"
@@ -320,7 +380,7 @@
                     />
             </LinearLayout>
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="178dp"
                 android:orientation="vertical"
@@ -419,7 +479,7 @@
                         android:layout_alignParentBottom="true"/>
 
                 </RelativeLayout>
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -483,8 +543,17 @@
                         android:drawablePadding="4dp"
                         android:layout_gravity="center_vertical"/>
                 </LinearLayout>
-
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/tv_classroom"
+                    android:layout_width="match_parent"
+                    android:layout_height="86dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/discover_classroom"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginBottom="18dp"
+                    />
+             <!--   <RelativeLayout
                     android:id="@+id/rl_classroom"
                     android:layout_width="match_parent"
                     android:layout_height="86dp"
@@ -531,7 +600,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"/>
 
-                </RelativeLayout>
+                </RelativeLayout>-->
 
             </LinearLayout>
 

@@ -13,7 +13,7 @@ import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.survey.contract.SurveyContract;
 import com.uplan.miyao.ui.survey.presenter.SurveyPresenter;
-import com.uplan.miyao.ui.survey.view.SurveyActivity;
+import com.uplan.miyao.ui.survey.view.SurveyWebActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.widget.CommonDialog;
 
@@ -68,7 +68,7 @@ public class SurveyFragment extends BaseFragment<SurveyPresenter> implements Sur
             return;
         }
 
-        SurveyActivity.start(getActivity());
+        SurveyWebActivity.start(getActivity());
     }
     public boolean isLogined(){
         return PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.LOGIN_STATE);
@@ -107,7 +107,7 @@ public class SurveyFragment extends BaseFragment<SurveyPresenter> implements Sur
         uplanWebView.setWebViewClient(new WebAppClient(getActivity(), uplanWebView) {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                SurveyActivity.start(getActivity(),url);
+                SurveyWebActivity.start(getActivity(),url);
                 return true;
                 //return super.shouldOverrideUrlLoading(view, url);
             }

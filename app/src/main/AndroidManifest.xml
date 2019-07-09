@@ -60,7 +60,7 @@
         <activity android:name=".ui.account.view.activity.RecordActivity" />
         <activity android:name=".ui.account.view.activity.RedeemActivity" />
         <activity android:name=".ui.account.view.activity.RemindActivity" />
-        <activity android:name=".ui.survey.view.SurveyActivity" />
+        <activity android:name=".ui.survey.view.SurveyWebActivity" />
         <activity android:name=".ui.login.view.activity.ForgetPwdActivity" />
         <activity android:name=".ui.financial.view.activity.ValidActivity" />
         <activity android:name=".ui.financial.view.activity.SimpleActivity" />
@@ -96,6 +96,7 @@
         <activity android:name=".ui.vip.view.activity.TopBannerDiscoverWebActivity_2" />
         <activity android:name=".ui.financial.view.activity.FinancialWebActivity_3" />
         <activity android:name=".ui.financial.view.activity.FinancialWebActivity_2" />
+        <activity android:name=".ui.survey.view.SurveyActivity" />
         <!--        <activity
                     android:name=".wxapi.WXPayEntryActivity"
                     android:label="@string/app_name"

@@ -20,11 +20,11 @@ import com.uplan.miyao.base.mvp.BaseFragment;
 import com.uplan.miyao.ui.financial.adapter.LocalImgAdapter;
 import com.uplan.miyao.ui.financial.view.activity.YinMiDetailActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
+import com.uplan.miyao.ui.survey.view.SurveyActivity;
 import com.uplan.miyao.ui.vip.contract.DiscoverContract;
 import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
 import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
 import com.uplan.miyao.ui.vip.view.activity.ClassroomWebActivity;
-import com.uplan.miyao.ui.vip.view.activity.FinanceWebActivity;
 import com.uplan.miyao.ui.vip.view.activity.FundGroupWebActivity;
 import com.uplan.miyao.ui.vip.view.activity.InsuranceWebActivity;
 import com.uplan.miyao.ui.vip.view.activity.MerchantWebActivity;
@@ -45,20 +45,14 @@ import butterknife.OnClick;
  * Description:
  */
 public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements DiscoverContract.View {
-    @BindView(R.id.tv_finance_text)
-    TextView tvFinanceText;
-    @BindView(R.id.tv_finance_time)
-    TextView tvFinanceTime;
-    @BindView(R.id.tv_classroom_title)
-    TextView tvClassroomTitle;
-    @BindView(R.id.tv_classroom_text)
-    TextView tvClassroomText;
-    @BindView(R.id.tv_classroom_time)
-    TextView tvClassroomTime;
     @BindView(R.id.banners_discover)
     LMBanners<TextView> bannersDiscover;
     @BindView(R.id.tv_yinmi_detail)
     TextView tvYinmiDetail;
+    @BindView(R.id.tv_goplan_more)
+    TextView tvGoplanMore;
+    @BindView(R.id.tv_goplan)
+    TextView tvGoplan;
     //本地图片BannerTop
     private ArrayList<Bitmap> localImagesDiscover = new ArrayList<Bitmap>();
 
@@ -112,38 +106,36 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
 
 
         //本地用法
-        bannersDiscover.setAdapter(new LocalImgAdapter(getActivity(),LocalImgAdapter.TYPE_DISCOVER), localImagesDiscover);
+        bannersDiscover.setAdapter(new LocalImgAdapter(getActivity(), LocalImgAdapter.TYPE_DISCOVER), localImagesDiscover);
         //网络图片
 //        bannersDiscover.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
-
 
 
     }
 
     private void addBannerDiscover() {
-        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_1))){
-            Bitmap bmp=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_1));
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_DISCOVER_1))) {
+            Bitmap bmp = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_DISCOVER_1));
             localImagesDiscover.add(bmp);
-        }else{
+        } else {
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_1);
             localImagesDiscover.add(bmp);
         }
 
-        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_2))){
-            Bitmap bmp=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_2));
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_DISCOVER_2))) {
+            Bitmap bmp = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_DISCOVER_2));
             localImagesDiscover.add(bmp);
-        }else{
+        } else {
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_2);
             localImagesDiscover.add(bmp);
         }
-        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_3))){
-            Bitmap bmp=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_DISCOVER_3));
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_DISCOVER_3))) {
+            Bitmap bmp = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_DISCOVER_3));
             localImagesDiscover.add(bmp);
-        }else{
+        } else {
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.discover_1_3);
             localImagesDiscover.add(bmp);
         }
-
 
 
     }
@@ -176,7 +168,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
 
-    @OnClick({R.id.iv_vip,R.id.tv_vip_group, R.id.tv_insurance_more, R.id.tv_insurance, R.id.tv_merchant_more,R.id.tv_merchant, R.id.tv_finance_more, R.id.ll_finance, R.id.tv_classroom_more, R.id.rl_classroom, R.id.tv_shared})
+    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_insurance_more, R.id.tv_insurance, R.id.tv_merchant_more, R.id.tv_merchant,  R.id.tv_classroom_more,  R.id.tv_shared,R.id.tv_goplan_more, R.id.tv_goplan})
     public void onClick(View view) {
         if (isShowLoginDialog()) {
             return;
@@ -236,22 +228,19 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
             case R.id.tv_merchant:
                 MerchantWebActivity.start(getActivity());
                 break;
-            case R.id.tv_finance_more:
-                FinanceWebActivity.start(getActivity());
-                break;
-            case R.id.ll_finance:
-                FinanceWebActivity.start(getActivity());
-                break;
+
             case R.id.tv_classroom_more:
-                ClassroomWebActivity.start(getActivity());
-                break;
-            case R.id.rl_classroom:
                 ClassroomWebActivity.start(getActivity());
                 break;
             case R.id.tv_shared:
                 SharedActivity.start(getActivity());
                 break;
-
+            case R.id.tv_goplan_more:
+                SurveyActivity.start(getActivity());
+                break;
+            case R.id.tv_goplan:
+                SurveyActivity.start(getActivity());
+                break;
         }
     }
 

@@ -13,11 +13,11 @@ import com.uplan.miyao.util.WebViewUtils;
  * Author: Created by shilei on 2019/4/13-16:01
  * Description:
  */
-public class FinancialWebActivity_2 extends BaseWebViewActivity {
+public class FinancialWebActivity_4 extends BaseWebViewActivity {
 
-private String homeUrl;//="http://www.51mix.cn/wechat/account/HomePage/plan1";
+private String homeUrl;//="http://www.51mix.cn/wechat/account/HomePage/plan3";
     public static void start(Context context,String url) {
-        Intent starter = new Intent(context, FinancialWebActivity_2.class);
+        Intent starter = new Intent(context, FinancialWebActivity_4.class);
         starter.putExtra("url",url);
         context.startActivity(starter);
     }
@@ -49,7 +49,7 @@ private String homeUrl;//="http://www.51mix.cn/wechat/account/HomePage/plan1";
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
-                    webGoBack(FinancialWebActivity_2.this);
+                    webGoBack(FinancialWebActivity_4.this);
                     return true;
                 }
                 return super.shouldOverrideUrlLoading(view, url);

@@ -338,6 +338,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_DISCOVER_2,resp.data.get(0).faxian2);
         PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_DISCOVER_3,resp.data.get(0).faxian3);
 
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_CHANPIN1,resp.data.get(0).chanpin1);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_CHANPIN2,resp.data.get(0).chanpin2);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_CHANPIN3,resp.data.get(0).chanpin3);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_STRING_CHANPIN4,resp.data.get(0).chanpin4);
+
         PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_HOME_1,resp.data.get(0).shouurl1);
         PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_HOME_2,resp.data.get(0).shouurl2);
         PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_HOME_3,resp.data.get(0).shouurl3);
@@ -346,7 +351,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_DISCOVER_2,resp.data.get(0).faurl2);
         PreferencesUtils.putString(this,PreferencesUtils.URL_BANNER_DISCOVER_3,resp.data.get(0).faurl3);
 
+        PreferencesUtils.putString(this,PreferencesUtils.URL_CHURL1_HOME,resp.data.get(0).churl1);
+        PreferencesUtils.putString(this,PreferencesUtils.URL_CHURL2_HOME,resp.data.get(0).churl2);
+        PreferencesUtils.putString(this,PreferencesUtils.URL_CHURL3_HOME,resp.data.get(0).churl3);
+        PreferencesUtils.putString(this,PreferencesUtils.URL_CHURL4_HOME,resp.data.get(0).churl4);
 
+        if(resp.data.size()<2){
+            return;
+        }
+        PreferencesUtils.putString(this,PreferencesUtils.BOOLEAN_HOME_CH1_ISVIP,resp.data.get(1).ch1_isvip);
+        PreferencesUtils.putString(this,PreferencesUtils.BOOLEAN_HOME_CH2_ISVIP,resp.data.get(1).ch2_isvip);
+        PreferencesUtils.putString(this,PreferencesUtils.BOOLEAN_HOME_CH3_ISVIP,resp.data.get(1).ch3_isvip);
+        PreferencesUtils.putString(this,PreferencesUtils.BOOLEAN_HOME_CH4_ISVIP,resp.data.get(1).ch4_isvip);
     }
 
     @Override

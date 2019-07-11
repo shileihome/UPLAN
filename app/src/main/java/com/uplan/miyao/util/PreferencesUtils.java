@@ -8,6 +8,10 @@ import android.content.SharedPreferences;
  */
 public class PreferencesUtils {
 
+    /** ch_isvip:0; 0:非会员  1：会员专享 */
+    public static String CH_ISVIP_0="0";
+    public static String CH_ISVIP_1="1";
+
     public static String PREFERENCE_NAME = "miyaoAndroid";
     public static String LOGIN_STATE = "login_state";
     public static String PLAY_SESSION = "play_session";
@@ -26,6 +30,12 @@ public class PreferencesUtils {
     public static String URL_BANNER_DISCOVER_2 = "url_banner_discover_2";
     public static String URL_BANNER_DISCOVER_3 = "url_banner_discover_3";
 
+    /** 首页中间产品页url地址 */
+    public static String URL_CHURL1_HOME = "url_churl1_home";
+    public static String URL_CHURL2_HOME = "url_churl2_home";
+    public static String URL_CHURL3_HOME = "url_churl3_home";
+    public static String URL_CHURL4_HOME = "url_churl4_home";
+
     /** 首页轮播图base64字符串 */
     public static String BITMAP_STRING_HOME_1 = "bitmap_string_home_1";
     public static String BITMAP_STRING_HOME_2 = "bitmap_string_home_2";
@@ -35,6 +45,18 @@ public class PreferencesUtils {
     public static String BITMAP_STRING_DISCOVER_1="bitmap_string_discover_1";
     public static String BITMAP_STRING_DISCOVER_2="bitmap_string_discover_2";
     public static String BITMAP_STRING_DISCOVER_3="bitmap_string_discover_3";
+
+    /** 首页中间产品页图base64字符串 */
+    public static String BITMAP_STRING_CHANPIN1="bitmap_string_chanpin1";
+    public static String BITMAP_STRING_CHANPIN2="bitmap_string_chanpin2";
+    public static String BITMAP_STRING_CHANPIN3="bitmap_string_chanpin3";
+    public static String BITMAP_STRING_CHANPIN4="bitmap_string_chanpin4";
+
+    /** 首页中间产品页图权限 */
+    public static String BOOLEAN_HOME_CH1_ISVIP="boolean_home_ch1_isvip";
+    public static String BOOLEAN_HOME_CH2_ISVIP="boolean_home_ch2_isvip";
+    public static String BOOLEAN_HOME_CH3_ISVIP="boolean_home_ch3_isvip";
+    public static String BOOLEAN_HOME_CH4_ISVIP="boolean_home_ch4_isvip";
 
 
     private PreferencesUtils() {

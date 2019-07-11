@@ -34,6 +34,7 @@ import com.uplan.miyao.ui.financial.presenter.FinancialPresenter;
 import com.uplan.miyao.ui.financial.view.activity.FinancialWebActivity_1;
 import com.uplan.miyao.ui.financial.view.activity.FinancialWebActivity_2;
 import com.uplan.miyao.ui.financial.view.activity.FinancialWebActivity_3;
+import com.uplan.miyao.ui.financial.view.activity.FinancialWebActivity_4;
 import com.uplan.miyao.ui.financial.view.activity.LucencyActivity;
 import com.uplan.miyao.ui.financial.view.activity.SafeActivity;
 import com.uplan.miyao.ui.financial.view.activity.SimpleActivity;
@@ -110,12 +111,12 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         initCenterViewPager(viewpagerCenter);
 
         //第一个页面点击事件--------------------------------------------------------------
-         tvLogin= (TextView) firstLayout.findViewById(R.id.tv_login);
-        tvLogin.setOnClickListener(view->{
+        tvLogin = (TextView) firstLayout.findViewById(R.id.tv_login);
+        tvLogin.setOnClickListener(view -> {
             LoginActivity.start(getActivity());
         });
-        ImageView ivNotify1= (ImageView) firstLayout.findViewById(R.id.iv_notify_1);
-        ivNotify1.setOnClickListener(view->{
+        ImageView ivNotify1 = (ImageView) firstLayout.findViewById(R.id.iv_notify_1);
+        ivNotify1.setOnClickListener(view -> {
             if (isShowLoginDialog()) {
                 return;
             }
@@ -150,8 +151,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             }
             RemindActivity.start(getActivity());
         });
-        TextView tvYinMiDetail= (TextView) secondLayout.findViewById(R.id.tv_yinmi_detail);
-        tvYinMiDetail.setOnClickListener(view->{
+        TextView tvYinMiDetail = (TextView) secondLayout.findViewById(R.id.tv_yinmi_detail);
+        tvYinMiDetail.setOnClickListener(view -> {
             YinMiDetailActivity.start(getActivity());
         });
     }
@@ -166,9 +167,29 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
     private void initCenterViews() {
         View view_1 = View.inflate(getActivity(), R.layout.view_home_center_1, null);
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN1))) {
+            Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN1));
+            ((ImageView) view_1.findViewById(R.id.iv_center_1)).setImageBitmap(bitmap);
+        }
+
         View view_2 = View.inflate(getActivity(), R.layout.view_home_center_2, null);
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN2))) {
+            Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN2));
+            ((ImageView) view_2.findViewById(R.id.iv_center_2)).setImageBitmap(bitmap);
+        }
+
         View view_3 = View.inflate(getActivity(), R.layout.view_home_center_3, null);
-        View view_4 = View.inflate(getActivity(),R.layout.view_home_center_4,null);
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN3))) {
+            Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN3));
+            ((ImageView) view_3.findViewById(R.id.iv_center_3)).setImageBitmap(bitmap);
+        }
+
+        View view_4 = View.inflate(getActivity(), R.layout.view_home_center_4, null);
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN4))) {
+            Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN4));
+            ((ImageView) view_2.findViewById(R.id.iv_center_4)).setImageBitmap(bitmap);
+        }
+
         views.add(view_1);
         views.add(view_2);
         views.add(view_3);
@@ -178,50 +199,116 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             if (isShowLoginDialog()) {
                 return;
             }
-            FinancialWebActivity_1.start(getActivity());
+            if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BOOLEAN_HOME_CH1_ISVIP))&&
+                    PreferencesUtils.getString(getActivity(), PreferencesUtils.BOOLEAN_HOME_CH1_ISVIP).equals(PreferencesUtils.CH_ISVIP_1)
+                    ){
+                if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
+                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+                    commonDialog.setSubMessage("请先成为会员!").
+                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                            }).
+                            setRightButton(getString(R.string.commit_change), v -> {
+                                VipActivity.start(getActivity());
+                            }).show();
+                    return;
+                }else{
+                    if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL1_HOME))){
+                        FinancialWebActivity_1.start(getActivity(),PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL1_HOME));
+                    }
+                }
+            }else{
+                if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL1_HOME))){
+                    FinancialWebActivity_1.start(getActivity(),PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL1_HOME));
+                }
+            }
+
         });
-         tvHomeBuy1= (TextView) view_1.findViewById(R.id.tv_home_buy_1);
+        tvHomeBuy1 = (TextView) view_1.findViewById(R.id.tv_home_buy_1);
 
         view_2.setOnClickListener(view2 -> {
             if (isShowLoginDialog()) {
                 return;
             }
-            //只有会员可以购买
-            if(!PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA)){
-                CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-                commonDialog.setSubMessage("请先成为会员!").
-                        setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                        }).
-                        setRightButton(getString(R.string.commit_change), v -> {
-                            VipActivity.start(getActivity());
-                        }).show();
-                return;
+            if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BOOLEAN_HOME_CH2_ISVIP))&&
+                    PreferencesUtils.getString(getActivity(), PreferencesUtils.BOOLEAN_HOME_CH2_ISVIP).equals(PreferencesUtils.CH_ISVIP_1)
+                    ){
+                if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
+                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+                    commonDialog.setSubMessage("请先成为会员!").
+                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                            }).
+                            setRightButton(getString(R.string.commit_change), v -> {
+                                VipActivity.start(getActivity());
+                            }).show();
+                    return;
+                }else{
+                    if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL2_HOME))){
+                        FinancialWebActivity_2.start(getActivity(),PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL2_HOME));
+                    }
+                }
+            }else{
+                if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL2_HOME))){
+                    FinancialWebActivity_2.start(getActivity(),PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL2_HOME));
+                }
             }
-            FinancialWebActivity_2.start(getActivity());
         });
-         tvHomeBuy2= (TextView) view_2.findViewById(R.id.tv_home_buy_2);
+        tvHomeBuy2 = (TextView) view_2.findViewById(R.id.tv_home_buy_2);
 
         view_3.setOnClickListener(view3 -> {
             if (isShowLoginDialog()) {
                 return;
             }
-            //只有会员可以购买
-            if(!PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.IS_ACTIVEA)){
-                CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-                commonDialog.setSubMessage("请先成为会员!").
-                        setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                        }).
-                        setRightButton(getString(R.string.commit_change), v -> {
-                            VipActivity.start(getActivity());
-                        }).show();
+            if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BOOLEAN_HOME_CH3_ISVIP))&&
+                    PreferencesUtils.getString(getActivity(), PreferencesUtils.BOOLEAN_HOME_CH3_ISVIP).equals(PreferencesUtils.CH_ISVIP_1)
+                    ){
+                if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
+                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+                    commonDialog.setSubMessage("请先成为会员!").
+                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                            }).
+                            setRightButton(getString(R.string.commit_change), v -> {
+                                VipActivity.start(getActivity());
+                            }).show();
+                    return;
+                }else{
+                    if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL3_HOME))){
+                        FinancialWebActivity_3.start(getActivity(),PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL3_HOME));
+                    }
+                }
+            }else{
+                if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL3_HOME))){
+                    FinancialWebActivity_3.start(getActivity(),PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL3_HOME));
+                }
+            }
+        });
+        tvHomeBuy3 = (TextView) view_3.findViewById(R.id.tv_home_buy_3);
+        view_4.setOnClickListener(view4 -> {
+            if (isShowLoginDialog()) {
                 return;
             }
-            FinancialWebActivity_3.start(getActivity());
+            if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BOOLEAN_HOME_CH4_ISVIP))&&
+                    PreferencesUtils.getString(getActivity(), PreferencesUtils.BOOLEAN_HOME_CH4_ISVIP).equals(PreferencesUtils.CH_ISVIP_1)
+                    ){
+                if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
+                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+                    commonDialog.setSubMessage("请先成为会员!").
+                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                            }).
+                            setRightButton(getString(R.string.commit_change), v -> {
+                                VipActivity.start(getActivity());
+                            }).show();
+                    return;
+                }else{
+                    if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL4_HOME))){
+                        FinancialWebActivity_4.start(getActivity(),PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL4_HOME));
+                    }
+                }
+            }else{
+                if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL4_HOME))){
+                    FinancialWebActivity_4.start(getActivity(),PreferencesUtils.getString(getActivity(), PreferencesUtils.URL_CHURL4_HOME));
+                }
+            }
         });
-         tvHomeBuy3= (TextView) view_3.findViewById(R.id.tv_home_buy_3);
-         view_4.setOnClickListener(view4->{
-
-         });
     }
 
     @Override
@@ -254,7 +341,6 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
 
-
     private void initBannerTop(LMBanners bannersTop) {
         //设置Banners高度
 //      bannersTop.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ScreenUtils.dip2px(getActivity(), 210)));
@@ -273,39 +359,39 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         bannersTop.setIndicatorWidth(5);//原点默认为5dp
         bannersTop.setHoriZontalTransitionEffect(TransitionEffect.Default);//选中喜欢的样式
 //        bannersTop.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式
-          bannersTop.setDurtion(2000);//轮播切换时间
+        bannersTop.setDurtion(2000);//轮播切换时间
 //        bannersTop.hideIndicatorLayout();//隐藏原点
 //        bannersTop.showIndicatorLayout();//显示原点
         bannersTop.setIndicatorPosition(LMBanners.IndicaTorPosition.BOTTOM_MID);//设置原点显示位置
 
 
         //本地用法
-        bannersTop.setAdapter(new LocalImgAdapter(getActivity(),LocalImgAdapter.TYPE_HOME), localImagesTop);
+        bannersTop.setAdapter(new LocalImgAdapter(getActivity(), LocalImgAdapter.TYPE_HOME), localImagesTop);
         //网络图片
 //        bannersTop.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
 
     }
 
     private void addBannerTops() {
-        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_1))){
-            Bitmap bitmap=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_1));
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_HOME_1))) {
+            Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_HOME_1));
             localImagesTop.add(bitmap);
-        }else{
+        } else {
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_1);
             localImagesTop.add(bmp);
         }
-        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_2))){
-            Bitmap bitmap=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_2));
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_HOME_2))) {
+            Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_HOME_2));
             localImagesTop.add(bitmap);
-        }else{
+        } else {
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_2);
             localImagesTop.add(bmp);
         }
 
-        if(!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_3))){
-            Bitmap bitmap=EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(),PreferencesUtils.BITMAP_STRING_HOME_3));
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_HOME_3))) {
+            Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_HOME_3));
             localImagesTop.add(bitmap);
-        }else{
+        } else {
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.focus_financial_3);
             localImagesTop.add(bmp);
         }

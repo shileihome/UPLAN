@@ -35,11 +35,23 @@ public class BannerInfoResp extends ResponseData {
         public String faxian1;
         public String faxian2;
         public String faxian3;
+        public String chanpin1;
+        public String chanpin2;
+        public String chanpin3;
+        public String chanpin4;
         public String shouurl1;
         public String shouurl2;
         public String shouurl3;
         public String shouye1;
         public String shouye2;
         public String shouye3;
+        public String churl1;
+        public String churl2;
+        public String churl3;
+        public String churl4;
+        public String ch1_isvip;
+        public String ch2_isvip;
+        public String ch3_isvip;
+        public String ch4_isvip;
     }
 }

@@ -9,7 +9,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/iv_center_3"
+            android:id="@+id/iv_center_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/center_financial_4"/>

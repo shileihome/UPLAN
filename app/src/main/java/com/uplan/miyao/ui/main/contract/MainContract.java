@@ -3,6 +3,7 @@ package com.uplan.miyao.ui.main.contract;
 import com.uplan.miyao.base.mvp.IModel;
 import com.uplan.miyao.base.mvp.IView;
 import com.uplan.miyao.ui.main.model.resp.BannerInfoResp;
+import com.uplan.miyao.ui.main.model.resp.VersionResp;
 
 import io.reactivex.Observable;
 
@@ -16,6 +17,6 @@ public interface MainContract {
 
     interface Model extends IModel {
         Observable<BannerInfoResp> getBannerInfo();
-
+        Observable<VersionResp> getVersionCode();
     }
 }

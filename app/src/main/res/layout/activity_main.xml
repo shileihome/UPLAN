@@ -57,7 +57,7 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <RelativeLayout
+      <!--  <RelativeLayout
             android:id="@+id/survey_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                     android:text="规划"
                     android:textSize="10sp" />
             </LinearLayout>
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <RelativeLayout
             android:id="@+id/discover_layout"

@@ -41,8 +41,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @BindView(R.id.tv_financial)
     TextView tvFinancial;
-    @BindView(R.id.tv_survey)
-    TextView tvSurvey;
+    /*@BindView(R.id.tv_survey)
+    TextView tvSurvey;*/
     @BindView(R.id.tv_discover)
     TextView tvDiscover;
     @BindView(R.id.tv_account)
@@ -51,8 +51,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     //三个按钮布局
     @BindView(R.id.financial_layout)
     public RelativeLayout financialLayout;
-    @BindView(R.id.survey_layout)
-    public RelativeLayout surveyLayout;
+  /*  @BindView(R.id.survey_layout)
+    public RelativeLayout surveyLayout;*/
     @BindView(R.id.discover_layout)
     public RelativeLayout discoverLayout;
     @BindView(R.id.account_layout)
@@ -61,8 +61,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     //三个按钮图片及文本
     @BindView(R.id.financial_image)
     public ImageView financialImage;
-    @BindView(R.id.survey_image)
-    public ImageView surveyImage;
+   /* @BindView(R.id.survey_image)
+    public ImageView surveyImage;*/
     @BindView(R.id.discover_image)
     public ImageView discoverImage;
     @BindView(R.id.account_image)
@@ -98,6 +98,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         setSelectItem(financialLayout);
         setTranslucent();
         mPresenter.getBannerInfo();
+        mPresenter.getVersionCode();
         }
 
     @Override
@@ -108,7 +109,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected MainPresenter getPresenter() {
-        return new MainPresenter(this);
+        return new MainPresenter(this,this);
     }
 
     public static void start(Context context) {
@@ -145,7 +146,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         }
     }
 
-    @OnClick({R.id.financial_layout, R.id.survey_layout, R.id.discover_layout, R.id.account_layout})
+    @OnClick({R.id.financial_layout,  R.id.discover_layout, R.id.account_layout})
     public void setSelectItem(View view) {
 
         FragmentTransaction transaction = fManager.beginTransaction();
@@ -165,7 +166,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                     transaction.show(homeFragment);
                 }
                 break;
-            case R.id.survey_layout:
+         /*   case R.id.survey_layout:
 
                 mSelectIndex = SELECT_INDEX_SURVEY;
                 clearSelect();
@@ -180,7 +181,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 } else {
                     transaction.show(surveyFragment);
                 }
-                break;
+                break;*/
             case R.id.discover_layout:
                 mSelectIndex = SELECT_INDEX_DISCOVER;
                 clearSelect();
@@ -222,9 +223,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         financialImage.setImageResource(R.drawable.shouye_normal);
         financialLayout.setBackgroundColor(bar_item_bg);
         tvFinancial.setTextColor(Color.parseColor("#666666"));
-        surveyImage.setImageResource(R.drawable.guihua_normal);
+       /* surveyImage.setImageResource(R.drawable.guihua_normal);
         surveyLayout.setBackgroundColor(bar_item_bg);
-        tvSurvey.setTextColor(Color.parseColor("#666666"));
+        tvSurvey.setTextColor(Color.parseColor("#666666"));*/
         discoverImage.setImageResource(R.drawable.faxian_normal);
         discoverLayout.setBackgroundColor(bar_item_bg);
         tvDiscover.setTextColor(Color.parseColor("#666666"));

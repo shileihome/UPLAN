@@ -58,7 +58,7 @@ public class FinancialActivity extends AppCompatActivity {
                 break;
             case R.id.tv_start_financial:
                 if(PreferencesUtils.getBoolean(this,PreferencesUtils.IS_ACTIVEA)){
-                    FinancialWebActivity_1.start(this);
+             //       FinancialWebActivity_1.start(this);
                 }else{
                     CommonDialog commonDialog = new CommonDialog(this).builder();
                     commonDialog.setSubMessage("请先成为会员!").

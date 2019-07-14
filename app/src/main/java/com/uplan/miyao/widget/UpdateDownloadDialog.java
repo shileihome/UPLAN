@@ -46,6 +46,7 @@ public class UpdateDownloadDialog {
         mTvVersionUpdate = (TextView) view.findViewById(R.id.tv_version_update);
         mTvVersionCurrent = (TextView) view.findViewById(R.id.tv_version_current);
         mTvProgress = (TextView) view.findViewById(R.id.tv_download_progress);
+        mTvProgress.setVisibility(View.INVISIBLE);
         mLoadLineProgress = (DownLoadLineProgress) view.findViewById(R.id.download_line_progress);
         mDialog = new Dialog(mContext, R.style.AlertDialogStyle);
         mDialog.setContentView(view);
@@ -63,7 +64,7 @@ public class UpdateDownloadDialog {
      * @return UpdateDownloadDialog
      */
     public UpdateDownloadDialog setVersionCurrent(String versionCurrent) {
-        mTvVersionCurrent.setText(versionCurrent);
+     //   mTvVersionCurrent.setText(versionCurrent);
         return this;
     }
 
@@ -74,7 +75,7 @@ public class UpdateDownloadDialog {
      * @return UpdateDownloadDialog
      */
     public UpdateDownloadDialog setVersionUpdate(String versionUpdate) {
-        mTvVersionUpdate.setText(versionUpdate);
+       // mTvVersionUpdate.setText(versionUpdate);
         return this;
     }
 
@@ -86,7 +87,7 @@ public class UpdateDownloadDialog {
      */
     public UpdateDownloadDialog setProgress(int progress) {
         mLoadLineProgress.setProgress(progress);
-        mTvProgress.setText("更新进度" + progress + "%");
+    //    mTvProgress.setText("更新进度" + progress + "%");
         return this;
     }
 

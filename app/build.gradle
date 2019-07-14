@@ -232,6 +232,9 @@ dependencies {
     compile 'com.android.support:support-v4:20.+'
     compile 'com.daimajia.swipelayout:library:1.2.0@aar'
 
+    //版本更新库
+    compile(name: 'version_update-release', ext: 'aar')
+
     //微信sdk接入
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     //垂直滑动viewpager

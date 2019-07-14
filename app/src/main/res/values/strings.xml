@@ -241,7 +241,7 @@
 
     <string name="image_select_video_size_limit">每个视频大小不超过50M</string>
     <string name="image_select_file_cnt_limit">最多上传9个文件</string>
-    <string name="update_version_name_tip">发现新版本%s</string>
+    <string name="update_version_name_tip">发现新版本</string>
 
     <!--录入合同资料-->
     <string name="contract">录入合同资料</string>

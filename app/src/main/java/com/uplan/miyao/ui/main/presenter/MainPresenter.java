@@ -3,34 +3,32 @@ package com.uplan.miyao.ui.main.presenter;
 import android.app.Activity;
 import android.content.Context;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 
 import com.uplan.miyao.R;
 import com.uplan.miyao.base.UiUtils;
-import com.uplan.miyao.base.helper.entity.UpdateInfoResp;
 import com.uplan.miyao.base.mvp.BasePresenter;
 import com.uplan.miyao.net.ErrorHandleSubscriber;
 import com.uplan.miyao.ui.main.contract.MainContract;
 import com.uplan.miyao.ui.main.model.MainModel;
 import com.uplan.miyao.ui.main.model.resp.BannerInfoResp;
 import com.uplan.miyao.ui.main.model.resp.VersionResp;
-import com.uplan.miyao.util.ApkUtils;
-import com.uplan.miyao.util.DownloadListener;
 import com.uplan.miyao.util.RxUtils;
 import com.uplan.miyao.util.SystemUtils;
-import com.uplan.miyao.util.ToastUtils;
-import com.uplan.miyao.util.UpdateManager;
 import com.uplan.miyao.widget.UpdateDownloadDialog;
 import com.uplan.miyao.widget.UpdateVersionDialog;
+import com.yitoudai.update.UpdateManager;
 
 import timber.log.Timber;
 
 
 public class MainPresenter extends BasePresenter<MainContract.View, MainContract.Model> {
 
-    public MainPresenter(MainContract.View view) {
+    private static  Activity context;
+
+    public MainPresenter(MainContract.View view,Activity context) {
         super(view);
+        this.context=context;
     }
 
     @Override
@@ -60,7 +58,7 @@ public class MainPresenter extends BasePresenter<MainContract.View, MainContract
 
             @Override
             public void onSuccess(VersionResp versionResp) {
-
+                checkNeedUpdate(versionResp);
             }
 
             @Override
@@ -75,10 +73,10 @@ public class MainPresenter extends BasePresenter<MainContract.View, MainContract
      *
      * @return true: 需要更新  false: 不需要更新
      */
-    private static void checkNeedUpdate(String versionCode){
-        boolean newVersionCode = compareVersion(UiUtils.getContext(), Integer.parseInt(versionCode));
-        if(!newVersionCode){
-
+    private static void checkNeedUpdate(VersionResp versionCode){
+        boolean newVersionCode = compareVersion(UiUtils.getContext(), versionCode.version);
+        if(newVersionCode){
+            showUpdateTipDialog(versionCode);
         }
     }
 
@@ -100,21 +98,70 @@ public class MainPresenter extends BasePresenter<MainContract.View, MainContract
     /**
      * 弹出提示信息
      *
-     * @param context 上下文
      */
-    private static void showUpdateTipDialog(Activity context, VersionResp versionResp) {
+    private static void showUpdateTipDialog( VersionResp versionResp) {
         UpdateVersionDialog updateVersionDialog = new UpdateVersionDialog(context).builder();
-        updateVersionDialog.setVersionName(String.format(context.getString(R.string.update_version_name_tip), updateInfoResp.version))
+        updateVersionDialog.setVersionName(String.format(context.getString(R.string.update_version_name_tip)))
                 .setVersionContent(versionResp.msg)
                 .setCloseClickListener(false)
                 .setImmediateUpdate(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        download(context, updateInfoResp);
+                        download(context, versionResp);
                     }
                 }).show();
     }
 
+    /**
+     * 开始下载
+     *
+     * @param context     上下文
+     */
+    private static void download(Activity context, VersionResp versionResp) {
+        //进度对话框
+        UpdateDownloadDialog downloadDialog = new UpdateDownloadDialog(context).builder();
+        downloadDialog.setVersionCurrent(SystemUtils.getVersionName(context)).setVersionUpdate(versionResp.version+"");
+
+        UpdateManager.getInstance().createBuilder().
+                setContext(context).
+                setVersionCode(versionResp.version).
+                setDownloadUrl("http://www.51mix.cn/data/appDownload/keys.apk").
+                setDownloadFileName("miyao").
+                setAppName("蜜钥").
+                setAppLogoResource(R.drawable.miyao).
+                setDownloadListener(
+                        new com.yitoudai.update.DownloadListener() {
+                            @Override
+                            public void onDownloadStart() {
+                                downloadDialog.show();
+                            }
+
+                            @Override
+                            public void onDownloadFail(String message) {
+                                downloadDialog.setProgress(0);
+
+                                    SystemClock.sleep(500);
+                                    UpdateManager.getInstance().startDownload();
+
+
+                            }
+
+                            @Override
+                            public void onProgressChange(int progress) {
+                                downloadDialog.setProgress(progress);
+                            }
+
+                            @Override
+                            public void onDownloadCancel() {
+                                downloadDialog.dismiss();
+                            }
+
+                            @Override
+                            public void onDownloadFinish() {
+                                downloadDialog.dismiss();
+                            }
+                        }).build();
+    }
 
 
 }

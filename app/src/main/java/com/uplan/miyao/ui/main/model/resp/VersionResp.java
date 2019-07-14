@@ -7,5 +7,10 @@ import com.uplan.miyao.net.ResponseData;
  * Description:
  */
 public class VersionResp extends ResponseData {
-    public static String versionCode;
+
+    /**
+     * version : 4
+     */
+
+    public int version;
 }

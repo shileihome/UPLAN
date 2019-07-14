@@ -28,6 +28,7 @@ import com.uplan.miyao.ui.account.view.activity.RiskEvaluationActivity;
 import com.uplan.miyao.ui.account.view.activity.SettingActivity;
 import com.uplan.miyao.ui.login.view.activity.LoginActivity;
 import com.uplan.miyao.ui.main.view.activity.MainActivity;
+import com.uplan.miyao.ui.survey.view.SurveyActivity;
 import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.StringUtils;
@@ -202,7 +203,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 if (isShowLoginDialog()) {
                     return;
                 }
-                ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).surveyLayout);
+                SurveyActivity.start(getActivity());
                 break;
             case R.id.rl_holist2:
                 if (isShowLoginDialog()) {

@@ -187,7 +187,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         View view_4 = View.inflate(getActivity(), R.layout.view_home_center_4, null);
         if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN4))) {
             Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN4));
-            ((ImageView) view_2.findViewById(R.id.iv_center_4)).setImageBitmap(bitmap);
+            ((ImageView) view_4.findViewById(R.id.iv_center_4)).setImageBitmap(bitmap);
         }
 
         views.add(view_1);

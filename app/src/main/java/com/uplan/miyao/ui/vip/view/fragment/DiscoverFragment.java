@@ -168,7 +168,7 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
     }
 
 
-    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_insurance_more, R.id.tv_insurance, R.id.tv_merchant_more, R.id.tv_merchant,  R.id.tv_classroom_more,  R.id.tv_shared,R.id.tv_goplan_more, R.id.tv_goplan})
+    @OnClick({R.id.iv_vip, R.id.tv_vip_group, R.id.tv_insurance_more, R.id.tv_insurance, R.id.tv_merchant_more,R.id.tv_classroom, R.id.tv_merchant,  R.id.tv_classroom_more,  R.id.tv_shared,R.id.tv_goplan_more, R.id.tv_goplan})
     public void onClick(View view) {
         if (isShowLoginDialog()) {
             return;
@@ -230,6 +230,9 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
                 break;
 
             case R.id.tv_classroom_more:
+                ClassroomWebActivity.start(getActivity());
+                break;
+            case R.id.tv_classroom:
                 ClassroomWebActivity.start(getActivity());
                 break;
             case R.id.tv_shared:

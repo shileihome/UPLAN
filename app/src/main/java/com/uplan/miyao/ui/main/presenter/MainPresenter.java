@@ -103,7 +103,7 @@ public class MainPresenter extends BasePresenter<MainContract.View, MainContract
         UpdateVersionDialog updateVersionDialog = new UpdateVersionDialog(context).builder();
         updateVersionDialog.setVersionName(String.format(context.getString(R.string.update_version_name_tip)))
                 .setVersionContent(versionResp.msg)
-                .setCloseClickListener(false)
+                .setCloseClickListener(true)
                 .setImmediateUpdate(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

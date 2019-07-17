@@ -177,7 +177,6 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN2));
             ((ImageView) view_2.findViewById(R.id.iv_center_2)).setImageBitmap(bitmap);
         }
-
         View view_3 = View.inflate(getActivity(), R.layout.view_home_center_3, null);
         if (!TextUtils.isEmpty(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN3))) {
             Bitmap bitmap = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(getActivity(), PreferencesUtils.BITMAP_STRING_CHANPIN3));

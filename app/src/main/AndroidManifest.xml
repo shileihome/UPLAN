@@ -83,7 +83,8 @@
         <activity android:name=".ui.vip.view.activity.ClassroomWebActivity" />
         <activity android:name=".ui.vip.view.activity.FinanceWebActivity" />
         <activity android:name=".ui.vip.view.activity.FundGroupWebActivity" />
-        <activity android:name=".ui.vip.view.activity.InsuranceWebActivity" />
+        <activity android:name=".ui.vip.view.activity.InsuranceWebActivity"
+            android:hardwareAccelerated="true"/>
         <activity android:name=".ui.vip.view.activity.MerchantWebActivity" />
         <activity android:name=".ui.vip.view.activity.SharedActivity" />
         <activity android:name=".ui.regist.view.activity.PlatformActivity" />

@@ -3,11 +3,11 @@ package com.uplan.miyao.ui.vip.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.view.View;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
-import com.uplan.miyao.ui.account.view.activity.HoldActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
@@ -25,7 +25,8 @@ public class InsuranceWebActivity   extends BaseWebViewActivity {
 
     @Override
     public void initView() {
-        uplanWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        uplanWebView.setBackgroundColor(Color.TRANSPARENT);
+        uplanWebView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         setWebViewClient();
         updateWebData();
 

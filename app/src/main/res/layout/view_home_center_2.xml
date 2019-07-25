@@ -17,15 +17,15 @@
             <ImageView
                 android:id="@+id/iv_center_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="118dp"
                 android:src="@drawable/center_financial_2"/>
 
             <TextView
                 android:id="@+id/tv_home_buy_2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shape_home_buy"
                 android:paddingBottom="5dp"
                 android:paddingLeft="56dp"
@@ -35,21 +35,23 @@
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/arrows_up" />
+                android:src="@drawable/arrows_up"
+                />
         </LinearLayout>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/arrow_to_left"
-            android:layout_marginRight="44dp"/>
+            android:layout_marginRight="44dp"
+            />
     </RelativeLayout>
 </LinearLayout>

@@ -40,22 +40,21 @@
 
 
             <pl.droidsonroids.gif.GifImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_alignParentBottom="true"
+                android:layout_width="85dp"
+                android:layout_height="16dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="6dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/arrows_up"
                 />
         </LinearLayout>
         <pl.droidsonroids.gif.GifImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/arrow_to_left"
-            android:layout_marginRight="44dp"
+            android:layout_marginRight="19dp"
             />
     </RelativeLayout>
 

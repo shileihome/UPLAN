@@ -160,7 +160,6 @@ public abstract class BaseWebViewActivity extends Activity {
     public void onResume() {
         super.onResume();
         if(uplanWebView != null){
-            clearCookies(this);
             uplanWebView.onResume();
             uplanWebView.resumeTimers();
         }

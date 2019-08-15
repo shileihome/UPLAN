@@ -36,8 +36,7 @@ private String homeUrl="http://www.51mix.cn/wechat/yingmi/RiskAppraisal/surveyRe
     @Override
     public void onResume() {
         super.onResume();
-        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION="+"\"" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
-        uplanWebView.loadUrl(homeUrl);
+
     }
 
     private void setWebViewClient() {
@@ -68,12 +67,8 @@ private String homeUrl="http://www.51mix.cn/wechat/yingmi/RiskAppraisal/surveyRe
 
     @Override
     public void updateWebData() {
-       /* if (AppManager.getInstance().hasLogin()) {
-            homeUrl = NetWorkConfig.HTTP_HOME_WEB_URL + "?token=" + AppManager.getInstance().getUser().token;
-        } else {
-            homeUrl = NetWorkConfig.HTTP_HOME_WEB_URL;
-        }
-        progressWebView.loadUrl(homeUrl);*/
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION="+"\"" + PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
+        uplanWebView.loadUrl(homeUrl);
     }
 
 }

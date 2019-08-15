@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
-import com.uplan.miyao.ui.vip.view.activity.MerchantWebActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
 
@@ -39,8 +38,7 @@ public class Mix50Activity  extends BaseWebViewActivity {
     @Override
     public void onResume() {
         super.onResume();
-        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + "\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
-        uplanWebView.loadUrl(homeUrl);
+
     }
 
     private void setWebViewClient() {
@@ -71,12 +69,8 @@ public class Mix50Activity  extends BaseWebViewActivity {
 
     @Override
     public void updateWebData() {
-       /* if (AppManager.getInstance().hasLogin()) {
-            homeUrl = NetWorkConfig.HTTP_HOME_WEB_URL + "?token=" + AppManager.getInstance().getUser().token;
-        } else {
-            homeUrl = NetWorkConfig.HTTP_HOME_WEB_URL;
-        }
-        progressWebView.loadUrl(homeUrl);*/
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + "\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
+        uplanWebView.loadUrl(homeUrl);
     }
 
 }

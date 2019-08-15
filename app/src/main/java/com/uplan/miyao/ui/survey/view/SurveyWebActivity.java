@@ -38,9 +38,7 @@ public class SurveyWebActivity extends BaseWebViewActivity {
     @Override
     public void onResume() {
         super.onResume();
-        String cookie="\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"";
-        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +cookie );
-        uplanWebView.loadUrl(homeUrl);
+
     }
 
     private void setWebViewClient() {
@@ -71,12 +69,9 @@ public class SurveyWebActivity extends BaseWebViewActivity {
 
     @Override
     public void updateWebData() {
-       /* if (AppManager.getInstance().hasLogin()) {
-            homeUrl = NetWorkConfig.HTTP_HOME_WEB_URL + "?token=" + AppManager.getInstance().getUser().token;
-        } else {
-            homeUrl = NetWorkConfig.HTTP_HOME_WEB_URL;
-        }
-        progressWebView.loadUrl(homeUrl);*/
+        String cookie="\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"";
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" +cookie );
+        uplanWebView.loadUrl(homeUrl);
     }
 
 }

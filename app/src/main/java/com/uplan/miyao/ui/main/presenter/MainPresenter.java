@@ -125,7 +125,7 @@ public class MainPresenter extends BasePresenter<MainContract.View, MainContract
         UpdateManager.getInstance().createBuilder().
                 setContext(context).
                 setVersionCode(versionResp.version).
-                setDownloadUrl("http://www.51mix.cn/data/appDownload/keys.apk").
+                setDownloadUrl("http://www.51mix.cn/appClient/getApp").
                 setDownloadFileName("miyao").
                 setAppName("蜜钥").
                 setAppLogoResource(R.drawable.miyao).

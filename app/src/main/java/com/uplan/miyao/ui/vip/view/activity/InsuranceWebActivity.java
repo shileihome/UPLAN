@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -51,6 +52,14 @@ public class InsuranceWebActivity   extends BaseWebViewActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
                     webGoBack(InsuranceWebActivity.this);
+                    return true;
+                }
+                if (url.startsWith("weixin://wap/pay?")){//微信特殊处理
+                    try {
+                        startActivity(new Intent("android.intent.action.VIEW", Uri.parse(url)));
+                    } catch (Exception e) {
+
+                    }
                     return true;
                 }
                 return super.shouldOverrideUrlLoading(view, url);

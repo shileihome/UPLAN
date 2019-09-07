@@ -9,8 +9,8 @@ import android.content.SharedPreferences;
 public class PreferencesUtils {
 
     /** ch_isvip:0; 0:非会员  1：会员专享 */
-    public static String CH_ISVIP_0="0";
-    public static String CH_ISVIP_1="1";
+    public static String CH_ISVIP_0 = "0";
+    public static String CH_ISVIP_1 = "1";
 
     public static String PREFERENCE_NAME = "miyaoAndroid";
     public static String LOGIN_STATE = "login_state";
@@ -19,7 +19,7 @@ public class PreferencesUtils {
     public static String USER_TEL = "user_tel";
     public static String IS_ACTIVEA = "is_active";
     public static String EXPIRE_TIME = "expire_time";
-
+    public static String MESSAGE_NUM = "message_num";
     /** 首页面轮播图点击url地址 */
     public static String URL_BANNER_HOME_1 = "url_banner_home_1";
     public static String URL_BANNER_HOME_2 = "url_banner_home_2";
@@ -42,21 +42,21 @@ public class PreferencesUtils {
     public static String BITMAP_STRING_HOME_3 = "bitmap_string_home_3";
 
     /** 发现也轮播图base64字符串 */
-    public static String BITMAP_STRING_DISCOVER_1="bitmap_string_discover_1";
-    public static String BITMAP_STRING_DISCOVER_2="bitmap_string_discover_2";
-    public static String BITMAP_STRING_DISCOVER_3="bitmap_string_discover_3";
+    public static String BITMAP_STRING_DISCOVER_1 = "bitmap_string_discover_1";
+    public static String BITMAP_STRING_DISCOVER_2 = "bitmap_string_discover_2";
+    public static String BITMAP_STRING_DISCOVER_3 = "bitmap_string_discover_3";
 
     /** 首页中间产品页图base64字符串 */
-    public static String BITMAP_STRING_CHANPIN1="bitmap_string_chanpin1";
-    public static String BITMAP_STRING_CHANPIN2="bitmap_string_chanpin2";
-    public static String BITMAP_STRING_CHANPIN3="bitmap_string_chanpin3";
-    public static String BITMAP_STRING_CHANPIN4="bitmap_string_chanpin4";
+    public static String BITMAP_STRING_CHANPIN1 = "bitmap_string_chanpin1";
+    public static String BITMAP_STRING_CHANPIN2 = "bitmap_string_chanpin2";
+    public static String BITMAP_STRING_CHANPIN3 = "bitmap_string_chanpin3";
+    public static String BITMAP_STRING_CHANPIN4 = "bitmap_string_chanpin4";
 
     /** 首页中间产品页图权限 */
-    public static String BOOLEAN_HOME_CH1_ISVIP="boolean_home_ch1_isvip";
-    public static String BOOLEAN_HOME_CH2_ISVIP="boolean_home_ch2_isvip";
-    public static String BOOLEAN_HOME_CH3_ISVIP="boolean_home_ch3_isvip";
-    public static String BOOLEAN_HOME_CH4_ISVIP="boolean_home_ch4_isvip";
+    public static String BOOLEAN_HOME_CH1_ISVIP = "boolean_home_ch1_isvip";
+    public static String BOOLEAN_HOME_CH2_ISVIP = "boolean_home_ch2_isvip";
+    public static String BOOLEAN_HOME_CH3_ISVIP = "boolean_home_ch3_isvip";
+    public static String BOOLEAN_HOME_CH4_ISVIP = "boolean_home_ch4_isvip";
 
 
     private PreferencesUtils() {

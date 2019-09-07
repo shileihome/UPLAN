@@ -33,15 +33,36 @@
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:id="@+id/iv_notify_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/rl_notify_2"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:paddingRight="20dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/notice2" />
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/iv_notify_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/notice2" />
+                    <TextView
+                        android:id="@+id/tv_notify_num_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:textSize="8dp"
+                        android:text="12"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/color_ffffff"
+                        android:visibility="gone"
+                        />
+                </RelativeLayout>
+
 
                 <!--         <ImageView
                              android:layout_width="wrap_content"

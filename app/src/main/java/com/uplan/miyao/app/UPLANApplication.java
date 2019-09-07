@@ -38,6 +38,7 @@ public class UPLANApplication extends Application {
 //        PreferencesUtils.putString(this,PreferencesUtils.USER_TEL,"");
         PreferencesUtils.putBoolean(this,PreferencesUtils.IS_ACTIVEA,false);
         PreferencesUtils.putLong(this,PreferencesUtils.EXPIRE_TIME,0);
+        PreferencesUtils.putString(this, PreferencesUtils.MESSAGE_NUM, "0");
     }
 
     @Override

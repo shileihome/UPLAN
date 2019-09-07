@@ -115,13 +115,19 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         tvLogin.setOnClickListener(view -> {
             LoginActivity.start(getActivity());
         });
-        ImageView ivNotify1 = (ImageView) firstLayout.findViewById(R.id.iv_notify_1);
-        ivNotify1.setOnClickListener(view -> {
+        RelativeLayout rlNotify1 = (RelativeLayout) firstLayout.findViewById(R.id.rl_notify_1);
+        rlNotify1.setOnClickListener(view -> {
             if (isShowLoginDialog()) {
                 return;
             }
             RemindActivity.start(getActivity());
         });
+        TextView tvNotifyNum1= (TextView) firstLayout.findViewById(R.id.tv_notify_num_1);
+        String num1=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
+        if(Integer.parseInt(num1.trim())>0){
+            tvNotifyNum1.setVisibility(View.VISIBLE);
+            tvNotifyNum1.setText(num1);
+        }
 
         //第二个页面点击事件--------------------------------------------------------------
         RelativeLayout cvSafe = (RelativeLayout) secondLayout.findViewById(R.id.cv_safe);
@@ -144,8 +150,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         ivTeamInfo.setOnClickListener(view -> {
             TeamInfoActivity.start(getActivity());
         });
-        ImageView ivNotify2 = (ImageView) secondLayout.findViewById(R.id.iv_notify_2);
-        ivNotify2.setOnClickListener(view -> {
+        RelativeLayout rlNotify2 = (RelativeLayout) secondLayout.findViewById(R.id.rl_notify_2);
+        rlNotify2.setOnClickListener(view -> {
             if (isShowLoginDialog()) {
                 return;
             }
@@ -155,6 +161,12 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         tvYinMiDetail.setOnClickListener(view -> {
             YinMiDetailActivity.start(getActivity());
         });
+        TextView tvNotifyNum2= (TextView) secondLayout.findViewById(R.id.tv_notify_num_2);
+        String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
+        if(Integer.parseInt(num2.trim())>0){
+            tvNotifyNum2.setVisibility(View.VISIBLE);
+            tvNotifyNum2.setText(num2);
+        }
     }
 
     /**

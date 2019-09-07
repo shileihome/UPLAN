@@ -386,6 +386,17 @@
                     android:text="交易提醒"
                     android:textSize="12sp" />
 
+                <TextView
+                    android:id="@+id/tv_notify_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="60dp"
+                    android:background="#bbbbbb"
+                    android:text="12"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

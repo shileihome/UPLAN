@@ -94,6 +94,8 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     LinearLayout llAccount;
     @BindView(R.id.ll_title_background)
     LinearLayout llTitleBackground;
+    @BindView(R.id.tv_notify_num)
+    TextView tvNotifyNum;
 
     @Nullable
     @Override
@@ -128,6 +130,12 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             ivVipLogo.setVisibility(View.GONE);
         }
 
+        String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
+        if(Integer.parseInt(num2.trim())>0){
+            tvNotifyNum.setVisibility(View.VISIBLE);
+            tvNotifyNum.setText(num2);
+        }
+
 
     }
 
@@ -151,7 +159,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 
 
     @OnClick({R.id.tv_setting, R.id.ll_account, R.id.tv_honav2, R.id.tv_honav3, R.id.rl_holist1, R.id.rl_holist2,
-            R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist8,R.id.ll_mix50, R.id.tv_login_out})
+            R.id.rl_holist3, R.id.rl_holist4, R.id.rl_holist5, R.id.rl_holist8, R.id.ll_mix50, R.id.tv_login_out})
     public void onClick(View view) {
 
 
@@ -293,6 +301,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 //        PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_TEL, "");
         PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, false);
         PreferencesUtils.putLong(getActivity(), PreferencesUtils.EXPIRE_TIME, 0);
+        PreferencesUtils.putString(getActivity(), PreferencesUtils.MESSAGE_NUM, "0");
         tvLoginName.setText("未登录");
         tvGeneralAssets.setText("---");
         tvUpDown.setText("---");
@@ -315,4 +324,6 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         QMUIStatusBarHelper.translucent(getActivity());
 //        QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
     }
+
+
 }

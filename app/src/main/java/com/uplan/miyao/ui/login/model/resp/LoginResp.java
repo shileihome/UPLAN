@@ -55,5 +55,6 @@ public class LoginResp extends ResponseData {
         public String name;
         public String password;
         public String PLAY_SESSION;
+        public String message_num;
     }
 }

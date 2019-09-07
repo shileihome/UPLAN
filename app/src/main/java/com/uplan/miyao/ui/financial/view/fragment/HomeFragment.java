@@ -126,7 +126,6 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         String num1=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
         if(Integer.parseInt(num1.trim())>0){
             tvNotifyNum1.setVisibility(View.VISIBLE);
-            tvNotifyNum1.setText(num1);
         }
 
         //第二个页面点击事件--------------------------------------------------------------
@@ -165,7 +164,6 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
         if(Integer.parseInt(num2.trim())>0){
             tvNotifyNum2.setVisibility(View.VISIBLE);
-            tvNotifyNum2.setText(num2);
         }
     }
 

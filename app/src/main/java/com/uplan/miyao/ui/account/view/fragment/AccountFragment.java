@@ -131,9 +131,15 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         }
 
         String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
-        if(Integer.parseInt(num2.trim())>0){
+        if(Integer.parseInt(num2.trim())>0&&num2.trim().length()<3){
             tvNotifyNum.setVisibility(View.VISIBLE);
             tvNotifyNum.setText(num2);
+
+        }else if(Integer.parseInt(num2.trim())>0&&num2.trim().length()>=3){
+            tvNotifyNum.setVisibility(View.VISIBLE);
+            tvNotifyNum.setText("..");
+        }else{
+            tvNotifyNum.setVisibility(View.GONE);
         }
 
 

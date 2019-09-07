@@ -388,15 +388,18 @@
 
                 <TextView
                     android:id="@+id/tv_notify_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="60dp"
-                    android:background="#bbbbbb"
-                    android:text="12"
-                    android:textSize="12sp"
-                    android:visibility="gone"/>
+                    android:background="@drawable/notify_big"
+                    android:text="99"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textColor="@color/color_ffffff"
+                    android:visibility="visible"
+                    />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

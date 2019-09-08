@@ -131,7 +131,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         PreferencesUtils.putString(this, PreferencesUtils.USER_TEL, etPhotoNo.getText().toString());
         PreferencesUtils.putBoolean(this, PreferencesUtils.IS_ACTIVEA, data.data.get(0).is_active);
         PreferencesUtils.putLong(this, PreferencesUtils.EXPIRE_TIME, data.data.get(0).level_end_time);
-        PreferencesUtils.putString(this,PreferencesUtils.MESSAGE_NUM,data.data.get(0).message_num);
+        if(!TextUtils.isEmpty(data.data.get(0).message_num)){
+            PreferencesUtils.putString(this,PreferencesUtils.MESSAGE_NUM,data.data.get(0).message_num);
+        }else{
+            PreferencesUtils.putString(this,PreferencesUtils.MESSAGE_NUM,"0");
+        }
         LoginActivity.this.finish();
     }
 

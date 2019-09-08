@@ -4,7 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.ref.SoftReference;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
@@ -173,7 +176,15 @@ public class EncodeUtils {
      * @return
      */
     public static Bitmap base64ToBitmap(String base64Data) {
+        InputStream input = null;
         byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
-        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 2;
+        input = new ByteArrayInputStream(bytes);
+        Bitmap bitmap=null;
+        SoftReference softRef=new SoftReference(BitmapFactory.decodeStream(
+                input, null, options));
+        bitmap= (Bitmap) softRef.get();
+        return bitmap;
     }
 }

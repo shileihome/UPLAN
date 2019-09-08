@@ -66,6 +66,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     TextView tvHomeBuy2;
     TextView tvHomeBuy3;
 
+    TextView tvNotifyNum2;
+    TextView tvNotifyNum1;
     boolean loginState;
     //本地图片BannerTop
     private ArrayList<Bitmap> localImagesTop = new ArrayList<Bitmap>();
@@ -122,11 +124,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             }
             RemindActivity.start(getActivity());
         });
-        TextView tvNotifyNum1= (TextView) firstLayout.findViewById(R.id.tv_notify_num_1);
-        String num1=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
-        if(Integer.parseInt(num1.trim())>0){
-            tvNotifyNum1.setVisibility(View.VISIBLE);
-        }
+         tvNotifyNum1= (TextView) firstLayout.findViewById(R.id.tv_notify_num_1);
+
 
         //第二个页面点击事件--------------------------------------------------------------
         RelativeLayout cvSafe = (RelativeLayout) secondLayout.findViewById(R.id.cv_safe);
@@ -160,11 +159,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         tvYinMiDetail.setOnClickListener(view -> {
             YinMiDetailActivity.start(getActivity());
         });
-        TextView tvNotifyNum2= (TextView) secondLayout.findViewById(R.id.tv_notify_num_2);
-        String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
-        if(Integer.parseInt(num2.trim())>0){
-            tvNotifyNum2.setVisibility(View.VISIBLE);
-        }
+         tvNotifyNum2= (TextView) secondLayout.findViewById(R.id.tv_notify_num_2);
+
     }
 
     /**
@@ -334,6 +330,11 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             tvHomeBuy1.setVisibility(View.INVISIBLE);
             tvHomeBuy2.setVisibility(View.INVISIBLE);
             tvHomeBuy3.setVisibility(View.INVISIBLE);
+        }
+        String num=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
+        if(Integer.parseInt(num.trim())>0){
+            tvNotifyNum1.setVisibility(View.VISIBLE);
+            tvNotifyNum2.setVisibility(View.VISIBLE);
         }
     }
 

@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         fManager = getSupportFragmentManager();
-        setSelectItem(financialLayout);
+
         setTranslucent();
         mPresenter.getBannerInfo();
         mPresenter.getVersionCode();
@@ -104,7 +104,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void onResume() {
         super.onResume();
-
+        setSelectItem(financialLayout);
     }
 
     @Override

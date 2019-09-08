@@ -19,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true"
+        android:largeHeap="true"
         tools:replace="android:allowBackup,android:theme">
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>

@@ -160,7 +160,15 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
 
     @Override
     public void dealFailure(int code, String message) {
-
+if(code==1){
+    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
+    commonDialog.setSubMessage(message).
+            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+            }).
+            setRightButton(getString(R.string.commit_change), v -> {
+                LoginActivity.start(getActivity());
+            }).show();
+}
     }
 
 

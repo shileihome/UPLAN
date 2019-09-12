@@ -3,6 +3,7 @@ package com.uplan.miyao.ui.account.view.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -130,17 +131,6 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             ivVipLogo.setVisibility(View.GONE);
         }
 
-        String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
-        if(Integer.parseInt(num2.trim())>0&&num2.trim().length()<3){
-            tvNotifyNum.setVisibility(View.VISIBLE);
-            tvNotifyNum.setText(num2);
-
-        }else if(Integer.parseInt(num2.trim())>0&&num2.trim().length()>=3){
-            tvNotifyNum.setVisibility(View.VISIBLE);
-            tvNotifyNum.setText("..");
-        }else{
-            tvNotifyNum.setVisibility(View.GONE);
-        }
 
 
     }
@@ -330,7 +320,25 @@ if(code==1){
             tvGeneralAssets.setText(accountResp.data.get(0).porperty + "");
             tvUpDown.setText(accountResp.data.get(0).previousProfit + "");
             tvGeneralUpDown.setText(accountResp.data.get(0).accumulatedProfit + "");
+            if(!TextUtils.isEmpty(accountResp.data.get(0).message_num)){
+                PreferencesUtils.putString(getActivity(),PreferencesUtils.MESSAGE_NUM,accountResp.data.get(0).message_num);
+            }else{
+                PreferencesUtils.putString(getActivity(),PreferencesUtils.MESSAGE_NUM,"0");
+            }
         }
+
+        String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
+        if(Integer.parseInt(num2.trim())>0&&num2.trim().length()<3){
+            tvNotifyNum.setVisibility(View.VISIBLE);
+            tvNotifyNum.setText(num2);
+
+        }else if(Integer.parseInt(num2.trim())>0&&num2.trim().length()>=3){
+            tvNotifyNum.setVisibility(View.VISIBLE);
+            tvNotifyNum.setText("..");
+        }else{
+            tvNotifyNum.setVisibility(View.GONE);
+        }
+
     }
 
     public void setTranslucent() {

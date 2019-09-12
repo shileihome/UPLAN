@@ -22,5 +22,6 @@ public class AccountResp extends ResponseData {
         public double porperty;
         public double previousProfit;
         public double accumulatedProfit;
+        public String message_num;
     }
 }

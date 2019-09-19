@@ -336,39 +336,29 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
     @Override
     public void dealGetAccountInfoFailure(int code, String message) {
         if(code==1){
-            mPresenter.reServiceLogOut(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_TEL),message);
-        }
-    }
-
-    @Override
-    public void dealReServiceLogoutSuccess(ResponseData responseData, String message) {
-        PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.LOGIN_STATE, false);
-        PreferencesUtils.putString(getActivity(), PreferencesUtils.PLAY_SESSION, "");
-        PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_NAME, "未登录");
+            PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.LOGIN_STATE, false);
+            PreferencesUtils.putString(getActivity(), PreferencesUtils.PLAY_SESSION, "");
+            PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_NAME, "未登录");
 //        PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_TEL, "");
-        PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, false);
-        PreferencesUtils.putLong(getActivity(), PreferencesUtils.EXPIRE_TIME, 0);
-        PreferencesUtils.putString(getActivity(), PreferencesUtils.MESSAGE_NUM, "0");
-        tvLoginName.setText("未登录");
-        tvGeneralAssets.setText("---");
-        tvUpDown.setText("---");
-        tvGeneralUpDown.setText("---");
-        if(infoDialog!=null){
-            infoDialog.dismiss();
-            infoDialog=null;
+            PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, false);
+            PreferencesUtils.putLong(getActivity(), PreferencesUtils.EXPIRE_TIME, 0);
+            PreferencesUtils.putString(getActivity(), PreferencesUtils.MESSAGE_NUM, "0");
+            tvLoginName.setText("未登录");
+            tvGeneralAssets.setText("---");
+            tvUpDown.setText("---");
+            tvGeneralUpDown.setText("---");
+            if(infoDialog!=null){
+                infoDialog.dismiss();
+                infoDialog=null;
+            }
+            infoDialog = new CommonDialog(getActivity()).builder();
+            infoDialog.setSubMessage(message).
+                    setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                    }).
+                    setRightButton(getString(R.string.commit_change), v -> {
+                        LoginActivity.start(getActivity());
+                    }).show();
         }
-        infoDialog = new CommonDialog(getActivity()).builder();
-        infoDialog.setSubMessage(message).
-                setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                }).
-                setRightButton(getString(R.string.commit_change), v -> {
-                    LoginActivity.start(getActivity());
-                }).show();
-    }
-
-    @Override
-    public void dealReServiceLogoutFailure(int code, String message,String reserviceCode) {
-
     }
 
     public void setTranslucent() {

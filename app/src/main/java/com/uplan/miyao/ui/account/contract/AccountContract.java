@@ -16,8 +16,6 @@ public interface AccountContract {
         void dealLogOutSuccess(ResponseData responseData);
         void dealGetAccountInfoSuccess(AccountResp accountResp);
         void dealGetAccountInfoFailure(int code, String message);
-        void dealReServiceLogoutSuccess(ResponseData responseData,String reserviceCode);
-        void dealReServiceLogoutFailure(int code, String message,String reserviceCode);
     }
 
     interface Model extends IModel {

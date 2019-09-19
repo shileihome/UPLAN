@@ -202,4 +202,9 @@ public class CommonDialog {
         return mDialog != null && mDialog.isShowing();
     }
 
+    public void dismiss(){
+        if (mDialog != null) {
+            mDialog.dismiss();
+        }
+    }
 }

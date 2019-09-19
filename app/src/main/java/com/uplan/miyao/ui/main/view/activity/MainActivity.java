@@ -99,12 +99,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         setTranslucent();
         mPresenter.getBannerInfo();
         mPresenter.getVersionCode();
+        setSelectItem(financialLayout);
         }
 
     @Override
     protected void onResume() {
         super.onResume();
-        setSelectItem(financialLayout);
+
     }
 
     @Override

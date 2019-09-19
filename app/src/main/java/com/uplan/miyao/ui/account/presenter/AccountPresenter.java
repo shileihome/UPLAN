@@ -33,7 +33,7 @@ public class AccountPresenter extends BasePresenter<AccountContract.View, Accoun
             @Override
             public void onFailure(int code, String msg) {
           //      mView.unLoad();
-                mView.dealFailure(code,msg);
+                mView.dealGetAccountInfoFailure(code,msg);
             }
         });
     }
@@ -51,6 +51,23 @@ public class AccountPresenter extends BasePresenter<AccountContract.View, Accoun
             public void onFailure(int code, String msg) {
                 mView.unLoad();
                 mView.dealFailure(code,msg);
+            }
+        });
+
+    }
+    public void reServiceLogOut(String tel,String reServiceCode) {
+        mView.loading();
+        mModel.logOut(tel).compose(RxUtils.applySchedulers(mView)).subscribe(new ErrorHandleSubscriber<ResponseData>() {
+            @Override
+            public void onSuccess(ResponseData responseData) {
+                mView.unLoad();
+                mView.dealReServiceLogoutSuccess(responseData,reServiceCode);
+            }
+
+            @Override
+            public void onFailure(int code, String msg) {
+                mView.unLoad();
+                mView.dealReServiceLogoutFailure(code,msg,reServiceCode);
             }
         });
 

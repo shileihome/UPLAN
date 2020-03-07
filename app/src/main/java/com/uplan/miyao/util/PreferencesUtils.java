@@ -17,7 +17,7 @@ public class PreferencesUtils {
     public static String PLAY_SESSION = "play_session";
     public static String USER_NAME = "username";
     public static String USER_TEL = "user_tel";
-    public static String USER_PWD="user_pwd";
+    public static String USER_PWD = "user_pwd";
     public static String IS_ACTIVEA = "is_active";
     public static String EXPIRE_TIME = "expire_time";
     public static String MESSAGE_NUM = "message_num";
@@ -59,6 +59,11 @@ public class PreferencesUtils {
     public static String BOOLEAN_HOME_CH3_ISVIP = "boolean_home_ch3_isvip";
     public static String BOOLEAN_HOME_CH4_ISVIP = "boolean_home_ch4_isvip";
 
+
+    /** 开机引导页图片 */
+    public static String BITMAP_SPLASH_1 = "bitmap_splash_1";
+    public static String BITMAP_SPLASH_2 = "bitmap_splash_2";
+    public static String BITMAP_SPLASH_3 = "bitmap_splash_3";
 
     private PreferencesUtils() {
         throw new AssertionError();

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.RelativeLayout;
 
 import com.allure.lbanners.LMBanners;
@@ -15,6 +16,8 @@ import com.uplan.miyao.base.AppBaseActivity;
 import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
 import com.uplan.miyao.ui.financial.adapter.LocalImgAdapter;
 import com.uplan.miyao.ui.main.view.activity.MainActivity;
+import com.uplan.miyao.util.EncodeUtils;
+import com.uplan.miyao.util.PreferencesUtils;
 
 import java.util.ArrayList;
 
@@ -78,9 +81,9 @@ public class SplashActivity extends AppBaseActivity {
         */
 
     /**
-     *  millisInFuture 表示以「 毫秒 」为单位倒计时的总数
+     * millisInFuture 表示以「 毫秒 」为单位倒计时的总数
      * 例如 millisInFuture = 1000 表示1秒
-     *  countDownInterval 表示 间隔 多少微秒 调用一次 onTick()
+     * countDownInterval 表示 间隔 多少微秒 调用一次 onTick()
      * 例如: countDownInterval = 1000 ; 表示每 1000 毫秒调用一次 onTick()
      *//*
 
@@ -101,14 +104,13 @@ public class SplashActivity extends AppBaseActivity {
 
     }
 */
-
     private void initBannerSplash() {
-      //设置Banners高度
+        //设置Banners高度
         bannersSplash.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
         //参数设置
         bannersSplash.isGuide(true);//是否为引导页
-            bannersSplash.setAutoPlay(true);//自动播放
+        bannersSplash.setAutoPlay(true);//自动播放
         bannersSplash.setVertical(false);//是否锤子播放
         bannersSplash.setScrollDurtion(1000);//两页切换时间
         bannersSplash.setCanLoop(true);//循环播放
@@ -118,14 +120,14 @@ public class SplashActivity extends AppBaseActivity {
 //        bannersSplash.setIndicatorBottomPadding(5);
         bannersSplash.setIndicatorWidth(6);//原点默认为5dp
         bannersSplash.setHoriZontalTransitionEffect(TransitionEffect.Default);//选中喜欢的样式
-  //        bannersSplash.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式
-          bannersSplash.setDurtion(3000);//轮播切换时间
+        //        bannersSplash.setHoriZontalCustomTransformer(new ParallaxTransformer(R.id.id_image));//自定义样式
+        bannersSplash.setDurtion(3000);//轮播切换时间
 //        bannersSplash.hideIndicatorLayout();//隐藏原点
         bannersSplash.showIndicatorLayout();//显示原点
         bannersSplash.setIndicatorPosition(LMBanners.IndicaTorPosition.BOTTOM_MID);//设置原点显示位置
 
         //本地用法
-        bannersSplash.setAdapter(new LocalImgAdapter(this,LocalImgAdapter.TYPE_SPLASH), localImagesTop);
+        bannersSplash.setAdapter(new LocalImgAdapter(this, LocalImgAdapter.TYPE_SPLASH), localImagesTop);
         //网络图片
 //        bannersSplash.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
 
@@ -138,14 +140,33 @@ public class SplashActivity extends AppBaseActivity {
         });
 
     }
-    private void addBannerSplash(){
-        Bitmap bmp1 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_1);
+
+    private void addBannerSplash() {
+        Bitmap bmp1;
+        Bitmap bmp2;
+        Bitmap bmp3;
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(this, PreferencesUtils.BITMAP_SPLASH_1))) {
+            bmp1 = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(this, PreferencesUtils.BITMAP_SPLASH_1));
+        } else {
+            bmp1 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_1);
+        }
+
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(this, PreferencesUtils.BITMAP_SPLASH_2))) {
+            bmp2 = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(this, PreferencesUtils.BITMAP_SPLASH_2));
+        } else {
+            bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_2);
+        }
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(this, PreferencesUtils.BITMAP_SPLASH_3))) {
+            bmp3 = EncodeUtils.base64ToBitmap(PreferencesUtils.getString(this, PreferencesUtils.BITMAP_SPLASH_3));
+        } else {
+            bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_3);
+        }
+
         localImagesTop.add(bmp1);
-        Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_2);
         localImagesTop.add(bmp2);
-        Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.splash_banner_3);
         localImagesTop.add(bmp3);
     }
+
     public void setTranslucent() {
         QMUIStatusBarHelper.setStatusBarDarkMode(this);
         QMUIStatusBarHelper.translucent(this);

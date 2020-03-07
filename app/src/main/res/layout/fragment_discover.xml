@@ -240,7 +240,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
-                            android:text="钥会员"
+                            android:text="组合"
                             android:textColor="#FF000000"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -257,7 +257,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="8dp"
-                            android:text="精选"
+                            android:text="基金"
                             android:textColor="#FF000000"
                             android:textSize="18sp" />
                     </LinearLayout>

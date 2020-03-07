@@ -17,6 +17,7 @@ public class PreferencesUtils {
     public static String PLAY_SESSION = "play_session";
     public static String USER_NAME = "username";
     public static String USER_TEL = "user_tel";
+    public static String USER_PWD="user_pwd";
     public static String IS_ACTIVEA = "is_active";
     public static String EXPIRE_TIME = "expire_time";
     public static String MESSAGE_NUM = "message_num";

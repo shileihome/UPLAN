@@ -70,6 +70,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         etPhotoNo.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
+        etPwd.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_PWD));
         etPhotoNo.setOnFocusChangeListener(new View.
                 OnFocusChangeListener() {
             @Override
@@ -129,6 +130,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         PreferencesUtils.putString(this, PreferencesUtils.PLAY_SESSION, data.data.get(1).PLAY_SESSION);
         PreferencesUtils.putString(this, PreferencesUtils.USER_NAME, data.data.get(0).name);
         PreferencesUtils.putString(this, PreferencesUtils.USER_TEL, etPhotoNo.getText().toString());
+        PreferencesUtils.putString(this, PreferencesUtils.USER_PWD, etPwd.getText().toString());
         PreferencesUtils.putBoolean(this, PreferencesUtils.IS_ACTIVEA, data.data.get(0).is_active);
         PreferencesUtils.putLong(this, PreferencesUtils.EXPIRE_TIME, data.data.get(0).level_end_time);
 

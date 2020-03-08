@@ -70,6 +70,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
 
     TextView tvNotifyNum2;
     TextView tvNotifyNum1;
+
+
     boolean loginState;
     //本地图片BannerTop
     private ArrayList<Bitmap> localImagesTop = new ArrayList<Bitmap>();
@@ -89,7 +91,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         setTranslucent();
         initViews();
         initVerticalViewPager();
-        if(!PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.HOME_SHOW_DIALOG,false)){
+        if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.HOME_SHOW_DIALOG, false)) {
             showDialog();
         }
 
@@ -166,6 +168,16 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             YinMiDetailActivity.start(getActivity());
         });
         tvNotifyNum2 = (TextView) secondLayout.findViewById(R.id.tv_notify_num_2);
+
+        TextView tvHomePlatform = (TextView) secondLayout.findViewById(R.id.tv_platform);
+        TextView tvHomePrivacy = (TextView) secondLayout.findViewById(R.id.tv_privacy);
+
+        tvHomePlatform.setOnClickListener(v -> {
+            PlatformActivity.start(getActivity());
+        });
+        tvHomePrivacy.setOnClickListener(v -> {
+            PrivacyActivity.start(getActivity());
+        });
 
     }
 
@@ -489,8 +501,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         llContent.addView(view);
         commonDialog.setCancelable(false);
         commonDialog.
-                setOnlyButton("确定", v->{
-                    PreferencesUtils.putBoolean(getActivity(),PreferencesUtils.HOME_SHOW_DIALOG,true);
+                setOnlyButton("确定", v -> {
+                    PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.HOME_SHOW_DIALOG, true);
                     commonDialog.dismiss();
                 }).show();
     }

@@ -331,16 +331,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             tvNotifyNum.setVisibility(View.GONE);
         }
 
-        infoDialog = new CommonDialog(getActivity()).builder();
-        infoDialog.setSubMessage("临时弹框").
-                setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                        if(((MainActivity)getActivity()).getHomeFragment()!=null){
-                            ((MainActivity)getActivity()).getHomeFragment().onResume();
-                        }
-                }).
-                setRightButton(getString(R.string.commit_change), v -> {
-                    LoginActivity.start(getActivity());
-                }).show();
+
     }
     CommonDialog infoDialog;
     @Override
@@ -366,10 +357,9 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             infoDialog = new CommonDialog(getActivity()).builder();
             infoDialog.setSubMessage(message).
                     setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                        /*if(((MainActivity)getActivity()).getHomeFragment()!=null){
+                        if(((MainActivity)getActivity()).getHomeFragment()!=null){
                             ((MainActivity)getActivity()).getHomeFragment().onResume();
-                        }*/
-                        ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).financialLayout);
+                        }
                     }).
                     setRightButton(getString(R.string.commit_change), v -> {
                         LoginActivity.start(getActivity());

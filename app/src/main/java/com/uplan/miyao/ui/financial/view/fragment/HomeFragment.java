@@ -89,7 +89,10 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         setTranslucent();
         initViews();
         initVerticalViewPager();
-        showDialog();
+        if(!PreferencesUtils.getBoolean(getActivity(),PreferencesUtils.HOME_SHOW_DIALOG,false)){
+            showDialog();
+        }
+
         return view;
     }
 
@@ -487,6 +490,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         commonDialog.setCancelable(false);
         commonDialog.
                 setOnlyButton("确定", v->{
+                    PreferencesUtils.putBoolean(getActivity(),PreferencesUtils.HOME_SHOW_DIALOG,true);
                     commonDialog.dismiss();
                 }).show();
     }

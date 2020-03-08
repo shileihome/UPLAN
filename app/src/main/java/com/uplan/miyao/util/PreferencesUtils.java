@@ -65,6 +65,11 @@ public class PreferencesUtils {
     public static String BITMAP_SPLASH_2 = "bitmap_splash_2";
     public static String BITMAP_SPLASH_3 = "bitmap_splash_3";
 
+
+    /** App是否是第一次打开 */
+
+    public static String HOME_SHOW_DIALOG = "home_show_dialog";
+
     private PreferencesUtils() {
         throw new AssertionError();
     }

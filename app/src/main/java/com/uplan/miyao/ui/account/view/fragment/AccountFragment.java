@@ -331,11 +331,26 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             tvNotifyNum.setVisibility(View.GONE);
         }
 
+        infoDialog = new CommonDialog(getActivity()).builder();
+        infoDialog.setSubMessage("临时弹框").
+                setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                        if(((MainActivity)getActivity()).getHomeFragment()!=null){
+                            ((MainActivity)getActivity()).getHomeFragment().onResume();
+                        }
+                }).
+                setRightButton(getString(R.string.commit_change), v -> {
+                    LoginActivity.start(getActivity());
+                }).show();
     }
     CommonDialog infoDialog;
     @Override
     public void dealGetAccountInfoFailure(int code, String message) {
         if(code==1){
+
+            if(infoDialog!=null&& infoDialog.isShow()){
+                return;
+            }
+
             PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.LOGIN_STATE, false);
             PreferencesUtils.putString(getActivity(), PreferencesUtils.PLAY_SESSION, "");
             PreferencesUtils.putString(getActivity(), PreferencesUtils.USER_NAME, "未登录");
@@ -347,13 +362,14 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             tvGeneralAssets.setText("---");
             tvUpDown.setText("---");
             tvGeneralUpDown.setText("---");
-            if(infoDialog!=null){
-                infoDialog.dismiss();
-                infoDialog=null;
-            }
+
             infoDialog = new CommonDialog(getActivity()).builder();
             infoDialog.setSubMessage(message).
                     setLeftButton(getString(R.string.common_dialog_cancel), v -> {
+                        /*if(((MainActivity)getActivity()).getHomeFragment()!=null){
+                            ((MainActivity)getActivity()).getHomeFragment().onResume();
+                        }*/
+                        ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).financialLayout);
                     }).
                     setRightButton(getString(R.string.commit_change), v -> {
                         LoginActivity.start(getActivity());

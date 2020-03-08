@@ -335,8 +335,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         loginState = PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
         if (loginState) {
             tvLogin.setVisibility(View.GONE);
@@ -462,11 +462,6 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
         QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
 
     boolean isPrivacy = false;
 

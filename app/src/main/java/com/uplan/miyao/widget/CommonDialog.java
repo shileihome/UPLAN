@@ -30,6 +30,9 @@ public class CommonDialog {
     private TextView mTvLeft;
     private TextView mTvRight;
     private TextView mTvSubMessage;
+    private LinearLayout mLlContent;
+    private TextView mTvOnly;
+    private LinearLayout mLlBtn;
 
     public CommonDialog(Context context) {
         this.mContext = context;
@@ -47,8 +50,9 @@ public class CommonDialog {
         mTvSubMessage = (TextView) view.findViewById(R.id.tv_sub_message);
         mTvLeft = (TextView) view.findViewById(R.id.tv_left);
         mTvRight = (TextView) view.findViewById(R.id.tv_right);
-
-
+        mLlContent = (LinearLayout) view.findViewById(R.id.ll_content);
+        mTvOnly = (TextView) view.findViewById(R.id.tv_only);
+        mLlBtn = (LinearLayout) view.findViewById(R.id.ll_btn);
         mDialog = new Dialog(mContext, R.style.AlertDialogStyle);
         mDialog.setContentView(view);
 
@@ -110,7 +114,7 @@ public class CommonDialog {
     /**
      * 左侧按钮
      *
-     * @param text     按钮文案
+     * @param text 按钮文案
      * @param listener 监听
      * @return CommonDialog
      */
@@ -131,7 +135,7 @@ public class CommonDialog {
     /**
      * 左侧按钮
      *
-     * @param text     按钮文案
+     * @param text 按钮文案
      * @param listener 监听
      * @return CommonDialog
      */
@@ -152,14 +156,15 @@ public class CommonDialog {
     /**
      * 左侧按钮
      *
-     * @param text     按钮文案
+     * @param text 按钮文案
      * @param listener 监听
      * @return CommonDialog
      */
     public CommonDialog setOnlyButton(String text, final View.OnClickListener listener) {
-        mTvLeft.setVisibility(View.GONE);
-        mTvRight.setText(text);
-        mTvRight.setOnClickListener(new View.OnClickListener() {
+        mLlBtn.setVisibility(View.GONE);
+        mTvSubMessage.setVisibility(View.GONE);
+        mTvOnly.setVisibility(View.VISIBLE);
+        mTvOnly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.onClick(v);
@@ -202,9 +207,17 @@ public class CommonDialog {
         return mDialog != null && mDialog.isShowing();
     }
 
-    public void dismiss(){
+    public void dismiss() {
         if (mDialog != null) {
             mDialog.dismiss();
         }
+    }
+
+    public LinearLayout getLlContent() {
+        return mLlContent;
+    }
+
+    public TextView getTvOnly() {
+        return mTvOnly;
     }
 }

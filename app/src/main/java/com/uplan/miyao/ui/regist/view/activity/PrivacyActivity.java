@@ -49,7 +49,7 @@ public class PrivacyActivity  extends BaseWebViewActivity  {
     }*/
 
 
-    private String homeUrl="http://www.51mix.cn/appClient/recommend";
+    private String homeUrl="http://www.51mix.cn/appClient/privacy";
     public static void start(Context context) {
         Intent starter = new Intent(context, PrivacyActivity.class);
         context.startActivity(starter);

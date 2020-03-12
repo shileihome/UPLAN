@@ -49,7 +49,7 @@ public class PlatformActivity  extends BaseWebViewActivity {
     }*/
 
 
-    private String homeUrl="http://www.51mix.cn/appClient/recommend";
+    private String homeUrl="http://www.51mix.cn/appClient/service";
     public static void start(Context context) {
         Intent starter = new Intent(context, PlatformActivity.class);
         context.startActivity(starter);

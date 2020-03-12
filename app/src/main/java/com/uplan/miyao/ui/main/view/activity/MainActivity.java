@@ -370,9 +370,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         PreferencesUtils.putString(this,PreferencesUtils.BOOLEAN_HOME_CH3_ISVIP,resp.data.get(1).ch3_isvip);
         PreferencesUtils.putString(this,PreferencesUtils.BOOLEAN_HOME_CH4_ISVIP,resp.data.get(1).ch4_isvip);
 
-        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_1,resp.data.get(1).shouye1);
-        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_2,resp.data.get(1).shouye1);
-        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_3,resp.data.get(1).shouye1);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_1,resp.data.get(1).guide1);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_2,resp.data.get(1).guide2);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_3,resp.data.get(1).guide3);
     }
 
     @Override

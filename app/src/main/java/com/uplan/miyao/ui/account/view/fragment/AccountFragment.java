@@ -121,9 +121,11 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             tvLoginName.setText(StringUtils.formatTel(PreferencesUtils.getString(getActivity(), PreferencesUtils.USER_TEL)));
             if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
                 ivVipLogo.setVisibility(View.VISIBLE);
+                ivVipLogo.setImageResource(R.drawable.vip_logo);
                 llTitleBackground.setBackgroundColor(Color.parseColor("#FFC69D5B"));
             } else {
-                ivVipLogo.setVisibility(View.GONE);
+                ivVipLogo.setVisibility(View.VISIBLE);
+                ivVipLogo.setImageResource(R.drawable.bug_sign);
                 llTitleBackground.setBackgroundColor(Color.parseColor("#FF31BCE9"));
             }
         } else {

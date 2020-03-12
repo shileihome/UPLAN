@@ -2,39 +2,19 @@ package com.uplan.miyao.ui.vip.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.CardView;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import android.webkit.WebView;
 
-import com.tencent.mm.opensdk.modelpay.PayReq;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.uplan.miyao.R;
-import com.uplan.miyao.base.helper.QMUIStatusBarHelper;
-import com.uplan.miyao.base.mvp.BaseActivity;
-import com.uplan.miyao.ui.vip.contract.DiscoverContract;
-import com.uplan.miyao.ui.vip.model.resp.VipDetailResp;
-import com.uplan.miyao.ui.vip.presenter.DiscoverPresenter;
+import com.uplan.miyao.base.web.BaseWebViewActivity;
 import com.uplan.miyao.util.PreferencesUtils;
-import com.uplan.miyao.util.StringUtils;
-import com.uplan.miyao.util.ToastUtils;
-
-import java.security.MessageDigest;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import com.uplan.miyao.util.WebViewUtils;
 
 /**
  * Author: Created by shilei on 2019/4/25-19:44
  * Description:
  */
-public class VipActivity extends BaseActivity<DiscoverPresenter> implements DiscoverContract.View {
-
+public class VipActivity extends BaseWebViewActivity {
+/*
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.iv_vip_logo)
@@ -145,7 +125,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
 //              req.extData         = "app data"; // optional
                 // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
 //                wxApi.sendReq(req);
-/*                TreeMap map=new TreeMap();
+                TreeMap map=new TreeMap();
                 map.put("appId","appId");
                 map.put("partnerId","partnerId");
                 map.put("prepayId","prepayId");
@@ -176,7 +156,7 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
                     //并将获得的值进行拼接
                     String value=(String)map2.get(key);
                     Log.e("排序",key+"--"+value);
-                }*/
+                }
 
                 String stringA = "appid=" + resp.data.get(0).appid +
                         "&noncestr=" + resp.data.get(0).nonce_str +
@@ -220,5 +200,64 @@ public class VipActivity extends BaseActivity<DiscoverPresenter> implements Disc
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String expire=sdf.format(date);
         return expire;
+    }*/
+
+
+    private String homeUrl="http://www.51mix.cn/appClient/wechatPay/wechatPayPage";
+    public static void start(Context context) {
+        Intent starter = new Intent(context, VipActivity.class);
+        context.startActivity(starter);
+    }
+
+
+    @Override
+    public void initView() {
+        setWebViewClient();
+        updateWebData();
+    }
+
+    @Override
+    protected void onReload() {
+        super.onReload();
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + "\""+PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
+        uplanWebView.loadUrl(homeUrl);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    private void setWebViewClient() {
+        uplanWebView.setWebViewClient(new BaseWebViewActivity.WebAppClient(this, uplanWebView) {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if(url.equals(WEB_BACK)){
+                    webGoBack(VipActivity.this);
+                    return true;
+                }
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+
+
+            }
+        });
+
+    }
+
+    @Override
+    public void updateWebData() {
+        WebViewUtils.getCookie(this, uplanWebView, homeUrl,"PLAY_SESSION=" + "\""+ PreferencesUtils.getString(this, PreferencesUtils.PLAY_SESSION)+"\"");
+        uplanWebView.loadUrl(homeUrl);
     }
 }

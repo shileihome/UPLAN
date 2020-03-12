@@ -53,5 +53,8 @@ public class BannerInfoResp extends ResponseData {
         public String ch2_isvip;
         public String ch3_isvip;
         public String ch4_isvip;
+        public String guide1;
+        public String guide2;
+        public String  guide3;
     }
 }

@@ -47,13 +47,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     RadioButton rbPrivacy;
     @BindView(R.id.tv_privacy)
     TextView tvPrivacy;
+    @BindView(R.id.rb_pwd)
+    RadioButton rbPwd;
 
     /** 所登录的账号是否和公众号绑定过 */
     private boolean isBind = false;
 
     /** 是否选中了阅读隐私按钮 */
     private boolean isPrivacy = true;
-
+     /** 是否保存密码 */
+     private boolean isSavePwd=false;
     public static final int REGIST_REQUEST_CODE = 100;
     public static final int FORGET_REQUEST_CODE = 200;
     public static final int REGIST_RESULT_CODE = 300;
@@ -70,6 +73,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         etPhotoNo.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
+        if(TextUtils.isEmpty(PreferencesUtils.getString(this, PreferencesUtils.USER_PWD))){
+
+        }
         etPwd.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_PWD));
         etPhotoNo.setOnFocusChangeListener(new View.
                 OnFocusChangeListener() {
@@ -88,15 +94,35 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             }
         });
         rbPrivacy.setButtonDrawable(R.drawable.privacy_select);
-        rbPrivacy.setOnClickListener(view->{
-            if(isPrivacy){
-                isPrivacy=false;
+        rbPrivacy.setOnClickListener(view -> {
+            if (isPrivacy) {
+                isPrivacy = false;
                 tvLogin.setEnabled(false);
                 rbPrivacy.setButtonDrawable(R.drawable.privacy_unselect);
-            }else{
-                isPrivacy=true;
+            } else {
+                isPrivacy = true;
                 tvLogin.setEnabled(true);
                 rbPrivacy.setButtonDrawable(R.drawable.privacy_select);
+            }
+        });
+        if(TextUtils.isEmpty(PreferencesUtils.getString(this, PreferencesUtils.USER_PWD))){
+
+            rbPwd.setButtonDrawable(R.drawable.privacy_unselect);
+        }else{
+            rbPwd.setButtonDrawable(R.drawable.privacy_select);
+        }
+        rbPwd.setOnClickListener(v -> {
+            if (isSavePwd==false) {
+                rbPrivacy.setButtonDrawable(R.drawable.privacy_select);
+                isSavePwd=true;
+
+                rbPwd.setButtonDrawable(R.drawable.privacy_select);
+            }else{
+                isSavePwd=false;
+                if(!TextUtils.isEmpty(PreferencesUtils.getString(this, PreferencesUtils.USER_PWD))){
+                    PreferencesUtils.putString(this, PreferencesUtils.USER_PWD, "");
+                }
+               rbPwd .setButtonDrawable(R.drawable.privacy_unselect);
             }
         });
 
@@ -130,7 +156,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         PreferencesUtils.putString(this, PreferencesUtils.PLAY_SESSION, data.data.get(1).PLAY_SESSION);
         PreferencesUtils.putString(this, PreferencesUtils.USER_NAME, data.data.get(0).name);
         PreferencesUtils.putString(this, PreferencesUtils.USER_TEL, etPhotoNo.getText().toString());
-        PreferencesUtils.putString(this, PreferencesUtils.USER_PWD, etPwd.getText().toString());
+        if(isSavePwd){
+            PreferencesUtils.putString(this, PreferencesUtils.USER_PWD, etPwd.getText().toString());
+        }
         PreferencesUtils.putBoolean(this, PreferencesUtils.IS_ACTIVEA, data.data.get(0).is_active);
         PreferencesUtils.putLong(this, PreferencesUtils.EXPIRE_TIME, data.data.get(0).level_end_time);
 
@@ -153,7 +181,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         }
     }
 
-    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_login, R.id.tv_to_regist, R.id.tv_forget_pwd, R.id.tv_privacy,R.id.tv_platform})
+    @OnClick({R.id.iv_back, R.id.iv_delete, R.id.tv_login, R.id.tv_to_regist, R.id.tv_forget_pwd, R.id.tv_privacy, R.id.tv_platform})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -164,7 +192,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 etPwd.setText("");
                 break;
             case R.id.tv_login:
-                if(!isPrivacy){
+                if (!isPrivacy) {
                     return;
                 }
                 String tel = etPhotoNo.getText().toString();
@@ -181,7 +209,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 mPresenter.login(tel, pwd);
                 break;
             case R.id.tv_to_regist:
-                RegistActivity.start(this,etPhotoNo.getText().toString());
+                RegistActivity.start(this, etPhotoNo.getText().toString());
                 break;
             case R.id.tv_forget_pwd:
                 PreferencesUtils.putString(this, PreferencesUtils.USER_TEL, etPhotoNo.getText().toString().trim());

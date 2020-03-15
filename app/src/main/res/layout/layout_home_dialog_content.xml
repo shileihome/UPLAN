@@ -37,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="《平台服务协议》"
-        android:textColor="#FFA2A2A2"
-        android:textSize="16sp"
+        android:textColor="#55bfeb"
+        android:textSize="14sp"
         android:layout_gravity="center_horizontal"/>
     <TextView
 
@@ -46,8 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="《隐私保护政策》"
-        android:textSize="16sp"
-        android:textColor="#FFA2A2A2"
+        android:textSize="14sp"
+        android:textColor="#55bfeb"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:layout_gravity="center_horizontal"/>

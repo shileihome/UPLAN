@@ -74,7 +74,7 @@ public class RxService {
                 .connectTimeout(TIMEOUT_CONNECTION, TimeUnit.SECONDS)//time out
                 .readTimeout(TIMEOUT_READ, TimeUnit.SECONDS)//读超时
                 .writeTimeout(TIMEOUT_READ, TimeUnit.SECONDS)//写超时
-                .retryOnConnectionFailure(true);//失败重连
+                .retryOnConnectionFailure(false);//失败重连
     }
 
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.view.KeyEvent;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
@@ -238,7 +239,7 @@ public class VipActivity extends BaseWebViewActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
-                    webGoBack(VipActivity.this);
+                    finish();
                     return true;
                 }
                 if (url.startsWith("weixin://wap/pay?")) {
@@ -272,6 +273,12 @@ public class VipActivity extends BaseWebViewActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        finish();
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

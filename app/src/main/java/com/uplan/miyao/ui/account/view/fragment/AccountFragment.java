@@ -319,6 +319,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             }else{
                 PreferencesUtils.putString(getActivity(),PreferencesUtils.MESSAGE_NUM,"0");
             }
+            PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, accountResp.data.get(0).is_active);
         }
 
         String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
@@ -332,7 +333,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         }else{
             tvNotifyNum.setVisibility(View.GONE);
         }
-
+        initView();
 
     }
     CommonDialog infoDialog;

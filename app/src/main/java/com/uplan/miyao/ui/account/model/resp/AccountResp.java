@@ -23,6 +23,6 @@ public class AccountResp extends ResponseData {
         public double previousProfit;
         public double accumulatedProfit;
         public String message_num;
-        public boolean is_active;
+        public String is_active;
     }
 }

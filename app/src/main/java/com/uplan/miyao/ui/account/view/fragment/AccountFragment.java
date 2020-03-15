@@ -319,7 +319,12 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             }else{
                 PreferencesUtils.putString(getActivity(),PreferencesUtils.MESSAGE_NUM,"0");
             }
-            PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, accountResp.data.get(0).is_active);
+            if(Integer.parseInt(accountResp.data.get(0).is_active.trim())==1){
+
+                PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, true);
+            }else{
+                PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, false);
+            }
         }
 
         String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);

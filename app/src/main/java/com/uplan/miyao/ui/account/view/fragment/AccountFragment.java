@@ -134,14 +134,16 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         }
 
 
-
     }
+
+    int num = 0;
 
     private void initData() {
 
         if (PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE)) {
             mPresenter.getAccountInfo();
         }
+
     }
 
     @Override
@@ -305,7 +307,9 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
         tvUpDown.setText("---");
         tvGeneralUpDown.setText("---");
         ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).financialLayout);
-
+       if( ((MainActivity) getActivity()).getHomeFragment()!=null){
+           ((MainActivity) getActivity()).getHomeFragment().onStart();
+       }
     }
 
     @Override
@@ -314,39 +318,41 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             tvGeneralAssets.setText(accountResp.data.get(0).porperty + "");
             tvUpDown.setText(accountResp.data.get(0).previousProfit + "");
             tvGeneralUpDown.setText(accountResp.data.get(0).accumulatedProfit + "");
-            if(!TextUtils.isEmpty(accountResp.data.get(0).message_num)){
-                PreferencesUtils.putString(getActivity(),PreferencesUtils.MESSAGE_NUM,accountResp.data.get(0).message_num);
-            }else{
-                PreferencesUtils.putString(getActivity(),PreferencesUtils.MESSAGE_NUM,"0");
+            if (!TextUtils.isEmpty(accountResp.data.get(0).message_num)) {
+                PreferencesUtils.putString(getActivity(), PreferencesUtils.MESSAGE_NUM, accountResp.data.get(0).message_num);
+            } else {
+                PreferencesUtils.putString(getActivity(), PreferencesUtils.MESSAGE_NUM, "0");
             }
-            if(Integer.parseInt(accountResp.data.get(0).is_active.trim())==1){
+            if (Integer.parseInt(accountResp.data.get(0).is_active.trim()) == 1) {
 
                 PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, true);
-            }else{
+            } else {
                 PreferencesUtils.putBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA, false);
             }
         }
 
-        String num2=PreferencesUtils.getString(getActivity(),PreferencesUtils.MESSAGE_NUM);
-        if(Integer.parseInt(num2.trim())>0&&num2.trim().length()<3){
+        String num2 = PreferencesUtils.getString(getActivity(), PreferencesUtils.MESSAGE_NUM);
+        if (Integer.parseInt(num2.trim()) > 0 && num2.trim().length() < 3) {
             tvNotifyNum.setVisibility(View.VISIBLE);
             tvNotifyNum.setText(num2);
 
-        }else if(Integer.parseInt(num2.trim())>0&&num2.trim().length()>=3){
+        } else if (Integer.parseInt(num2.trim()) > 0 && num2.trim().length() >= 3) {
             tvNotifyNum.setVisibility(View.VISIBLE);
             tvNotifyNum.setText("..");
-        }else{
+        } else {
             tvNotifyNum.setVisibility(View.GONE);
         }
         initView();
 
     }
+
     CommonDialog infoDialog;
+
     @Override
     public void dealGetAccountInfoFailure(int code, String message) {
-        if(code==1){
+        if (code == 1) {
 
-            if(infoDialog!=null&& infoDialog.isShow()){
+            if (infoDialog != null && infoDialog.isShow()) {
                 return;
             }
 
@@ -365,14 +371,16 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
             infoDialog = new CommonDialog(getActivity()).builder();
             infoDialog.setSubMessage(message).
                     setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                        if(((MainActivity)getActivity()).getHomeFragment()!=null){
-                            ((MainActivity)getActivity()).getHomeFragment().onResume();
+                        if (((MainActivity) getActivity()).getHomeFragment() != null) {
+                            ((MainActivity) getActivity()).getHomeFragment().onResume();
                         }
                     }).
                     setRightButton(getString(R.string.commit_change), v -> {
                         LoginActivity.start(getActivity());
                     }).show();
         }
+
+
     }
 
     public void setTranslucent() {

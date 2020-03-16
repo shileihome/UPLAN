@@ -241,71 +241,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
      * @param transaction transaction
      */
     private void hideFragments(FragmentTransaction transaction, int selectIndex) {
-        //选中理财页
-        if (selectIndex == SELECT_INDEX_FINANCIAL) {
-            if (surveyFragment != null) {
-                transaction.hide(surveyFragment);
-                surveyFragment=null;
-            }
-            if (discoverFragment != null) {
-                transaction.hide(discoverFragment);
-                discoverFragment=null;
-            }
-            if (accountFragment != null) {
-                transaction.hide(accountFragment);
-                accountFragment=null;
-            }
+
+        if (surveyFragment != null) {
+            transaction.hide(surveyFragment);
+        }
+        if (discoverFragment != null) {
+            transaction.hide(discoverFragment);
+        }
+        if (accountFragment != null) {
+            transaction.hide(accountFragment);
         }
 
-        //选中规划页
-        if (selectIndex == SELECT_INDEX_SURVEY) {
-            if (homeFragment != null) {
-                transaction.hide(homeFragment);
-                homeFragment=null;
-            }
-            if (discoverFragment != null) {
-                transaction.hide(discoverFragment);
-                discoverFragment=null;
-            }
-            if (accountFragment != null) {
-                transaction.hide(accountFragment);
-                accountFragment=null;
-            }
-        }
 
-        //选中发现页
-        if (selectIndex == SELECT_INDEX_DISCOVER) {
-            if (homeFragment != null) {
-                transaction.hide(homeFragment);
-                homeFragment=null;
-            }
-            if (surveyFragment != null) {
-                transaction.hide(surveyFragment);
-                surveyFragment=null;
-            }
-            if (accountFragment != null) {
-                transaction.hide(accountFragment);
-                accountFragment=null;
-            }
-
-        }
-
-        //选中账户中心页
-        if (selectIndex == SELECT_INDEX_ACCOUNT) {
-            if (homeFragment != null) {
-                transaction.hide(homeFragment);
-                homeFragment=null;
-            }
-
-            if (surveyFragment != null) {
-                transaction.hide(surveyFragment);
-                surveyFragment=null;
-            }
-            if (discoverFragment != null) {
-                transaction.hide(discoverFragment);
-                discoverFragment=null;
-            }
-        }
     }
 
     @Override
@@ -370,9 +317,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         PreferencesUtils.putString(this,PreferencesUtils.BOOLEAN_HOME_CH3_ISVIP,resp.data.get(1).ch3_isvip);
         PreferencesUtils.putString(this,PreferencesUtils.BOOLEAN_HOME_CH4_ISVIP,resp.data.get(1).ch4_isvip);
 
-        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_1,resp.data.get(1).guide1);
-        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_2,resp.data.get(1).guide2);
-        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_3,resp.data.get(1).guide3);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_1,resp.data.get(0).guide1);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_2,resp.data.get(0).guide2);
+        PreferencesUtils.putString(this,PreferencesUtils.BITMAP_SPLASH_3,resp.data.get(0).guide3);
     }
 
     @Override

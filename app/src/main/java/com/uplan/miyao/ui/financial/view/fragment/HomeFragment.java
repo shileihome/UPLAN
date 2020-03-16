@@ -335,8 +335,8 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
         loginState = PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.LOGIN_STATE);
         if (loginState) {
             tvLogin.setVisibility(View.GONE);

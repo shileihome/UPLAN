@@ -19,6 +19,7 @@ import com.uplan.miyao.net.ResponseData;
 import com.uplan.miyao.ui.account.contract.AccountContract;
 import com.uplan.miyao.ui.account.model.resp.AccountResp;
 import com.uplan.miyao.ui.account.presenter.AccountPresenter;
+import com.uplan.miyao.ui.account.view.activity.BuyActivity;
 import com.uplan.miyao.ui.account.view.activity.HelpCenterActivity;
 import com.uplan.miyao.ui.account.view.activity.HoldActivity;
 import com.uplan.miyao.ui.account.view.activity.Mix50Activity;
@@ -199,7 +200,7 @@ public class AccountFragment extends BaseFragment<AccountPresenter> implements A
                 if (isShowLoginDialog()) {
                     return;
                 }
-                ((MainActivity) getActivity()).setSelectItem(((MainActivity) getActivity()).financialLayout);
+                BuyActivity.start(getActivity());
                 break;
             case R.id.tv_honav3:
                 if (isShowLoginDialog()) {

@@ -15,7 +15,7 @@
             android:src="@drawable/center_financial_4"/>
 
         <TextView
-            android:id="@+id/tv_home_buy_3"
+            android:id="@+id/tv_home_buy_4"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_gravity="center_horizontal"
@@ -27,8 +27,7 @@
             android:paddingTop="5dp"
             android:text="立即买入"
             android:textColor="@color/white"
-            android:textSize="12sp"
-            android:visibility="invisible"/>
+            android:textSize="12sp" />
 
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="85dp"

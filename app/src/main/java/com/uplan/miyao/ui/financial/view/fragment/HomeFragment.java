@@ -67,6 +67,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
     TextView tvHomeBuy1;
     TextView tvHomeBuy2;
     TextView tvHomeBuy3;
+    TextView tvHomeBuy4;
 
     TextView tvNotifyNum2;
     TextView tvNotifyNum1;
@@ -332,6 +333,7 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
                 }
             }
         });
+        tvHomeBuy4 = (TextView) view_4.findViewById(R.id.tv_home_buy_4);
     }
 
     @Override
@@ -343,11 +345,13 @@ public class HomeFragment extends BaseFragment<FinancialPresenter> implements Fi
             tvHomeBuy1.setVisibility(View.VISIBLE);
             tvHomeBuy2.setVisibility(View.VISIBLE);
             tvHomeBuy3.setVisibility(View.VISIBLE);
+            tvHomeBuy4.setVisibility(View.VISIBLE);
         } else {
             tvLogin.setVisibility(View.VISIBLE);
             tvHomeBuy1.setVisibility(View.INVISIBLE);
             tvHomeBuy2.setVisibility(View.INVISIBLE);
             tvHomeBuy3.setVisibility(View.INVISIBLE);
+            tvHomeBuy4.setVisibility(View.INVISIBLE);
         }
         String num = PreferencesUtils.getString(getActivity(), PreferencesUtils.MESSAGE_NUM);
         if (Integer.parseInt(num.trim()) > 0) {

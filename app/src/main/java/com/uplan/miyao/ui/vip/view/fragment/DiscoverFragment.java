@@ -29,7 +29,6 @@ import com.uplan.miyao.ui.vip.view.activity.FundGroupWebActivity;
 import com.uplan.miyao.ui.vip.view.activity.InsuranceWebActivity;
 import com.uplan.miyao.ui.vip.view.activity.MerchantWebActivity;
 import com.uplan.miyao.ui.vip.view.activity.SharedActivity;
-import com.uplan.miyao.ui.vip.view.activity.VipActivity;
 import com.uplan.miyao.util.EncodeUtils;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.widget.CommonDialog;
@@ -176,30 +175,12 @@ public class DiscoverFragment extends BaseFragment<DiscoverPresenter> implements
         switch (view.getId()) {
 
             case R.id.iv_vip:
-                if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
-                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-                    commonDialog.setSubMessage("请先成为会员!").
-                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                            }).
-                            setRightButton(getString(R.string.commit_change), v -> {
-                                VipActivity.start(getActivity());
-                            }).show();
-                    return;
-                }
+
                 FundGroupWebActivity.start(getActivity());
                 break;
 
             case R.id.tv_vip_group:
-                if (!PreferencesUtils.getBoolean(getActivity(), PreferencesUtils.IS_ACTIVEA)) {
-                    CommonDialog commonDialog = new CommonDialog(getActivity()).builder();
-                    commonDialog.setSubMessage("请先成为会员!").
-                            setLeftButton(getString(R.string.common_dialog_cancel), v -> {
-                            }).
-                            setRightButton(getString(R.string.commit_change), v -> {
-                                VipActivity.start(getActivity());
-                            }).show();
-                    return;
-                }
+
                 FundGroupWebActivity.start(getActivity());
                 break;
 /*            case R.id.tv_vip_fund:

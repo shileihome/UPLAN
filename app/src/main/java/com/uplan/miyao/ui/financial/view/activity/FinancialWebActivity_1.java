@@ -52,7 +52,7 @@ private String homeUrl;//="http://www.51mix.cn/wechat/account/HomePage/plan2";
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
                 if(url.equals(WEB_BACK)){
-                    webGoBack(FinancialWebActivity_1.this);
+                    finish();
                     return true;
                 }
                 if (url.startsWith("weixin://wap/pay?")) {

@@ -50,7 +50,7 @@ public class HelpCenterActivity extends BaseWebViewActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
-                    webGoBack(HelpCenterActivity.this);
+                    finish();
                     return true;
                 }
                 if (url.startsWith("weixin://wap/pay?")) {

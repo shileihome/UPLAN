@@ -50,7 +50,7 @@ public class Mix50Activity  extends BaseWebViewActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
-                    webGoBack(Mix50Activity.this);
+                    finish();
                     return true;
                 }
                 if (url.startsWith("weixin://wap/pay?")) {

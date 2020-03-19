@@ -50,7 +50,7 @@ public class MerchantWebActivity  extends BaseWebViewActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
-                    webGoBack(MerchantWebActivity.this);
+                    finish();
                     return true;
                 }
 

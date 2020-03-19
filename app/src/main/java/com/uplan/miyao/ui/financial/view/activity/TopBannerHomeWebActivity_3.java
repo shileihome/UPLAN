@@ -53,7 +53,7 @@ private String homeUrl;
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
-                    webGoBack(TopBannerHomeWebActivity_3.this);
+                    finish();
                     return true;
                 }
                 if (url.startsWith("weixin://wap/pay?")) {

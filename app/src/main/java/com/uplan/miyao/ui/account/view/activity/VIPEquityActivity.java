@@ -49,7 +49,7 @@ private String homeUrl="http://key.51mix.cn/wechat/family/InfoInputAction/public
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
-                    webGoBack(VIPEquityActivity.this);
+                    finish();
                     return true;
                 }
                 if (url.startsWith("weixin://wap/pay?")) {

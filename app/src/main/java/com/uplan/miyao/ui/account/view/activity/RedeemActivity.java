@@ -50,7 +50,7 @@ private String homeUrl="http://www.51mix.cn/wechat/yingmi/FundTransaction/getMyP
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
-                    webGoBack(RedeemActivity.this);
+                    finish();
                     return true;
                 }
                 if (url.startsWith("weixin://wap/pay?")) {

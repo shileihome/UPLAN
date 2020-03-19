@@ -3,11 +3,15 @@ package com.uplan.miyao.ui.account.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.webkit.WebView;
 
 import com.uplan.miyao.base.web.BaseWebViewActivity;
 import com.uplan.miyao.util.PreferencesUtils;
 import com.uplan.miyao.util.WebViewUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Author: Created by shilei on 2019/4/14-22:21
@@ -47,6 +51,21 @@ private String homeUrl="http://www.51mix.cn/wechat/yingmi/FundTransaction/getMyP
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.equals(WEB_BACK)){
                     webGoBack(RedeemActivity.this);
+                    return true;
+                }
+                if (url.startsWith("weixin://wap/pay?")) {
+//微信特殊处理
+                    try {
+                        startActivity(new Intent("android.intent.action.VIEW", Uri.parse(url)));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return true;
+                }
+                if ( url.startsWith("https://wx.tenpay.com")) {
+                    Map<String, String> extraHeaders = new HashMap<>();
+                    extraHeaders.put("Referer", "http://www.51mix.cn");
+                    view.loadUrl(url, extraHeaders);
                     return true;
                 }
                 return super.shouldOverrideUrlLoading(view, url);

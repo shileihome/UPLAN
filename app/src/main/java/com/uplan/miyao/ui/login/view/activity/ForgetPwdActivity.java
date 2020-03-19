@@ -48,13 +48,17 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     EditText etVerificationCode;
 
 
-
     /** 是否绑定过公众号 */
     private boolean isBinding = false;
+
+    /** 是否保存密码 */
+    private boolean isSave = false;
     int recLen;
-    public static void start(Activity context, boolean isBind) {
+
+    public static void start(Activity context, boolean isBind, boolean isSave) {
         Intent starter = new Intent(context, ForgetPwdActivity.class);
         starter.putExtra("isBind", isBind);
+        starter.putExtra("isSave", isSave);
         context.startActivityForResult(starter, LoginActivity.FORGET_REQUEST_CODE);
     }
 
@@ -63,17 +67,18 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     protected void init() {
         setContentView(R.layout.activity_forgetpwd);
         ButterKnife.bind(this);
-        isBinding = getIntent().getBooleanExtra("isBind",false);
+        isBinding = getIntent().getBooleanExtra("isBind", false);
+        isSave =getIntent().getBooleanExtra("isSave",true);
         initView();
     }
 
-    private void initView(){
-        etPhotoNo.setText(PreferencesUtils.getString(this,PreferencesUtils.USER_TEL));
-        if(isBinding){
-           etPwd.setHint("请设置密码");
+    private void initView() {
+        etPhotoNo.setText(PreferencesUtils.getString(this, PreferencesUtils.USER_TEL));
+        if (isBinding) {
+            etPwd.setHint("请设置密码");
             etPwdAgain.setHint("请确认密码");
             tvRegist.setText("确定");
-        }else{
+        } else {
             etPwd.setHint("请设置新密码");
             etPwdAgain.setHint("请确认新密码");
             tvRegist.setText("确认修改");
@@ -98,6 +103,9 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     @Override
     public void dealModifySuccess(ForgetPwdResp data) {
         Intent intent = new Intent();
+        if(isSave){
+            PreferencesUtils.putString(this,PreferencesUtils.USER_PWD,etPwd.getText().toString());
+        }
         intent.putExtra("username", etPhotoNo.getText().toString());
         intent.putExtra("password", etPwd.getText().toString());
         setResult(LoginActivity.FORGET_RESULT_CODE, intent);
@@ -131,13 +139,13 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
                     ToastUtils.shortShow("请输入手机号！");
                     return;
                 }
-                if(!etPwd.getText().toString().equals(etPwdAgain.getText().toString())){
+                if (!etPwd.getText().toString().equals(etPwdAgain.getText().toString())) {
                     ToastUtils.shortShow("两次密码不一致，请重新输入!");
                     return;
                 }
-                if(recLen>0){
+                if (recLen > 0) {
                     return;
-                }else {
+                } else {
                     setTimeTask();
                     mPresenter.registVerificationCode(etPhotoNo.getText().toString());
                 }
@@ -174,10 +182,10 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
     }
 
 
-    public void setTimeTask(){
-        recLen=60;
-        Timer timer=new Timer();
-        TimerTask task=new TimerTask() {
+    public void setTimeTask() {
+        recLen = 60;
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
 
@@ -185,8 +193,8 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
                     @Override
                     public void run() {
                         recLen--;
-                        tvVerificationCode.setText(recLen+"s");
-                        if(recLen<0){
+                        tvVerificationCode.setText(recLen + "s");
+                        if (recLen < 0) {
                             timer.cancel();
                             tvVerificationCode.setText("重新发送");
                             return;
@@ -196,7 +204,7 @@ public class ForgetPwdActivity extends BaseActivity<ForgetPwdPresenter> implemen
                 });
             }
         };
-        timer.schedule(task ,1000,1000);
+        timer.schedule(task, 1000, 1000);
 
     }
 

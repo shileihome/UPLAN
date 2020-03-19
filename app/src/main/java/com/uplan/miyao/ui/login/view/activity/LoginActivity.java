@@ -106,9 +106,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             }
         });
         if(TextUtils.isEmpty(PreferencesUtils.getString(this, PreferencesUtils.USER_PWD))){
-
+            isSavePwd=false;
             rbPwd.setButtonDrawable(R.drawable.privacy_unselect);
         }else{
+            isSavePwd=true;
             rbPwd.setButtonDrawable(R.drawable.privacy_select);
         }
         rbPwd.setOnClickListener(v -> {
@@ -177,7 +178,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         if (code == 1) {
             isBind = true;
             PreferencesUtils.putString(this, PreferencesUtils.USER_TEL, etPhotoNo.getText().toString().trim());
-            ForgetPwdActivity.start(this, true);
+            ForgetPwdActivity.start(this, true,isSavePwd);
         }
     }
 
@@ -214,9 +215,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             case R.id.tv_forget_pwd:
                 PreferencesUtils.putString(this, PreferencesUtils.USER_TEL, etPhotoNo.getText().toString().trim());
                 if (isBind) {
-                    ForgetPwdActivity.start(this, true);
+                    ForgetPwdActivity.start(this, true,isSavePwd);
                 } else {
-                    ForgetPwdActivity.start(this, false);
+                    ForgetPwdActivity.start(this, false,isSavePwd);
                 }
                 break;
             case R.id.tv_privacy:
